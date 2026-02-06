@@ -1,0 +1,16 @@
+{
+  "deck_id": "default_deck",
+  "deck_name": "Default Round",
+  "groups": [
+    "europe_countries_01",
+    "island_nations_01",
+    "us_states_01",
+    "national_capitals_01",
+    "cities_in_uk_01"
+  ],
+  "shuffle_seed": null,
+  "metadata": {
+    "description": "All available groups — client selects a random subset per round",
+    "source": "local-json"
+  }
+}

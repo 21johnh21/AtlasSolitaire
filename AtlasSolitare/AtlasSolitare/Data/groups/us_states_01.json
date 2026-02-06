@@ -1,0 +1,22 @@
+{
+  "group_id": "us_states_01",
+  "group_name": "US States",
+  "base_card": {
+    "id": "us_states_base",
+    "label": "US States",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "california", "label": "California", "type": "partner", "image": null },
+    { "id": "texas", "label": "Texas", "type": "partner", "image": null },
+    { "id": "florida", "label": "Florida", "type": "partner", "image": null },
+    { "id": "new_york", "label": "New York", "type": "partner", "image": null },
+    { "id": "illinois", "label": "Illinois", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "United States",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

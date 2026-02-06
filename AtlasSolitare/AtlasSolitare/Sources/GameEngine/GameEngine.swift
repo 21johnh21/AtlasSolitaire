@@ -1,0 +1,214 @@
+import Foundation
+
+// MARK: - GameEngine
+
+/// Stateful game engine.  Owns a mutable `GameState` and exposes high-level
+/// operations (draw, move, reshuffle, newGame).  All mutation goes through this
+/// class so the ViewModel can observe changes and trigger UI updates.
+///
+/// The engine is **not** an ObservableObject itself — the ViewModel wraps it and
+/// publishes state.  This keeps the engine testable without SwiftUI.
+class GameEngine {
+
+    // ─── State ──────────────────────────────────────────────────────────────
+    var state: GameState
+
+    // ─── Callbacks (injected by ViewModel) ─────────────────────────────────
+    /// Called after any state mutation so the ViewModel can re-publish.
+    var onStateChanged: (() -> Void)?
+
+    /// Called when a group is completed and cleared.  Passes the groupId.
+    var onGroupCompleted: ((String) -> Void)?
+
+    /// Called when the player wins.
+    var onWin: (() -> Void)?
+
+    // ─── Init ───────────────────────────────────────────────────────────────
+    init(state: GameState) {
+        self.state = state
+    }
+
+    // ─── MARK: Public Operations ────────────────────────────────────────────
+
+    /// Draw the top card from the stock onto the waste.
+    /// If the stock is empty this is a no-op (caller should check `canReshuffle`).
+    func drawFromStock() {
+        guard let card = state.stock.popLast() else { return }
+        state.waste.append(card)
+        notifyChanged()
+    }
+
+    /// Reshuffle: move all waste cards back into the stock in random order.
+    /// Unlimited reshuffles allowed per spec.
+    func reshuffle() {
+        guard Rules.canReshuffle(stock: state.stock, waste: state.waste) else { return }
+        state.stock = state.waste.shuffled()
+        state.waste.removeAll()
+        notifyChanged()
+    }
+
+    /// Attempt to move a card from `source` to `target`.
+    /// Returns the validation result so the caller (ViewModel) can trigger
+    /// the appropriate haptic / sound.
+    @discardableResult
+    func move(card: Card, source: MoveSource, target: MoveTarget) -> MoveValidation {
+        let validation = Rules.validate(
+            card: card,
+            source: source,
+            target: target,
+            foundations: state.foundations,
+            tableau: state.tableau
+        )
+
+        switch validation {
+        case .invalid:
+            return validation   // caller handles feedback
+
+        case .valid:
+            // 1. Remove card from source.
+            removeCard(from: source)
+
+            // 2. Place card at target.
+            placeCard(card, at: target)
+
+            // 3. Reveal new top card in tableau if source was tableau.
+            if case .tableau(let idx) = source {
+                revealTopCard(in: idx)
+            }
+
+            // 4. Check for group completion on foundations.
+            if case .foundation(let idx) = target {
+                checkAndClearGroup(at: idx)
+            }
+
+            notifyChanged()
+            return .valid
+        }
+    }
+
+    /// Start a brand new game from a given deck.  Deals cards Klondike-style.
+    func newGame(deck: Deck, seed: UInt64? = nil) {
+        var rng = seed.map { SeededRNG(seed: $0) }
+        var allCards = deck.allCards
+
+        // Shuffle
+        if var rng = rng {
+            allCards.shuffle(using: &rng)
+        } else {
+            allCards.shuffle()
+        }
+
+        // Deal tableau: pile 0 gets 1 card, pile 1 gets 2, etc.
+        let tableauCount = 4
+        var tableau: [[TableauCard]] = Array(repeating: [], count: tableauCount)
+        var idx = 0
+        for pile in 0..<tableauCount {
+            for row in 0...pile {
+                guard idx < allCards.count else { break }
+                let isFaceUp = (row == pile)  // only the last card in each pile is face-up
+                tableau[pile].append(TableauCard(card: allCards[idx], isFaceUp: isFaceUp))
+                idx += 1
+            }
+        }
+
+        // Remaining cards go to stock (face-down).
+        let stock = Array(allCards[idx...])
+
+        state = GameState(
+            deck:             deck,
+            stock:            stock,
+            waste:            [],
+            foundations:      Array(repeating: FoundationPile(), count: 4),
+            tableau:          tableau,
+            completedGroups:  [],
+            clearedCardCount: 0,
+            phase:            .playing
+        )
+
+        notifyChanged()
+    }
+
+    // ─── MARK: Private Helpers ──────────────────────────────────────────────
+
+    private func removeCard(from source: MoveSource) {
+        switch source {
+        case .waste:
+            state.waste.removeLast()
+        case .tableau(let idx):
+            state.tableau[idx].removeLast()
+        case .foundation(let idx):
+            state.foundations[idx].cards.removeLast()
+        case .stock:
+            state.stock.removeLast()
+        }
+    }
+
+    private func placeCard(_ card: Card, at target: MoveTarget) {
+        switch target {
+        case .foundation(let idx):
+            state.foundations[idx].cards.append(card)
+        case .tableau(let idx):
+            state.tableau[idx].append(TableauCard(card: card, isFaceUp: true))
+        }
+    }
+
+    /// If the top card of a tableau pile is face-down, flip it face-up.
+    private func revealTopCard(in pileIndex: Int) {
+        guard let last = state.tableau[pileIndex].indices.last else { return }
+        if !state.tableau[pileIndex][last].isFaceUp {
+            state.tableau[pileIndex][last].isFaceUp = true
+        }
+    }
+
+    /// Check if the group on the given foundation is complete; if so, clear it.
+    private func checkAndClearGroup(at foundationIndex: Int) {
+        guard let completedGroupId = Rules.checkGroupCompletion(
+            foundationIndex: foundationIndex,
+            foundations: state.foundations,
+            deck: state.deck
+        ) else { return }
+
+        // Clear the foundation pile.
+        let clearedCount = state.foundations[foundationIndex].cards.count
+        state.foundations[foundationIndex].cards.removeAll()
+        state.completedGroups.insert(completedGroupId)
+        state.clearedCardCount += clearedCount
+
+        // Reveal any newly exposed tableau cards after clearing.
+        for i in state.tableau.indices {
+            revealTopCard(in: i)
+        }
+
+        // Notify group-level callback.
+        onGroupCompleted?(completedGroupId)
+
+        // Check win.
+        if state.isWon {
+            state.phase = .won
+            onWin?()
+        }
+    }
+
+    private func notifyChanged() {
+        onStateChanged?()
+    }
+}
+
+// MARK: - SeededRNG
+
+/// A simple seeded random-number generator for reproducible shuffles.
+struct SeededRNG: RandomNumberGenerator {
+    var state: UInt64
+
+    init(seed: UInt64) {
+        self.state = seed
+    }
+
+    mutating func next() -> UInt64 {
+        // xorshift64
+        state ^= state << 13
+        state ^= state >> 7
+        state ^= state << 17
+        return state
+    }
+}

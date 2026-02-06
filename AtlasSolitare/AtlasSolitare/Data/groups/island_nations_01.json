@@ -1,0 +1,22 @@
+{
+  "group_id": "island_nations_01",
+  "group_name": "Island Nations",
+  "base_card": {
+    "id": "islands_base",
+    "label": "Island Nations",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "japan", "label": "Japan", "type": "partner", "image": null },
+    { "id": "philippines", "label": "Philippines", "type": "partner", "image": null },
+    { "id": "iceland", "label": "Iceland", "type": "partner", "image": null },
+    { "id": "madagascar", "label": "Madagascar", "type": "partner", "image": null },
+    { "id": "new_zealand", "label": "New Zealand", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

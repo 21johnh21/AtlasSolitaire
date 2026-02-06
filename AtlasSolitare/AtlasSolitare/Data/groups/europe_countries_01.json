@@ -1,0 +1,22 @@
+{
+  "group_id": "europe_countries_01",
+  "group_name": "Countries of Europe",
+  "base_card": {
+    "id": "europe_base",
+    "label": "Countries of Europe",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "france", "label": "France", "type": "partner", "image": null },
+    { "id": "germany", "label": "Germany", "type": "partner", "image": null },
+    { "id": "italy", "label": "Italy", "type": "partner", "image": null },
+    { "id": "spain", "label": "Spain", "type": "partner", "image": null },
+    { "id": "portugal", "label": "Portugal", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "continent": "Europe",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

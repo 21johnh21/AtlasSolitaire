@@ -1,0 +1,22 @@
+{
+  "group_id": "cities_in_uk_01",
+  "group_name": "Cities in the UK",
+  "base_card": {
+    "id": "uk_cities_base",
+    "label": "Cities in the UK",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "london", "label": "London", "type": "partner", "image": null },
+    { "id": "manchester", "label": "Manchester", "type": "partner", "image": null },
+    { "id": "birmingham", "label": "Birmingham", "type": "partner", "image": null },
+    { "id": "edinburgh", "label": "Edinburgh", "type": "partner", "image": null },
+    { "id": "liverpool", "label": "Liverpool", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "United Kingdom",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "group_id": "national_capitals_01",
+  "group_name": "National Capitals",
+  "base_card": {
+    "id": "capitals_base",
+    "label": "National Capitals",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "washington_dc", "label": "Washington, D.C.", "type": "partner", "image": null },
+    { "id": "london", "label": "London", "type": "partner", "image": null },
+    { "id": "tokyo", "label": "Tokyo", "type": "partner", "image": null },
+    { "id": "paris", "label": "Paris", "type": "partner", "image": null },
+    { "id": "ottawa", "label": "Ottawa", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Global",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}
