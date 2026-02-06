@@ -202,10 +202,22 @@ class GameViewModel: ObservableObject {
         }
     }
 
-    /// Return to the main menu.
+    /// Continue a saved game (called from menu "Continue Game" button).
+    func continueGame() {
+        print("[GameViewModel] Continuing saved game")
+        guard let saved = try? persistence.loadGameState(), saved.phase == .playing else {
+            print("[GameViewModel] No saved game found or game not in playing state")
+            return
+        }
+        engine.state = saved
+        publishState()
+    }
+
+    /// Return to the main menu (without clearing saved game).
     func returnToMenu() {
+        print("[GameViewModel] Returning to menu")
         phase = .menu
-        try? persistence.clearGameState()
+        // Don't clear the game state - it's already auto-saved
     }
 
     // ─── Settings ───────────────────────────────────────────────────────────
@@ -223,6 +235,12 @@ class GameViewModel: ObservableObject {
     }
 
     // ─── MARK: Derived / Query Helpers (for Views) ─────────────────────────
+
+    /// Whether there's a saved game available to continue
+    var hasSavedGame: Bool {
+        guard let saved = try? persistence.loadGameState() else { return false }
+        return saved.phase == .playing
+    }
 
     /// Whether the stock pile has cards.
     var stockHasCards: Bool { engine.state.stock.count > 0 }

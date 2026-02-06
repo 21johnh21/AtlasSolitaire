@@ -10,13 +10,22 @@ import UniformTypeIdentifiers
 /// (iOS 16+).  A tap-to-select fallback is always available for accessibility.
 struct GameView: View {
     @ObservedObject var vm: GameViewModel
+    @State private var showQuitConfirmation = false
 
     var body: some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
+                // ── Quit button ─────────────────────────────────────────────
+                HStack {
+                    quitButton
+                    Spacer()
+                }
+                .padding(.horizontal)
+                .padding(.top, 8)
+
                 // ── Top bar: stock + waste ──────────────────────────────────
                 topRow
-                    .padding(.top, 12)
+                    .padding(.top, 8)
                     .padding(.horizontal)
 
                 // ── Foundations row ─────────────────────────────────────────
@@ -48,6 +57,16 @@ struct GameView: View {
             )
         ) {
             WinView(vm: vm)
+        }
+        // Quit confirmation alert
+        .alert("Quit Game?", isPresented: $showQuitConfirmation) {
+            Button("Cancel", role: .cancel) { }
+            Button("Quit", role: .destructive) {
+                print("[GameView] Confirmed quit, returning to menu")
+                vm.returnToMenu()
+            }
+        } message: {
+            Text("Your current game will be saved and you can resume it later.")
         }
     }
 
@@ -123,6 +142,29 @@ struct GameView: View {
         )
         // TODO: Add dropTarget for drag-and-drop (requires iOS 17+)
         // Tap-to-select works for now
+    }
+
+    // ─── Quit button ────────────────────────────────────────────────────────
+    private var quitButton: some View {
+        Button(action: {
+            print("[GameView] Quit button tapped, showing confirmation")
+            showQuitConfirmation = true
+        }) {
+            HStack(spacing: 4) {
+                Image(systemName: "xmark.circle.fill")
+                    .font(.system(size: 14))
+                Text("Quit")
+                    .font(.system(size: 13, weight: .medium))
+            }
+            .foregroundColor(Color.white.opacity(0.7))
+            .padding(.horizontal, 10)
+            .padding(.vertical, 6)
+            .background(
+                RoundedRectangle(cornerRadius: 6)
+                    .fill(Color.black.opacity(0.2))
+            )
+        }
+        .accessibilityLabel("Quit game and return to menu")
     }
 }
 

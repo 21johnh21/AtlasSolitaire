@@ -21,8 +21,15 @@ struct MenuView: View {
 
                 Spacer(minLength: 40)
 
-                // ── New Game button ─────────────────────────────────────────
-                newGameButton
+                // ── Game buttons ────────────────────────────────────────────
+                VStack(spacing: 16) {
+                    // Continue button (only shown if there's a saved game)
+                    if vm.hasSavedGame {
+                        continueGameButton
+                    }
+
+                    newGameButton
+                }
 
                 Spacer(minLength: 32)
 
@@ -59,17 +66,43 @@ struct MenuView: View {
         }
     }
 
+    // ─── Continue Game ──────────────────────────────────────────────────────
+    private var continueGameButton: some View {
+        Button(action: vm.continueGame) {
+            HStack(spacing: 8) {
+                Image(systemName: "play.circle.fill")
+                    .font(.system(size: 18))
+                Text("Continue Game")
+                    .font(.system(size: 20, weight: .semibold))
+            }
+            .foregroundColor(.white)
+            .padding(.horizontal, 40)
+            .padding(.vertical, 16)
+            .background(Color.accentGold)
+            .clipShape(RoundedRectangle(cornerRadius: 14))
+            .shadow(color: Color.black.opacity(0.25), radius: 6, y: 3)
+        }
+    }
+
     // ─── New Game ───────────────────────────────────────────────────────────
     private var newGameButton: some View {
         Button(action: vm.startNewGame) {
-            Text("New Game")
-                .font(.system(size: 20, weight: .semibold))
-                .foregroundColor(.white)
-                .padding(.horizontal, 56)
-                .padding(.vertical, 16)
-                .background(Color.accentGold)
-                .clipShape(RoundedRectangle(cornerRadius: 14))
-                .shadow(color: Color.black.opacity(0.25), radius: 6, y: 3)
+            HStack(spacing: 8) {
+                Image(systemName: "plus.circle.fill")
+                    .font(.system(size: 18))
+                Text("New Game")
+                    .font(.system(size: 20, weight: .semibold))
+            }
+            .foregroundColor(.white)
+            .padding(.horizontal, 56)
+            .padding(.vertical, 16)
+            .background(
+                vm.hasSavedGame
+                    ? Color.white.opacity(0.15)
+                    : Color.accentGold
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 14))
+            .shadow(color: Color.black.opacity(0.25), radius: 6, y: 3)
         }
     }
 

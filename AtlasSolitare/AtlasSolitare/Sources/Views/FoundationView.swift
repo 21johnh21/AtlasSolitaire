@@ -22,30 +22,50 @@ struct FoundationView: View {
     var onDrop: ((Card, MoveSource) -> Void)?
 
     var body: some View {
-        ZStack {
-            if let top = pile.topCard {
-                CardView(
-                    card: top,
-                    isFaceUp: true,
-                    isHighlighted: isSelected,
-                    onTap: onTapCard
-                )
-                // Small card-count badge when more than 1 card is stacked.
-                .overlay(alignment: .bottomTrailing) {
-                    if pile.cards.count > 1 {
-                        countBadge
-                    }
-                }
+        VStack(spacing: 4) {
+            // Category banner (shown when foundation has a base card)
+            if !pile.isEmpty, let groupName = groupName {
+                categoryBanner(groupName)
             } else {
-                emptySlot
-                    .onTapGesture { onTapEmpty?() }
+                // Spacer to keep alignment consistent
+                Color.clear
+                    .frame(height: 20)
+            }
+
+            // Card or empty slot
+            ZStack {
+                if let top = pile.topCard {
+                    CardView(
+                        card: top,
+                        isFaceUp: true,
+                        isHighlighted: isSelected,
+                        onTap: onTapCard
+                    )
+                    // Small card-count badge when more than 1 card is stacked.
+                    .overlay(alignment: .bottomTrailing) {
+                        if pile.cards.count > 1 {
+                            countBadge
+                        }
+                    }
+                } else {
+                    emptySlot
+                        .onTapGesture { onTapEmpty?() }
+                }
             }
         }
         .accessibilityLabel(
             pile.isEmpty
                 ? "Empty foundation slot \(pileIndex + 1)"
-                : "Foundation \(pileIndex + 1): \(pile.topCard?.label ?? "")"
+                : "Foundation \(pileIndex + 1): \(pile.topCard?.label ?? ""), \(groupName ?? "")"
         )
+    }
+
+    // ─── Computed Properties ────────────────────────────────────────────────
+
+    /// The group name extracted from the base card, if present
+    private var groupName: String? {
+        guard let baseCard = pile.cards.first, baseCard.isBase else { return nil }
+        return baseCard.label
     }
 
     // ─── Empty slot ─────────────────────────────────────────────────────────
@@ -74,6 +94,26 @@ struct FoundationView: View {
             .background(Color.accentGold)
             .clipShape(Circle())
             .padding(2)
+    }
+
+    /// Category banner showing the group name
+    private func categoryBanner(_ name: String) -> some View {
+        Text(name)
+            .font(.system(size: 9, weight: .semibold))
+            .foregroundColor(Color.accentGold)
+            .lineLimit(1)
+            .minimumScaleFactor(0.6)
+            .frame(width: CardLayout.width)
+            .padding(.vertical, 2)
+            .padding(.horizontal, 4)
+            .background(
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color.accentGold.opacity(0.15))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 4)
+                            .stroke(Color.accentGold.opacity(0.3), lineWidth: 1)
+                    )
+            )
     }
 }
 
