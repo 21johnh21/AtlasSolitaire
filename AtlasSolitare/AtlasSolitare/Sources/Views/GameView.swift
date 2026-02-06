@@ -83,8 +83,10 @@ struct GameView: View {
                     }
                 }
             )
-            // TODO: Add .draggable for drag-and-drop (requires iOS 17+)
-            // Tap-to-select works for now
+            .draggable(vm.wasteTopCard.map { card in
+                print("[GameView] Drag started from waste: \(card.label)")
+                return DragPayload(card: card, source: .waste)
+            } ?? DragPayload(card: nil, source: .waste))
 
             Spacer()
 
@@ -115,8 +117,15 @@ struct GameView: View {
                         vm.tapEmptyFoundation(pileIndex: idx)
                     }
                 )
-                // TODO: Add dropTarget for drag-and-drop (requires iOS 17+)
-                // Tap-to-select works for now
+                .dropDestination(for: DragPayload.self) { items, location in
+                    guard let payload = items.first else {
+                        print("[GameView] No payload in drop")
+                        return false
+                    }
+                    print("[GameView] Dropping \(payload.card.label) on foundation \(idx)")
+                    vm.dropOnFoundation(card: payload.card, source: payload.source, pileIndex: idx)
+                    return true
+                }
             }
         }
     }
@@ -138,10 +147,17 @@ struct GameView: View {
             },
             onTapEmptyPile: { pileIdx in
                 vm.tapEmptyTableau(pileIndex: pileIdx)
+            },
+onDragPayload: { card, pileIdx in
+                print("[GameView] Creating drag payload for tableau pile \(pileIdx): \(card.label)")
+                return DragPayload(card: card, source: .tableau(pileIndex: pileIdx))
+            },
+            onDropPayload: { payload, pileIdx in
+                print("[GameView] Dropping \(payload.card.label) on tableau \(pileIdx)")
+                vm.dropOnTableau(card: payload.card, source: payload.source, pileIndex: pileIdx)
+                return true
             }
         )
-        // TODO: Add dropTarget for drag-and-drop (requires iOS 17+)
-        // Tap-to-select works for now
     }
 
     // ─── Quit button ────────────────────────────────────────────────────────

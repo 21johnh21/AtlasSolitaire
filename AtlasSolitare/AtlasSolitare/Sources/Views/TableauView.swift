@@ -1,4 +1,5 @@
 import SwiftUI
+import UniformTypeIdentifiers
 
 // MARK: - TableauView
 
@@ -15,6 +16,10 @@ struct TableauView: View {
     var onTapCard: ((Card, Int) -> Void)?
     /// Called when an empty pile is tapped (for tap-to-place).  Passes pile index.
     var onTapEmptyPile: ((Int) -> Void)?
+    /// Called when drag starts from a tableau card. Returns a DragPayload.
+    var onDragPayload: ((Card, Int) -> DragPayload)?
+    /// Called when a payload is dropped on a tableau pile. Returns success status.
+    var onDropPayload: ((DragPayload, Int) -> Bool)?
 
     var body: some View {
         HStack(alignment: .top, spacing: CardLayout.horizontalSpacing) {
@@ -24,7 +29,9 @@ struct TableauView: View {
                     pileIndex: pileIndex,
                     selectedCardId: selectedCardId,
                     onTapCard: onTapCard,
-                    onTapEmptyPile: onTapEmptyPile
+                    onTapEmptyPile: onTapEmptyPile,
+                    onDragPayload: onDragPayload,
+                    onDropPayload: onDropPayload
                 )
             }
         }
@@ -41,29 +48,47 @@ private struct SingleTableauPile: View {
 
     var onTapCard: ((Card, Int) -> Void)?
     var onTapEmptyPile: ((Int) -> Void)?
+    var onDragPayload: ((Card, Int) -> DragPayload)?
+    var onDropPayload: ((DragPayload, Int) -> Bool)?
 
     var body: some View {
         ZStack(alignment: .top) {
             if pile.isEmpty {
                 emptySlot
                     .onTapGesture { onTapEmptyPile?(pileIndex) }
+                    .dropDestination(for: DragPayload.self) { items, location in
+                        guard let payload = items.first else { return false }
+                        return onDropPayload?(payload, pileIndex) ?? false
+                    }
             } else {
                 ForEach(pile.indices, id: \.self) { i in
                     let tc = pile[i]
                     let yOffset = computeOffset(upTo: i)
+                    let isTopCard = (i == pile.count - 1)
 
                     CardView(
                         card: tc.card,
                         isFaceUp: tc.isFaceUp,
                         isHighlighted: tc.isFaceUp && selectedCardId == tc.card.id,
-                        onTap: tc.isFaceUp && i == pile.count - 1
+                        onTap: tc.isFaceUp && isTopCard
                             ? { onTapCard?(tc.card, pileIndex) }
                             : nil
                     )
                     .offset(y: yOffset)
                     // Face-down cards have lower z so face-up cards render on top.
                     .zIndex(Double(i))
+                    // Only top face-up card is draggable
+                    .draggable(tc.isFaceUp && isTopCard ? (onDragPayload?(tc.card, pileIndex) ?? DragPayload(card: nil, source: .waste)) : DragPayload(card: nil, source: .waste))
                 }
+
+                // Drop target for the whole pile
+                Color.clear
+                    .frame(width: CardLayout.width, height: pileHeight)
+                    .dropDestination(for: DragPayload.self) { items, location in
+                        guard let payload = items.first else { return false }
+                        return onDropPayload?(payload, pileIndex) ?? false
+                    }
+                    .zIndex(999) // On top for drop handling
             }
         }
         // Height: tallest pile (all cards fanned out) + one card height.
