@@ -83,10 +83,9 @@ struct GameView: View {
                     }
                 }
             )
-            .draggable(vm.wasteTopCard.map { card in
-                print("[GameView] Drag started from waste: \(card.label)")
-                return DragPayload(card: card, source: .waste)
-            } ?? DragPayload(card: nil, source: .waste))
+            .if(vm.wasteTopCard != nil) { view in
+                view.draggable(DragPayload(card: vm.wasteTopCard, source: .waste))
+            }
 
             Spacer()
 
@@ -115,17 +114,13 @@ struct GameView: View {
                     },
                     onTapEmpty: {
                         vm.tapEmptyFoundation(pileIndex: idx)
+                    },
+                    onDropPayload: { payload in
+                        print("[GameView] Dropping \(payload.card.label) on foundation \(idx)")
+                        vm.dropOnFoundation(card: payload.card, source: payload.source, pileIndex: idx)
+                        return true
                     }
                 )
-                .dropDestination(for: DragPayload.self) { items, location in
-                    guard let payload = items.first else {
-                        print("[GameView] No payload in drop")
-                        return false
-                    }
-                    print("[GameView] Dropping \(payload.card.label) on foundation \(idx)")
-                    vm.dropOnFoundation(card: payload.card, source: payload.source, pileIndex: idx)
-                    return true
-                }
             }
         }
     }

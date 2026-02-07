@@ -17,9 +17,8 @@ struct FoundationView: View {
     var onTapCard: (() -> Void)?
     /// Called when the user taps the empty slot while a card is selected (tap-to-place).
     var onTapEmpty: (() -> Void)?
-    /// Called when a card is dropped onto this foundation (drag-and-drop).
-    /// The parent view handles the actual drop payload.
-    var onDrop: ((Card, MoveSource) -> Void)?
+    /// Called when a payload is dropped onto this foundation (drag-and-drop).
+    var onDropPayload: ((DragPayload) -> Bool)?
 
     var body: some View {
         VStack(spacing: 4) {
@@ -47,9 +46,17 @@ struct FoundationView: View {
                             countBadge
                         }
                     }
+                    .dropDestination(for: DragPayload.self) { items, location in
+                        guard let payload = items.first else { return false }
+                        return onDropPayload?(payload) ?? false
+                    }
                 } else {
                     emptySlot
                         .onTapGesture { onTapEmpty?() }
+                        .dropDestination(for: DragPayload.self) { items, location in
+                            guard let payload = items.first else { return false }
+                            return onDropPayload?(payload) ?? false
+                        }
                 }
             }
         }

@@ -77,8 +77,9 @@ private struct SingleTableauPile: View {
                     .offset(y: yOffset)
                     // Face-down cards have lower z so face-up cards render on top.
                     .zIndex(Double(i))
-                    // Only top face-up card is draggable
-                    .draggable(tc.isFaceUp && isTopCard ? (onDragPayload?(tc.card, pileIndex) ?? DragPayload(card: nil, source: .waste)) : DragPayload(card: nil, source: .waste))
+                    .if(tc.isFaceUp && isTopCard) { view in
+                        view.draggable(onDragPayload?(tc.card, pileIndex) ?? DragPayload(card: tc.card, source: .tableau(pileIndex: pileIndex)))
+                    }
                 }
 
                 // Drop target for the whole pile
@@ -118,6 +119,19 @@ private struct SingleTableauPile: View {
         RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
             .stroke(Color.white.opacity(0.15), style: StrokeStyle(lineWidth: 1.5, dash: [4, 4]))
             .cardFrame()
+    }
+}
+
+// MARK: - View Extension for Conditional Modifiers
+
+extension View {
+    @ViewBuilder
+    func `if`<Transform: View>(_ condition: Bool, transform: (Self) -> Transform) -> some View {
+        if condition {
+            transform(self)
+        } else {
+            self
+        }
     }
 }
 
