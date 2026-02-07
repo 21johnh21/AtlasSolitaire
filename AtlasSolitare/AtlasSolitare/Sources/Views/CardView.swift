@@ -5,12 +5,19 @@ import SwiftUI
 /// The single reusable card component.  Renders either the face-up or face-down
 /// side depending on `isFaceUp`, and exposes all the interaction + animation hooks
 /// the spec requires.
-struct CardView: View {
+struct CardView: View, Equatable {
     let card: Card
     let isFaceUp: Bool
 
     /// When true the card is visually highlighted (selected state).
     var isHighlighted: Bool = false
+
+    // MARK: - Equatable
+    static func == (lhs: CardView, rhs: CardView) -> Bool {
+        lhs.card.id == rhs.card.id &&
+        lhs.isFaceUp == rhs.isFaceUp &&
+        lhs.isHighlighted == rhs.isHighlighted
+    }
 
     /// Unique string used as the `matchedGeometryEffect` id for move animations.
     var animationId: String { card.id }

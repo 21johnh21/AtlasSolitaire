@@ -82,6 +82,7 @@ private struct SingleTableauPile: View {
                                 ? { onTapCard?(tc.card, pileIndex) }
                                 : nil
                         )
+                        .equatable()
                         .offset(y: yOffset)
                         // Face-down cards have lower z so face-up cards render on top.
                         .zIndex(Double(i))

@@ -73,15 +73,12 @@ class GameViewModel: ObservableObject {
 
     /// User tapped the stock pile — draw one card.
     func tapStock() {
-        print("[GameViewModel] tapStock: stock has \(engine.state.stock.count) cards")
         if engine.state.stock.isEmpty {
             // Auto-reshuffle when stock is empty and user taps.
-            print("[GameViewModel] Stock empty, reshuffling")
             reshuffle()
             return
         }
         engine.drawFromStock()
-        print("[GameViewModel] Drew card to waste, waste now has \(engine.state.waste.count) cards")
         audio.play(.flip)
         haptic.dropSuccess()
     }
@@ -98,28 +95,20 @@ class GameViewModel: ObservableObject {
     /// If this card is already selected, deselect.
     /// If a *different* card is selected, attempt a move from the selected card to this target.
     func tapCard(card: Card, source: MoveSource) {
-        print("[GameViewModel] tapCard: \(card.label) from \(source)")
-
         guard let sel = selectedCard else {
             // Nothing selected yet — select this card if it's a valid source.
             if isCardDraggable(card: card, source: source) {
-                print("[GameViewModel] Selected card: \(card.label)")
                 selectedCard = SelectedCard(card: card, source: source)
                 haptic.dragStart()
-            } else {
-                print("[GameViewModel] Card not draggable: \(card.label)")
             }
             return
         }
 
         if sel.card.id == card.id {
             // Tap same card again → deselect.
-            print("[GameViewModel] Deselected card: \(card.label)")
             selectedCard = nil
             return
         }
-
-        print("[GameViewModel] Already have selection: \(sel.card.label), tapped: \(card.label)")
 
         // A different card is tapped — try to move the selected card to this location
         // Check if the tapped card's pile can accept the selected card
@@ -135,22 +124,18 @@ class GameViewModel: ObservableObject {
         if targetIsFoundation {
             // Try to move selected card to this foundation pile
             if case .foundation(let idx) = source {
-                print("[GameViewModel] Attempting move to foundation \(idx)")
                 attemptMove(card: sel.card, source: sel.source, target: .foundation(pileIndex: idx))
             }
         } else if targetIsTableau {
             // Try to move selected card to this tableau pile
             if case .tableau(let idx) = source {
-                print("[GameViewModel] Attempting move to tableau \(idx)")
                 attemptMove(card: sel.card, source: sel.source, target: .tableau(pileIndex: idx))
             }
         } else {
             // Neither foundation nor tableau — just swap selection if new card is draggable
             if isCardDraggable(card: card, source: source) {
-                print("[GameViewModel] Swapping selection to: \(card.label)")
                 selectedCard = SelectedCard(card: card, source: source)
             } else {
-                print("[GameViewModel] Deselecting (target not draggable)")
                 selectedCard = nil
             }
         }
@@ -158,23 +143,13 @@ class GameViewModel: ObservableObject {
 
     /// User tapped an empty foundation slot while a card is selected.
     func tapEmptyFoundation(pileIndex: Int) {
-        print("[GameViewModel] tapEmptyFoundation: \(pileIndex)")
-        guard let sel = selectedCard else {
-            print("[GameViewModel] No card selected")
-            return
-        }
-        print("[GameViewModel] Moving \(sel.card.label) to empty foundation \(pileIndex)")
+        guard let sel = selectedCard else { return }
         attemptMove(card: sel.card, source: sel.source, target: .foundation(pileIndex: pileIndex))
     }
 
     /// User tapped an empty tableau slot while a card is selected.
     func tapEmptyTableau(pileIndex: Int) {
-        print("[GameViewModel] tapEmptyTableau: \(pileIndex)")
-        guard let sel = selectedCard else {
-            print("[GameViewModel] No card selected")
-            return
-        }
-        print("[GameViewModel] Moving \(sel.card.label) to empty tableau \(pileIndex)")
+        guard let sel = selectedCard else { return }
         attemptMove(card: sel.card, source: sel.source, target: .tableau(pileIndex: pileIndex))
     }
 
@@ -207,16 +182,16 @@ class GameViewModel: ObservableObject {
             phase = .playing
             autosave()
         } catch {
-            // Fallback: log and stay on menu.
+            // Fallback: stay on menu.
+            #if DEBUG
             print("[GameViewModel] Failed to build deck: \(error.localizedDescription)")
+            #endif
         }
     }
 
     /// Continue a saved game (called from menu "Continue Game" button).
     func continueGame() {
-        print("[GameViewModel] Continuing saved game")
         guard let saved = try? persistence.loadGameState(), saved.phase == .playing else {
-            print("[GameViewModel] No saved game found or game not in playing state")
             return
         }
         engine.state = saved
@@ -225,7 +200,6 @@ class GameViewModel: ObservableObject {
 
     /// Return to the main menu (without clearing saved game).
     func returnToMenu() {
-        print("[GameViewModel] Returning to menu")
         phase = .menu
         // Don't clear the game state - it's already auto-saved
     }
@@ -283,17 +257,14 @@ class GameViewModel: ObservableObject {
     // ─── MARK: Private ──────────────────────────────────────────────────────
 
     private func attemptMove(card: Card, source: MoveSource, target: MoveTarget) {
-        print("[GameViewModel] attemptMove: \(card.label) from \(source) to \(target)")
         let result = engine.move(card: card, source: source, target: target)
         switch result {
         case .valid:
-            print("[GameViewModel] ✅ Move succeeded")
             audio.play(.move)
             haptic.dropSuccess()
             selectedCard = nil
             autosave()
-        case .invalid(let reason):
-            print("[GameViewModel] ❌ Move failed: \(reason)")
+        case .invalid:
             audio.play(.invalid)
             haptic.dropFail()
             selectedCard = nil
@@ -301,18 +272,15 @@ class GameViewModel: ObservableObject {
     }
 
     private func attemptMoveStack(cards: [Card], source: MoveSource, target: MoveTarget) {
-        guard let firstCard = cards.first else { return }
-        print("[GameViewModel] attemptMoveStack: \(cards.count) card(s) from \(source) to \(target)")
+        guard !cards.isEmpty else { return }
         let result = engine.moveStack(cards: cards, source: source, target: target)
         switch result {
         case .valid:
-            print("[GameViewModel] ✅ Stack move succeeded")
             audio.play(.move)
             haptic.dropSuccess()
             selectedCard = nil
             autosave()
-        case .invalid(let reason):
-            print("[GameViewModel] ❌ Stack move failed: \(reason)")
+        case .invalid:
             audio.play(.invalid)
             haptic.dropFail()
             selectedCard = nil
@@ -320,17 +288,14 @@ class GameViewModel: ObservableObject {
     }
 
     private func attemptMoveStackToFoundation(cards: [Card], source: MoveSource, pileIndex: Int) {
-        print("[GameViewModel] attemptMoveStackToFoundation: \(cards.count) card(s) to foundation \(pileIndex)")
         let result = engine.moveStackToFoundation(cards: cards, source: source, foundationIndex: pileIndex)
         switch result {
         case .valid:
-            print("[GameViewModel] ✅ Stack move to foundation succeeded")
             audio.play(.move)
             haptic.dropSuccess()
             selectedCard = nil
             autosave()
-        case .invalid(let reason):
-            print("[GameViewModel] ❌ Stack move to foundation failed: \(reason)")
+        case .invalid:
             audio.play(.invalid)
             haptic.dropFail()
             selectedCard = nil

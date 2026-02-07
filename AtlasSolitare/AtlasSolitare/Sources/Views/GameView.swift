@@ -12,10 +12,19 @@ struct GameView: View {
     @ObservedObject var vm: GameViewModel
     @State private var showQuitConfirmation = false
     @State private var draggingCardIds: Set<String> = []
+    @State private var cardWidth: CGFloat = CardLayout.width
 
     var body: some View {
         GeometryReader { geo in
-            let cardWidth = CardLayout.width(for: geo.size.width)
+            Color.clear
+                .onAppear {
+                    updateCardWidth(for: geo.size.width)
+                }
+                .onChange(of: geo.size.width) { _, newWidth in
+                    updateCardWidth(for: newWidth)
+                }
+
+            let _ = cardWidth  // Force usage to avoid warning
 
             VStack(spacing: 0) {
                 // ── Quit button ─────────────────────────────────────────────
@@ -66,7 +75,6 @@ struct GameView: View {
         .alert("Quit Game?", isPresented: $showQuitConfirmation) {
             Button("Cancel", role: .cancel) { }
             Button("Quit", role: .destructive) {
-                print("[GameView] Confirmed quit, returning to menu")
                 vm.returnToMenu()
             }
         } message: {
@@ -106,9 +114,10 @@ struct GameView: View {
 
     // ─── 4 foundation slots ─────────────────────────────────────────────────
     private var foundationsRow: some View {
-        HStack(spacing: CardLayout.horizontalSpacing) {
+        let foundations = vm.foundations  // Cache the array lookup
+        return HStack(spacing: CardLayout.horizontalSpacing) {
             ForEach(Array(0..<4), id: \.self) { idx in
-                let pile = vm.foundations[safe: idx] ?? FoundationPile()
+                let pile = foundations[safe: idx] ?? FoundationPile()
                 FoundationView(
                     pile: pile,
                     pileIndex: idx,
@@ -151,8 +160,9 @@ struct GameView: View {
 
     // ─── Tableau ────────────────────────────────────────────────────────────
     private var tableauSection: some View {
-        TableauView(
-            piles: vm.tableau,
+        let tableau = vm.tableau  // Cache the array lookup
+        return TableauView(
+            piles: tableau,
             selectedCardId: vm.selectedCard?.card.id,
             draggingCardIds: draggingCardIds,
             onTapCard: { card, pileIdx in
@@ -188,7 +198,6 @@ struct GameView: View {
     // ─── Quit button ────────────────────────────────────────────────────────
     private var quitButton: some View {
         Button(action: {
-            print("[GameView] Quit button tapped, showing confirmation")
             showQuitConfirmation = true
         }) {
             HStack(spacing: 4) {
@@ -206,6 +215,14 @@ struct GameView: View {
             )
         }
         .accessibilityLabel("Quit game and return to menu")
+    }
+
+    // ─── Helper methods ─────────────────────────────────────────────────────
+    private func updateCardWidth(for screenWidth: CGFloat) {
+        let newWidth = CardLayout.width(for: screenWidth)
+        if abs(newWidth - cardWidth) > 0.1 {  // Only update if significantly different
+            cardWidth = newWidth
+        }
     }
 }
 
