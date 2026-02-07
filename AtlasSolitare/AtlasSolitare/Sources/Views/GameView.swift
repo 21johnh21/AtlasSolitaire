@@ -14,24 +14,26 @@ struct GameView: View {
 
     var body: some View {
         GeometryReader { geo in
+            let cardWidth = CardLayout.width(for: geo.size.width)
+
             VStack(spacing: 0) {
                 // ── Quit button ─────────────────────────────────────────────
                 HStack {
                     quitButton
                     Spacer()
                 }
-                .padding(.horizontal)
+                .padding(.horizontal, 16)
                 .padding(.top, 8)
 
                 // ── Top bar: stock + waste ──────────────────────────────────
                 topRow
                     .padding(.top, 8)
-                    .padding(.horizontal)
+                    .padding(.horizontal, 16)
 
                 // ── Foundations row ─────────────────────────────────────────
                 foundationsRow
                     .padding(.top, 10)
-                    .padding(.horizontal)
+                    .padding(.horizontal, 16)
 
                 // ── Progress indicator ─────────────────────────────────────
                 progressRow
@@ -41,10 +43,11 @@ struct GameView: View {
 
                 // ── Tableau (fills remaining vertical space) ──────────────
                 tableauSection
-                    .padding(.horizontal)
+                    .padding(.horizontal, 16)
 
                 Spacer(minLength: 12)
             }
+            .environment(\.cardWidth, cardWidth)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.feltGreen)
             .ignoresSafeArea(edges: .bottom)

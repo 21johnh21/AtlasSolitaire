@@ -7,6 +7,20 @@ import SwiftUI
 
 #if canImport(SwiftUI)
 
+// MARK: - Environment key for card width
+
+/// Environment key to pass calculated card width through the view hierarchy
+struct CardWidthKey: EnvironmentKey {
+    static let defaultValue: CGFloat = CardLayout.width
+}
+
+extension EnvironmentValues {
+    var cardWidth: CGFloat {
+        get { self[CardWidthKey.self] }
+        set { self[CardWidthKey.self] = newValue }
+    }
+}
+
 extension Color {
     /// Rich green table felt — primary game background.
     static let feltGreen    = Color(red: 0.12, green: 0.35, blue: 0.18)
@@ -28,9 +42,11 @@ extension Color {
 
 extension View {
     /// Standard card-size frame for portrait layout.
-    /// Base width ≈ 22 % of a 390-point iPhone 14 Pro width.
-    func cardFrame() -> some View {
-        self.frame(width: CardLayout.width, height: CardLayout.height)
+    /// Optionally pass custom card width (useful for responsive layouts).
+    func cardFrame(width: CGFloat? = nil) -> some View {
+        let cardWidth = width ?? CardLayout.width
+        let cardHeight = width.map { CardLayout.height(for: $0) } ?? CardLayout.height
+        return self.frame(width: cardWidth, height: cardHeight)
     }
 
     /// Subtle shadow matching the felt surface.
@@ -42,9 +58,24 @@ extension View {
 // MARK: - CardLayout constants
 
 /// Centralised card-dimension constants so every view stays consistent.
+/// Card dimensions are calculated dynamically based on screen width.
 enum CardLayout {
-    static let width:  CGFloat = 85
-    static let height: CGFloat = 120
+    /// Calculate card width based on available screen width
+    /// Uses 4 cards + 3 spacings as the basis (for foundations/tableau rows)
+    static func width(for screenWidth: CGFloat) -> CGFloat {
+        let horizontalPadding: CGFloat = 32  // Total padding (16 per side)
+        let availableWidth = screenWidth - horizontalPadding
+        let totalSpacing: CGFloat = 3 * 8  // 3 gaps between 4 cards
+        let cardWidth = (availableWidth - totalSpacing) / 4
+        // Clamp between reasonable min/max values
+        return min(max(cardWidth, 60), 85)
+    }
+
+    /// Calculate card height based on card width (maintaining aspect ratio)
+    static func height(for cardWidth: CGFloat) -> CGFloat {
+        return cardWidth * 1.41  // Standard card aspect ratio ~1.4:1
+    }
+
     static let cornerRadius: CGFloat = 8
     /// Vertical offset between stacked face-down cards in a tableau pile.
     static let faceDownOffset: CGFloat = 18
@@ -52,6 +83,10 @@ enum CardLayout {
     static let faceUpOffset: CGFloat = 28
     /// Horizontal spacing between piles.
     static let horizontalSpacing: CGFloat = 8
+
+    // Legacy constants for views that don't have access to screen width yet
+    static let width:  CGFloat = 85
+    static let height: CGFloat = 120
 }
 
 // MARK: - Array safe subscript

@@ -14,6 +14,8 @@ struct StockView: View {
     /// Called when the user taps the stock pile area.
     var onTap: (() -> Void)?
 
+    @Environment(\.cardWidth) private var cardWidth
+
     var body: some View {
         ZStack {
             if cardCount > 0 {
@@ -24,7 +26,7 @@ struct StockView: View {
                 emptySlot
             }
         }
-        .cardFrame()
+        .cardFrame(width: cardWidth)
         .onTapGesture { onTap?() }
         .accessibilityLabel(cardCount > 0 ? "\(cardCount) cards in stock" : (canReshuffle ? "Tap to reshuffle" : "Stock empty"))
     }
@@ -37,7 +39,7 @@ struct StockView: View {
                 let offset = CGFloat(min(cardCount, 3) - 1 - i) * 1.5
                 RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
                     .fill(Color.cardBack)
-                    .cardFrame()
+                    .cardFrame(width: cardWidth)
                     .cardShadow()
                     .offset(y: -offset)
             }

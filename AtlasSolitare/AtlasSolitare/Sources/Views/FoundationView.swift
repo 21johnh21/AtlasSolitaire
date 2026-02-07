@@ -20,6 +20,8 @@ struct FoundationView: View {
     /// Called when a payload is dropped onto this foundation (drag-and-drop).
     var onDropPayload: ((DragPayload) -> Bool)?
 
+    @Environment(\.cardWidth) private var cardWidth
+
     var body: some View {
         VStack(spacing: 4) {
             // Category banner (shown when foundation has a base card)
@@ -77,13 +79,15 @@ struct FoundationView: View {
 
     // ─── Empty slot ─────────────────────────────────────────────────────────
     private var emptySlot: some View {
-        RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
+        let iconSize = cardWidth / 85 * 18  // Scale icon with card width
+
+        return RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
             .stroke(Color.white.opacity(0.25), style: StrokeStyle(lineWidth: 2, dash: [5, 4]))
-            .cardFrame()
+            .cardFrame(width: cardWidth)
             .overlay(
                 VStack(spacing: 2) {
                     Image(systemName: "square.and.arrow.up")
-                        .font(.system(size: 18))
+                        .font(.system(size: iconSize))
                         .foregroundColor(Color.white.opacity(0.25))
                     Text("Base")
                         .font(.system(size: 9, weight: .medium))
@@ -110,7 +114,7 @@ struct FoundationView: View {
             .foregroundColor(Color.accentGold)
             .lineLimit(1)
             .minimumScaleFactor(0.6)
-            .frame(width: CardLayout.width)
+            .frame(width: cardWidth)
             .padding(.vertical, 2)
             .padding(.horizontal, 4)
             .background(

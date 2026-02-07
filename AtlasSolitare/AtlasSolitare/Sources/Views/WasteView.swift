@@ -15,6 +15,8 @@ struct WasteView: View {
     /// Called when a drag gesture begins on the top card.
     var onDragStart: (() -> Void)?
 
+    @Environment(\.cardWidth) private var cardWidth
+
     var body: some View {
         ZStack {
             if let card = topCard {
@@ -38,7 +40,7 @@ struct WasteView: View {
     private var emptySlot: some View {
         RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
             .stroke(Color.white.opacity(0.15), style: StrokeStyle(lineWidth: 1.5, dash: [4, 4]))
-            .cardFrame()
+            .cardFrame(width: cardWidth)
     }
 }
 

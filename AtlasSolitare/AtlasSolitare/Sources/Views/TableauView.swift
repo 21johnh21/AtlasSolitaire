@@ -51,6 +51,8 @@ private struct SingleTableauPile: View {
     var onDragPayload: ((Card, Int, Int) -> DragPayload)?
     var onDropPayload: ((DragPayload, Int) -> Bool)?
 
+    @Environment(\.cardWidth) private var cardWidth
+
     var body: some View {
         ZStack(alignment: .top) {
             if pile.isEmpty {
@@ -84,7 +86,7 @@ private struct SingleTableauPile: View {
             }
         }
         // Height: tallest pile (all cards fanned out) + one card height.
-        .frame(width: CardLayout.width, height: pileHeight)
+        .frame(width: cardWidth, height: pileHeight)
         .contentShape(Rectangle()) // Make the entire pile area accept drops
         .dropDestination(for: DragPayload.self) { items, location in
             print("[TableauView] 🎯 Drop detected on pile \(pileIndex), items count: \(items.count)")
@@ -129,6 +131,7 @@ private struct SingleTableauPile: View {
     @ViewBuilder
     private func dragPreviewForStack(startingAt index: Int) -> some View {
         let stackIndices = Rules.getMovableStack(from: pile, startIndex: index)
+        let cardHeight = CardLayout.height(for: cardWidth)
 
         ZStack(alignment: .top) {
             ForEach(Array(stackIndices.enumerated()), id: \.element) { offset, cardIndex in
@@ -143,7 +146,7 @@ private struct SingleTableauPile: View {
                 .zIndex(Double(offset))
             }
         }
-        .frame(width: CardLayout.width, height: CardLayout.height + CGFloat(stackIndices.count - 1) * CardLayout.faceUpOffset)
+        .frame(width: cardWidth, height: cardHeight + CGFloat(stackIndices.count - 1) * CardLayout.faceUpOffset)
     }
 
     // ─── Offset calculation ─────────────────────────────────────────────────
@@ -159,15 +162,16 @@ private struct SingleTableauPile: View {
 
     /// Total height needed to display this pile without clipping.
     private var pileHeight: CGFloat {
-        guard !pile.isEmpty else { return CardLayout.height }
-        return computeOffset(upTo: pile.count - 1) + CardLayout.height
+        let cardHeight = CardLayout.height(for: cardWidth)
+        guard !pile.isEmpty else { return cardHeight }
+        return computeOffset(upTo: pile.count - 1) + cardHeight
     }
 
     // ─── Empty pile placeholder ─────────────────────────────────────────────
     private var emptySlot: some View {
         RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
             .stroke(Color.white.opacity(0.15), style: StrokeStyle(lineWidth: 1.5, dash: [4, 4]))
-            .cardFrame()
+            .cardFrame(width: cardWidth)
     }
 }
 

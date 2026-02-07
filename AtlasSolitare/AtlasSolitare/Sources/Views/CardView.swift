@@ -24,6 +24,8 @@ struct CardView: View {
     /// Called specifically when a face-down card is flipped to face-up.
     var onFlip:         (() -> Void)?   = nil
 
+    @Environment(\.cardWidth) private var cardWidth
+
     // ─── Body ───────────────────────────────────────────────────────────────
     var body: some View {
         ZStack {
@@ -33,7 +35,7 @@ struct CardView: View {
                 faceDownView
             }
         }
-        .cardFrame()
+        .cardFrame(width: cardWidth)
         .cardShadow()
         // 3D flip animation when isFaceUp changes.
         .rotation3DEffect(
@@ -60,7 +62,10 @@ struct CardView: View {
 
     // ─── Face-up ────────────────────────────────────────────────────────────
     private var faceUpView: some View {
-        RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
+        let fontSize = cardWidth / 85 * 13  // Scale font with card width
+        let padding = cardWidth / 85 * 6    // Scale padding with card width
+
+        return RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
             .fill(Color.cardWhite)
             .overlay(
                 VStack(alignment: .leading, spacing: 4) {
@@ -72,14 +77,14 @@ struct CardView: View {
                     Spacer()
                     // Label (large, centered)
                     Text(card.label)
-                        .font(.system(size: 13, weight: .semibold))
+                        .font(.system(size: fontSize, weight: .semibold))
                         .foregroundColor(Color.textDark)
                         .multilineTextAlignment(.center)
                         .lineLimit(3)
                         .frame(maxWidth: .infinity)
                     Spacer()
                 }
-                .padding(6)
+                .padding(padding)
             )
             .overlay(
                 RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
