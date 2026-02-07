@@ -16,8 +16,8 @@ struct TableauView: View {
     var onTapCard: ((Card, Int) -> Void)?
     /// Called when an empty pile is tapped (for tap-to-place).  Passes pile index.
     var onTapEmptyPile: ((Int) -> Void)?
-    /// Called when drag starts from a tableau card. Returns a DragPayload.
-    var onDragPayload: ((Card, Int) -> DragPayload)?
+    /// Called when drag starts from a tableau card. Returns a DragPayload for the card and any cards stacked on top.
+    var onDragPayload: ((Card, Int, Int) -> DragPayload)?
     /// Called when a payload is dropped on a tableau pile. Returns success status.
     var onDropPayload: ((DragPayload, Int) -> Bool)?
 
@@ -48,7 +48,7 @@ private struct SingleTableauPile: View {
 
     var onTapCard: ((Card, Int) -> Void)?
     var onTapEmptyPile: ((Int) -> Void)?
-    var onDragPayload: ((Card, Int) -> DragPayload)?
+    var onDragPayload: ((Card, Int, Int) -> DragPayload)?
     var onDropPayload: ((DragPayload, Int) -> Bool)?
 
     var body: some View {
@@ -61,6 +61,7 @@ private struct SingleTableauPile: View {
                     let tc = pile[i]
                     let yOffset = computeOffset(upTo: i)
                     let isTopCard = (i == pile.count - 1)
+                    let isDraggable = tc.isFaceUp && canDragFromIndex(i)
 
                     CardView(
                         card: tc.card,
@@ -73,8 +74,8 @@ private struct SingleTableauPile: View {
                     .offset(y: yOffset)
                     // Face-down cards have lower z so face-up cards render on top.
                     .zIndex(Double(i))
-                    .if(tc.isFaceUp && isTopCard) { view in
-                        view.draggable(onDragPayload?(tc.card, pileIndex) ?? DragPayload(card: tc.card, source: .tableau(pileIndex: pileIndex)))
+                    .if(isDraggable) { view in
+                        view.draggable(onDragPayload?(tc.card, pileIndex, i) ?? DragPayload(card: tc.card, source: .tableau(pileIndex: pileIndex)))
                     }
                 }
             }
@@ -94,6 +95,31 @@ private struct SingleTableauPile: View {
             return result
         }
         .accessibilityLabel("Tableau pile \(pileIndex + 1), \(pile.count) card\(pile.count == 1 ? "" : "s")")
+    }
+
+    // ─── Drag helpers ───────────────────────────────────────────────────────
+
+    /// Determines if a card at the given index can be dragged.
+    /// A card is draggable if it's face-up and forms a valid stack with subsequent cards.
+    private func canDragFromIndex(_ index: Int) -> Bool {
+        print("[TableauView] canDragFromIndex called: index=\(index), pile.count=\(pile.count)")
+
+        guard index >= 0, index < pile.count else {
+            print("[TableauView] ❌ Invalid index")
+            return false
+        }
+        guard pile[index].isFaceUp else {
+            print("[TableauView] ❌ Card is face down")
+            return false
+        }
+
+        // Get the valid stack starting from this index
+        let stackIndices = Rules.getMovableStack(from: pile, startIndex: index)
+
+        // Can drag if this is part of a valid stack that extends to the top of the pile
+        let canDrag = !stackIndices.isEmpty && stackIndices.contains(pile.count - 1)
+        print("[TableauView] canDrag=\(canDrag) (stackIndices=\(stackIndices), needsToContain=\(pile.count - 1))")
+        return canDrag
     }
 
     // ─── Offset calculation ─────────────────────────────────────────────────

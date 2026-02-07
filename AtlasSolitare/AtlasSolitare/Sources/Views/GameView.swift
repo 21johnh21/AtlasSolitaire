@@ -143,15 +143,24 @@ struct GameView: View {
             onTapEmptyPile: { pileIdx in
                 vm.tapEmptyTableau(pileIndex: pileIdx)
             },
-onDragPayload: { card, pileIdx in
-                print("[GameView] Creating drag payload for tableau pile \(pileIdx): \(card.label)")
-                return DragPayload(card: card, source: .tableau(pileIndex: pileIdx))
+            onDragPayload: { card, pileIdx, cardIdx in
+                // Get the stack of cards starting from this index
+                guard let state = vm.gameState else {
+                    return DragPayload(card: card, source: .tableau(pileIndex: pileIdx))
+                }
+                let pile = state.tableau[pileIdx]
+                let stackIndices = Rules.getMovableStack(from: pile, startIndex: cardIdx)
+                let stackCards = stackIndices.map { pile[$0].card }
+
+                print("[GameView] Creating drag payload for tableau pile \(pileIdx): \(stackCards.count) card(s)")
+                return DragPayload(cards: stackCards, source: .tableau(pileIndex: pileIdx))
             },
             onDropPayload: { payload, pileIdx in
                 print("[GameView] ✋ Drop attempted on tableau \(pileIdx)")
-                print("[GameView]    Card: \(payload.card.label) (type: \(payload.card.type), group: \(payload.card.groupId))")
+                print("[GameView]    Cards: \(payload.cards.count) card(s)")
+                print("[GameView]    First card: \(payload.card.label) (type: \(payload.card.type), group: \(payload.card.groupId))")
                 print("[GameView]    Source: \(payload.source)")
-                vm.dropOnTableau(card: payload.card, source: payload.source, pileIndex: pileIdx)
+                vm.dropOnTableau(cards: payload.cards, source: payload.source, pileIndex: pileIdx)
                 return true
             }
         )
@@ -184,9 +193,10 @@ onDragPayload: { card, pileIdx in
 // MARK: - DragPayload
 
 /// Conforms to Transferable so we can use SwiftUI drag-and-drop.
-/// Wraps the card being dragged and its source location.
+/// Wraps the card(s) being dragged and its source location.
 struct DragPayload: Codable, Transferable {
-    let card: Card
+    let card: Card          // The primary (first) card being dragged
+    let cards: [Card]       // All cards in the stack (including the first card)
     let sourceKey: String
 
     var source: MoveSource {
@@ -196,6 +206,14 @@ struct DragPayload: Codable, Transferable {
     /// Convenience init that accepts an optional card (returns a dummy if nil).
     init(card: Card?, source: MoveSource) {
         self.card   = card ?? Card(id: "__nil__", label: "", type: .partner, groupId: "", imageName: nil)
+        self.cards  = card.map { [$0] } ?? []
+        self.sourceKey = source.key
+    }
+
+    /// Init for dragging multiple cards as a stack
+    init(cards: [Card], source: MoveSource) {
+        self.card   = cards.first ?? Card(id: "__nil__", label: "", type: .partner, groupId: "", imageName: nil)
+        self.cards  = cards
         self.sourceKey = source.key
     }
 

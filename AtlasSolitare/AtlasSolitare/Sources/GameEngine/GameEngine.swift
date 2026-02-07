@@ -86,6 +86,67 @@ class GameEngine {
         }
     }
 
+    /// Attempt to move a stack of cards from `source` to `target`.
+    /// Validates that the first card can be placed, then moves all cards in order.
+    @discardableResult
+    func moveStack(cards: [Card], source: MoveSource, target: MoveTarget) -> MoveValidation {
+        print("[GameEngine] moveStack called: \(cards.count) card(s)")
+        for (i, card) in cards.enumerated() {
+            print("[GameEngine]   Card \(i): \(card.label) (type: \(card.type), group: \(card.groupId))")
+        }
+
+        guard let firstCard = cards.first else {
+            print("[GameEngine] ❌ No cards to move")
+            return .invalid(reason: "No cards to move")
+        }
+
+        // Only allow moving stacks to tableau (not foundation)
+        guard case .tableau = target else {
+            print("[GameEngine] ❌ Target is not tableau")
+            return .invalid(reason: "Stacks can only be moved to tableau piles")
+        }
+
+        print("[GameEngine] Validating first card placement...")
+        // Validate the first card can be placed
+        let validation = Rules.validate(
+            card: firstCard,
+            source: source,
+            target: target,
+            foundations: state.foundations,
+            tableau: state.tableau
+        )
+
+        switch validation {
+        case .invalid(let reason):
+            print("[GameEngine] ❌ Validation failed: \(reason)")
+            return validation
+
+        case .valid:
+            print("[GameEngine] ✅ Validation passed, moving \(cards.count) card(s)")
+            // Remove all cards from source
+            for (i, _) in cards.enumerated() {
+                removeCard(from: source)
+                print("[GameEngine]   Removed card \(i) from source")
+            }
+
+            // Place all cards at target in order
+            for (i, card) in cards.enumerated() {
+                placeCard(card, at: target)
+                print("[GameEngine]   Placed card \(i): \(card.label) at target")
+            }
+
+            // Reveal new top card in tableau if source was tableau
+            if case .tableau(let idx) = source {
+                print("[GameEngine] Revealing top card in source pile \(idx)")
+                revealTopCard(in: idx)
+            }
+
+            notifyChanged()
+            print("[GameEngine] ✅ Stack move complete")
+            return .valid
+        }
+    }
+
     /// Start a brand new game from a given deck.  Deals cards Klondike-style.
     func newGame(deck: Deck, seed: UInt64? = nil) {
         var rng = seed.map { SeededRNG(seed: $0) }
