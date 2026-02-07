@@ -148,7 +148,9 @@ onDragPayload: { card, pileIdx in
                 return DragPayload(card: card, source: .tableau(pileIndex: pileIdx))
             },
             onDropPayload: { payload, pileIdx in
-                print("[GameView] Dropping \(payload.card.label) on tableau \(pileIdx)")
+                print("[GameView] ✋ Drop attempted on tableau \(pileIdx)")
+                print("[GameView]    Card: \(payload.card.label) (type: \(payload.card.type), group: \(payload.card.groupId))")
+                print("[GameView]    Source: \(payload.source)")
                 vm.dropOnTableau(card: payload.card, source: payload.source, pileIndex: pileIdx)
                 return true
             }

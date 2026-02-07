@@ -63,7 +63,7 @@ enum Rules {
     /// `targetPile` may be empty (accepts any card) or have a top card.
     static func canPlaceOnTableau(card: Card, targetPile: [TableauCard]) -> MoveValidation {
         if targetPile.isEmpty {
-            // Empty tableau slot accepts any card.
+            // Empty tableau slot accepts any card (base or partner).
             return .valid
         }
 
@@ -71,15 +71,35 @@ enum Rules {
             return .invalid(reason: "Cannot place onto a face-down card.")
         }
 
-        // Stacking rule: partner cards may stack on same-group cards in tableau.
-        // Base cards may also be placed on empty tableau (handled above).
-        // A base card onto a non-empty tableau: only if the top card is the same group
-        // (treated same as partner stacking — group membership is the single rule).
-        if card.groupId == topTableauCard.card.groupId {
-            return .valid
+        let topCard = topTableauCard.card
+
+        // Rule 1: Cannot place a base card on top of a partner card
+        if card.isBase && topCard.isPartner {
+            return .invalid(reason: "Cannot place a base card on top of a partner card.")
         }
 
-        return .invalid(reason: "Card group does not match the top tableau card's group.")
+        // Rule 2: Cannot place a partner card on top of a base card
+        if card.isPartner && topCard.isBase {
+            return .invalid(reason: "Cannot place a partner card on top of a base card.")
+        }
+
+        // Rule 3: Partner cards can only stack on partner cards from the same group
+        if card.isPartner && topCard.isPartner {
+            if card.groupId == topCard.groupId {
+                return .valid
+            }
+            return .invalid(reason: "Partner cards must be from the same group.")
+        }
+
+        // Rule 4: Base cards can stack on base cards (same group)
+        if card.isBase && topCard.isBase {
+            if card.groupId == topCard.groupId {
+                return .valid
+            }
+            return .invalid(reason: "Base cards must be from the same group.")
+        }
+
+        return .invalid(reason: "Invalid tableau placement.")
     }
 
     // ─── Full move validation ──────────────────────────────────────────────

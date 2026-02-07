@@ -56,10 +56,6 @@ private struct SingleTableauPile: View {
             if pile.isEmpty {
                 emptySlot
                     .onTapGesture { onTapEmptyPile?(pileIndex) }
-                    .dropDestination(for: DragPayload.self) { items, location in
-                        guard let payload = items.first else { return false }
-                        return onDropPayload?(payload, pileIndex) ?? false
-                    }
             } else {
                 ForEach(pile.indices, id: \.self) { i in
                     let tc = pile[i]
@@ -81,19 +77,22 @@ private struct SingleTableauPile: View {
                         view.draggable(onDragPayload?(tc.card, pileIndex) ?? DragPayload(card: tc.card, source: .tableau(pileIndex: pileIndex)))
                     }
                 }
-
-                // Drop target for the whole pile
-                Color.clear
-                    .frame(width: CardLayout.width, height: pileHeight)
-                    .dropDestination(for: DragPayload.self) { items, location in
-                        guard let payload = items.first else { return false }
-                        return onDropPayload?(payload, pileIndex) ?? false
-                    }
-                    .zIndex(999) // On top for drop handling
             }
         }
         // Height: tallest pile (all cards fanned out) + one card height.
         .frame(width: CardLayout.width, height: pileHeight)
+        .contentShape(Rectangle()) // Make the entire pile area accept drops
+        .dropDestination(for: DragPayload.self) { items, location in
+            print("[TableauView] 🎯 Drop detected on pile \(pileIndex), items count: \(items.count)")
+            guard let payload = items.first else {
+                print("[TableauView] ❌ No payload in items")
+                return false
+            }
+            print("[TableauView] ✅ Calling onDropPayload for pile \(pileIndex)")
+            let result = onDropPayload?(payload, pileIndex) ?? false
+            print("[TableauView] Drop result: \(result)")
+            return result
+        }
         .accessibilityLabel("Tableau pile \(pileIndex + 1), \(pile.count) card\(pile.count == 1 ? "" : "s")")
     }
 
