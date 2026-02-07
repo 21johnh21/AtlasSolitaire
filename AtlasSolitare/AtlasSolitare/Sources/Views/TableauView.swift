@@ -75,7 +75,10 @@ private struct SingleTableauPile: View {
                     // Face-down cards have lower z so face-up cards render on top.
                     .zIndex(Double(i))
                     .if(isDraggable) { view in
-                        view.draggable(onDragPayload?(tc.card, pileIndex, i) ?? DragPayload(card: tc.card, source: .tableau(pileIndex: pileIndex)))
+                        view.draggable(onDragPayload?(tc.card, pileIndex, i) ?? DragPayload(card: tc.card, source: .tableau(pileIndex: pileIndex))) {
+                            // Create a visual preview showing the stack of cards being dragged
+                            dragPreviewForStack(startingAt: i)
+                        }
                     }
                 }
             }
@@ -120,6 +123,27 @@ private struct SingleTableauPile: View {
         let canDrag = !stackIndices.isEmpty && stackIndices.contains(pile.count - 1)
         print("[TableauView] canDrag=\(canDrag) (stackIndices=\(stackIndices), needsToContain=\(pile.count - 1))")
         return canDrag
+    }
+
+    /// Creates a visual preview of the card stack being dragged
+    @ViewBuilder
+    private func dragPreviewForStack(startingAt index: Int) -> some View {
+        let stackIndices = Rules.getMovableStack(from: pile, startIndex: index)
+
+        ZStack(alignment: .top) {
+            ForEach(Array(stackIndices.enumerated()), id: \.element) { offset, cardIndex in
+                let tc = pile[cardIndex]
+                CardView(
+                    card: tc.card,
+                    isFaceUp: true,
+                    isHighlighted: false,
+                    onTap: nil
+                )
+                .offset(y: CGFloat(offset) * CardLayout.faceUpOffset)
+                .zIndex(Double(offset))
+            }
+        }
+        .frame(width: CardLayout.width, height: CardLayout.height + CGFloat(stackIndices.count - 1) * CardLayout.faceUpOffset)
     }
 
     // ─── Offset calculation ─────────────────────────────────────────────────
