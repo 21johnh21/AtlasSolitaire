@@ -28,7 +28,9 @@ struct CardView: View {
 
     // ─── Body ───────────────────────────────────────────────────────────────
     var body: some View {
-        ZStack {
+        let _ = print("[CardView] Rendering card: \(card.label), width: \(cardWidth), cornerRadius: \(CardLayout.cornerRadius)")
+
+        return ZStack {
             if isFaceUp {
                 faceUpView
             } else {
@@ -36,6 +38,7 @@ struct CardView: View {
             }
         }
         .cardFrame(width: cardWidth)
+        .clipShape(RoundedRectangle(cornerRadius: CardLayout.cornerRadius))
         .cardShadow()
         // 3D flip animation when isFaceUp changes.
         .rotation3DEffect(

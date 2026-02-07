@@ -11,6 +11,7 @@ import UniformTypeIdentifiers
 struct GameView: View {
     @ObservedObject var vm: GameViewModel
     @State private var showQuitConfirmation = false
+    @State private var draggingCardIds: Set<String> = []
 
     var body: some View {
         GeometryReader { geo in
@@ -80,6 +81,7 @@ struct GameView: View {
             WasteView(
                 topCard: vm.wasteTopCard,
                 isSelected: vm.wasteTopCard.map { vm.isSelected($0) } ?? false,
+                draggingCardIds: draggingCardIds,
                 onTap: {
                     if let card = vm.wasteTopCard {
                         vm.tapCard(card: card, source: .waste)
@@ -87,7 +89,22 @@ struct GameView: View {
                 }
             )
             .if(vm.wasteTopCard != nil) { view in
-                view.draggable(DragPayload(card: vm.wasteTopCard, source: .waste))
+                view.draggable(DragPayload(card: vm.wasteTopCard, source: .waste)) {
+                    if let card = vm.wasteTopCard {
+                        print("[DragPreview] Creating waste drag preview for card: \(card.label)")
+                        draggingCardIds = [card.id]
+                    }
+                    return CardView(
+                        card: vm.wasteTopCard!,
+                        isFaceUp: true,
+                        isHighlighted: false,
+                        onTap: nil
+                    )
+                    .environment(\.cardWidth, CardLayout.width(for: UIScreen.main.bounds.width))
+                }
+            }
+            .onChange(of: vm.wasteTopCard?.id) { _, _ in
+                draggingCardIds.removeAll()
             }
 
             Spacer()
@@ -110,6 +127,10 @@ struct GameView: View {
                     pile: pile,
                     pileIndex: idx,
                     isSelected: pile.topCard.map { vm.isSelected($0) } ?? false,
+                    draggingCardIds: draggingCardIds,
+                    onDragStart: { card in
+                        draggingCardIds = [card.id]
+                    },
                     onTapCard: {
                         if let card = pile.topCard {
                             vm.tapCard(card: card, source: .foundation(pileIndex: idx))
@@ -119,8 +140,8 @@ struct GameView: View {
                         vm.tapEmptyFoundation(pileIndex: idx)
                     },
                     onDropPayload: { payload in
-                        print("[GameView] Dropping on foundation \(idx)")
-                        print("[GameView]    Cards in payload: \(payload.cards.count)")
+                        // Clear dragging state
+                        draggingCardIds.removeAll()
 
                         // If multiple cards, move them all to the foundation
                         if payload.cards.count > 1 {
@@ -147,6 +168,7 @@ struct GameView: View {
         TableauView(
             piles: vm.tableau,
             selectedCardId: vm.selectedCard?.card.id,
+            draggingCardIds: draggingCardIds,
             onTapCard: { card, pileIdx in
                 vm.tapCard(card: card, source: .tableau(pileIndex: pileIdx))
             },
@@ -162,14 +184,15 @@ struct GameView: View {
                 let stackIndices = Rules.getMovableStack(from: pile, startIndex: cardIdx)
                 let stackCards = stackIndices.map { pile[$0].card }
 
-                print("[GameView] Creating drag payload for tableau pile \(pileIdx): \(stackCards.count) card(s)")
+                // Mark these cards as being dragged
+                draggingCardIds = Set(stackCards.map { $0.id })
+
                 return DragPayload(cards: stackCards, source: .tableau(pileIndex: pileIdx))
             },
             onDropPayload: { payload, pileIdx in
-                print("[GameView] ✋ Drop attempted on tableau \(pileIdx)")
-                print("[GameView]    Cards: \(payload.cards.count) card(s)")
-                print("[GameView]    First card: \(payload.card.label) (type: \(payload.card.type), group: \(payload.card.groupId))")
-                print("[GameView]    Source: \(payload.source)")
+                // Clear dragging state
+                draggingCardIds.removeAll()
+
                 vm.dropOnTableau(cards: payload.cards, source: payload.source, pileIndex: pileIdx)
                 return true
             }

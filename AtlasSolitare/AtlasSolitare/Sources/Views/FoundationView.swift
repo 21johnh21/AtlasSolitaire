@@ -12,6 +12,10 @@ struct FoundationView: View {
     let pileIndex: Int
     /// Whether the top card is currently selected.
     let isSelected: Bool
+    /// Set of card IDs currently being dragged.
+    var draggingCardIds: Set<String> = []
+    /// Called when drag starts.
+    var onDragStart: ((Card) -> Void)?
 
     /// Called when the user taps the top card (for tap-to-select).
     var onTapCard: (() -> Void)?
@@ -23,6 +27,8 @@ struct FoundationView: View {
     @Environment(\.cardWidth) private var cardWidth
 
     var body: some View {
+        let isDragging = pile.topCard.map { draggingCardIds.contains($0.id) } ?? false
+
         VStack(spacing: 4) {
             // Category banner (shown when foundation has a base card)
             if !pile.isEmpty, let groupName = groupName {
@@ -35,7 +41,7 @@ struct FoundationView: View {
 
             // Card or empty slot
             ZStack {
-                if let top = pile.topCard {
+                if let top = pile.topCard, !isDragging {
                     CardView(
                         card: top,
                         isFaceUp: true,
@@ -48,18 +54,32 @@ struct FoundationView: View {
                             countBadge
                         }
                     }
+                    .draggable(DragPayload(card: top, source: .foundation(pileIndex: pileIndex))) {
+                        print("[DragPreview] Creating foundation drag preview for card: \(top.label)")
+                        onDragStart?(top)
+                        return CardView(
+                            card: top,
+                            isFaceUp: true,
+                            isHighlighted: false,
+                            onTap: nil
+                        )
+                        .environment(\.cardWidth, cardWidth)
+                    }
+                }
+
+                if pile.topCard == nil || isDragging {
+                    emptySlot
+                        .onTapGesture { onTapEmpty?() }
+                }
+
+                // Drop destination overlay
+                Color.clear
+                    .cardFrame(width: cardWidth)
+                    .contentShape(Rectangle())
                     .dropDestination(for: DragPayload.self) { items, location in
                         guard let payload = items.first else { return false }
                         return onDropPayload?(payload) ?? false
                     }
-                } else {
-                    emptySlot
-                        .onTapGesture { onTapEmpty?() }
-                        .dropDestination(for: DragPayload.self) { items, location in
-                            guard let payload = items.first else { return false }
-                            return onDropPayload?(payload) ?? false
-                        }
-                }
             }
         }
         .accessibilityLabel(

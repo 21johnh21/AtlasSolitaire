@@ -9,6 +9,8 @@ struct WasteView: View {
     let topCard: Card?
     /// Whether the top card is currently selected (tap-to-select flow).
     let isSelected: Bool
+    /// Set of card IDs currently being dragged.
+    var draggingCardIds: Set<String> = []
 
     /// Called when the user taps the top waste card.
     var onTap: (() -> Void)?
@@ -18,8 +20,10 @@ struct WasteView: View {
     @Environment(\.cardWidth) private var cardWidth
 
     var body: some View {
+        let isDragging = topCard.map { draggingCardIds.contains($0.id) } ?? false
+
         ZStack {
-            if let card = topCard {
+            if let card = topCard, !isDragging {
                 CardView(
                     card: card,
                     isFaceUp: true,

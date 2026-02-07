@@ -11,6 +11,8 @@ struct TableauView: View {
     let piles: [[TableauCard]]
     /// The currently selected card id (for highlight), nil if none.
     let selectedCardId: String?
+    /// Set of card IDs currently being dragged.
+    var draggingCardIds: Set<String> = []
 
     /// Called when a face-up top card is tapped.  Passes the card and its pile index.
     var onTapCard: ((Card, Int) -> Void)?
@@ -28,6 +30,7 @@ struct TableauView: View {
                     pile: piles[pileIndex],
                     pileIndex: pileIndex,
                     selectedCardId: selectedCardId,
+                    draggingCardIds: draggingCardIds,
                     onTapCard: onTapCard,
                     onTapEmptyPile: onTapEmptyPile,
                     onDragPayload: onDragPayload,
@@ -45,6 +48,7 @@ private struct SingleTableauPile: View {
     let pile: [TableauCard]
     let pileIndex: Int
     let selectedCardId: String?
+    var draggingCardIds: Set<String> = []
 
     var onTapCard: ((Card, Int) -> Void)?
     var onTapEmptyPile: ((Int) -> Void)?
@@ -54,8 +58,11 @@ private struct SingleTableauPile: View {
     @Environment(\.cardWidth) private var cardWidth
 
     var body: some View {
+        let visibleCards = pile.filter { !draggingCardIds.contains($0.card.id) }
+        let showEmptySlot = pile.isEmpty || visibleCards.isEmpty
+
         ZStack(alignment: .top) {
-            if pile.isEmpty {
+            if showEmptySlot {
                 emptySlot
                     .onTapGesture { onTapEmptyPile?(pileIndex) }
             } else {
@@ -64,22 +71,25 @@ private struct SingleTableauPile: View {
                     let yOffset = computeOffset(upTo: i)
                     let isTopCard = (i == pile.count - 1)
                     let isDraggable = tc.isFaceUp && canDragFromIndex(i)
+                    let isBeingDragged = draggingCardIds.contains(tc.card.id)
 
-                    CardView(
-                        card: tc.card,
-                        isFaceUp: tc.isFaceUp,
-                        isHighlighted: tc.isFaceUp && selectedCardId == tc.card.id,
-                        onTap: tc.isFaceUp && isTopCard
-                            ? { onTapCard?(tc.card, pileIndex) }
-                            : nil
-                    )
-                    .offset(y: yOffset)
-                    // Face-down cards have lower z so face-up cards render on top.
-                    .zIndex(Double(i))
-                    .if(isDraggable) { view in
-                        view.draggable(onDragPayload?(tc.card, pileIndex, i) ?? DragPayload(card: tc.card, source: .tableau(pileIndex: pileIndex))) {
-                            // Create a visual preview showing the stack of cards being dragged
-                            dragPreviewForStack(startingAt: i)
+                    if !isBeingDragged {
+                        CardView(
+                            card: tc.card,
+                            isFaceUp: tc.isFaceUp,
+                            isHighlighted: tc.isFaceUp && selectedCardId == tc.card.id,
+                            onTap: tc.isFaceUp && isTopCard
+                                ? { onTapCard?(tc.card, pileIndex) }
+                                : nil
+                        )
+                        .offset(y: yOffset)
+                        // Face-down cards have lower z so face-up cards render on top.
+                        .zIndex(Double(i))
+                        .if(isDraggable) { view in
+                            view.draggable(onDragPayload?(tc.card, pileIndex, i) ?? DragPayload(card: tc.card, source: .tableau(pileIndex: pileIndex))) {
+                                // Create a visual preview showing the stack of cards being dragged
+                                dragPreviewForStack(startingAt: i)
+                            }
                         }
                     }
                 }
@@ -89,15 +99,8 @@ private struct SingleTableauPile: View {
         .frame(width: cardWidth, height: pileHeight)
         .contentShape(Rectangle()) // Make the entire pile area accept drops
         .dropDestination(for: DragPayload.self) { items, location in
-            print("[TableauView] 🎯 Drop detected on pile \(pileIndex), items count: \(items.count)")
-            guard let payload = items.first else {
-                print("[TableauView] ❌ No payload in items")
-                return false
-            }
-            print("[TableauView] ✅ Calling onDropPayload for pile \(pileIndex)")
-            let result = onDropPayload?(payload, pileIndex) ?? false
-            print("[TableauView] Drop result: \(result)")
-            return result
+            guard let payload = items.first else { return false }
+            return onDropPayload?(payload, pileIndex) ?? false
         }
         .accessibilityLabel("Tableau pile \(pileIndex + 1), \(pile.count) card\(pile.count == 1 ? "" : "s")")
     }
@@ -107,24 +110,14 @@ private struct SingleTableauPile: View {
     /// Determines if a card at the given index can be dragged.
     /// A card is draggable if it's face-up and forms a valid stack with subsequent cards.
     private func canDragFromIndex(_ index: Int) -> Bool {
-        print("[TableauView] canDragFromIndex called: index=\(index), pile.count=\(pile.count)")
-
-        guard index >= 0, index < pile.count else {
-            print("[TableauView] ❌ Invalid index")
-            return false
-        }
-        guard pile[index].isFaceUp else {
-            print("[TableauView] ❌ Card is face down")
-            return false
-        }
+        guard index >= 0, index < pile.count else { return false }
+        guard pile[index].isFaceUp else { return false }
 
         // Get the valid stack starting from this index
         let stackIndices = Rules.getMovableStack(from: pile, startIndex: index)
 
         // Can drag if this is part of a valid stack that extends to the top of the pile
-        let canDrag = !stackIndices.isEmpty && stackIndices.contains(pile.count - 1)
-        print("[TableauView] canDrag=\(canDrag) (stackIndices=\(stackIndices), needsToContain=\(pile.count - 1))")
-        return canDrag
+        return !stackIndices.isEmpty && stackIndices.contains(pile.count - 1)
     }
 
     /// Creates a visual preview of the card stack being dragged
@@ -132,6 +125,7 @@ private struct SingleTableauPile: View {
     private func dragPreviewForStack(startingAt index: Int) -> some View {
         let stackIndices = Rules.getMovableStack(from: pile, startIndex: index)
         let cardHeight = CardLayout.height(for: cardWidth)
+        let _ = print("[DragPreview] Creating tableau stack preview with \(stackIndices.count) cards, width: \(cardWidth), cornerRadius: \(CardLayout.cornerRadius)")
 
         ZStack(alignment: .top) {
             ForEach(Array(stackIndices.enumerated()), id: \.element) { offset, cardIndex in
@@ -142,6 +136,7 @@ private struct SingleTableauPile: View {
                     isHighlighted: false,
                     onTap: nil
                 )
+                .environment(\.cardWidth, cardWidth)
                 .offset(y: CGFloat(offset) * CardLayout.faceUpOffset)
                 .zIndex(Double(offset))
             }
