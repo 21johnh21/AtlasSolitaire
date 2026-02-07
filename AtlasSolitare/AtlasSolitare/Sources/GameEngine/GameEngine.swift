@@ -147,6 +147,65 @@ class GameEngine {
         }
     }
 
+    /// Attempt to move a stack of cards from `source` to a foundation pile.
+    /// All cards must be valid for the foundation and will be added in sequence.
+    @discardableResult
+    func moveStackToFoundation(cards: [Card], source: MoveSource, foundationIndex: Int) -> MoveValidation {
+        print("[GameEngine] moveStackToFoundation called: \(cards.count) card(s) to foundation \(foundationIndex)")
+        for (i, card) in cards.enumerated() {
+            print("[GameEngine]   Card \(i): \(card.label) (type: \(card.type), group: \(card.groupId))")
+        }
+
+        guard !cards.isEmpty else {
+            print("[GameEngine] ❌ No cards to move")
+            return .invalid(reason: "No cards to move")
+        }
+
+        guard foundationIndex >= 0, foundationIndex < state.foundations.count else {
+            print("[GameEngine] ❌ Invalid foundation index")
+            return .invalid(reason: "Invalid foundation index")
+        }
+
+        // Validate each card can be placed on the foundation in sequence
+        var tempFoundation = state.foundations[foundationIndex]
+        for (i, card) in cards.enumerated() {
+            let validation = Rules.canPlaceOnFoundation(card: card, foundation: tempFoundation)
+            if case .invalid(let reason) = validation {
+                print("[GameEngine] ❌ Card \(i) (\(card.label)) cannot be placed: \(reason)")
+                return validation
+            }
+            // Simulate adding the card to check the next one
+            tempFoundation.cards.append(card)
+        }
+
+        print("[GameEngine] ✅ All cards validated, moving \(cards.count) card(s)")
+
+        // Remove all cards from source
+        for (i, _) in cards.enumerated() {
+            removeCard(from: source)
+            print("[GameEngine]   Removed card \(i) from source")
+        }
+
+        // Place all cards at foundation in order
+        for (i, card) in cards.enumerated() {
+            state.foundations[foundationIndex].cards.append(card)
+            print("[GameEngine]   Placed card \(i): \(card.label) at foundation")
+        }
+
+        // Reveal new top card in tableau if source was tableau
+        if case .tableau(let idx) = source {
+            print("[GameEngine] Revealing top card in source pile \(idx)")
+            revealTopCard(in: idx)
+        }
+
+        // Check for group completion
+        checkAndClearGroup(at: foundationIndex)
+
+        notifyChanged()
+        print("[GameEngine] ✅ Stack move to foundation complete")
+        return .valid
+    }
+
     /// Start a brand new game from a given deck.  Deals cards Klondike-style.
     func newGame(deck: Deck, seed: UInt64? = nil) {
         var rng = seed.map { SeededRNG(seed: $0) }

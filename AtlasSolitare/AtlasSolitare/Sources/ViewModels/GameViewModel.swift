@@ -183,6 +183,11 @@ class GameViewModel: ObservableObject {
         attemptMove(card: card, source: source, target: .foundation(pileIndex: pileIndex))
     }
 
+    /// Drag-and-drop: user dropped multiple cards onto a foundation pile.
+    func dropOnFoundation(cards: [Card], source: MoveSource, pileIndex: Int) {
+        attemptMoveStackToFoundation(cards: cards, source: source, pileIndex: pileIndex)
+    }
+
     /// Drag-and-drop: user dropped a card onto a tableau pile.
     func dropOnTableau(card: Card, source: MoveSource, pileIndex: Int) {
         attemptMove(card: card, source: source, target: .tableau(pileIndex: pileIndex))
@@ -308,6 +313,24 @@ class GameViewModel: ObservableObject {
             autosave()
         case .invalid(let reason):
             print("[GameViewModel] ❌ Stack move failed: \(reason)")
+            audio.play(.invalid)
+            haptic.dropFail()
+            selectedCard = nil
+        }
+    }
+
+    private func attemptMoveStackToFoundation(cards: [Card], source: MoveSource, pileIndex: Int) {
+        print("[GameViewModel] attemptMoveStackToFoundation: \(cards.count) card(s) to foundation \(pileIndex)")
+        let result = engine.moveStackToFoundation(cards: cards, source: source, foundationIndex: pileIndex)
+        switch result {
+        case .valid:
+            print("[GameViewModel] ✅ Stack move to foundation succeeded")
+            audio.play(.move)
+            haptic.dropSuccess()
+            selectedCard = nil
+            autosave()
+        case .invalid(let reason):
+            print("[GameViewModel] ❌ Stack move to foundation failed: \(reason)")
             audio.play(.invalid)
             haptic.dropFail()
             selectedCard = nil

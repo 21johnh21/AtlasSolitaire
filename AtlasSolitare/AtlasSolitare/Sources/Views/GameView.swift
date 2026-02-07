@@ -116,8 +116,15 @@ struct GameView: View {
                         vm.tapEmptyFoundation(pileIndex: idx)
                     },
                     onDropPayload: { payload in
-                        print("[GameView] Dropping \(payload.card.label) on foundation \(idx)")
-                        vm.dropOnFoundation(card: payload.card, source: payload.source, pileIndex: idx)
+                        print("[GameView] Dropping on foundation \(idx)")
+                        print("[GameView]    Cards in payload: \(payload.cards.count)")
+
+                        // If multiple cards, move them all to the foundation
+                        if payload.cards.count > 1 {
+                            vm.dropOnFoundation(cards: payload.cards, source: payload.source, pileIndex: idx)
+                        } else {
+                            vm.dropOnFoundation(card: payload.card, source: payload.source, pileIndex: idx)
+                        }
                         return true
                     }
                 )
