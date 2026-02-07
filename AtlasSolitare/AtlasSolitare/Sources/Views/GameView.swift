@@ -86,26 +86,12 @@ struct GameView: View {
                     if let card = vm.wasteTopCard {
                         vm.tapCard(card: card, source: .waste)
                     }
+                },
+                onDragPayload: { card in
+                    draggingCardIds = [card.id]
+                    return DragPayload(card: card, source: .waste)
                 }
             )
-            .if(vm.wasteTopCard != nil) { view in
-                view.draggable(DragPayload(card: vm.wasteTopCard, source: .waste)) {
-                    if let card = vm.wasteTopCard {
-                        print("[DragPreview] Creating waste drag preview for card: \(card.label)")
-                        draggingCardIds = [card.id]
-                    }
-                    return CardView(
-                        card: vm.wasteTopCard!,
-                        isFaceUp: true,
-                        isHighlighted: false,
-                        onTap: nil
-                    )
-                    .environment(\.cardWidth, CardLayout.width(for: UIScreen.main.bounds.width))
-                }
-            }
-            .onChange(of: vm.wasteTopCard?.id) { _, _ in
-                draggingCardIds.removeAll()
-            }
 
             Spacer()
 

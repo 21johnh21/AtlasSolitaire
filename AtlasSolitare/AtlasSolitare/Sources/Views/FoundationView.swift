@@ -55,7 +55,6 @@ struct FoundationView: View {
                         }
                     }
                     .draggable(DragPayload(card: top, source: .foundation(pileIndex: pileIndex))) {
-                        print("[DragPreview] Creating foundation drag preview for card: \(top.label)")
                         onDragStart?(top)
                         return CardView(
                             card: top,

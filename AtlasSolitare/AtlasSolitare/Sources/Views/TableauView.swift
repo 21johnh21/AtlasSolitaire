@@ -125,7 +125,6 @@ private struct SingleTableauPile: View {
     private func dragPreviewForStack(startingAt index: Int) -> some View {
         let stackIndices = Rules.getMovableStack(from: pile, startIndex: index)
         let cardHeight = CardLayout.height(for: cardWidth)
-        let _ = print("[DragPreview] Creating tableau stack preview with \(stackIndices.count) cards, width: \(cardWidth), cornerRadius: \(CardLayout.cornerRadius)")
 
         ZStack(alignment: .top) {
             ForEach(Array(stackIndices.enumerated()), id: \.element) { offset, cardIndex in

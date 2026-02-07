@@ -14,25 +14,35 @@ struct WasteView: View {
 
     /// Called when the user taps the top waste card.
     var onTap: (() -> Void)?
-    /// Called when a drag gesture begins on the top card.
-    var onDragStart: (() -> Void)?
+    /// Called when drag starts - returns a DragPayload for the card.
+    var onDragPayload: ((Card) -> DragPayload)?
 
     @Environment(\.cardWidth) private var cardWidth
 
     var body: some View {
         let isDragging = topCard.map { draggingCardIds.contains($0.id) } ?? false
 
-        ZStack {
-            if let card = topCard, !isDragging {
-                CardView(
-                    card: card,
-                    isFaceUp: true,
-                    isHighlighted: isSelected,
-                    onTap: onTap,
-                    onDragStart: onDragStart
-                )
-                // Draggable: the drag gesture is handled by the parent GameView
-                // via .draggable() on this view.  We expose onDragStart for haptics.
+        return ZStack {
+            if let card = topCard {
+                if !isDragging {
+                    CardView(
+                        card: card,
+                        isFaceUp: true,
+                        isHighlighted: isSelected,
+                        onTap: onTap
+                    )
+                    .draggable(onDragPayload?(card) ?? DragPayload(card: card, source: .waste)) {
+                        CardView(
+                            card: card,
+                            isFaceUp: true,
+                            isHighlighted: false,
+                            onTap: nil
+                        )
+                        .environment(\.cardWidth, cardWidth)
+                    }
+                } else {
+                    emptySlot
+                }
             } else {
                 emptySlot
             }

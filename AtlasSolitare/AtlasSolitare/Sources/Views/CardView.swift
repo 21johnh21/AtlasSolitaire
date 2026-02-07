@@ -28,9 +28,7 @@ struct CardView: View {
 
     // ─── Body ───────────────────────────────────────────────────────────────
     var body: some View {
-        let _ = print("[CardView] Rendering card: \(card.label), width: \(cardWidth), cornerRadius: \(CardLayout.cornerRadius)")
-
-        return ZStack {
+        ZStack {
             if isFaceUp {
                 faceUpView
             } else {
