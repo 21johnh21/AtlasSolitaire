@@ -38,6 +38,13 @@ struct WinView: View {
                     .font(.system(size: 16))
                     .foregroundColor(Color.white.opacity(0.75))
 
+                // Stats
+                HStack(spacing: 24) {
+                    statItem(icon: "hand.tap.fill", label: "Moves", value: "\(vm.gameState?.moveCount ?? 0)")
+                    statItem(icon: "clock.fill", label: "Time", value: formatTime(vm.currentElapsedTime))
+                }
+                .padding(.top, 16)
+
                 Spacer(minLength: 24)
 
                 // ── Action buttons ──────────────────────────────────────────
@@ -99,6 +106,31 @@ struct WinView: View {
     private func confettiY(_ i: Int) -> CGFloat {
         let ys: [CGFloat] = [-180, -150, -200, -160, -170, -190, -155, -175, -185, -145, -195, -210]
         return ys[i % ys.count]
+    }
+
+    // ─── Stat item ──────────────────────────────────────────────────────────
+    private func statItem(icon: String, label: String, value: String) -> some View {
+        VStack(spacing: 6) {
+            Image(systemName: icon)
+                .font(.system(size: 20))
+                .foregroundColor(Color.accentGold)
+
+            Text(value)
+                .font(.system(size: 18, weight: .bold))
+                .foregroundColor(.white)
+                .monospacedDigit()
+
+            Text(label)
+                .font(.system(size: 12))
+                .foregroundColor(Color.white.opacity(0.6))
+        }
+    }
+
+    // ─── Format time ────────────────────────────────────────────────────────
+    private func formatTime(_ seconds: TimeInterval) -> String {
+        let mins = Int(seconds) / 60
+        let secs = Int(seconds) % 60
+        return String(format: "%d:%02d", mins, secs)
     }
 }
 

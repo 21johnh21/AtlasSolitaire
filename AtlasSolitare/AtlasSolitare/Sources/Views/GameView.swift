@@ -34,7 +34,7 @@ struct GameView: View {
                 .padding(.horizontal, 16)
                 .padding(.top, 8)
 
-                // ── Top bar: stock + waste ──────────────────────────────────
+                // ── Top row: waste + stats + stock ──────────────────────────
                 topRow
                     .padding(.top, 8)
                     .padding(.horizontal, 16)
@@ -80,9 +80,9 @@ struct GameView: View {
         }
     }
 
-    // ─── Top row: Stock (right) + Waste (left) ─────────────────────────────
+    // ─── Top row: Waste (left) + Stats (center) + Stock (right) ───────────
     private var topRow: some View {
-        HStack(alignment: .top, spacing: CardLayout.horizontalSpacing) {
+        HStack(alignment: .center, spacing: CardLayout.horizontalSpacing) {
             // Waste on the left.
             WasteView(
                 topCard: vm.wasteTopCard,
@@ -98,6 +98,11 @@ struct GameView: View {
                     return DragPayload(card: card, source: .waste)
                 }
             )
+
+            Spacer()
+
+            // Stats in the center
+            statsDisplay
 
             Spacer()
 
@@ -149,11 +154,53 @@ struct GameView: View {
         }
     }
 
+    // ─── Stats display (top center) ─────────────────────────────────────────
+    private var statsDisplay: some View {
+        HStack(spacing: 12) {
+            // Moves
+            HStack(spacing: 4) {
+                Image(systemName: "hand.tap.fill")
+                    .font(.system(size: 12))
+                Text("\(vm.gameState?.moveCount ?? 0)")
+                    .font(.system(size: 14, weight: .semibold))
+            }
+            .foregroundColor(Color.white.opacity(0.75))
+
+            // Separator
+            Text("•")
+                .font(.system(size: 12))
+                .foregroundColor(Color.white.opacity(0.4))
+
+            // Time
+            HStack(spacing: 4) {
+                Image(systemName: "clock.fill")
+                    .font(.system(size: 12))
+                Text(formatTime(vm.currentElapsedTime))
+                    .font(.system(size: 14, weight: .semibold))
+                    .monospacedDigit()
+            }
+            .foregroundColor(Color.white.opacity(0.75))
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 6)
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .fill(Color.black.opacity(0.3))
+        )
+    }
+
     // ─── Progress: "X / Y groups completed" ─────────────────────────────────
     private var progressRow: some View {
         Text("\(vm.completedGroupCount) / \(vm.totalGroupCount) groups completed")
             .font(.system(size: 12, weight: .medium))
             .foregroundColor(Color.white.opacity(0.7))
+    }
+
+    // ─── Helper to format time ──────────────────────────────────────────────
+    private func formatTime(_ seconds: TimeInterval) -> String {
+        let mins = Int(seconds) / 60
+        let secs = Int(seconds) % 60
+        return String(format: "%d:%02d", mins, secs)
     }
 
     // ─── Tableau ────────────────────────────────────────────────────────────

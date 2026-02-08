@@ -35,6 +35,7 @@ class GameEngine {
     func drawFromStock() {
         guard let card = state.stock.popLast() else { return }
         state.waste.append(card)
+        state.moveCount += 1
         notifyChanged()
     }
 
@@ -44,6 +45,7 @@ class GameEngine {
         guard Rules.canReshuffle(stock: state.stock, waste: state.waste) else { return }
         state.stock = state.waste.shuffled()
         state.waste.removeAll()
+        state.moveCount += 1
         notifyChanged()
     }
 
@@ -80,6 +82,9 @@ class GameEngine {
             if case .foundation(let idx) = target {
                 checkAndClearGroup(at: idx)
             }
+
+            // 5. Increment move count.
+            state.moveCount += 1
 
             notifyChanged()
             return .valid
@@ -141,6 +146,9 @@ class GameEngine {
                 revealTopCard(in: idx)
             }
 
+            // Increment move count
+            state.moveCount += 1
+
             notifyChanged()
             print("[GameEngine] ✅ Stack move complete")
             return .valid
@@ -197,6 +205,9 @@ class GameEngine {
             print("[GameEngine] Revealing top card in source pile \(idx)")
             revealTopCard(in: idx)
         }
+
+        // Increment move count
+        state.moveCount += 1
 
         // Check for group completion
         checkAndClearGroup(at: foundationIndex)

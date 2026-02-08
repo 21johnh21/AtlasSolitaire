@@ -57,6 +57,16 @@ struct GameState: Codable, Equatable {
     /// Running counter of total cards cleared (for stats / display).
     var clearedCardCount: Int = 0
 
+    // ─── Statistics ─────────────────────────────────────────────────────────
+    /// Total number of moves made in this game.
+    var moveCount: Int = 0
+
+    /// Time when the game started (used to calculate elapsed time).
+    var startTime: Date = Date()
+
+    /// Total elapsed time in seconds (tracked when game is paused/saved).
+    var elapsedTime: TimeInterval = 0
+
     // ─── Phase ──────────────────────────────────────────────────────────────
     var phase: GamePhase = .playing
 

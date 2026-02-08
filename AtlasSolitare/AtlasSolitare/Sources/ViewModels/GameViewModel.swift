@@ -34,6 +34,10 @@ class GameViewModel: ObservableObject {
     private let audio = AudioManager.shared
     private let haptic = HapticManager.shared
 
+    // ─── Timer ──────────────────────────────────────────────────────────────
+    private var gameTimer: Timer?
+    @Published private(set) var currentElapsedTime: TimeInterval = 0
+
     // ─── Init ───────────────────────────────────────────────────────────────
     init(
         engine: GameEngine? = nil,
@@ -66,7 +70,9 @@ class GameViewModel: ObservableObject {
         loadSettings()
         if let saved = try? persistence.loadGameState(), saved.phase == .playing {
             engine.state = saved
+            currentElapsedTime = saved.elapsedTime
             publishState()
+            startTimer()
         } else {
             phase = .menu
         }
@@ -182,7 +188,14 @@ class GameViewModel: ObservableObject {
             // Pick 3 random groups per round (configurable).
             let deck = try deckManager.buildRandomDeck(groupCount: 3)
             engine.newGame(deck: deck, seed: deck.seed)
+
+            // Reset stats for new game
+            currentElapsedTime = 0
+            engine.state.elapsedTime = 0
+            engine.state.startTime = Date()
+
             phase = .playing
+            startTimer()
             autosave()
         } catch {
             // Fallback: stay on menu.
@@ -198,11 +211,14 @@ class GameViewModel: ObservableObject {
             return
         }
         engine.state = saved
+        currentElapsedTime = saved.elapsedTime
         publishState()
+        startTimer()
     }
 
     /// Return to the main menu (without clearing saved game).
     func returnToMenu() {
+        stopTimer()
         phase = .menu
         // Don't clear the game state - it's already auto-saved
     }
@@ -344,6 +360,7 @@ class GameViewModel: ObservableObject {
     }
 
     private func handleWin() {
+        stopTimer()
         audio.play(.win)
         haptic.success()
         try? persistence.clearGameState()
@@ -352,6 +369,10 @@ class GameViewModel: ObservableObject {
     // ─── Persistence helpers ────────────────────────────────────────────────
 
     private func autosave() {
+        // Update elapsed time before saving
+        if gameTimer != nil {
+            engine.state.elapsedTime = currentElapsedTime
+        }
         try? persistence.saveGameState(engine.state)
     }
 
@@ -365,6 +386,32 @@ class GameViewModel: ObservableObject {
 
     private func saveSettings() {
         try? persistence.saveSettings(settings)
+    }
+
+    // ─── Timer helpers ──────────────────────────────────────────────────────
+
+    private func startTimer() {
+        // Stop any existing timer
+        stopTimer()
+
+        // Reset start time to now
+        engine.state.startTime = Date()
+
+        // Start a timer that fires every second
+        gameTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            self.currentElapsedTime = self.engine.state.elapsedTime + Date().timeIntervalSince(self.engine.state.startTime)
+        }
+    }
+
+    private func stopTimer() {
+        gameTimer?.invalidate()
+        gameTimer = nil
+
+        // Save the elapsed time to the state
+        if phase == .playing {
+            engine.state.elapsedTime = currentElapsedTime
+        }
     }
 }
 
