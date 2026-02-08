@@ -96,8 +96,7 @@ private struct SingleTableauPile: View {
                 }
             }
         }
-        // Height: tallest pile (all cards fanned out) + one card height.
-        .frame(width: cardWidth, height: pileHeight)
+        .frame(width: cardWidth)
         .contentShape(Rectangle()) // Make the entire pile area accept drops
         .dropDestination(for: DragPayload.self) { items, location in
             guard let payload = items.first else { return false }
