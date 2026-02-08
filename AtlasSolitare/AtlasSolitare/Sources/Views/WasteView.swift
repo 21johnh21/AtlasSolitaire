@@ -22,10 +22,6 @@ struct WasteView: View {
     var body: some View {
         let isDragging = topCard.map { draggingCardIds.contains($0.id) } ?? false
 
-        if let card = topCard {
-            let _ = print("[WasteView] Card: \(card.label) (\(card.id)), isDragging: \(isDragging), draggingCardIds: \(draggingCardIds)")
-        }
-
         return ZStack {
             if let card = topCard {
                 if !isDragging {

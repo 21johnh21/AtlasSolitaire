@@ -29,10 +29,6 @@ struct FoundationView: View {
     var body: some View {
         let isDragging = pile.topCard.map { draggingCardIds.contains($0.id) } ?? false
 
-        if let top = pile.topCard {
-            let _ = print("[FoundationView] Pile \(pileIndex): Card \(top.label) (\(top.id)), isDragging: \(isDragging), draggingCardIds: \(draggingCardIds)")
-        }
-
         VStack(spacing: 4) {
             // Category banner (shown when foundation has a base card)
             if !pile.isEmpty, let groupName = groupName {

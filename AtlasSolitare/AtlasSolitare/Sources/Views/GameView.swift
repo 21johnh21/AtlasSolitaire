@@ -62,8 +62,6 @@ struct GameView: View {
             .ignoresSafeArea(edges: .bottom)
             // Catch-all drop handler to clear dragging state if dropped on invalid area
             .dropDestination(for: DragPayload.self) { items, location in
-                print("[GameView] 🚫 Drop on invalid area (game background)")
-                print("[GameView]   Clearing dragging state")
                 draggingCardIds.removeAll()
                 return false // Don't accept the drop
             }
@@ -101,14 +99,9 @@ struct GameView: View {
                     }
                 },
                 onDragPayload: { card in
-                    print("[GameView] 🎯 Waste drag started: \(card.label) (\(card.id))")
-                    print("[GameView]   Previous draggingCardIds: \(draggingCardIds)")
-
                     // Clear any previous dragging state before starting new drag
                     draggingCardIds.removeAll()
                     draggingCardIds = [card.id]
-
-                    print("[GameView]   New draggingCardIds: \(draggingCardIds)")
                     return DragPayload(card: card, source: .waste)
                 }
             )
@@ -141,14 +134,9 @@ struct GameView: View {
                     isSelected: pile.topCard.map { vm.isSelected($0) } ?? false,
                     draggingCardIds: draggingCardIds,
                     onDragStart: { card in
-                        print("[GameView] 🎯 Foundation drag started: \(card.label) (\(card.id))")
-                        print("[GameView]   Previous draggingCardIds: \(draggingCardIds)")
-
                         // Clear any previous dragging state before starting new drag
                         draggingCardIds.removeAll()
                         draggingCardIds = [card.id]
-
-                        print("[GameView]   New draggingCardIds: \(draggingCardIds)")
                     },
                     onTapCard: {
                         if let card = pile.topCard {
@@ -159,10 +147,6 @@ struct GameView: View {
                         vm.tapEmptyFoundation(pileIndex: idx)
                     },
                     onDropPayload: { payload in
-                        print("[GameView] 📥 Foundation drop: \(payload.cards.count) card(s) to pile \(idx)")
-                        print("[GameView]   Cards: \(payload.cards.map { $0.label })")
-                        print("[GameView]   draggingCardIds before drop: \(draggingCardIds)")
-
                         // If multiple cards, move them all to the foundation
                         if payload.cards.count > 1 {
                             vm.dropOnFoundation(cards: payload.cards, source: payload.source, pileIndex: idx)
@@ -171,10 +155,7 @@ struct GameView: View {
                         }
 
                         // Clear dragging state immediately
-                        print("[GameView] 🧹 Clearing dragging state for foundation drop")
                         draggingCardIds.removeAll()
-                        print("[GameView]   draggingCardIds after clear: \(draggingCardIds)")
-
                         return true
                     }
                 )
@@ -245,17 +226,8 @@ struct GameView: View {
                 vm.tapEmptyTableau(pileIndex: pileIdx)
             },
             onDragPayload: { card, pileIdx, cardIdx in
-                print("[GameView] 🎯 Tableau drag started: \(card.label) from pile \(pileIdx) index \(cardIdx)")
-                print("[GameView]   Previous draggingCardIds: \(draggingCardIds)")
-
                 // Clear any previous dragging state before starting new drag
-                // Use a temporary variable to force SwiftUI to detect the change
-                let oldIds = draggingCardIds
                 draggingCardIds = []
-
-                if !oldIds.isEmpty {
-                    print("[GameView]   ⚠️ Cleared stale dragging state: \(oldIds)")
-                }
 
                 // Get the stack of cards starting from this index
                 guard let state = vm.gameState else {
@@ -265,26 +237,16 @@ struct GameView: View {
                 let stackIndices = Rules.getMovableStack(from: pile, startIndex: cardIdx)
                 let stackCards = stackIndices.map { pile[$0].card }
 
-                print("[GameView]   Stack size: \(stackCards.count) cards")
-                print("[GameView]   Cards: \(stackCards.map { $0.label })")
-
                 // Mark these cards as being dragged
                 draggingCardIds = Set(stackCards.map { $0.id })
-                print("[GameView]   New draggingCardIds: \(draggingCardIds)")
 
                 return DragPayload(cards: stackCards, source: .tableau(pileIndex: pileIdx))
             },
             onDropPayload: { payload, pileIdx in
-                print("[GameView] 📥 Tableau drop: \(payload.cards.count) card(s) to pile \(pileIdx)")
-                print("[GameView]   Cards: \(payload.cards.map { $0.label })")
-                print("[GameView]   draggingCardIds before drop: \(draggingCardIds)")
-
                 vm.dropOnTableau(cards: payload.cards, source: payload.source, pileIndex: pileIdx)
 
                 // Clear dragging state immediately
-                print("[GameView] 🧹 Clearing dragging state for tableau drop")
                 draggingCardIds.removeAll()
-                print("[GameView]   draggingCardIds after clear: \(draggingCardIds)")
 
                 return true
             }
