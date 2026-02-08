@@ -41,7 +41,7 @@ private struct RootView: View {
             vm.onAppear()
         }
         // Auto-save on background.
-        .onChange(of: vm.gameState) { _ in
+        .onChange(of: vm.gameState) {
             // GameViewModel already auto-saves on every move;
             // this is a belt-and-suspenders hook for scene lifecycle.
         }

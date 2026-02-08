@@ -208,11 +208,11 @@ class GameEngine {
 
     /// Start a brand new game from a given deck.  Deals cards Klondike-style.
     func newGame(deck: Deck, seed: UInt64? = nil) {
-        var rng = seed.map { SeededRNG(seed: $0) }
         var allCards = deck.allCards
 
         // Shuffle
-        if var rng = rng {
+        if let seed = seed {
+            var rng = SeededRNG(seed: seed)
             allCards.shuffle(using: &rng)
         } else {
             allCards.shuffle()
