@@ -264,20 +264,21 @@ struct GameView: View {
         Button(action: {
             vm.returnToMenu()
         }) {
-            HStack(spacing: 4) {
+            HStack(spacing: 6) {
                 Image(systemName: "xmark.circle.fill")
-                    .font(.system(size: 14))
+                    .font(.system(size: 16))
                 Text("Quit")
-                    .font(.system(size: 13, weight: .medium))
+                    .font(.system(size: 15, weight: .medium))
             }
             .foregroundColor(Color.white.standard())
-            .padding(.horizontal, 10)
-            .padding(.vertical, 6)
+            .padding(.horizontal, 14)
+            .padding(.vertical, 10)
             .background(
-                RoundedRectangle(cornerRadius: 6)
+                RoundedRectangle(cornerRadius: 8)
                     .fill(Color.black.subtle())
             )
         }
+        .buttonStyle(ScaleButtonStyle())
         .accessibilityLabel("Quit game and return to menu")
     }
 
