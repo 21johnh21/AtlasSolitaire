@@ -70,6 +70,14 @@ struct GameView: View {
         ) {
             WinView(vm: vm)
         }
+        // Group completion celebration overlay
+        .overlay {
+            if let completedGroupId = vm.recentlyCompletedGroupId,
+               let groupName = vm.groupName(for: completedGroupId) {
+                GroupCompletionView(groupName: groupName)
+                    .transition(.opacity)
+            }
+        }
     }
 
     // ─── Top row: Stock (right) + Waste (left) ─────────────────────────────

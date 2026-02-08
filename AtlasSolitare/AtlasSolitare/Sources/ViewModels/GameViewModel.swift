@@ -24,6 +24,9 @@ class GameViewModel: ObservableObject {
     /// User settings.
     @Published var settings: AppSettings = AppSettings()
 
+    /// The ID of the most recently completed group (for showing celebration animation).
+    @Published private(set) var recentlyCompletedGroupId: String?
+
     // ─── Dependencies ───────────────────────────────────────────────────────
     private let engine: GameEngine
     private let deckManager: DeckManager
@@ -254,6 +257,11 @@ class GameViewModel: ObservableObject {
         selectedCard?.card.id == card.id
     }
 
+    /// Get the name of a group by its ID.
+    func groupName(for groupId: String) -> String? {
+        gameState?.deck.groups.first(where: { $0.id == groupId })?.name
+    }
+
     // ─── MARK: Private ──────────────────────────────────────────────────────
 
     private func attemptMove(card: Card, source: MoveSource, target: MoveTarget) {
@@ -325,6 +333,14 @@ class GameViewModel: ObservableObject {
     private func handleGroupCompleted(_ groupId: String) {
         audio.play(.completeGroup)
         haptic.success()
+        recentlyCompletedGroupId = groupId
+
+        // Clear the celebration after a delay
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+            if self?.recentlyCompletedGroupId == groupId {
+                self?.recentlyCompletedGroupId = nil
+            }
+        }
     }
 
     private func handleWin() {
