@@ -61,6 +61,8 @@ private struct SingleTableauPile: View {
         let visibleCards = pile.filter { !draggingCardIds.contains($0.card.id) }
         let showEmptySlot = pile.isEmpty || visibleCards.isEmpty
 
+        let _ = print("[TableauView] Pile \(pileIndex): Rendering \(pile.count) cards, draggingCardIds: \(draggingCardIds)")
+
         ZStack(alignment: .top) {
             if showEmptySlot {
                 emptySlot
@@ -72,6 +74,8 @@ private struct SingleTableauPile: View {
                     let isTopCard = (i == pile.count - 1)
                     let isDraggable = tc.isFaceUp && canDragFromIndex(i)
                     let isBeingDragged = draggingCardIds.contains(tc.card.id)
+
+                    let _ = print("[TableauView]   Card \(i): \(tc.card.label), isBeingDragged: \(isBeingDragged)")
 
                     if !isBeingDragged {
                         CardView(

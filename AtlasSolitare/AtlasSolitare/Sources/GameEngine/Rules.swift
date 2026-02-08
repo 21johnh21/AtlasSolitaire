@@ -151,51 +151,39 @@ enum Rules {
     /// A valid stack consists of consecutive face-up cards from the same group that can be stacked
     /// together according to tableau placement rules.
     static func getMovableStack(from pile: [TableauCard], startIndex: Int) -> [Int] {
-        print("[Rules] getMovableStack called: pile count=\(pile.count), startIndex=\(startIndex)")
-
         guard startIndex >= 0, startIndex < pile.count else {
-            print("[Rules] ❌ Invalid index: startIndex=\(startIndex), pile.count=\(pile.count)")
             return []
         }
         guard pile[startIndex].isFaceUp else {
-            print("[Rules] ❌ Card at index \(startIndex) is face down")
             return []
         }
 
         var stackIndices = [startIndex]
         let firstCard = pile[startIndex].card
-        print("[Rules] Starting card: \(firstCard.label) (type: \(firstCard.type), group: \(firstCard.groupId))")
 
         // Check if subsequent cards can stack on top of each other
         for i in (startIndex + 1)..<pile.count {
             let currentCard = pile[i].card
             let previousCard = pile[i - 1].card
 
-            print("[Rules]   Checking card at index \(i): \(currentCard.label) (type: \(currentCard.type), group: \(currentCard.groupId))")
-
             // Card must be face-up
             guard pile[i].isFaceUp else {
-                print("[Rules]   ❌ Card is face down, stopping")
                 break
             }
 
             // Cards must be from the same group
             guard currentCard.groupId == previousCard.groupId else {
-                print("[Rules]   ❌ Different group (\(currentCard.groupId) vs \(previousCard.groupId)), stopping")
                 break
             }
 
             // Check stacking rules: same type (base-on-base or partner-on-partner)
             guard currentCard.type == previousCard.type else {
-                print("[Rules]   ❌ Different type (\(currentCard.type) vs \(previousCard.type)), stopping")
                 break
             }
 
-            print("[Rules]   ✅ Card is valid, adding to stack")
             stackIndices.append(i)
         }
 
-        print("[Rules] Final stack: \(stackIndices.count) card(s) at indices: \(stackIndices)")
         return stackIndices
     }
 

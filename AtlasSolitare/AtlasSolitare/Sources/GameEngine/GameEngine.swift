@@ -63,10 +63,14 @@ class GameEngine {
         )
 
         switch validation {
-        case .invalid:
+        case .invalid(let reason):
+            print("[GameEngine] ❌ Move INVALID: \(card.label) from \(source) to \(target)")
+            print("[GameEngine]    Reason: \(reason)")
             return validation   // caller handles feedback
 
         case .valid:
+            print("[GameEngine] ✅ Move VALID: \(card.label) from \(source) to \(target)")
+
             // 1. Remove card from source.
             removeCard(from: source)
 
@@ -87,6 +91,7 @@ class GameEngine {
             state.moveCount += 1
 
             notifyChanged()
+            print("[GameEngine]    State change notified")
             return .valid
         }
     }
