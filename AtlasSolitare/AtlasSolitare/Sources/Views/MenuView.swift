@@ -21,13 +21,19 @@ struct MenuView: View {
                         NavigationLink(destination: SettingsView(vm: vm)) {
                             Image(systemName: "gearshape.fill")
                                 .font(.system(size: 24))
-                                .foregroundColor(Color.white.opacity(0.6))
-                                .padding(12)
+                                .foregroundColor(Color.white.opacity(0.7))
+                                .padding(14)
                                 .background(
                                     Circle()
-                                        .fill(Color.black.opacity(0.2))
+                                        .fill(Color.black.opacity(0.25))
+                                        .overlay(
+                                            Circle()
+                                                .stroke(Color.white.opacity(0.15), lineWidth: 1)
+                                        )
                                 )
+                                .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 2)
                         }
+                        .buttonStyle(ScaleButtonStyle())
                     }
                     .padding(.horizontal, 20)
                     .padding(.top, 16)
@@ -62,22 +68,23 @@ struct MenuView: View {
 
     // ─── Title ──────────────────────────────────────────────────────────────
     private var titleBlock: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 12) {
             // Globe icon as a stand-in for a future logo.
             Image(systemName: "globe.europe.africa.fill")
-                .font(.system(size: 56))
+                .font(.system(size: 64))
                 .foregroundColor(Color.accentGold)
-                .shadow(color: Color.accentGold.opacity(0.3), radius: 8)
+                .shadow(color: Color.accentGold.opacity(0.5), radius: 12, x: 0, y: 4)
 
             Text("Atlas")
-                .font(.system(size: 48, weight: .bold))
+                .font(.system(size: 52, weight: .bold))
                 .foregroundColor(.white)
+                .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 2)
 
-            Text("Solitaire")
-                .font(.system(size: 24, weight: .light))
-                .foregroundColor(Color.white.opacity(0.7))
-                .tracking(6)
-                .textCase(.uppercase)
+            Text("SOLITAIRE")
+                .font(.system(size: 20, weight: .medium))
+                .foregroundColor(Color.white.opacity(0.8))
+                .tracking(8)
+                .kerning(1.5)
         }
     }
 
@@ -97,6 +104,7 @@ struct MenuView: View {
             .clipShape(RoundedRectangle(cornerRadius: 14))
             .shadow(color: Color.black.opacity(0.25), radius: 6, y: 3)
         }
+        .buttonStyle(ScaleButtonStyle())
     }
 
     // ─── New Game ───────────────────────────────────────────────────────────
@@ -113,12 +121,13 @@ struct MenuView: View {
             .padding(.vertical, 16)
             .background(
                 vm.hasSavedGame
-                    ? Color.white.opacity(0.15)
+                    ? Color.white.opacity(0.2)
                     : Color.accentGold
             )
             .clipShape(RoundedRectangle(cornerRadius: 14))
             .shadow(color: Color.black.opacity(0.25), radius: 6, y: 3)
         }
+        .buttonStyle(ScaleButtonStyle())
     }
 
     // ─── Footer ─────────────────────────────────────────────────────────────
@@ -127,6 +136,17 @@ struct MenuView: View {
             .font(.system(size: 11))
             .foregroundColor(Color.white.opacity(0.3))
             .padding(.bottom, 24)
+    }
+}
+
+// MARK: - Custom Button Style
+
+/// Button style that scales down slightly when pressed for tactile feedback
+struct ScaleButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+            .animation(.easeInOut(duration: 0.1), value: configuration.isPressed)
     }
 }
 
