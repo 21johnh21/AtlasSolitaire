@@ -10,6 +10,10 @@ struct WinView: View {
 
     /// Simple particle-like animation state.
     @State private var animationPhase: Double = 0
+    @State private var trophyScale: CGFloat = 1.0
+    @State private var trophyRotation: Double = 0
+    @State private var displayedMoves: Int = 0
+    @State private var displayedTime: TimeInterval = 0
 
     var body: some View {
         ZStack {
@@ -22,11 +26,13 @@ struct WinView: View {
 
             // ── Content card ────────────────────────────────────────────────
             VStack(spacing: 32) {
-                // Trophy icon
+                // Trophy icon with pulse animation
                 Image(systemName: "trophy.fill")
                     .font(.system(size: 64))
                     .foregroundColor(Color.accentGold)
                     .shadow(color: Color.accentGold.opacity(0.4), radius: 12)
+                    .scaleEffect(trophyScale)
+                    .rotationEffect(.degrees(trophyRotation))
 
                 // Title
                 Text("You Win!")
@@ -38,10 +44,10 @@ struct WinView: View {
                     .font(.system(size: 16))
                     .foregroundColor(Color.white.opacity(0.75))
 
-                // Stats
+                // Stats with count-up animation
                 HStack(spacing: 24) {
-                    statItem(icon: "hand.tap.fill", label: "Moves", value: "\(vm.gameState?.moveCount ?? 0)")
-                    statItem(icon: "clock.fill", label: "Time", value: formatTime(vm.currentElapsedTime))
+                    statItem(icon: "hand.tap.fill", label: "Moves", value: "\(displayedMoves)")
+                    statItem(icon: "clock.fill", label: "Time", value: formatTime(displayedTime))
                 }
                 .padding(.top, 16)
 
@@ -68,44 +74,119 @@ struct WinView: View {
             }
             .padding(.horizontal, 40)
         }
-        // Kick off the confetti animation on appear.
+        // Kick off animations on appear.
         .onAppear {
-            withAnimation(.easeOut(duration: 1.2)) {
+            // Confetti continuous animation
+            withAnimation(.linear(duration: 3.0).repeatForever(autoreverses: false)) {
                 animationPhase = 1
+            }
+
+            // Trophy pulse animation
+            withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                trophyScale = 1.1
+            }
+
+            // Trophy subtle rotation
+            withAnimation(.easeInOut(duration: 2.0).repeatForever(autoreverses: true)) {
+                trophyRotation = 5
+            }
+
+            // Count up moves animation
+            let targetMoves = vm.gameState?.moveCount ?? 0
+            let movesIncrement = max(1, targetMoves / 30)
+            Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { timer in
+                if displayedMoves < targetMoves {
+                    displayedMoves = min(displayedMoves + movesIncrement, targetMoves)
+                } else {
+                    timer.invalidate()
+                }
+            }
+
+            // Count up time animation
+            let targetTime = vm.currentElapsedTime
+            let timeIncrement = targetTime / 30
+            Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { timer in
+                if displayedTime < targetTime {
+                    displayedTime = min(displayedTime + timeIncrement, targetTime)
+                } else {
+                    timer.invalidate()
+                }
             }
         }
         .accessibilityLabel("You win! All groups completed.")
     }
 
-    // ─── Simple confetti decoration ─────────────────────────────────────────
+    // ─── Continuous falling confetti decoration ─────────────────────────────
     private var confetti: some View {
-        ZStack {
-            ForEach(0..<12, id: \.self) { i in
-                Circle()
-                    .fill(confettiColor(i))
-                    .frame(width: 10, height: 10)
-                    .offset(
-                        x: confettiX(i) * animationPhase,
-                        y: confettiY(i) * animationPhase
-                    )
-                    .opacity(animationPhase > 0 ? 0.8 : 0)
+        GeometryReader { geometry in
+            ZStack {
+                ForEach(0..<30, id: \.self) { i in
+                    confettiParticle(index: i, screenSize: geometry.size)
+                        .offset(
+                            x: confettiX(i, screenWidth: geometry.size.width),
+                            y: confettiY(i, animationPhase: animationPhase, screenHeight: geometry.size.height)
+                        )
+                        .rotationEffect(.degrees(confettiRotation(i, animationPhase: animationPhase)))
+                        .opacity(0.7)
+                }
             }
+        }
+        .allowsHitTesting(false)
+    }
+
+    @ViewBuilder
+    private func confettiParticle(index: Int, screenSize: CGSize) -> some View {
+        let size: CGFloat = CGFloat([6, 8, 10, 7, 9][index % 5])
+        let color = confettiColor(index)
+
+        switch index % 3 {
+        case 0:
+            Circle()
+                .fill(color)
+                .frame(width: size, height: size)
+        case 1:
+            RoundedRectangle(cornerRadius: 2)
+                .fill(color)
+                .frame(width: size, height: size)
+        default:
+            Diamond()
+                .fill(color)
+                .frame(width: size, height: size)
         }
     }
 
     private func confettiColor(_ i: Int) -> Color {
-        let colors: [Color] = [Color.accentGold, .white, Color(red: 0.9, green: 0.6, blue: 0.3), Color(red: 0.5, green: 0.8, blue: 0.9)]
+        let colors: [Color] = [
+            Color.accentGold,
+            .white,
+            Color(red: 0.9, green: 0.6, blue: 0.3),
+            Color(red: 0.5, green: 0.8, blue: 0.9),
+            Color(red: 0.9, green: 0.4, blue: 0.6),
+            Color(red: 0.6, green: 0.9, blue: 0.4)
+        ]
         return colors[i % colors.count]
     }
 
-    private func confettiX(_ i: Int) -> CGFloat {
-        let xs: [CGFloat] = [-120, -80, -40, 0, 40, 80, 120, -100, -50, 50, 100, 0]
-        return xs[i % xs.count]
+    private func confettiX(_ i: Int, screenWidth: CGFloat) -> CGFloat {
+        // Spread particles across screen width with some variation
+        let baseX = (CGFloat(i) / 30.0) * screenWidth - screenWidth / 2
+        let sway = sin(Double(i) * 0.5 + animationPhase * 2.0) * 20
+        return baseX + CGFloat(sway)
     }
 
-    private func confettiY(_ i: Int) -> CGFloat {
-        let ys: [CGFloat] = [-180, -150, -200, -160, -170, -190, -155, -175, -185, -145, -195, -210]
-        return ys[i % ys.count]
+    private func confettiY(_ i: Int, animationPhase: Double, screenHeight: CGFloat) -> CGFloat {
+        // Particles fall from top to bottom continuously
+        let startY = -50 - CGFloat(i % 10) * 50
+        let endY = screenHeight + 50
+        let progress = (animationPhase + Double(i) * 0.033).truncatingRemainder(dividingBy: 1.0)
+        return startY + (endY - startY) * CGFloat(progress)
+    }
+
+    private func confettiRotation(_ i: Int, animationPhase: Double) -> Double {
+        // Continuous rotation at different speeds
+        let rotationSpeeds: [Double] = [360, -540, 720, -360, 450]
+        let speed = rotationSpeeds[i % rotationSpeeds.count]
+        return speed * animationPhase
     }
 
     // ─── Stat item ──────────────────────────────────────────────────────────
@@ -133,6 +214,7 @@ struct WinView: View {
         return String(format: "%d:%02d", mins, secs)
     }
 }
+
 
 // MARK: - Preview
 
