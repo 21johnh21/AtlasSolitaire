@@ -103,12 +103,12 @@ struct FoundationView: View {
         let iconSize = cardWidth / 85 * 24  // Larger icon since no text
 
         return RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
-            .stroke(Color.white.opacity(0.3), style: StrokeStyle(lineWidth: 2, dash: [5, 4]))
+            .stroke(Color.white.subtle(), style: StrokeStyle(lineWidth: 2, dash: [5, 4]))
             .cardFrame(width: cardWidth)
             .overlay(
                 Image(systemName: "arrow.down.circle")
                     .font(.system(size: iconSize, weight: .medium))
-                    .foregroundColor(Color.white.opacity(0.35))
+                    .foregroundColor(Color.white.medium())
             )
     }
 
@@ -127,7 +127,7 @@ struct FoundationView: View {
             )
             .overlay(
                 Circle()
-                    .stroke(Color.white.opacity(0.3), lineWidth: 1.5)
+                    .stroke(Color.white.subtle(), lineWidth: 1.5)
             )
             .padding(cardWidth / 85 * 3)
     }
@@ -144,10 +144,10 @@ struct FoundationView: View {
             .padding(.horizontal, 4)
             .background(
                 RoundedRectangle(cornerRadius: 4)
-                    .fill(Color.accentGold.opacity(0.15))
+                    .fill(Color.accentGold.verySubtle())
                     .overlay(
                         RoundedRectangle(cornerRadius: 4)
-                            .stroke(Color.accentGold.opacity(0.3), lineWidth: 1)
+                            .stroke(Color.accentGold.subtle(), lineWidth: 1)
                     )
             )
     }

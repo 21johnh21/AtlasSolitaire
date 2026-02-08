@@ -38,6 +38,31 @@ extension Color {
     static let textDark     = Color(red: 0.13, green: 0.13, blue: 0.13)
 }
 
+// MARK: - Standardized Opacity Scale
+
+extension Color {
+    /// Standardized opacity scale for consistent visual hierarchy
+    /// Use these instead of arbitrary opacity values throughout the app
+
+    // Very subtle (borders, hints, backgrounds)
+    func verySubtle() -> Color { self.opacity(0.15) }
+
+    // Subtle (secondary borders, empty states, disabled elements)
+    func subtle() -> Color { self.opacity(0.25) }
+
+    // Medium (overlays, shadows, secondary text)
+    func medium() -> Color { self.opacity(0.4) }
+
+    // Standard (primary overlays, secondary content)
+    func standard() -> Color { self.opacity(0.6) }
+
+    // Strong (primary text on backgrounds, important content)
+    func strong() -> Color { self.opacity(0.8) }
+
+    // VeryStrong (primary interactive elements, key text)
+    func veryStrong() -> Color { self.opacity(0.9) }
+}
+
 // MARK: - View modifiers
 
 extension View {

@@ -21,17 +21,17 @@ struct MenuView: View {
                         NavigationLink(destination: SettingsView(vm: vm)) {
                             Image(systemName: "gearshape.fill")
                                 .font(.system(size: 24))
-                                .foregroundColor(Color.white.opacity(0.7))
+                                .foregroundColor(Color.white.standard())
                                 .padding(14)
                                 .background(
                                     Circle()
-                                        .fill(Color.black.opacity(0.25))
+                                        .fill(Color.black.subtle())
                                         .overlay(
                                             Circle()
-                                                .stroke(Color.white.opacity(0.15), lineWidth: 1)
+                                                .stroke(Color.white.verySubtle(), lineWidth: 1)
                                         )
                                 )
-                                .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 2)
+                                .shadow(color: Color.black.subtle(), radius: 3, x: 0, y: 2)
                         }
                         .buttonStyle(ScaleButtonStyle())
                     }
@@ -82,7 +82,7 @@ struct MenuView: View {
 
             Text("SOLITAIRE")
                 .font(.system(size: 20, weight: .medium))
-                .foregroundColor(Color.white.opacity(0.8))
+                .foregroundColor(Color.white.strong())
                 .tracking(8)
                 .kerning(1.5)
         }
@@ -121,7 +121,7 @@ struct MenuView: View {
             .padding(.vertical, 16)
             .background(
                 vm.hasSavedGame
-                    ? Color.white.opacity(0.2)
+                    ? Color.white.subtle()
                     : Color.accentGold
             )
             .clipShape(RoundedRectangle(cornerRadius: 14))
@@ -134,7 +134,7 @@ struct MenuView: View {
     private var footerText: some View {
         Text("Geography-themed Klondike Solitaire")
             .font(.system(size: 11))
-            .foregroundColor(Color.white.opacity(0.3))
+            .foregroundColor(Color.white.subtle())
             .padding(.bottom, 24)
     }
 }

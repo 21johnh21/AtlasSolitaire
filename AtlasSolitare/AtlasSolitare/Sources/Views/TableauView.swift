@@ -164,7 +164,7 @@ private struct SingleTableauPile: View {
     // ─── Empty pile placeholder ─────────────────────────────────────────────
     private var emptySlot: some View {
         RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
-            .stroke(Color.white.opacity(0.15), style: StrokeStyle(lineWidth: 1.5, dash: [4, 4]))
+            .stroke(Color.white.verySubtle(), style: StrokeStyle(lineWidth: 1.5, dash: [4, 4]))
             .cardFrame(width: cardWidth)
     }
 }

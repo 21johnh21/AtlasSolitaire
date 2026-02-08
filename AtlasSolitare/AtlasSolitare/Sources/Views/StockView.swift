@@ -58,7 +58,7 @@ struct StockView: View {
         return RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
             .fill(
                 LinearGradient(
-                    colors: [Color.accentGold.opacity(0.6), Color.accentGold.opacity(0.4)],
+                    colors: [Color.accentGold.standard(), Color.accentGold.medium()],
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )
@@ -66,20 +66,20 @@ struct StockView: View {
             .overlay(
                 Image(systemName: "arrow.counterclockwise.circle.fill")
                     .font(.system(size: iconSize, weight: .medium))
-                    .foregroundColor(Color.white.opacity(0.9))
-                    .shadow(color: Color.black.opacity(0.2), radius: 2, x: 0, y: 1)
+                    .foregroundColor(Color.white.veryStrong())
+                    .shadow(color: Color.black.subtle(), radius: 2, x: 0, y: 1)
             )
             .overlay(
                 RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
-                    .stroke(Color.accentGold.opacity(0.5), lineWidth: 2)
+                    .stroke(Color.accentGold.medium(), lineWidth: 2)
             )
-            .shadow(color: Color.accentGold.opacity(0.3), radius: 6, x: 0, y: 2)
+            .shadow(color: Color.accentGold.subtle(), radius: 6, x: 0, y: 2)
     }
 
     /// Dashed outline when stock is empty and no reshuffle is possible.
     private var emptySlot: some View {
         RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
-            .stroke(Color.white.opacity(0.3), style: StrokeStyle(lineWidth: 2, dash: [5, 4]))
+            .stroke(Color.white.subtle(), style: StrokeStyle(lineWidth: 2, dash: [5, 4]))
     }
 }
 

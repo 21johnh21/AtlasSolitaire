@@ -174,11 +174,11 @@ struct GameView: View {
                 Text("\(vm.gameState?.moveCount ?? 0)")
                     .font(.system(size: 15, weight: .semibold))
             }
-            .foregroundColor(Color.white.opacity(0.85))
+            .foregroundColor(Color.white.strong())
 
             // Separator
             Circle()
-                .fill(Color.white.opacity(0.3))
+                .fill(Color.white.subtle())
                 .frame(width: 4, height: 4)
 
             // Time
@@ -189,26 +189,26 @@ struct GameView: View {
                     .font(.system(size: 15, weight: .semibold))
                     .monospacedDigit()
             }
-            .foregroundColor(Color.white.opacity(0.85))
+            .foregroundColor(Color.white.strong())
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 8)
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color.black.opacity(0.25))
+                .fill(Color.black.subtle())
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.white.opacity(0.15), lineWidth: 1)
+                        .stroke(Color.white.verySubtle(), lineWidth: 1)
                 )
         )
-        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 2)
+        .shadow(color: Color.black.subtle(), radius: 3, x: 0, y: 2)
     }
 
     // ─── Progress: "X / Y groups completed" ─────────────────────────────────
     private var progressRow: some View {
         Text("\(vm.completedGroupCount) / \(vm.totalGroupCount) groups completed")
             .font(.system(size: 12, weight: .medium))
-            .foregroundColor(Color.white.opacity(0.7))
+            .foregroundColor(Color.white.standard())
     }
 
     // ─── Helper to format time ──────────────────────────────────────────────
@@ -270,12 +270,12 @@ struct GameView: View {
                 Text("Quit")
                     .font(.system(size: 13, weight: .medium))
             }
-            .foregroundColor(Color.white.opacity(0.7))
+            .foregroundColor(Color.white.standard())
             .padding(.horizontal, 10)
             .padding(.vertical, 6)
             .background(
                 RoundedRectangle(cornerRadius: 6)
-                    .fill(Color.black.opacity(0.2))
+                    .fill(Color.black.subtle())
             )
         }
         .accessibilityLabel("Quit game and return to menu")
