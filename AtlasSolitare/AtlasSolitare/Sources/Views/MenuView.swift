@@ -8,13 +8,31 @@ struct MenuView: View {
     @ObservedObject var vm: GameViewModel
 
     var body: some View {
-        ZStack {
-            // ── Background ──────────────────────────────────────────────────
-            Color.feltGreen
-                .ignoresSafeArea()
+        NavigationStack {
+            ZStack {
+                // ── Background ──────────────────────────────────────────────────
+                Color.feltGreen
+                    .ignoresSafeArea()
 
-            VStack(spacing: 0) {
-                Spacer(minLength: 60)
+                VStack(spacing: 0) {
+                    // ── Settings button in top right ────────────────────────────
+                    HStack {
+                        Spacer()
+                        NavigationLink(destination: SettingsView(vm: vm)) {
+                            Image(systemName: "gearshape.fill")
+                                .font(.system(size: 24))
+                                .foregroundColor(Color.white.opacity(0.6))
+                                .padding(12)
+                                .background(
+                                    Circle()
+                                        .fill(Color.black.opacity(0.2))
+                                )
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.top, 16)
+
+                    Spacer(minLength: 20)
 
                 // ── Title block ─────────────────────────────────────────────
                 titleBlock
@@ -31,17 +49,14 @@ struct MenuView: View {
                     newGameButton
                 }
 
-                Spacer(minLength: 32)
-
-                // ── Settings ────────────────────────────────────────────────
-                settingsSection
-
                 Spacer()
 
                 // ── Footer ──────────────────────────────────────────────────
                 footerText
+                }
+                .padding(.horizontal, 40)
             }
-            .padding(.horizontal, 40)
+            .navigationBarHidden(true)
         }
     }
 
@@ -103,38 +118,6 @@ struct MenuView: View {
             )
             .clipShape(RoundedRectangle(cornerRadius: 14))
             .shadow(color: Color.black.opacity(0.25), radius: 6, y: 3)
-        }
-    }
-
-    // ─── Settings toggles ───────────────────────────────────────────────────
-    private var settingsSection: some View {
-        VStack(spacing: 16) {
-            settingToggle(
-                title: "Sound",
-                icon: vm.settings.soundEnabled ? "speaker.3.fill" : "speaker.slash.fill",
-                isOn: vm.settings.soundEnabled,
-                action: vm.toggleSound
-            )
-            settingToggle(
-                title: "Haptics",
-                icon: vm.settings.hapticsEnabled ? "hand.raised.fill" : "hand.raised.slash",
-                isOn: vm.settings.hapticsEnabled,
-                action: vm.toggleHaptics
-            )
-        }
-    }
-
-    private func settingToggle(title: String, icon: String, isOn: Bool, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            HStack(spacing: 10) {
-                Image(systemName: icon)
-                    .font(.system(size: 18))
-                    .foregroundColor(isOn ? Color.accentGold : Color.white.opacity(0.4))
-                    .frame(width: 22)
-                Text(title)
-                    .font(.system(size: 15))
-                    .foregroundColor(isOn ? Color.white : Color.white.opacity(0.4))
-            }
         }
     }
 
