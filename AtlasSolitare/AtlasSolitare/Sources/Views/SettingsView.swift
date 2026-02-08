@@ -21,33 +21,61 @@ struct SettingsView: View {
                 Spacer(minLength: 40)
 
                 // ── Settings list ───────────────────────────────────────────
-                VStack(spacing: 24) {
-                    settingsCard {
-                        VStack(spacing: 20) {
-                            settingRow(
-                                title: "Sound",
-                                subtitle: "Game sound effects",
-                                icon: "speaker.wave.3.fill",
-                                isOn: vm.settings.soundEnabled,
-                                action: vm.toggleSound
-                            )
+                ScrollView {
+                    VStack(spacing: 24) {
+                        // Game Settings
+                        settingsCard {
+                            VStack(spacing: 20) {
+                                settingRow(
+                                    title: "Sound",
+                                    subtitle: "Game sound effects",
+                                    icon: "speaker.wave.3.fill",
+                                    isOn: vm.settings.soundEnabled,
+                                    action: vm.toggleSound
+                                )
 
-                            Divider()
-                                .background(Color.white.opacity(0.1))
+                                Divider()
+                                    .background(Color.white.opacity(0.1))
 
-                            settingRow(
-                                title: "Haptics",
-                                subtitle: "Vibration feedback",
-                                icon: "hand.raised.fill",
-                                isOn: vm.settings.hapticsEnabled,
-                                action: vm.toggleHaptics
-                            )
+                                settingRow(
+                                    title: "Haptics",
+                                    subtitle: "Vibration feedback",
+                                    icon: "hand.raised.fill",
+                                    isOn: vm.settings.hapticsEnabled,
+                                    action: vm.toggleHaptics
+                                )
+                            }
+                        }
+
+                        // Support & Help
+                        settingsCard {
+                            VStack(spacing: 20) {
+                                NavigationLink(destination: SupportView()) {
+                                    settingNavigationRow(
+                                        title: "Support & Help",
+                                        subtitle: "FAQs and game instructions",
+                                        icon: "questionmark.circle.fill"
+                                    )
+                                }
+
+                                Divider()
+                                    .background(Color.white.opacity(0.1))
+
+                                NavigationLink(destination: PrivacyPolicyView()) {
+                                    settingNavigationRow(
+                                        title: "Privacy Policy",
+                                        subtitle: "How we handle your data",
+                                        icon: "shield.fill"
+                                    )
+                                }
+                            }
                         }
                     }
+                    .padding(.horizontal, 32)
+                    .padding(.bottom, 20)
                 }
-                .padding(.horizontal, 32)
 
-                Spacer()
+                Spacer(minLength: 12)
 
                 // ── Footer ──────────────────────────────────────────────────
                 footerInfo
@@ -154,6 +182,44 @@ struct SettingsView: View {
             }
         }
         .buttonStyle(.plain)
+    }
+
+    // ─── Navigation row (for links to other pages) ──────────────────────────
+    private func settingNavigationRow(
+        title: String,
+        subtitle: String,
+        icon: String
+    ) -> some View {
+        HStack(spacing: 16) {
+            // Icon
+            ZStack {
+                Circle()
+                    .fill(Color.accentGold.opacity(0.2))
+                    .frame(width: 44, height: 44)
+
+                Image(systemName: icon)
+                    .font(.system(size: 20))
+                    .foregroundColor(Color.accentGold)
+            }
+
+            // Title & subtitle
+            VStack(alignment: .leading, spacing: 3) {
+                Text(title)
+                    .font(.system(size: 17, weight: .semibold))
+                    .foregroundColor(.white)
+
+                Text(subtitle)
+                    .font(.system(size: 13))
+                    .foregroundColor(Color.white.opacity(0.5))
+            }
+
+            Spacer()
+
+            // Chevron
+            Image(systemName: "chevron.right")
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundColor(Color.white.opacity(0.3))
+        }
     }
 
     // ─── Footer ─────────────────────────────────────────────────────────────
