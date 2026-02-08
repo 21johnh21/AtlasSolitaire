@@ -33,6 +33,8 @@ struct FoundationView: View {
             // Category banner (shown when foundation has a base card)
             if !pile.isEmpty, let groupName = groupName {
                 categoryBanner(groupName)
+                    .transition(.scale.combined(with: .opacity))
+                    .animation(.spring(response: 0.4, dampingFraction: 0.7), value: groupName)
             } else {
                 // Spacer to keep alignment consistent
                 Color.clear
@@ -98,32 +100,36 @@ struct FoundationView: View {
 
     // ─── Empty slot ─────────────────────────────────────────────────────────
     private var emptySlot: some View {
-        let iconSize = cardWidth / 85 * 18  // Scale icon with card width
+        let iconSize = cardWidth / 85 * 24  // Larger icon since no text
 
         return RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
-            .stroke(Color.white.opacity(0.25), style: StrokeStyle(lineWidth: 2, dash: [5, 4]))
+            .stroke(Color.white.opacity(0.3), style: StrokeStyle(lineWidth: 2, dash: [5, 4]))
             .cardFrame(width: cardWidth)
             .overlay(
-                VStack(spacing: 2) {
-                    Image(systemName: "square.and.arrow.up")
-                        .font(.system(size: iconSize))
-                        .foregroundColor(Color.white.opacity(0.25))
-                    Text("Base")
-                        .font(.system(size: 9, weight: .medium))
-                        .foregroundColor(Color.white.opacity(0.25))
-                }
+                Image(systemName: "arrow.down.circle")
+                    .font(.system(size: iconSize, weight: .medium))
+                    .foregroundColor(Color.white.opacity(0.35))
             )
     }
 
     /// Small badge showing how many cards are on this pile (for visual feedback).
     private var countBadge: some View {
-        Text("\(pile.cards.count)")
-            .font(.system(size: 9, weight: .bold))
+        let badgeSize = cardWidth / 85 * 11  // Scale badge with card width
+
+        return Text("\(pile.cards.count)")
+            .font(.system(size: badgeSize, weight: .bold))
             .foregroundColor(.white)
-            .padding(3)
-            .background(Color.accentGold)
-            .clipShape(Circle())
-            .padding(2)
+            .padding(cardWidth / 85 * 4)
+            .background(
+                Circle()
+                    .fill(Color.accentGold)
+                    .shadow(color: Color.black.opacity(0.3), radius: 2, x: 0, y: 1)
+            )
+            .overlay(
+                Circle()
+                    .stroke(Color.white.opacity(0.3), lineWidth: 1.5)
+            )
+            .padding(cardWidth / 85 * 3)
     }
 
     /// Category banner showing the group name
