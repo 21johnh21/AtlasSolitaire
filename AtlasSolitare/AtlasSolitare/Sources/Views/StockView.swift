@@ -34,13 +34,18 @@ struct StockView: View {
     // ─── Stacked face-down cards (show up to 3 layers for depth) ────────────
     private var stockStack: some View {
         ZStack(alignment: .bottom) {
-            // Bottom layers (offset slightly for visual depth).
+            // Bottom layers (offset for visual depth).
             ForEach(0..<min(cardCount, 3), id: \.self) { i in
-                let offset = CGFloat(min(cardCount, 3) - 1 - i) * 1.5
+                let offset = CGFloat(min(cardCount, 3) - 1 - i) * 2.5
                 RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
                     .fill(Color.cardBack)
                     .cardFrame(width: cardWidth)
-                    .cardShadow()
+                    .shadow(
+                        color: Color.black.opacity(0.3),
+                        radius: 4 + CGFloat(i),
+                        x: 1,
+                        y: 2 + CGFloat(i) * 0.5
+                    )
                     .offset(y: -offset)
             }
         }
@@ -48,20 +53,33 @@ struct StockView: View {
 
     /// Circular arrow icon shown when stock is empty but reshuffle is available.
     private var reshuffleIcon: some View {
-        RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
-            .fill(Color.cardBack.opacity(0.5))
-            .overlay(
-                Image(systemName: "arrow.counterclockwise")
-                    .font(.system(size: 28))
-                    .foregroundColor(Color.white.opacity(0.7))
+        let iconSize = cardWidth / 85 * 32  // Scale icon with card width
+
+        return RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
+            .fill(
+                LinearGradient(
+                    colors: [Color.accentGold.opacity(0.6), Color.accentGold.opacity(0.4)],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
             )
-            .cardShadow()
+            .overlay(
+                Image(systemName: "arrow.counterclockwise.circle.fill")
+                    .font(.system(size: iconSize, weight: .medium))
+                    .foregroundColor(Color.white.opacity(0.9))
+                    .shadow(color: Color.black.opacity(0.2), radius: 2, x: 0, y: 1)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
+                    .stroke(Color.accentGold.opacity(0.5), lineWidth: 2)
+            )
+            .shadow(color: Color.accentGold.opacity(0.3), radius: 6, x: 0, y: 2)
     }
 
     /// Dashed outline when stock is empty and no reshuffle is possible.
     private var emptySlot: some View {
         RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
-            .stroke(Color.white.opacity(0.25), style: StrokeStyle(lineWidth: 1.5, dash: [4, 4]))
+            .stroke(Color.white.opacity(0.3), style: StrokeStyle(lineWidth: 2, dash: [5, 4]))
     }
 }
 

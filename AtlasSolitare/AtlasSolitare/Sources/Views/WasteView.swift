@@ -53,7 +53,7 @@ struct WasteView: View {
     /// Dashed outline placeholder when the waste is empty.
     private var emptySlot: some View {
         RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
-            .stroke(Color.white.opacity(0.15), style: StrokeStyle(lineWidth: 1.5, dash: [4, 4]))
+            .stroke(Color.white.opacity(0.3), style: StrokeStyle(lineWidth: 2, dash: [5, 4]))
             .cardFrame(width: cardWidth)
     }
 }

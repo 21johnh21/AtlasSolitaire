@@ -43,16 +43,15 @@ struct GroupCompletionView: View {
         .overlay {
             // Confetti particles
             ZStack {
-                ForEach(0..<20, id: \.self) { i in
-                    Circle()
-                        .fill(confettiColor(i))
-                        .frame(width: CGFloat.random(in: 4...8), height: CGFloat.random(in: 4...8))
+                ForEach(0..<25, id: \.self) { i in
+                    confettiParticle(index: i)
                         .offset(
                             x: confettiX(i) * animationPhase,
                             y: confettiY(i) * animationPhase
                         )
-                        .opacity(animationPhase > 0 ? Double.random(in: 0.6...1.0) : 0)
-                        .rotationEffect(.degrees(Double(i) * 18 * animationPhase))
+                        .opacity(animationPhase > 0 ? confettiOpacity(i) : 0)
+                        .rotationEffect(.degrees(confettiRotation(i) * animationPhase))
+                        .scaleEffect(1.0 + (animationPhase * 0.3))
                 }
             }
         }
@@ -80,6 +79,32 @@ struct GroupCompletionView: View {
 
     // ─── Confetti helpers ───────────────────────────────────────────────────
 
+    @ViewBuilder
+    private func confettiParticle(index: Int) -> some View {
+        let size = confettiSize(index)
+        let color = confettiColor(index)
+
+        // Mix of shapes: circles, squares, and diamonds
+        switch index % 4 {
+        case 0:
+            Circle()
+                .fill(color)
+                .frame(width: size, height: size)
+        case 1:
+            RoundedRectangle(cornerRadius: 2)
+                .fill(color)
+                .frame(width: size, height: size)
+        case 2:
+            Diamond()
+                .fill(color)
+                .frame(width: size, height: size)
+        default:
+            Star()
+                .fill(color)
+                .frame(width: size, height: size)
+        }
+    }
+
     private func confettiColor(_ i: Int) -> Color {
         let colors: [Color] = [
             Color.accentGold,
@@ -92,16 +117,84 @@ struct GroupCompletionView: View {
         return colors[i % colors.count]
     }
 
+    private func confettiSize(_ i: Int) -> CGFloat {
+        // Vary sizes for more visual interest
+        let sizes: [CGFloat] = [6, 8, 10, 7, 9]
+        return sizes[i % sizes.count]
+    }
+
+    private func confettiOpacity(_ i: Int) -> Double {
+        // Vary opacity for depth
+        return i % 3 == 0 ? 0.7 : 1.0
+    }
+
+    private func confettiRotation(_ i: Int) -> Double {
+        // Different rotation speeds and directions
+        let rotations: [Double] = [360, -540, 720, -360, 450, -630]
+        return rotations[i % rotations.count]
+    }
+
     private func confettiX(_ i: Int) -> CGFloat {
-        let angle = Double(i) * (360.0 / 20.0) * .pi / 180.0
-        let distance: CGFloat = CGFloat.random(in: 100...160)
-        return cos(angle) * distance
+        let angle = Double(i) * (360.0 / 25.0) * .pi / 180.0
+        // Vary distance for more dynamic spread
+        let distance: CGFloat = i % 2 == 0 ? CGFloat.random(in: 120...180) : CGFloat.random(in: 90...130)
+        return CGFloat(cos(angle)) * distance
     }
 
     private func confettiY(_ i: Int) -> CGFloat {
-        let angle = Double(i) * (360.0 / 20.0) * .pi / 180.0
-        let distance: CGFloat = CGFloat.random(in: 100...160)
-        return sin(angle) * distance
+        let angle = Double(i) * (360.0 / 25.0) * .pi / 180.0
+        // Vary distance for more dynamic spread
+        let distance: CGFloat = i % 2 == 0 ? CGFloat.random(in: 120...180) : CGFloat.random(in: 90...130)
+        return CGFloat(sin(angle)) * distance
+    }
+}
+
+// MARK: - Custom Shapes
+
+/// Diamond shape for confetti variety
+struct Diamond: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.midY))
+        path.closeSubpath()
+        return path
+    }
+}
+
+/// Star shape for confetti variety
+struct Star: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let center = CGPoint(x: rect.midX, y: rect.midY)
+        let outerRadius = min(rect.width, rect.height) / 2
+        let innerRadius = outerRadius * 0.4
+
+        for i in 0..<5 {
+            let angle = (Double(i) * 72.0 - 90.0) * .pi / 180.0
+            let outerPoint = CGPoint(
+                x: center.x + CGFloat(cos(angle)) * outerRadius,
+                y: center.y + CGFloat(sin(angle)) * outerRadius
+            )
+
+            if i == 0 {
+                path.move(to: outerPoint)
+            } else {
+                path.addLine(to: outerPoint)
+            }
+
+            let innerAngle = (Double(i) * 72.0 - 90.0 + 36.0) * .pi / 180.0
+            let innerPoint = CGPoint(
+                x: center.x + CGFloat(cos(innerAngle)) * innerRadius,
+                y: center.y + CGFloat(sin(innerAngle)) * innerRadius
+            )
+            path.addLine(to: innerPoint)
+        }
+
+        path.closeSubpath()
+        return path
     }
 }
 
