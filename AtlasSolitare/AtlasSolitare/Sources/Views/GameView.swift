@@ -26,15 +26,21 @@ struct GameView: View {
             let _ = cardWidth  // Force usage to avoid warning
 
             VStack(spacing: 0) {
-                // ── Quit button ─────────────────────────────────────────────
-                HStack {
-                    quitButton
-                    Spacer()
+                // ── Top bar: quit button + stats (overlay) ─────────────────
+                ZStack {
+                    // Quit button aligned to leading
+                    HStack {
+                        quitButton
+                        Spacer()
+                    }
+
+                    // Stats perfectly centered
+                    statsDisplay
                 }
                 .padding(.horizontal, 16)
                 .padding(.top, 8)
 
-                // ── Top row: waste + stats + stock ──────────────────────────
+                // ── Top row: waste + stock ──────────────────────────────────
                 topRow
                     .padding(.top, 8)
                     .padding(.horizontal, 16)
@@ -85,7 +91,7 @@ struct GameView: View {
         }
     }
 
-    // ─── Top row: Waste (left) + Stats (center) + Stock (right) ───────────
+    // ─── Top row: Waste (left) + Stock (right) ─────────────────────────────
     private var topRow: some View {
         HStack(alignment: .center, spacing: CardLayout.horizontalSpacing) {
             // Waste on the left.
@@ -105,11 +111,6 @@ struct GameView: View {
                     return DragPayload(card: card, source: .waste)
                 }
             )
-
-            Spacer()
-
-            // Stats in the center
-            statsDisplay
 
             Spacer()
 
@@ -167,35 +168,40 @@ struct GameView: View {
     private var statsDisplay: some View {
         HStack(spacing: 12) {
             // Moves
-            HStack(spacing: 4) {
+            HStack(spacing: 5) {
                 Image(systemName: "hand.tap.fill")
-                    .font(.system(size: 12))
+                    .font(.system(size: 14, weight: .medium))
                 Text("\(vm.gameState?.moveCount ?? 0)")
-                    .font(.system(size: 14, weight: .semibold))
+                    .font(.system(size: 15, weight: .semibold))
             }
-            .foregroundColor(Color.white.opacity(0.75))
+            .foregroundColor(Color.white.opacity(0.85))
 
             // Separator
-            Text("•")
-                .font(.system(size: 12))
-                .foregroundColor(Color.white.opacity(0.4))
+            Circle()
+                .fill(Color.white.opacity(0.3))
+                .frame(width: 4, height: 4)
 
             // Time
-            HStack(spacing: 4) {
+            HStack(spacing: 5) {
                 Image(systemName: "clock.fill")
-                    .font(.system(size: 12))
+                    .font(.system(size: 14, weight: .medium))
                 Text(formatTime(vm.currentElapsedTime))
-                    .font(.system(size: 14, weight: .semibold))
+                    .font(.system(size: 15, weight: .semibold))
                     .monospacedDigit()
             }
-            .foregroundColor(Color.white.opacity(0.75))
+            .foregroundColor(Color.white.opacity(0.85))
         }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 6)
+        .padding(.horizontal, 14)
+        .padding(.vertical, 8)
         .background(
-            RoundedRectangle(cornerRadius: 8)
-                .fill(Color.black.opacity(0.3))
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.black.opacity(0.25))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.white.opacity(0.15), lineWidth: 1)
+                )
         )
+        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 2)
     }
 
     // ─── Progress: "X / Y groups completed" ─────────────────────────────────
