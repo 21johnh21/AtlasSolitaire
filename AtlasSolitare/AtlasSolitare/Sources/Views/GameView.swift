@@ -65,7 +65,7 @@ struct GameView: View {
         .fullScreenCover(
             isPresented: Binding(
                 get: { vm.phase == .won },
-                set: { if !$0 { vm.returnToMenu() } }
+                set: { _ in }
             )
         ) {
             WinView(vm: vm)
