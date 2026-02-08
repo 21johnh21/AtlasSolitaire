@@ -10,7 +10,6 @@ import UniformTypeIdentifiers
 /// (iOS 16+).  A tap-to-select fallback is always available for accessibility.
 struct GameView: View {
     @ObservedObject var vm: GameViewModel
-    @State private var showQuitConfirmation = false
     @State private var draggingCardIds: Set<String> = []
     @State private var cardWidth: CGFloat = CardLayout.width
 
@@ -70,15 +69,6 @@ struct GameView: View {
             )
         ) {
             WinView(vm: vm)
-        }
-        // Quit confirmation alert
-        .alert("Quit Game?", isPresented: $showQuitConfirmation) {
-            Button("Cancel", role: .cancel) { }
-            Button("Quit", role: .destructive) {
-                vm.returnToMenu()
-            }
-        } message: {
-            Text("Your current game will be saved and you can resume it later.")
         }
     }
 
@@ -198,7 +188,7 @@ struct GameView: View {
     // ─── Quit button ────────────────────────────────────────────────────────
     private var quitButton: some View {
         Button(action: {
-            showQuitConfirmation = true
+            vm.returnToMenu()
         }) {
             HStack(spacing: 4) {
                 Image(systemName: "xmark.circle.fill")
