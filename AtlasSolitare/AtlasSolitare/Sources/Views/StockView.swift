@@ -39,6 +39,25 @@ struct StockView: View {
                 let offset = CGFloat(min(cardCount, 3) - 1 - i) * 2.5
                 RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
                     .fill(Color.cardBack)
+                    .overlay(
+                        // Globe design overlay
+                        ZStack {
+                            // Outer border
+                            RoundedRectangle(cornerRadius: CardLayout.cornerRadius - 3)
+                                .stroke(Color.accentGold.verySubtle(), lineWidth: 1.5)
+                                .padding(4)
+
+                            // Globe with latitude/longitude lines
+                            globeDesign
+                                .padding(12)
+
+                            // Atlas "A" monogram centered
+                            Text("A")
+                                .font(.system(size: 28, weight: .bold))
+                                .foregroundColor(Color.accentGold.subtle())
+                                .shadow(color: Color.accentGold.verySubtle(), radius: 4, x: 0, y: 2)
+                        }
+                    )
                     .cardFrame(width: cardWidth)
                     .shadow(
                         color: Color.black.opacity(0.3),
@@ -47,6 +66,55 @@ struct StockView: View {
                         y: 2 + CGFloat(i) * 0.5
                     )
                     .offset(y: -offset)
+            }
+        }
+    }
+
+    /// Globe design with latitude/longitude grid lines
+    @ViewBuilder
+    private var globeDesign: some View {
+        GeometryReader { geo in
+            let size = min(geo.size.width, geo.size.height)
+            let center = CGPoint(x: geo.size.width / 2, y: geo.size.height / 2)
+            let radius = size * 0.45
+
+            ZStack {
+                // Circle outline (globe)
+                Circle()
+                    .stroke(Color.accentGold.verySubtle(), lineWidth: 1.5)
+                    .frame(width: radius * 2, height: radius * 2)
+                    .position(center)
+
+                // Vertical meridian lines (longitude)
+                ForEach(0..<6, id: \.self) { i in
+                    Ellipse()
+                        .stroke(Color.accentGold.verySubtle(), lineWidth: 0.8)
+                        .frame(width: radius * 2 * CGFloat(i + 1) / 6, height: radius * 2)
+                        .position(center)
+                }
+
+                // Horizontal parallel lines (latitude)
+                ForEach(0..<3, id: \.self) { i in
+                    let offsetY = radius * CGFloat(i + 1) / 3
+
+                    // Above equator
+                    Ellipse()
+                        .stroke(Color.accentGold.verySubtle(), lineWidth: 0.8)
+                        .frame(width: radius * 2, height: radius * 0.4)
+                        .position(x: center.x, y: center.y - offsetY)
+
+                    // Below equator
+                    Ellipse()
+                        .stroke(Color.accentGold.verySubtle(), lineWidth: 0.8)
+                        .frame(width: radius * 2, height: radius * 0.4)
+                        .position(x: center.x, y: center.y + offsetY)
+                }
+
+                // Equator (stronger line)
+                Rectangle()
+                    .fill(Color.accentGold.verySubtle())
+                    .frame(width: radius * 2, height: 1)
+                    .position(center)
             }
         }
     }
