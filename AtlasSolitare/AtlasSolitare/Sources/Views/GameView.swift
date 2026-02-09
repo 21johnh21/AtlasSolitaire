@@ -43,7 +43,7 @@ struct GameView: View {
 
                 // ── Top row: waste + stock ──────────────────────────────────
                 topRow
-                    .padding(.top, 8)
+                    .padding(.top, 20)
                     .padding(.horizontal, 16)
 
                 // ── Foundations row ─────────────────────────────────────────
