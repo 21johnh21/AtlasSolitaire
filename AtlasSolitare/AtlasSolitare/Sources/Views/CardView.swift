@@ -96,19 +96,35 @@ struct CardView: View, Equatable {
             )
             .overlay(
                 RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
-                    .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                    .stroke(Color.gray.medium(), lineWidth: 1.5)
             )
     }
 
     /// Small colored badge in the top-left indicating base vs partner.
+    @ViewBuilder
     private var badge: some View {
-        Text(card.isBase ? "BASE" : "•")
-            .font(.system(size: card.isBase ? 8 : 12, weight: .bold))
-            .foregroundColor(card.isBase ? Color.white : Color.accentGold)
-            .padding(.horizontal, card.isBase ? 4 : 0)
-            .padding(.vertical, card.isBase ? 2 : 0)
-            .background(card.isBase ? Color.accentGold : Color.clear)
-            .cornerRadius(3)
+        if card.isBase {
+            // BASE badge with stronger visual hierarchy
+            Text("BASE")
+                .font(.system(size: 8, weight: .heavy))
+                .foregroundColor(Color.white)
+                .padding(.horizontal, 5)
+                .padding(.vertical, 3)
+                .background(
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(Color.accentGold)
+                        .shadow(color: Color.accentGold.medium(), radius: 2, x: 0, y: 1)
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 4)
+                        .stroke(Color(red: 0.95, green: 0.82, blue: 0.45), lineWidth: 1)
+                )
+        } else {
+            // Partner badge - small icon instead of bullet
+            Image(systemName: "circle.fill")
+                .font(.system(size: 6, weight: .bold))
+                .foregroundColor(Color.accentGold)
+        }
     }
 
     // ─── Face-down ──────────────────────────────────────────────────────────
@@ -118,14 +134,22 @@ struct CardView: View, Equatable {
             .overlay(
                 // Simple geometric pattern on the back.
                 RoundedRectangle(cornerRadius: CardLayout.cornerRadius - 3)
-                    .stroke(Color.white.opacity(0.12), lineWidth: 1)
+                    .stroke(Color.white.verySubtle(), lineWidth: 1)
                     .padding(4)
             )
             .overlay(
-                // Atlas icon placeholder (text for now).
-                Text("A")
-                    .font(.system(size: 28, weight: .bold))
-                    .foregroundColor(Color.white.opacity(0.25))
+                // Atlas icon with subtle styling
+                ZStack {
+                    Text("A")
+                        .font(.system(size: 32, weight: .bold))
+                        .foregroundColor(Color.white.verySubtle())
+
+                    // Subtle inner glow effect
+                    Text("A")
+                        .font(.system(size: 32, weight: .bold))
+                        .foregroundColor(Color.white.opacity(0.05))
+                        .blur(radius: 2)
+                }
             )
     }
 }
