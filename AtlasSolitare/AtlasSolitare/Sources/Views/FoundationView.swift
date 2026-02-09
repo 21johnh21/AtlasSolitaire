@@ -38,7 +38,7 @@ struct FoundationView: View {
             } else {
                 // Spacer to keep alignment consistent
                 Color.clear
-                    .frame(height: 20)
+                    .frame(width: cardWidth, height: 20)
             }
 
             // Card or empty slot
@@ -83,6 +83,7 @@ struct FoundationView: View {
                     }
             }
         }
+        .frame(width: cardWidth)
         .accessibilityLabel(
             pile.isEmpty
                 ? "Empty foundation slot \(pileIndex + 1)"
