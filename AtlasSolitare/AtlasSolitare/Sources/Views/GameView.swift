@@ -237,27 +237,32 @@ struct GameView: View {
         )
     }
 
-    // ─── Quit button ────────────────────────────────────────────────────────
+    // ─── Exit button ────────────────────────────────────────────────────────
     private var quitButton: some View {
         Button(action: {
             vm.returnToMenu()
         }) {
             HStack(spacing: 6) {
-                Image(systemName: "xmark.circle.fill")
-                    .font(.system(size: 16))
-                Text("Quit")
-                    .font(.system(size: 15, weight: .medium))
+                Image(systemName: "arrow.left.circle.fill")
+                    .font(.system(size: 16, weight: .medium))
+                Text("Exit")
+                    .font(.system(size: 15, weight: .semibold))
             }
-            .foregroundColor(Color.white.standard())
+            .foregroundColor(Color.white.veryStrong())
             .padding(.horizontal, 14)
             .padding(.vertical, 10)
             .background(
-                RoundedRectangle(cornerRadius: 8)
+                RoundedRectangle(cornerRadius: 10)
                     .fill(Color.black.subtle())
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.white.verySubtle(), lineWidth: 1)
+                    )
             )
+            .shadow(color: Color.black.subtle(), radius: 3, x: 0, y: 2)
         }
         .buttonStyle(ScaleButtonStyle())
-        .accessibilityLabel("Quit game and return to menu")
+        .accessibilityLabel("Exit game and return to menu")
     }
 
     // ─── Helper methods ─────────────────────────────────────────────────────
