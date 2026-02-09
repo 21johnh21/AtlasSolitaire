@@ -7,6 +7,7 @@ import SwiftUI
 struct SettingsView: View {
     @ObservedObject var vm: GameViewModel
     @Environment(\.dismiss) private var dismiss
+    private let haptic = HapticManager.shared
 
     var body: some View {
         ZStack {
@@ -57,6 +58,9 @@ struct SettingsView: View {
                                         icon: "questionmark.circle.fill"
                                     )
                                 }
+                                .simultaneousGesture(TapGesture().onEnded {
+                                    haptic.light()
+                                })
 
                                 Divider()
                                     .background(Color.white.opacity(0.1))
@@ -68,6 +72,9 @@ struct SettingsView: View {
                                         icon: "shield.fill"
                                     )
                                 }
+                                .simultaneousGesture(TapGesture().onEnded {
+                                    haptic.light()
+                                })
                             }
                         }
                     }
@@ -88,7 +95,10 @@ struct SettingsView: View {
     private var header: some View {
         VStack(spacing: 16) {
             HStack {
-                Button(action: { dismiss() }) {
+                Button(action: {
+                    haptic.light()
+                    dismiss()
+                }) {
                     HStack(spacing: 6) {
                         Image(systemName: "chevron.left")
                             .font(.system(size: 16, weight: .semibold))
@@ -141,7 +151,10 @@ struct SettingsView: View {
         isOn: Bool,
         action: @escaping () -> Void
     ) -> some View {
-        Button(action: action) {
+        Button(action: {
+            haptic.light()
+            action()
+        }) {
             HStack(spacing: 16) {
                 // Icon
                 ZStack {

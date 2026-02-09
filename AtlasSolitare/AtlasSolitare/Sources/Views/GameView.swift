@@ -12,6 +12,7 @@ struct GameView: View {
     @ObservedObject var vm: GameViewModel
     @State private var draggingCardIds: Set<String> = []
     @State private var cardWidth: CGFloat = CardLayout.width
+    private let haptic = HapticManager.shared
 
     var body: some View {
         GeometryReader { geo in
@@ -240,6 +241,7 @@ struct GameView: View {
     // ─── Exit button ────────────────────────────────────────────────────────
     private var quitButton: some View {
         Button(action: {
+            haptic.light()
             vm.returnToMenu()
         }) {
             HStack(spacing: 6) {

@@ -278,7 +278,7 @@ class GameViewModel: ObservableObject {
 
     private func handleGroupCompleted(_ groupId: String) {
         audio.play(.completeGroup)
-        haptic.success()
+        haptic.groupCompletionRumble()
         recentlyCompletedGroupId = groupId
 
         // Clear the celebration after a delay
@@ -292,7 +292,7 @@ class GameViewModel: ObservableObject {
     private func handleWin() {
         stopTimer()
         audio.play(.win)
-        haptic.success()
+        haptic.winRumble()
         try? persistence.clearGameState()
     }
 

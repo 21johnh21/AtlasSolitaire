@@ -7,6 +7,7 @@ import SwiftUI
 /// "Play Again" and "Return to Menu".
 struct WinView: View {
     @ObservedObject var vm: GameViewModel
+    private let haptic = HapticManager.shared
 
     /// Simple particle-like animation state.
     @State private var animationPhase: Double = 0
@@ -54,7 +55,10 @@ struct WinView: View {
                 Spacer(minLength: 24)
 
                 // ── Action buttons ──────────────────────────────────────────
-                Button(action: vm.startNewGame) {
+                Button(action: {
+                    haptic.light()
+                    vm.startNewGame()
+                }) {
                     Text("Play Again")
                         .font(.system(size: 18, weight: .semibold))
                         .foregroundColor(.white)
@@ -65,7 +69,10 @@ struct WinView: View {
                         .shadow(color: Color.black.opacity(0.2), radius: 4, y: 2)
                 }
 
-                Button(action: vm.returnToMenu) {
+                Button(action: {
+                    haptic.light()
+                    vm.returnToMenu()
+                }) {
                     Text("Return to Menu")
                         .font(.system(size: 15))
                         .foregroundColor(Color.white.opacity(0.6))

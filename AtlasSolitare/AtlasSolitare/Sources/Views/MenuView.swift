@@ -6,6 +6,7 @@ import SwiftUI
 /// Provides: New Game, settings toggles, and app title.
 struct MenuView: View {
     @ObservedObject var vm: GameViewModel
+    private let haptic = HapticManager.shared
 
     var body: some View {
         NavigationStack {
@@ -34,6 +35,9 @@ struct MenuView: View {
                                 .shadow(color: Color.black.subtle(), radius: 3, x: 0, y: 2)
                         }
                         .buttonStyle(ScaleButtonStyle())
+                        .simultaneousGesture(TapGesture().onEnded {
+                            haptic.light()
+                        })
                     }
                     .padding(.horizontal, 20)
                     .padding(.top, 16)
@@ -90,7 +94,10 @@ struct MenuView: View {
 
     // ─── Continue Game ──────────────────────────────────────────────────────
     private var continueGameButton: some View {
-        Button(action: vm.continueGame) {
+        Button(action: {
+            haptic.light()
+            vm.continueGame()
+        }) {
             HStack(spacing: 8) {
                 Image(systemName: "play.circle.fill")
                     .font(.system(size: 18))
@@ -109,7 +116,10 @@ struct MenuView: View {
 
     // ─── New Game ───────────────────────────────────────────────────────────
     private var newGameButton: some View {
-        Button(action: vm.startNewGame) {
+        Button(action: {
+            haptic.light()
+            vm.startNewGame()
+        }) {
             HStack(spacing: 8) {
                 Image(systemName: "plus.circle.fill")
                     .font(.system(size: 18))
