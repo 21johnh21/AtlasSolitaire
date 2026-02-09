@@ -7,13 +7,9 @@ import SwiftUI
 struct WasteView: View {
     /// The top card of the waste pile, nil if empty.
     let topCard: Card?
-    /// Whether the top card is currently selected (tap-to-select flow).
-    let isSelected: Bool
     /// Set of card IDs currently being dragged.
     var draggingCardIds: Set<String> = []
 
-    /// Called when the user taps the top waste card.
-    var onTap: (() -> Void)?
     /// Called when drag starts - returns a DragPayload for the card.
     var onDragPayload: ((Card) -> DragPayload)?
 
@@ -28,8 +24,8 @@ struct WasteView: View {
                     CardView(
                         card: card,
                         isFaceUp: true,
-                        isHighlighted: isSelected,
-                        onTap: onTap
+                        isHighlighted: false,
+                        onTap: nil
                     )
                     .draggable(onDragPayload?(card) ?? DragPayload(card: card, source: .waste)) {
                         CardView(
@@ -62,9 +58,9 @@ struct WasteView: View {
 
 #Preview {
     HStack(spacing: 12) {
-        WasteView(topCard: Card(id: "w1", label: "Italy", type: .partner, groupId: "europe_01", imageName: nil), isSelected: false)
-        WasteView(topCard: Card(id: "w2", label: "Japan", type: .partner, groupId: "islands_01", imageName: nil), isSelected: true)
-        WasteView(topCard: nil, isSelected: false)
+        WasteView(topCard: Card(id: "w1", label: "Italy", type: .partner, groupId: "europe_01", imageName: nil))
+        WasteView(topCard: Card(id: "w2", label: "Japan", type: .partner, groupId: "islands_01", imageName: nil))
+        WasteView(topCard: nil)
     }
     .padding()
     .background(Color.feltGreen)

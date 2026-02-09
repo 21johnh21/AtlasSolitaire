@@ -10,17 +10,11 @@ struct FoundationView: View {
     let pile: FoundationPile
     /// Index of this foundation slot (0–3).
     let pileIndex: Int
-    /// Whether the top card is currently selected.
-    let isSelected: Bool
     /// Set of card IDs currently being dragged.
     var draggingCardIds: Set<String> = []
     /// Called when drag starts.
     var onDragStart: ((Card) -> Void)?
 
-    /// Called when the user taps the top card (for tap-to-select).
-    var onTapCard: (() -> Void)?
-    /// Called when the user taps the empty slot while a card is selected (tap-to-place).
-    var onTapEmpty: (() -> Void)?
     /// Called when a payload is dropped onto this foundation (drag-and-drop).
     var onDropPayload: ((DragPayload) -> Bool)?
 
@@ -47,8 +41,8 @@ struct FoundationView: View {
                     CardView(
                         card: top,
                         isFaceUp: true,
-                        isHighlighted: isSelected,
-                        onTap: onTapCard
+                        isHighlighted: false,
+                        onTap: nil
                     )
                     // Small card-count badge when more than 1 card is stacked.
                     .overlay(alignment: .bottomTrailing) {
@@ -70,7 +64,6 @@ struct FoundationView: View {
 
                 if pile.topCard == nil || isDragging {
                     emptySlot
-                        .onTapGesture { onTapEmpty?() }
                 }
 
                 // Drop destination overlay
@@ -164,10 +157,10 @@ struct FoundationView: View {
     ])
 
     HStack(spacing: 12) {
-        FoundationView(pile: emptyPile,    pileIndex: 0, isSelected: false)
-        FoundationView(pile: occupiedPile, pileIndex: 1, isSelected: false)
-        FoundationView(pile: emptyPile,    pileIndex: 2, isSelected: false)
-        FoundationView(pile: emptyPile,    pileIndex: 3, isSelected: false)
+        FoundationView(pile: emptyPile,    pileIndex: 0)
+        FoundationView(pile: occupiedPile, pileIndex: 1)
+        FoundationView(pile: emptyPile,    pileIndex: 2)
+        FoundationView(pile: emptyPile,    pileIndex: 3)
     }
     .padding()
     .background(Color.feltGreen)

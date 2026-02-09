@@ -97,13 +97,7 @@ struct GameView: View {
             // Waste on the left.
             WasteView(
                 topCard: vm.wasteTopCard,
-                isSelected: vm.wasteTopCard.map { vm.isSelected($0) } ?? false,
                 draggingCardIds: draggingCardIds,
-                onTap: {
-                    if let card = vm.wasteTopCard {
-                        vm.tapCard(card: card, source: .waste)
-                    }
-                },
                 onDragPayload: { card in
                     // Clear any previous dragging state before starting new drag
                     draggingCardIds.removeAll()
@@ -132,20 +126,11 @@ struct GameView: View {
                 FoundationView(
                     pile: pile,
                     pileIndex: idx,
-                    isSelected: pile.topCard.map { vm.isSelected($0) } ?? false,
                     draggingCardIds: draggingCardIds,
                     onDragStart: { card in
                         // Clear any previous dragging state before starting new drag
                         draggingCardIds.removeAll()
                         draggingCardIds = [card.id]
-                    },
-                    onTapCard: {
-                        if let card = pile.topCard {
-                            vm.tapCard(card: card, source: .foundation(pileIndex: idx))
-                        }
-                    },
-                    onTapEmpty: {
-                        vm.tapEmptyFoundation(pileIndex: idx)
                     },
                     onDropPayload: { payload in
                         // If multiple cards, move them all to the foundation
@@ -223,14 +208,7 @@ struct GameView: View {
         let tableau = vm.tableau  // Cache the array lookup
         return TableauView(
             piles: tableau,
-            selectedCardId: vm.selectedCard?.card.id,
             draggingCardIds: draggingCardIds,
-            onTapCard: { card, pileIdx in
-                vm.tapCard(card: card, source: .tableau(pileIndex: pileIdx))
-            },
-            onTapEmptyPile: { pileIdx in
-                vm.tapEmptyTableau(pileIndex: pileIdx)
-            },
             onDragPayload: { card, pileIdx, cardIdx in
                 // Clear any previous dragging state before starting new drag
                 draggingCardIds = []

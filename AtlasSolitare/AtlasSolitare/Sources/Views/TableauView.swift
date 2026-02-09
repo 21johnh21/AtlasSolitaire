@@ -9,15 +9,9 @@ import UniformTypeIdentifiers
 struct TableauView: View {
     /// The current tableau state (array of piles, each pile bottom→top).
     let piles: [[TableauCard]]
-    /// The currently selected card id (for highlight), nil if none.
-    let selectedCardId: String?
     /// Set of card IDs currently being dragged.
     var draggingCardIds: Set<String> = []
 
-    /// Called when a face-up top card is tapped.  Passes the card and its pile index.
-    var onTapCard: ((Card, Int) -> Void)?
-    /// Called when an empty pile is tapped (for tap-to-place).  Passes pile index.
-    var onTapEmptyPile: ((Int) -> Void)?
     /// Called when drag starts from a tableau card. Returns a DragPayload for the card and any cards stacked on top.
     var onDragPayload: ((Card, Int, Int) -> DragPayload)?
     /// Called when a payload is dropped on a tableau pile. Returns success status.
@@ -29,10 +23,7 @@ struct TableauView: View {
                 SingleTableauPile(
                     pile: piles[pileIndex],
                     pileIndex: pileIndex,
-                    selectedCardId: selectedCardId,
                     draggingCardIds: draggingCardIds,
-                    onTapCard: onTapCard,
-                    onTapEmptyPile: onTapEmptyPile,
                     onDragPayload: onDragPayload,
                     onDropPayload: onDropPayload
                 )
@@ -47,11 +38,8 @@ struct TableauView: View {
 private struct SingleTableauPile: View {
     let pile: [TableauCard]
     let pileIndex: Int
-    let selectedCardId: String?
     var draggingCardIds: Set<String> = []
 
-    var onTapCard: ((Card, Int) -> Void)?
-    var onTapEmptyPile: ((Int) -> Void)?
     var onDragPayload: ((Card, Int, Int) -> DragPayload)?
     var onDropPayload: ((DragPayload, Int) -> Bool)?
 
@@ -64,7 +52,6 @@ private struct SingleTableauPile: View {
         ZStack(alignment: .top) {
             if showEmptySlot {
                 emptySlot
-                    .onTapGesture { onTapEmptyPile?(pileIndex) }
             } else {
                 ForEach(pile.indices, id: \.self) { i in
                     let tc = pile[i]
@@ -77,10 +64,8 @@ private struct SingleTableauPile: View {
                         CardView(
                             card: tc.card,
                             isFaceUp: tc.isFaceUp,
-                            isHighlighted: tc.isFaceUp && selectedCardId == tc.card.id,
-                            onTap: tc.isFaceUp && isTopCard
-                                ? { onTapCard?(tc.card, pileIndex) }
-                                : nil
+                            isHighlighted: false,
+                            onTap: nil
                         )
                         .equatable()
                         .offset(y: yOffset)
@@ -195,7 +180,7 @@ extension View {
          TableauCard(card: Card(id: "c6", label: "Florida", type: .partner, groupId: "us", imageName: nil), isFaceUp: true)]
     ]
 
-    TableauView(piles: samplePiles, selectedCardId: "c2")
+    TableauView(piles: samplePiles)
         .padding()
         .background(Color.feltGreen)
         .frame(maxHeight: .infinity, alignment: .top)

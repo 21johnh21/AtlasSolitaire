@@ -18,8 +18,6 @@ class GameViewModel: ObservableObject {
     /// The full game state — Views read pile contents from here.
     @Published private(set) var gameState: GameState?
 
-    /// The currently selected card + its source (for tap-to-select flow).
-    @Published private(set) var selectedCard: SelectedCard?
 
     /// User settings.
     @Published var settings: AppSettings = AppSettings()
@@ -103,64 +101,6 @@ class GameViewModel: ObservableObject {
     /// If nothing is selected, select this card.
     /// If this card is already selected, deselect.
     /// If a *different* card is selected, attempt a move from the selected card to this target.
-    func tapCard(card: Card, source: MoveSource) {
-        guard let sel = selectedCard else {
-            // Nothing selected yet — select this card if it's a valid source.
-            if isCardDraggable(card: card, source: source) {
-                selectedCard = SelectedCard(card: card, source: source)
-                haptic.dragStart()
-            }
-            return
-        }
-
-        if sel.card.id == card.id {
-            // Tap same card again → deselect.
-            selectedCard = nil
-            return
-        }
-
-        // A different card is tapped — try to move the selected card to this location
-        // Check if the tapped card's pile can accept the selected card
-        let targetIsFoundation = (source == .foundation(pileIndex: 0) ||
-                                   source == .foundation(pileIndex: 1) ||
-                                   source == .foundation(pileIndex: 2) ||
-                                   source == .foundation(pileIndex: 3))
-        let targetIsTableau = { () -> Bool in
-            if case .tableau = source { return true }
-            return false
-        }()
-
-        if targetIsFoundation {
-            // Try to move selected card to this foundation pile
-            if case .foundation(let idx) = source {
-                attemptMove(card: sel.card, source: sel.source, target: .foundation(pileIndex: idx))
-            }
-        } else if targetIsTableau {
-            // Try to move selected card to this tableau pile
-            if case .tableau(let idx) = source {
-                attemptMove(card: sel.card, source: sel.source, target: .tableau(pileIndex: idx))
-            }
-        } else {
-            // Neither foundation nor tableau — just swap selection if new card is draggable
-            if isCardDraggable(card: card, source: source) {
-                selectedCard = SelectedCard(card: card, source: source)
-            } else {
-                selectedCard = nil
-            }
-        }
-    }
-
-    /// User tapped an empty foundation slot while a card is selected.
-    func tapEmptyFoundation(pileIndex: Int) {
-        guard let sel = selectedCard else { return }
-        attemptMove(card: sel.card, source: sel.source, target: .foundation(pileIndex: pileIndex))
-    }
-
-    /// User tapped an empty tableau slot while a card is selected.
-    func tapEmptyTableau(pileIndex: Int) {
-        guard let sel = selectedCard else { return }
-        attemptMove(card: sel.card, source: sel.source, target: .tableau(pileIndex: pileIndex))
-    }
 
     /// Drag-and-drop: user dropped a card onto a foundation.
     func dropOnFoundation(card: Card, source: MoveSource, pileIndex: Int) {
@@ -268,10 +208,6 @@ class GameViewModel: ObservableObject {
     /// Total groups in this round.
     var totalGroupCount: Int { engine.state.deck.groupCount }
 
-    /// Is a given card the currently selected card?
-    func isSelected(_ card: Card) -> Bool {
-        selectedCard?.card.id == card.id
-    }
 
     /// Get the name of a group by its ID.
     func groupName(for groupId: String) -> String? {
@@ -286,12 +222,10 @@ class GameViewModel: ObservableObject {
         case .valid:
             audio.play(.move)
             haptic.dropSuccess()
-            selectedCard = nil
             autosave()
         case .invalid:
             audio.play(.invalid)
             haptic.dropFail()
-            selectedCard = nil
         }
     }
 
@@ -302,12 +236,10 @@ class GameViewModel: ObservableObject {
         case .valid:
             audio.play(.move)
             haptic.dropSuccess()
-            selectedCard = nil
             autosave()
         case .invalid:
             audio.play(.invalid)
             haptic.dropFail()
-            selectedCard = nil
         }
     }
 
@@ -317,12 +249,10 @@ class GameViewModel: ObservableObject {
         case .valid:
             audio.play(.move)
             haptic.dropSuccess()
-            selectedCard = nil
             autosave()
         case .invalid:
             audio.play(.invalid)
             haptic.dropFail()
-            selectedCard = nil
         }
     }
 
