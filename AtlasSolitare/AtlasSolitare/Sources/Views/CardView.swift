@@ -23,8 +23,6 @@ struct CardView: View, Equatable {
     var animationId: String { card.id }
 
     // ─── Interaction callbacks (set by parent) ─────────────────────────────
-    var onTap:          (() -> Void)?   = nil
-    var onLongPress:    (() -> Void)?   = nil
     var onDragStart:    (() -> Void)?   = nil
     var onDropSuccess:  (() -> Void)?   = nil
     var onDropFail:     (() -> Void)?   = nil
@@ -56,13 +54,6 @@ struct CardView: View, Equatable {
             RoundedRectangle(cornerRadius: CardLayout.cornerRadius)
                 .stroke(isHighlighted ? Color.accentGold : Color.clear, lineWidth: 3)
         )
-        // ── Gestures ────────────────────────────────────────────────────────
-        .onTapGesture {
-            onTap?()
-        }
-        .onLongPressGesture(minimumDuration: 0.4) {
-            onLongPress?()
-        }
         // Accessibility
         .accessibilityLabel(isFaceUp ? card.label : "Face-down card")
         .accessibilityHint(isFaceUp ? "Card in group \(card.groupId)" : "Tap to reveal")

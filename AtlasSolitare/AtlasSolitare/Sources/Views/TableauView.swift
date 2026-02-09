@@ -64,8 +64,7 @@ private struct SingleTableauPile: View {
                         CardView(
                             card: tc.card,
                             isFaceUp: tc.isFaceUp,
-                            isHighlighted: false,
-                            onTap: nil
+                            isHighlighted: false
                         )
                         .equatable()
                         .offset(y: yOffset)
@@ -117,8 +116,7 @@ private struct SingleTableauPile: View {
                 CardView(
                     card: tc.card,
                     isFaceUp: true,
-                    isHighlighted: false,
-                    onTap: nil
+                    isHighlighted: false
                 )
                 .environment(\.cardWidth, cardWidth)
                 .offset(y: CGFloat(offset) * CardLayout.faceUpOffset)

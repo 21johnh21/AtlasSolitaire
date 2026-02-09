@@ -41,8 +41,7 @@ struct FoundationView: View {
                     CardView(
                         card: top,
                         isFaceUp: true,
-                        isHighlighted: false,
-                        onTap: nil
+                        isHighlighted: false
                     )
                     // Small card-count badge when more than 1 card is stacked.
                     .overlay(alignment: .bottomTrailing) {
@@ -55,8 +54,7 @@ struct FoundationView: View {
                         return CardView(
                             card: top,
                             isFaceUp: true,
-                            isHighlighted: false,
-                            onTap: nil
+                            isHighlighted: false
                         )
                         .environment(\.cardWidth, cardWidth)
                     }

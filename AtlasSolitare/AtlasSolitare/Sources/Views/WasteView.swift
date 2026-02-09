@@ -24,15 +24,13 @@ struct WasteView: View {
                     CardView(
                         card: card,
                         isFaceUp: true,
-                        isHighlighted: false,
-                        onTap: nil
+                        isHighlighted: false
                     )
                     .draggable(onDragPayload?(card) ?? DragPayload(card: card, source: .waste)) {
                         CardView(
                             card: card,
                             isFaceUp: true,
-                            isHighlighted: false,
-                            onTap: nil
+                            isHighlighted: false
                         )
                         .environment(\.cardWidth, cardWidth)
                     }
