@@ -13,6 +13,9 @@ struct AtlasSolitaireApp: App {
         WindowGroup {
             RootView()
                 .environmentObject(gameViewModel)
+                #if os(iOS)
+                .persistentSystemOverlays(.hidden)
+                #endif
         }
     }
 }
