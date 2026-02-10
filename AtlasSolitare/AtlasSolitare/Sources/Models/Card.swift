@@ -25,6 +25,10 @@ struct Card: Identifiable, Codable, Equatable, Hashable {
     /// The group this card belongs to.  Used for all rule checks.
     let groupId: String
 
+    /// All possible groups this card could belong to (includes groupId).
+    /// Populated at game initialization by finding duplicate card labels across groups.
+    var possibleGroupIds: [String]
+
     /// Optional path/name of an image asset (nil until images are added).
     let imageName: String?
 
@@ -38,7 +42,7 @@ struct Card: Identifiable, Codable, Equatable, Hashable {
     /// Keys used when the card is serialised as part of persisted game state
     /// (already-scoped id, plus groupId).
     enum CodingKeys: String, CodingKey {
-        case id, label, type, groupId, imageName
+        case id, label, type, groupId, possibleGroupIds, imageName
     }
 
     // MARK: - Helpers

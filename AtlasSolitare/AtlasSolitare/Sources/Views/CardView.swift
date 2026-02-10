@@ -197,9 +197,9 @@ struct CardView: View, Equatable {
 
 #Preview {
     HStack(spacing: 12) {
-        CardView(card: Card(id: "test_base", label: "Countries of Europe", type: .base, groupId: "europe_01", imageName: nil), isFaceUp: true)
-        CardView(card: Card(id: "test_partner", label: "France", type: .partner, groupId: "europe_01", imageName: nil), isFaceUp: true, isHighlighted: true)
-        CardView(card: Card(id: "test_back", label: "Hidden", type: .partner, groupId: "europe_01", imageName: nil), isFaceUp: false)
+        CardView(card: Card(id: "test_base", label: "Countries of Europe", type: .base, groupId: "europe_01", possibleGroupIds: ["europe_01"], imageName: nil), isFaceUp: true)
+        CardView(card: Card(id: "test_partner", label: "France", type: .partner, groupId: "europe_01", possibleGroupIds: ["europe_01"], imageName: nil), isFaceUp: true, isHighlighted: true)
+        CardView(card: Card(id: "test_back", label: "Hidden", type: .partner, groupId: "europe_01", possibleGroupIds: ["europe_01"], imageName: nil), isFaceUp: false)
     }
     .padding()
     .background(Color.feltGreen)

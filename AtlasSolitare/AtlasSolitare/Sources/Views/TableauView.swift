@@ -56,7 +56,6 @@ private struct SingleTableauPile: View {
                 ForEach(pile.indices, id: \.self) { i in
                     let tc = pile[i]
                     let yOffset = computeOffset(upTo: i)
-                    let isTopCard = (i == pile.count - 1)
                     let isDraggable = tc.isFaceUp && canDragFromIndex(i)
                     let isBeingDragged = draggingCardIds.contains(tc.card.id)
 
@@ -169,13 +168,13 @@ extension View {
 
 #Preview {
     let samplePiles: [[TableauCard]] = [
-        [TableauCard(card: Card(id: "c1", label: "France",  type: .partner, groupId: "eu", imageName: nil), isFaceUp: false),
-         TableauCard(card: Card(id: "c2", label: "Italy",   type: .partner, groupId: "eu", imageName: nil), isFaceUp: true)],
-        [TableauCard(card: Card(id: "c3", label: "Japan",   type: .partner, groupId: "is", imageName: nil), isFaceUp: true)],
+        [TableauCard(card: Card(id: "c1", label: "France",  type: .partner, groupId: "eu", possibleGroupIds: ["eu"], imageName: nil), isFaceUp: false),
+         TableauCard(card: Card(id: "c2", label: "Italy",   type: .partner, groupId: "eu", possibleGroupIds: ["eu"], imageName: nil), isFaceUp: true)],
+        [TableauCard(card: Card(id: "c3", label: "Japan",   type: .partner, groupId: "is", possibleGroupIds: ["is"], imageName: nil), isFaceUp: true)],
         [],
-        [TableauCard(card: Card(id: "c4", label: "US States", type: .base, groupId: "us", imageName: nil), isFaceUp: false),
-         TableauCard(card: Card(id: "c5", label: "Texas",   type: .partner, groupId: "us", imageName: nil), isFaceUp: false),
-         TableauCard(card: Card(id: "c6", label: "Florida", type: .partner, groupId: "us", imageName: nil), isFaceUp: true)]
+        [TableauCard(card: Card(id: "c4", label: "US States", type: .base, groupId: "us", possibleGroupIds: ["us"], imageName: nil), isFaceUp: false),
+         TableauCard(card: Card(id: "c5", label: "Texas",   type: .partner, groupId: "us", possibleGroupIds: ["us"], imageName: nil), isFaceUp: false),
+         TableauCard(card: Card(id: "c6", label: "Florida", type: .partner, groupId: "us", possibleGroupIds: ["us"], imageName: nil), isFaceUp: true)]
     ]
 
     TableauView(piles: samplePiles)

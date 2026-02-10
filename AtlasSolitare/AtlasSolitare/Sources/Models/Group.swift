@@ -85,19 +85,21 @@ struct GroupDefinition: Codable {
     /// with ids scoped by `groupId` to guarantee uniqueness.
     func toCards() -> [Card] {
         let base = Card(
-            id:        "\(groupId)_\(baseCard.id)",
-            label:     baseCard.label,
-            type:      .base,
-            groupId:   groupId,
-            imageName: baseCard.image
+            id:              "\(groupId)_\(baseCard.id)",
+            label:           baseCard.label,
+            type:            .base,
+            groupId:         groupId,
+            possibleGroupIds: [groupId],  // Initially just this group; populated later
+            imageName:       baseCard.image
         )
         let partners = partnerCards.map { raw in
             Card(
-                id:        "\(groupId)_\(raw.id)",
-                label:     raw.label,
-                type:      .partner,
-                groupId:   groupId,
-                imageName: raw.image
+                id:              "\(groupId)_\(raw.id)",
+                label:           raw.label,
+                type:            .partner,
+                groupId:         groupId,
+                possibleGroupIds: [groupId],  // Initially just this group; populated later
+                imageName:       raw.image
             )
         }
         return [base] + partners

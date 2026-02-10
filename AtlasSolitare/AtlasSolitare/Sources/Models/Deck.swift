@@ -28,7 +28,7 @@ struct DeckDefinition: Codable {
 struct Deck: Identifiable, Codable, Equatable {
     let id: String              /// Unique deck identifier (may be generated per round)
     let name: String            /// Display name
-    let groups: [Group]         /// The resolved groups for this round
+    var groups: [Group]         /// The resolved groups for this round
     let seed: UInt64?           /// Shuffle seed (nil if unseeded)
 
     /// Flat list of every card across all groups in this deck.
@@ -42,5 +42,46 @@ struct Deck: Identifiable, Codable, Equatable {
     /// Look up a group by its id.
     func group(for groupId: String) -> Group? {
         groups.first(where: { $0.id == groupId })
+    }
+
+    /// Populate possibleGroupIds for all cards by finding cards with matching labels
+    /// across different groups. Called automatically after deck initialization.
+    mutating func populatePossibleGroupIds() {
+        // Build a map of label -> [groupIds] for partner cards only
+        var labelToGroupIds: [String: Set<String>] = [:]
+
+        for group in groups {
+            for card in group.partnerCards {
+                // Normalize label for comparison (case-insensitive, trimmed)
+                let normalizedLabel = card.label.lowercased().trimmingCharacters(in: .whitespaces)
+                labelToGroupIds[normalizedLabel, default: []].insert(group.id)
+            }
+        }
+
+        // Update each card's possibleGroupIds
+        for groupIndex in groups.indices {
+            var updatedCards: [Card] = []
+
+            for card in groups[groupIndex].cards {
+                var updatedCard = card
+
+                // Only partner cards can have multiple possible groups
+                if card.isPartner {
+                    let normalizedLabel = card.label.lowercased().trimmingCharacters(in: .whitespaces)
+                    if let possibleGroups = labelToGroupIds[normalizedLabel] {
+                        updatedCard.possibleGroupIds = Array(possibleGroups).sorted()
+                    }
+                }
+
+                updatedCards.append(updatedCard)
+            }
+
+            groups[groupIndex] = Group(
+                id: groups[groupIndex].id,
+                name: groups[groupIndex].name,
+                cards: updatedCards,
+                metadata: groups[groupIndex].metadata
+            )
+        }
     }
 }

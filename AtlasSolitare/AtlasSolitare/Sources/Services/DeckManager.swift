@@ -120,12 +120,17 @@ class DeckManager {
         let selected = Array(shuffled.prefix(requested))
         let groups = selected.map { Group(from: $0) }
 
-        return Deck(
+        var deck = Deck(
             id:     "round_\(Int.random(in: 100000...999999))",
             name:   "Randomized Round",
             groups: groups,
             seed:   seed
         )
+
+        // Populate possibleGroupIds by finding cards with matching labels across groups
+        deck.populatePossibleGroupIds()
+
+        return deck
     }
 
     // ─── Build deck from a deck definition file ────────────────────────────
@@ -144,12 +149,17 @@ class DeckManager {
             return Group(from: def)
         }
 
-        return Deck(
+        var deck = Deck(
             id:     deckDef.deckId,
             name:   deckDef.deckName,
             groups: groups,
             seed:   deckDef.shuffleSeed
         )
+
+        // Populate possibleGroupIds by finding cards with matching labels across groups
+        deck.populatePossibleGroupIds()
+
+        return deck
     }
 }
 

@@ -35,7 +35,12 @@ enum Rules {
     // ─── Foundation placement ──────────────────────────────────────────────
 
     /// Can `card` be placed onto `foundation`?
-    static func canPlaceOnFoundation(card: Card, foundation: FoundationPile) -> MoveValidation {
+    /// `usedCardLabels` tracks card labels already placed on any foundation to prevent duplicates.
+    static func canPlaceOnFoundation(
+        card: Card,
+        foundation: FoundationPile,
+        usedCardLabels: Set<String> = []
+    ) -> MoveValidation {
         if foundation.isEmpty {
             // Only base cards may open a foundation slot.
             return card.isBase ? .valid : .invalid(reason: "Only a base card can start a foundation pile.")
@@ -50,7 +55,14 @@ enum Rules {
             return .invalid(reason: "A base card cannot be placed on an occupied foundation.")
         }
 
-        if card.groupId != baseGroupId {
+        // Check if this card's label has already been placed on a foundation
+        let normalizedLabel = card.label.lowercased().trimmingCharacters(in: .whitespaces)
+        if usedCardLabels.contains(normalizedLabel) {
+            return .invalid(reason: "This card has already been placed on a foundation.")
+        }
+
+        // Check if ANY of the card's possible group IDs match the foundation's group
+        if !card.possibleGroupIds.contains(baseGroupId) {
             return .invalid(reason: "Card does not belong to this foundation's group.")
         }
 
@@ -83,9 +95,12 @@ enum Rules {
             return .invalid(reason: "Cannot place a partner card on top of a base card.")
         }
 
-        // Rule 3: Partner cards can only stack on partner cards from the same group
+        // Rule 3: Partner cards can only stack on partner cards from a matching group
         if card.isPartner && topCard.isPartner {
-            if card.groupId == topCard.groupId {
+            // Check if any of the card's possible groups match any of the top card's possible groups
+            let cardGroups = Set(card.possibleGroupIds)
+            let topCardGroups = Set(topCard.possibleGroupIds)
+            if !cardGroups.isDisjoint(with: topCardGroups) {
                 return .valid
             }
             return .invalid(reason: "Partner cards must be from the same group.")
@@ -110,14 +125,15 @@ enum Rules {
         source: MoveSource,
         target: MoveTarget,
         foundations: [FoundationPile],
-        tableau: [[TableauCard]]
+        tableau: [[TableauCard]],
+        usedCardLabels: Set<String> = []
     ) -> MoveValidation {
         switch target {
         case .foundation(let idx):
             guard idx >= 0, idx < foundations.count else {
                 return .invalid(reason: "Foundation index out of range.")
             }
-            return canPlaceOnFoundation(card: card, foundation: foundations[idx])
+            return canPlaceOnFoundation(card: card, foundation: foundations[idx], usedCardLabels: usedCardLabels)
 
         case .tableau(let idx):
             guard idx >= 0, idx < tableau.count else {
@@ -159,7 +175,6 @@ enum Rules {
         }
 
         var stackIndices = [startIndex]
-        let firstCard = pile[startIndex].card
 
         // Check if subsequent cards can stack on top of each other
         for i in (startIndex + 1)..<pile.count {
@@ -171,8 +186,10 @@ enum Rules {
                 break
             }
 
-            // Cards must be from the same group
-            guard currentCard.groupId == previousCard.groupId else {
+            // Cards must share at least one possible group
+            let currentGroups = Set(currentCard.possibleGroupIds)
+            let previousGroups = Set(previousCard.possibleGroupIds)
+            guard !currentGroups.isDisjoint(with: previousGroups) else {
                 break
             }
 

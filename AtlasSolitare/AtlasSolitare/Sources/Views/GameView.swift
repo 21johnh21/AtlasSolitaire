@@ -291,14 +291,14 @@ struct DragPayload: Codable, Transferable {
 
     /// Convenience init that accepts an optional card (returns a dummy if nil).
     init(card: Card?, source: MoveSource) {
-        self.card   = card ?? Card(id: "__nil__", label: "", type: .partner, groupId: "", imageName: nil)
+        self.card   = card ?? Card(id: "__nil__", label: "", type: .partner, groupId: "", possibleGroupIds: [], imageName: nil)
         self.cards  = card.map { [$0] } ?? []
         self.sourceKey = source.key
     }
 
     /// Init for dragging multiple cards as a stack
     init(cards: [Card], source: MoveSource) {
-        self.card   = cards.first ?? Card(id: "__nil__", label: "", type: .partner, groupId: "", imageName: nil)
+        self.card   = cards.first ?? Card(id: "__nil__", label: "", type: .partner, groupId: "", possibleGroupIds: [], imageName: nil)
         self.cards  = cards
         self.sourceKey = source.key
     }

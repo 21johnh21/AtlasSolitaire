@@ -59,7 +59,8 @@ class GameEngine {
             source: source,
             target: target,
             foundations: state.foundations,
-            tableau: state.tableau
+            tableau: state.tableau,
+            usedCardLabels: state.usedPartnerCardLabels
         )
 
         switch validation {
@@ -73,17 +74,23 @@ class GameEngine {
             // 2. Place card at target.
             placeCard(card, at: target)
 
-            // 3. Reveal new top card in tableau if source was tableau.
+            // 3. If placing a partner card on a foundation, track it as used
+            if case .foundation = target, card.isPartner {
+                let normalizedLabel = card.label.lowercased().trimmingCharacters(in: .whitespaces)
+                state.usedPartnerCardLabels.insert(normalizedLabel)
+            }
+
+            // 4. Reveal new top card in tableau if source was tableau.
             if case .tableau(let idx) = source {
                 revealTopCard(in: idx)
             }
 
-            // 4. Check for group completion on foundations.
+            // 5. Check for group completion on foundations.
             if case .foundation(let idx) = target {
                 checkAndClearGroup(at: idx)
             }
 
-            // 5. Increment move count.
+            // 6. Increment move count.
             state.moveCount += 1
 
             notifyChanged()
@@ -118,7 +125,8 @@ class GameEngine {
             source: source,
             target: target,
             foundations: state.foundations,
-            tableau: state.tableau
+            tableau: state.tableau,
+            usedCardLabels: state.usedPartnerCardLabels
         )
 
         switch validation {

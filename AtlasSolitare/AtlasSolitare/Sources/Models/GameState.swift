@@ -57,6 +57,11 @@ struct GameState: Codable, Equatable {
     /// Running counter of total cards cleared (for stats / display).
     var clearedCardCount: Int = 0
 
+    /// Set of partner card labels that have been placed on foundation piles.
+    /// Used to prevent the same card (by label) from being placed on multiple foundation piles.
+    /// Normalized to lowercase for comparison.
+    var usedPartnerCardLabels: Set<String> = []
+
     // ─── Statistics ─────────────────────────────────────────────────────────
     /// Total number of moves made in this game.
     var moveCount: Int = 0

@@ -150,8 +150,8 @@ struct FoundationView: View {
 #Preview {
     let emptyPile = FoundationPile()
     let occupiedPile = FoundationPile(cards: [
-        Card(id: "europe_base", label: "Countries of Europe", type: .base, groupId: "europe_01", imageName: nil),
-        Card(id: "france",      label: "France",              type: .partner, groupId: "europe_01", imageName: nil)
+        Card(id: "europe_base", label: "Countries of Europe", type: .base, groupId: "europe_01", possibleGroupIds: ["europe_01"], imageName: nil),
+        Card(id: "france",      label: "France",              type: .partner, groupId: "europe_01", possibleGroupIds: ["europe_01"], imageName: nil)
     ])
 
     HStack(spacing: 12) {

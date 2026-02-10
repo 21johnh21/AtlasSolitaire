@@ -56,8 +56,8 @@ struct WasteView: View {
 
 #Preview {
     HStack(spacing: 12) {
-        WasteView(topCard: Card(id: "w1", label: "Italy", type: .partner, groupId: "europe_01", imageName: nil))
-        WasteView(topCard: Card(id: "w2", label: "Japan", type: .partner, groupId: "islands_01", imageName: nil))
+        WasteView(topCard: Card(id: "w1", label: "Italy", type: .partner, groupId: "europe_01", possibleGroupIds: ["europe_01"], imageName: nil))
+        WasteView(topCard: Card(id: "w2", label: "Japan", type: .partner, groupId: "islands_01", possibleGroupIds: ["islands_01"], imageName: nil))
         WasteView(topCard: nil)
     }
     .padding()
