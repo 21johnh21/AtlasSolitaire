@@ -55,7 +55,7 @@ struct GameView: View {
                 progressRow
                     .padding(.top, 6)
 
-                Spacer(minLength: 8)
+                Spacer(minLength: 2)
 
                 // ── Tableau (fills remaining vertical space) ──────────────
                 tableauSection
