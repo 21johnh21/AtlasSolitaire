@@ -73,7 +73,20 @@ enum Rules {
 
     /// Can `card` be placed onto `targetPile` in the tableau?
     /// `targetPile` may be empty (accepts any card) or have a top card.
-    static func canPlaceOnTableau(card: Card, targetPile: [TableauCard]) -> MoveValidation {
+    /// `usedCardLabels` tracks card labels already placed to prevent duplicates.
+    static func canPlaceOnTableau(
+        card: Card,
+        targetPile: [TableauCard],
+        usedCardLabels: Set<String> = []
+    ) -> MoveValidation {
+        // Check if this card's label has already been used (for partner cards)
+        if card.isPartner {
+            let normalizedLabel = card.label.lowercased().trimmingCharacters(in: .whitespaces)
+            if usedCardLabels.contains(normalizedLabel) {
+                return .invalid(reason: "This card has already been placed.")
+            }
+        }
+
         if targetPile.isEmpty {
             // Empty tableau slot accepts any card (base or partner).
             return .valid
@@ -139,7 +152,7 @@ enum Rules {
             guard idx >= 0, idx < tableau.count else {
                 return .invalid(reason: "Tableau index out of range.")
             }
-            return canPlaceOnTableau(card: card, targetPile: tableau[idx])
+            return canPlaceOnTableau(card: card, targetPile: tableau[idx], usedCardLabels: usedCardLabels)
         }
     }
 
