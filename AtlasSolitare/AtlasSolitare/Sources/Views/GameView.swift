@@ -264,6 +264,7 @@ struct GameView: View {
             .shadow(color: Color.black.subtle(), radius: 3, x: 0, y: 2)
         }
         .buttonStyle(ScaleButtonStyle())
+        .withClickSound()
         .accessibilityLabel("Exit game and return to menu")
     }
 

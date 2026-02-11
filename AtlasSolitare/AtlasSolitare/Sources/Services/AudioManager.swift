@@ -1,5 +1,6 @@
 import Foundation
 import AVFoundation
+import AudioToolbox
 
 // MARK: - SoundEffect
 
@@ -11,6 +12,7 @@ enum SoundEffect: String, CaseIterable {
     case invalid        = "invalid"
     case completeGroup  = "complete_group"
     case win            = "win"
+    case buttonClick    = "button_click"
 
     var filename: String { rawValue + ".wav" }
 }
@@ -38,9 +40,24 @@ class AudioManager {
     /// or the manager is disabled.
     func play(_ effect: SoundEffect) {
         guard isEnabled else { return }
-        guard let player = players[effect] else { return }
-        player.currentTime = 0   // rewind so rapid successive calls work
-        player.play()
+
+        // If we have a custom sound loaded, play it
+        if let player = players[effect] {
+            player.currentTime = 0   // rewind so rapid successive calls work
+            player.play()
+            return
+        }
+
+        // Fallback to system sound for button clicks if no custom sound exists
+        if effect == .buttonClick {
+            playSystemClickSound()
+        }
+    }
+
+    /// Play a system click sound (fallback when no custom sound file exists)
+    private func playSystemClickSound() {
+        // System sound ID 1104 is a standard keyboard click sound
+        AudioServicesPlaySystemSound(1104)
     }
 
     // ─── Private ────────────────────────────────────────────────────────────

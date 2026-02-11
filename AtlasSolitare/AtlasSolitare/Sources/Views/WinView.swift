@@ -68,6 +68,7 @@ struct WinView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                         .shadow(color: Color.black.opacity(0.2), radius: 4, y: 2)
                 }
+                .withClickSound()
 
                 Button(action: {
                     haptic.light()
@@ -78,6 +79,7 @@ struct WinView: View {
                         .foregroundColor(Color.white.opacity(0.6))
                         .underline()
                 }
+                .withClickSound()
             }
             .padding(.horizontal, 40)
         }

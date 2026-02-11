@@ -35,6 +35,7 @@ struct MenuView: View {
                                 .shadow(color: Color.black.subtle(), radius: 3, x: 0, y: 2)
                         }
                         .buttonStyle(ScaleButtonStyle())
+                        .withClickSound()
                         .simultaneousGesture(TapGesture().onEnded {
                             haptic.light()
                         })
@@ -112,6 +113,7 @@ struct MenuView: View {
             .shadow(color: Color.black.opacity(0.25), radius: 6, y: 3)
         }
         .buttonStyle(ScaleButtonStyle())
+        .withClickSound()
     }
 
     // ─── New Game ───────────────────────────────────────────────────────────
@@ -138,6 +140,7 @@ struct MenuView: View {
             .shadow(color: Color.black.opacity(0.25), radius: 6, y: 3)
         }
         .buttonStyle(ScaleButtonStyle())
+        .withClickSound()
     }
 
     // ─── Footer ─────────────────────────────────────────────────────────────
