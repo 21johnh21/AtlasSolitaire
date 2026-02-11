@@ -58,6 +58,7 @@ struct SettingsView: View {
                                         icon: "questionmark.circle.fill"
                                     )
                                 }
+                                .withClickSound()
                                 .simultaneousGesture(TapGesture().onEnded {
                                     haptic.light()
                                 })
@@ -72,6 +73,7 @@ struct SettingsView: View {
                                         icon: "shield.fill"
                                     )
                                 }
+                                .withClickSound()
                                 .simultaneousGesture(TapGesture().onEnded {
                                     haptic.light()
                                 })
@@ -113,6 +115,7 @@ struct SettingsView: View {
                             .fill(Color.black.opacity(0.2))
                     )
                 }
+                .withClickSound()
                 Spacer()
             }
             .padding(.horizontal, 20)
@@ -194,6 +197,7 @@ struct SettingsView: View {
                 .animation(.easeInOut(duration: 0.2), value: isOn)
             }
         }
+        .withClickSound()
         .buttonStyle(.plain)
     }
 
