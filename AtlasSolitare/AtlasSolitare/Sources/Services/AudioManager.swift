@@ -14,6 +14,7 @@ enum SoundEffect: String, CaseIterable {
     case win            = "win"
     case buttonClick    = "button_click"
     case shuffle        = "shuffle"
+    case cardPlace      = "card_place"
 
     var filename: String { rawValue + ".wav" }
 }
@@ -68,14 +69,16 @@ class AudioManager {
     private func preloadSounds() {
         for effect in SoundEffect.allCases {
             guard let url = Bundle.main.url(forResource: effect.rawValue, withExtension: "wav") else {
+                print("[AudioManager] ⚠️ Could not find sound file: \(effect.rawValue).wav")
                 continue
             }
             do {
                 let player = try AVAudioPlayer(contentsOf: url)
                 player.prepareToPlay()
                 players[effect] = player
+                print("[AudioManager] ✅ Loaded sound: \(effect.rawValue).wav")
             } catch {
-                // File exists but can't be loaded — skip silently.
+                print("[AudioManager] ❌ Failed to load sound: \(effect.rawValue).wav - \(error)")
             }
         }
     }

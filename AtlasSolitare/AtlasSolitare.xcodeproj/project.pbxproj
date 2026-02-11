@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F8ECCC7D2F3C04C5007E4561 /* button_click.wav in Resources */ = {isa = PBXBuildFile; fileRef = F8ECCC7C2F3C04C5007E4561 /* button_click.wav */; };
 		F8ECCC7F2F3C06B0007E4561 /* shuffle.wav in Resources */ = {isa = PBXBuildFile; fileRef = F8ECCC7E2F3C06B0007E4561 /* shuffle.wav */; };
+		F8ECCC812F3C07A5007E4561 /* card_place.wav in Resources */ = {isa = PBXBuildFile; fileRef = F8ECCC802F3C07A5007E4561 /* card_place.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +27,7 @@
 		F85569B92F3563C5002AF57B /* AtlasSolitareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlasSolitareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8ECCC7C2F3C04C5007E4561 /* button_click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = button_click.wav; sourceTree = "<group>"; };
 		F8ECCC7E2F3C06B0007E4561 /* shuffle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shuffle.wav; sourceTree = "<group>"; };
+		F8ECCC802F3C07A5007E4561 /* card_place.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = card_place.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -67,6 +69,7 @@
 				F85569262F3561F7002AF57B /* Products */,
 				F8ECCC7C2F3C04C5007E4561 /* button_click.wav */,
 				F8ECCC7E2F3C06B0007E4561 /* shuffle.wav */,
+				F8ECCC802F3C07A5007E4561 /* card_place.wav */,
 			);
 			sourceTree = "<group>";
 		};
@@ -173,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8ECCC7F2F3C06B0007E4561 /* shuffle.wav in Resources */,
+				F8ECCC812F3C07A5007E4561 /* card_place.wav in Resources */,
 				F8ECCC7D2F3C04C5007E4561 /* button_click.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

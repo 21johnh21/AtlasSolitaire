@@ -86,7 +86,7 @@ class GameViewModel: ObservableObject {
             return
         }
         engine.drawFromStock()
-        audio.play(.flip)
+        audio.play(.cardPlace)
         haptic.dropSuccess()
     }
 
@@ -220,7 +220,7 @@ class GameViewModel: ObservableObject {
         let result = engine.move(card: card, source: source, target: target)
         switch result {
         case .valid:
-            audio.play(.move)
+            audio.play(.cardPlace)
             haptic.dropSuccess()
             autosave()
         case .invalid:
@@ -234,7 +234,7 @@ class GameViewModel: ObservableObject {
         let result = engine.moveStack(cards: cards, source: source, target: target)
         switch result {
         case .valid:
-            audio.play(.move)
+            audio.play(.cardPlace)
             haptic.dropSuccess()
             autosave()
         case .invalid:
@@ -247,7 +247,7 @@ class GameViewModel: ObservableObject {
         let result = engine.moveStackToFoundation(cards: cards, source: source, foundationIndex: pileIndex)
         switch result {
         case .valid:
-            audio.play(.move)
+            audio.play(.cardPlace)
             haptic.dropSuccess()
             autosave()
         case .invalid:
