@@ -73,17 +73,17 @@ enum Rules {
 
     /// Can `card` be placed onto `targetPile` in the tableau?
     /// `targetPile` may be empty (accepts any card) or have a top card.
-    /// `usedCardLabels` tracks card labels already placed to prevent duplicates.
+    /// `usedCardLabels` tracks partner card labels already placed on foundations (permanent placements).
     static func canPlaceOnTableau(
         card: Card,
         targetPile: [TableauCard],
         usedCardLabels: Set<String> = []
     ) -> MoveValidation {
-        // Check if this card's label has already been used (for partner cards)
+        // Check if this card's label has already been used on a foundation (for partner cards)
         if card.isPartner {
             let normalizedLabel = card.label.lowercased().trimmingCharacters(in: .whitespaces)
             if usedCardLabels.contains(normalizedLabel) {
-                return .invalid(reason: "This card has already been placed.")
+                return .invalid(reason: "This card has already been placed on a foundation.")
             }
         }
 

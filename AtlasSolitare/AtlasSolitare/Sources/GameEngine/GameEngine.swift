@@ -30,39 +30,25 @@ class GameEngine {
         rebuildUsedCardLabels()
     }
 
-    /// Rebuild the usedPartnerCardLabels set by scanning all visible cards in play.
+    /// Rebuild the usedPartnerCardLabels set by scanning foundation piles only.
     /// This is called on initialization to ensure the set is correct when loading a saved game.
+    /// Only cards on foundations are tracked as "used" - cards on tableau/waste are still movable.
     private func rebuildUsedCardLabels() {
         var usedLabels = Set<String>()
 
-        // Scan foundation piles
+        // Only scan foundation piles - these are permanent placements
         for foundation in state.foundations {
             for card in foundation.cards {
                 if card.isPartner {
                     let normalizedLabel = card.label.lowercased().trimmingCharacters(in: .whitespaces)
                     usedLabels.insert(normalizedLabel)
+                    print("[GameEngine] Tracking used card from foundation: \(normalizedLabel)")
                 }
             }
         }
 
-        // Scan tableau piles (only face-up cards)
-        for pile in state.tableau {
-            for tableauCard in pile where tableauCard.isFaceUp {
-                if tableauCard.card.isPartner {
-                    let normalizedLabel = tableauCard.card.label.lowercased().trimmingCharacters(in: .whitespaces)
-                    usedLabels.insert(normalizedLabel)
-                }
-            }
-        }
-
-        // Scan waste pile (all cards visible)
-        for card in state.waste {
-            if card.isPartner {
-                let normalizedLabel = card.label.lowercased().trimmingCharacters(in: .whitespaces)
-                usedLabels.insert(normalizedLabel)
-            }
-        }
-
+        print("[GameEngine] rebuildUsedCardLabels complete. Total used cards: \(usedLabels.count)")
+        print("[GameEngine] Used labels: \(usedLabels.sorted())")
         state.usedPartnerCardLabels = usedLabels
     }
 
@@ -112,8 +98,8 @@ class GameEngine {
             // 2. Place card at target.
             placeCard(card, at: target)
 
-            // 3. If placing a partner card anywhere (foundation or tableau), track it as used
-            if card.isPartner {
+            // 3. If placing a partner card on a foundation, track it as used
+            if case .foundation = target, card.isPartner {
                 let normalizedLabel = card.label.lowercased().trimmingCharacters(in: .whitespaces)
                 state.usedPartnerCardLabels.insert(normalizedLabel)
             }
@@ -157,6 +143,7 @@ class GameEngine {
         }
 
         print("[GameEngine] Validating first card placement...")
+        print("[GameEngine] Current usedPartnerCardLabels: \(state.usedPartnerCardLabels.sorted())")
         // Validate the first card can be placed
         let validation = Rules.validate(
             card: firstCard,
@@ -185,11 +172,8 @@ class GameEngine {
                 placeCard(card, at: target)
                 print("[GameEngine]   Placed card \(i): \(card.label) at target")
 
-                // Track partner cards as used
-                if card.isPartner {
-                    let normalizedLabel = card.label.lowercased().trimmingCharacters(in: .whitespaces)
-                    state.usedPartnerCardLabels.insert(normalizedLabel)
-                }
+                // Note: Stack moves are only to tableau, so we don't track cards as "used"
+                // Cards are only "used" when placed on foundations (permanent placements)
             }
 
             // Reveal new top card in tableau if source was tableau
