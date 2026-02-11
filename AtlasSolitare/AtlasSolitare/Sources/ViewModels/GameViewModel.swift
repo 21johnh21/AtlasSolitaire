@@ -35,6 +35,8 @@ class GameViewModel: ObservableObject {
     // ─── Timer ──────────────────────────────────────────────────────────────
     private var gameTimer: Timer?
     @Published private(set) var currentElapsedTime: TimeInterval = 0
+    private var sessionStartTime: Date?
+    private var baseElapsedTime: TimeInterval = 0
 
     // ─── Init ───────────────────────────────────────────────────────────────
     init(
@@ -299,10 +301,8 @@ class GameViewModel: ObservableObject {
     // ─── Persistence helpers ────────────────────────────────────────────────
 
     private func autosave() {
-        // Update elapsed time before saving
-        if gameTimer != nil {
-            engine.state.elapsedTime = currentElapsedTime
-        }
+        // Update elapsed time with current value before saving
+        engine.state.elapsedTime = currentElapsedTime
         try? persistence.saveGameState(engine.state)
     }
 
@@ -324,19 +324,22 @@ class GameViewModel: ObservableObject {
         // Stop any existing timer
         stopTimer()
 
-        // Reset start time to now
-        engine.state.startTime = Date()
+        // Store the base time and session start
+        baseElapsedTime = engine.state.elapsedTime
+        sessionStartTime = Date()
 
         // Start a timer that fires every second
         gameTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-            guard let self = self else { return }
-            self.currentElapsedTime = self.engine.state.elapsedTime + Date().timeIntervalSince(self.engine.state.startTime)
+            guard let self = self, let sessionStart = self.sessionStartTime else { return }
+            // Calculate elapsed time: base time + time since this session started
+            self.currentElapsedTime = self.baseElapsedTime + Date().timeIntervalSince(sessionStart)
         }
     }
 
     private func stopTimer() {
         gameTimer?.invalidate()
         gameTimer = nil
+        sessionStartTime = nil
 
         // Save the elapsed time to the state
         if phase == .playing {
