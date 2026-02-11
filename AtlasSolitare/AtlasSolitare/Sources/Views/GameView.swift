@@ -55,13 +55,13 @@ struct GameView: View {
                 progressRow
                     .padding(.top, 6)
 
-                Spacer(minLength: 2)
-
-                // ── Tableau (fills remaining vertical space) ──────────────
+                // ── Tableau (fixed to top of remaining space) ─────────────
                 tableauSection
                     .padding(.horizontal, 16)
+                    .padding(.top, 28)
+                    .frame(maxHeight: .infinity, alignment: .top)
 
-                Spacer(minLength: 12)
+                Spacer(minLength: 0)
             }
             .environment(\.cardWidth, cardWidth)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
