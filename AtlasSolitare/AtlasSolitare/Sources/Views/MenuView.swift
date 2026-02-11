@@ -76,7 +76,7 @@ struct MenuView: View {
         VStack(spacing: 12) {
             // Globe icon as a stand-in for a future logo.
             Image(systemName: "globe.europe.africa.fill")
-                .font(.system(size: 64))
+                .font(.system(size: 180))
                 .foregroundColor(Color.accentGold)
                 .shadow(color: Color.accentGold.opacity(0.5), radius: 12, x: 0, y: 4)
 
