@@ -11,6 +11,7 @@
 		F8ECCC7F2F3C06B0007E4561 /* shuffle.wav in Resources */ = {isa = PBXBuildFile; fileRef = F8ECCC7E2F3C06B0007E4561 /* shuffle.wav */; };
 		F8ECCC812F3C07A5007E4561 /* card_place.wav in Resources */ = {isa = PBXBuildFile; fileRef = F8ECCC802F3C07A5007E4561 /* card_place.wav */; };
 		F8ECCC832F3C0A80007E4561 /* invalid.wav in Resources */ = {isa = PBXBuildFile; fileRef = F8ECCC822F3C0A80007E4561 /* invalid.wav */; };
+		F8ECCC852F3C0C8C007E4561 /* complete_group.wav in Resources */ = {isa = PBXBuildFile; fileRef = F8ECCC842F3C0C8C007E4561 /* complete_group.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +31,7 @@
 		F8ECCC7E2F3C06B0007E4561 /* shuffle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shuffle.wav; sourceTree = "<group>"; };
 		F8ECCC802F3C07A5007E4561 /* card_place.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = card_place.wav; sourceTree = "<group>"; };
 		F8ECCC822F3C0A80007E4561 /* invalid.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = invalid.wav; sourceTree = "<group>"; };
+		F8ECCC842F3C0C8C007E4561 /* complete_group.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = complete_group.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -73,6 +75,7 @@
 				F8ECCC7E2F3C06B0007E4561 /* shuffle.wav */,
 				F8ECCC802F3C07A5007E4561 /* card_place.wav */,
 				F8ECCC822F3C0A80007E4561 /* invalid.wav */,
+				F8ECCC842F3C0C8C007E4561 /* complete_group.wav */,
 			);
 			sourceTree = "<group>";
 		};
@@ -180,6 +183,7 @@
 			files = (
 				F8ECCC7F2F3C06B0007E4561 /* shuffle.wav in Resources */,
 				F8ECCC812F3C07A5007E4561 /* card_place.wav in Resources */,
+				F8ECCC852F3C0C8C007E4561 /* complete_group.wav in Resources */,
 				F8ECCC7D2F3C04C5007E4561 /* button_click.wav in Resources */,
 				F8ECCC832F3C0A80007E4561 /* invalid.wav in Resources */,
 			);
