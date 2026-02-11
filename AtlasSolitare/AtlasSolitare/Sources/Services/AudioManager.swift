@@ -13,6 +13,7 @@ enum SoundEffect: String, CaseIterable {
     case completeGroup  = "complete_group"
     case win            = "win"
     case buttonClick    = "button_click"
+    case shuffle        = "shuffle"
 
     var filename: String { rawValue + ".wav" }
 }

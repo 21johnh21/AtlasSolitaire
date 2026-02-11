@@ -94,7 +94,7 @@ class GameViewModel: ObservableObject {
     func reshuffle() {
         guard Rules.canReshuffle(stock: engine.state.stock, waste: engine.state.waste) else { return }
         engine.reshuffle()
-        audio.play(.move)
+        audio.play(.shuffle)
     }
 
     /// User tapped a card (tap-to-select flow).

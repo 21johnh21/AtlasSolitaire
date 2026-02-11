@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F8ECCC7D2F3C04C5007E4561 /* button_click.wav in Resources */ = {isa = PBXBuildFile; fileRef = F8ECCC7C2F3C04C5007E4561 /* button_click.wav */; };
+		F8ECCC7F2F3C06B0007E4561 /* shuffle.wav in Resources */ = {isa = PBXBuildFile; fileRef = F8ECCC7E2F3C06B0007E4561 /* shuffle.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,6 +25,7 @@
 		F85569252F3561F7002AF57B /* AtlasSolitare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtlasSolitare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F85569B92F3563C5002AF57B /* AtlasSolitareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlasSolitareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8ECCC7C2F3C04C5007E4561 /* button_click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = button_click.wav; sourceTree = "<group>"; };
+		F8ECCC7E2F3C06B0007E4561 /* shuffle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shuffle.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -64,6 +66,7 @@
 				F85569BA2F3563C5002AF57B /* AtlasSolitareTests */,
 				F85569262F3561F7002AF57B /* Products */,
 				F8ECCC7C2F3C04C5007E4561 /* button_click.wav */,
+				F8ECCC7E2F3C06B0007E4561 /* shuffle.wav */,
 			);
 			sourceTree = "<group>";
 		};
@@ -169,6 +172,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8ECCC7F2F3C06B0007E4561 /* shuffle.wav in Resources */,
 				F8ECCC7D2F3C04C5007E4561 /* button_click.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
