@@ -27,21 +27,32 @@ struct AtlasSolitaireApp: App {
 /// can be animated as a full-screen swap.
 private struct RootView: View {
     @EnvironmentObject var vm: GameViewModel
+    @State private var showLaunchScreen = true
 
     var body: some View {
         ZStack {
-            switch vm.phase {
-            case .menu:
-                MenuView(vm: vm)
+            if showLaunchScreen {
+                LaunchScreenView()
                     .transition(.opacity)
-            case .playing, .won:
-                GameView(vm: vm)
-                    .transition(.opacity)
+            } else {
+                switch vm.phase {
+                case .menu:
+                    MenuView(vm: vm)
+                        .transition(.opacity)
+                case .playing, .won:
+                    GameView(vm: vm)
+                        .transition(.opacity)
+                }
             }
         }
         .animation(.easeInOut(duration: 0.3), value: vm.phase)
+        .animation(.easeInOut(duration: 0.5), value: showLaunchScreen)
         .onAppear {
             vm.onAppear()
+            // Hide launch screen after a brief delay
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                showLaunchScreen = false
+            }
         }
         // Auto-save on background.
         .onChange(of: vm.gameState) {
