@@ -58,6 +58,8 @@ struct MenuView: View {
                     }
 
                     newGameButton
+
+                    leaderboardButton
                 }
 
                 Spacer()
@@ -136,6 +138,29 @@ struct MenuView: View {
                     ? Color.white.subtle()
                     : Color.accentGold
             )
+            .clipShape(RoundedRectangle(cornerRadius: 14))
+            .shadow(color: Color.black.opacity(0.25), radius: 6, y: 3)
+        }
+        .buttonStyle(ScaleButtonStyle())
+        .withClickSound()
+    }
+
+    // ─── Leaderboard ────────────────────────────────────────────────────────
+    private var leaderboardButton: some View {
+        Button(action: {
+            haptic.light()
+            vm.showLeaderboard()
+        }) {
+            HStack(spacing: 8) {
+                Image(systemName: "trophy.fill")
+                    .font(.system(size: 18))
+                Text("Leaderboard")
+                    .font(.system(size: 20, weight: .semibold))
+            }
+            .foregroundColor(.white)
+            .padding(.horizontal, 40)
+            .padding(.vertical, 16)
+            .background(Color.white.subtle())
             .clipShape(RoundedRectangle(cornerRadius: 14))
             .shadow(color: Color.black.opacity(0.25), radius: 6, y: 3)
         }

@@ -100,4 +100,9 @@ struct GameState: Codable, Equatable {
 struct AppSettings: Codable {
     var soundEnabled: Bool = true
     var hapticsEnabled: Bool = true
+
+    // Game Center statistics
+    var totalWins: Int = 0
+    var currentWinStreak: Int = 0
+    var bestWinStreak: Int = 0
 }

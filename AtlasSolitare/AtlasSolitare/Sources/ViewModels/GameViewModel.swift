@@ -31,6 +31,7 @@ class GameViewModel: ObservableObject {
     private let persistence: PersistenceManager
     private let audio = AudioManager.shared
     private let haptic = HapticManager.shared
+    private let gameCenter = GameCenterManager.shared
 
     // ─── Timer ──────────────────────────────────────────────────────────────
     private var gameTimer: Timer?
@@ -68,6 +69,7 @@ class GameViewModel: ObservableObject {
     /// Called once at app launch.  Restores a saved game or transitions to menu.
     func onAppear() {
         loadSettings()
+        gameCenter.authenticatePlayer()
         if let saved = try? persistence.loadGameState(), saved.phase == .playing {
             engine.state = saved
             currentElapsedTime = saved.elapsedTime
@@ -177,6 +179,14 @@ class GameViewModel: ObservableObject {
         settings.hapticsEnabled.toggle()
         haptic.isEnabled = settings.hapticsEnabled
         saveSettings()
+    }
+
+    func showLeaderboard() {
+        gameCenter.showLeaderboard()
+    }
+
+    func showAchievements() {
+        gameCenter.showAchievements()
     }
 
     // ─── MARK: Derived / Query Helpers (for Views) ─────────────────────────
@@ -295,6 +305,28 @@ class GameViewModel: ObservableObject {
         stopTimer()
         audio.play(.win)
         haptic.winRumble()
+
+        // Update statistics
+        let isFirstWin = settings.totalWins == 0
+        settings.totalWins += 1
+        settings.currentWinStreak += 1
+        if settings.currentWinStreak > settings.bestWinStreak {
+            settings.bestWinStreak = settings.currentWinStreak
+        }
+        saveSettings()
+
+        // Submit to Game Center
+        let timeInSeconds = Int(currentElapsedTime)
+        let moves = engine.state.moveCount
+        gameCenter.submitGameResult(timeInSeconds: timeInSeconds, moves: moves)
+        gameCenter.processGameWin(
+            timeInSeconds: currentElapsedTime,
+            moves: moves,
+            isFirstWin: isFirstWin,
+            currentWinStreak: settings.currentWinStreak,
+            totalWins: settings.totalWins
+        )
+
         try? persistence.clearGameState()
     }
 

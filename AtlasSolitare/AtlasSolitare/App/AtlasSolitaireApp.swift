@@ -59,6 +59,7 @@ private struct RootView: View {
             // GameViewModel already auto-saves on every move;
             // this is a belt-and-suspenders hook for scene lifecycle.
         }
+        .withGameCenter()
     }
 }
 
