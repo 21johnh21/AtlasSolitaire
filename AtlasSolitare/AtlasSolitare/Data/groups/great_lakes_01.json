@@ -1,0 +1,22 @@
+{
+  "group_id": "great_lakes_01",
+  "group_name": "Great Lakes",
+  "base_card": {
+    "id": "great_lakes_base",
+    "label": "Great Lakes",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "lake_superior", "label": "Superior", "type": "partner", "image": null },
+    { "id": "lake_michigan", "label": "Michigan", "type": "partner", "image": null },
+    { "id": "lake_huron", "label": "Huron", "type": "partner", "image": null },
+    { "id": "lake_erie", "label": "Erie", "type": "partner", "image": null },
+    { "id": "lake_ontario", "label": "Ontario", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "region": "North America",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

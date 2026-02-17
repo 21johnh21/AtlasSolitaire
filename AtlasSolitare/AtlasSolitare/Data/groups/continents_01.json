@@ -1,0 +1,24 @@
+{
+  "group_id": "continents_01",
+  "group_name": "Continents",
+  "base_card": {
+    "id": "continents_base",
+    "label": "Continents",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "asia", "label": "Asia", "type": "partner", "image": null },
+    { "id": "africa", "label": "Africa", "type": "partner", "image": null },
+    { "id": "north_america", "label": "North America", "type": "partner", "image": null },
+    { "id": "south_america", "label": "South America", "type": "partner", "image": null },
+    { "id": "europe", "label": "Europe", "type": "partner", "image": null },
+    { "id": "australia", "label": "Australia", "type": "partner", "image": null },
+    { "id": "antarctica", "label": "Antarctica", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Physical Geography",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

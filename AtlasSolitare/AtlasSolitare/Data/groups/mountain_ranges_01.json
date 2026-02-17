@@ -1,0 +1,22 @@
+{
+  "group_id": "mountain_ranges_01",
+  "group_name": "Mountain Ranges",
+  "base_card": {
+    "id": "mountain_ranges_base",
+    "label": "Mountain Ranges",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "himalayas", "label": "Himalayas", "type": "partner", "image": null },
+    { "id": "andes", "label": "Andes", "type": "partner", "image": null },
+    { "id": "rockies", "label": "Rockies", "type": "partner", "image": null },
+    { "id": "alps", "label": "Alps", "type": "partner", "image": null },
+    { "id": "atlas", "label": "Atlas", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Physical Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}
