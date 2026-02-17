@@ -42,13 +42,10 @@ class GameEngine {
                 if card.isPartner {
                     let normalizedLabel = card.label.lowercased().trimmingCharacters(in: .whitespaces)
                     usedLabels.insert(normalizedLabel)
-                    print("[GameEngine] Tracking used card from foundation: \(normalizedLabel)")
                 }
             }
         }
 
-        print("[GameEngine] rebuildUsedCardLabels complete. Total used cards: \(usedLabels.count)")
-        print("[GameEngine] Used labels: \(usedLabels.sorted())")
         state.usedPartnerCardLabels = usedLabels
     }
 
@@ -126,24 +123,15 @@ class GameEngine {
     /// Validates that the first card can be placed, then moves all cards in order.
     @discardableResult
     func moveStack(cards: [Card], source: MoveSource, target: MoveTarget) -> MoveValidation {
-        print("[GameEngine] moveStack called: \(cards.count) card(s)")
-        for (i, card) in cards.enumerated() {
-            print("[GameEngine]   Card \(i): \(card.label) (type: \(card.type), group: \(card.groupId))")
-        }
-
         guard let firstCard = cards.first else {
-            print("[GameEngine] ❌ No cards to move")
             return .invalid(reason: "No cards to move")
         }
 
         // Only allow moving stacks to tableau (not foundation)
         guard case .tableau = target else {
-            print("[GameEngine] ❌ Target is not tableau")
             return .invalid(reason: "Stacks can only be moved to tableau piles")
         }
 
-        print("[GameEngine] Validating first card placement...")
-        print("[GameEngine] Current usedPartnerCardLabels: \(state.usedPartnerCardLabels.sorted())")
         // Validate the first card can be placed
         let validation = Rules.validate(
             card: firstCard,
@@ -155,30 +143,24 @@ class GameEngine {
         )
 
         switch validation {
-        case .invalid(let reason):
-            print("[GameEngine] ❌ Validation failed: \(reason)")
+        case .invalid:
             return validation
 
         case .valid:
-            print("[GameEngine] ✅ Validation passed, moving \(cards.count) card(s)")
             // Remove all cards from source
-            for (i, _) in cards.enumerated() {
+            for _ in cards {
                 removeCard(from: source)
-                print("[GameEngine]   Removed card \(i) from source")
             }
 
             // Place all cards at target in order
-            for (i, card) in cards.enumerated() {
+            for card in cards {
                 placeCard(card, at: target)
-                print("[GameEngine]   Placed card \(i): \(card.label) at target")
-
                 // Note: Stack moves are only to tableau, so we don't track cards as "used"
                 // Cards are only "used" when placed on foundations (permanent placements)
             }
 
             // Reveal new top card in tableau if source was tableau
             if case .tableau(let idx) = source {
-                print("[GameEngine] Revealing top card in source pile \(idx)")
                 revealTopCard(in: idx)
             }
 
@@ -186,7 +168,6 @@ class GameEngine {
             state.moveCount += 1
 
             notifyChanged()
-            print("[GameEngine] ✅ Stack move complete")
             return .valid
         }
     }
@@ -195,45 +176,33 @@ class GameEngine {
     /// All cards must be valid for the foundation and will be added in sequence.
     @discardableResult
     func moveStackToFoundation(cards: [Card], source: MoveSource, foundationIndex: Int) -> MoveValidation {
-        print("[GameEngine] moveStackToFoundation called: \(cards.count) card(s) to foundation \(foundationIndex)")
-        for (i, card) in cards.enumerated() {
-            print("[GameEngine]   Card \(i): \(card.label) (type: \(card.type), group: \(card.groupId))")
-        }
-
         guard !cards.isEmpty else {
-            print("[GameEngine] ❌ No cards to move")
             return .invalid(reason: "No cards to move")
         }
 
         guard foundationIndex >= 0, foundationIndex < state.foundations.count else {
-            print("[GameEngine] ❌ Invalid foundation index")
             return .invalid(reason: "Invalid foundation index")
         }
 
         // Validate each card can be placed on the foundation in sequence
         var tempFoundation = state.foundations[foundationIndex]
-        for (i, card) in cards.enumerated() {
+        for card in cards {
             let validation = Rules.canPlaceOnFoundation(card: card, foundation: tempFoundation)
-            if case .invalid(let reason) = validation {
-                print("[GameEngine] ❌ Card \(i) (\(card.label)) cannot be placed: \(reason)")
+            if case .invalid = validation {
                 return validation
             }
             // Simulate adding the card to check the next one
             tempFoundation.cards.append(card)
         }
 
-        print("[GameEngine] ✅ All cards validated, moving \(cards.count) card(s)")
-
         // Remove all cards from source
-        for (i, _) in cards.enumerated() {
+        for _ in cards {
             removeCard(from: source)
-            print("[GameEngine]   Removed card \(i) from source")
         }
 
         // Place all cards at foundation in order
-        for (i, card) in cards.enumerated() {
+        for card in cards {
             state.foundations[foundationIndex].cards.append(card)
-            print("[GameEngine]   Placed card \(i): \(card.label) at foundation")
 
             // Track partner cards as used
             if card.isPartner {
@@ -244,7 +213,6 @@ class GameEngine {
 
         // Reveal new top card in tableau if source was tableau
         if case .tableau(let idx) = source {
-            print("[GameEngine] Revealing top card in source pile \(idx)")
             revealTopCard(in: idx)
         }
 
@@ -255,7 +223,6 @@ class GameEngine {
         checkAndClearGroup(at: foundationIndex)
 
         notifyChanged()
-        print("[GameEngine] ✅ Stack move to foundation complete")
         return .valid
     }
 

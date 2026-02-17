@@ -19,7 +19,11 @@ struct GameCenterView: UIViewControllerRepresentable {
         if let vc = viewController, uiViewController.presentedViewController == nil {
             // Set the delegate to handle dismissal
             vc.gameCenterDelegate = context.coordinator
-            uiViewController.present(vc, animated: true)
+
+            // Present on next run loop to avoid modifying state during view update
+            DispatchQueue.main.async {
+                uiViewController.present(vc, animated: true)
+            }
         }
     }
 
