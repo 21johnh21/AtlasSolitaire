@@ -1,0 +1,24 @@
+{
+  "group_id": "seven_wonders_01",
+  "group_name": "7 Wonders of the World",
+  "base_card": {
+    "id": "seven_wonders_base",
+    "label": "7 Wonders of the World",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "great_wall", "label": "Great Wall of China", "type": "partner", "image": null },
+    { "id": "petra", "label": "Petra", "type": "partner", "image": null },
+    { "id": "colosseum", "label": "Colosseum", "type": "partner", "image": null },
+    { "id": "chichen_itza", "label": "Chichen Itza", "type": "partner", "image": null },
+    { "id": "machu_picchu", "label": "Machu Picchu", "type": "partner", "image": null },
+    { "id": "taj_mahal", "label": "Taj Mahal", "type": "partner", "image": null },
+    { "id": "christ_redeemer", "label": "Christ the Redeemer", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Landmarks",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

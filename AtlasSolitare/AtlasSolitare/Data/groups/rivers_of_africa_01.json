@@ -1,0 +1,23 @@
+{
+  "group_id": "rivers_of_africa_01",
+  "group_name": "Rivers of Africa",
+  "base_card": {
+    "id": "rivers_of_africa_base",
+    "label": "Rivers of Africa",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "nile", "label": "Nile", "type": "partner", "image": null },
+    { "id": "congo", "label": "Congo", "type": "partner", "image": null },
+    { "id": "niger", "label": "Niger", "type": "partner", "image": null },
+    { "id": "zambezi", "label": "Zambezi", "type": "partner", "image": null },
+    { "id": "orange", "label": "Orange", "type": "partner", "image": null },
+    { "id": "limpopo", "label": "Limpopo", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "region": "Africa",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

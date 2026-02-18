@@ -1,0 +1,23 @@
+{
+  "group_id": "cities_of_brazil_01",
+  "group_name": "Cities of Brazil",
+  "base_card": {
+    "id": "cities_of_brazil_base",
+    "label": "Cities of Brazil",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "sao_paulo", "label": "São Paulo", "type": "partner", "image": null },
+    { "id": "rio_de_janeiro", "label": "Rio de Janeiro", "type": "partner", "image": null },
+    { "id": "brasilia", "label": "Brasília", "type": "partner", "image": null },
+    { "id": "salvador", "label": "Salvador", "type": "partner", "image": null },
+    { "id": "fortaleza", "label": "Fortaleza", "type": "partner", "image": null },
+    { "id": "manaus", "label": "Manaus", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "Brazil",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

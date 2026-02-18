@@ -1,0 +1,23 @@
+{
+  "group_id": "cities_of_mexico_01",
+  "group_name": "Cities of Mexico",
+  "base_card": {
+    "id": "cities_of_mexico_base",
+    "label": "Cities of Mexico",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "mexico_city", "label": "Mexico City", "type": "partner", "image": null },
+    { "id": "guadalajara", "label": "Guadalajara", "type": "partner", "image": null },
+    { "id": "monterrey", "label": "Monterrey", "type": "partner", "image": null },
+    { "id": "puebla", "label": "Puebla", "type": "partner", "image": null },
+    { "id": "cancun", "label": "Cancun", "type": "partner", "image": null },
+    { "id": "tijuana", "label": "Tijuana", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "Mexico",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

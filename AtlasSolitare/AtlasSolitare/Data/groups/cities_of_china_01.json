@@ -1,0 +1,24 @@
+{
+  "group_id": "cities_of_china_01",
+  "group_name": "Cities of China",
+  "base_card": {
+    "id": "cities_of_china_base",
+    "label": "Cities of China",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "beijing", "label": "Beijing", "type": "partner", "image": null },
+    { "id": "shanghai", "label": "Shanghai", "type": "partner", "image": null },
+    { "id": "guangzhou", "label": "Guangzhou", "type": "partner", "image": null },
+    { "id": "shenzhen", "label": "Shenzhen", "type": "partner", "image": null },
+    { "id": "chengdu", "label": "Chengdu", "type": "partner", "image": null },
+    { "id": "wuhan", "label": "Wuhan", "type": "partner", "image": null },
+    { "id": "xian", "label": "Xi'an", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "China",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

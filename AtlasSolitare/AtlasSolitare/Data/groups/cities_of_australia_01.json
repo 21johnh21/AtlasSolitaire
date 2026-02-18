@@ -1,0 +1,23 @@
+{
+  "group_id": "cities_of_australia_01",
+  "group_name": "Cities of Australia",
+  "base_card": {
+    "id": "cities_of_australia_base",
+    "label": "Cities of Australia",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "sydney", "label": "Sydney", "type": "partner", "image": null },
+    { "id": "melbourne", "label": "Melbourne", "type": "partner", "image": null },
+    { "id": "brisbane", "label": "Brisbane", "type": "partner", "image": null },
+    { "id": "perth", "label": "Perth", "type": "partner", "image": null },
+    { "id": "adelaide", "label": "Adelaide", "type": "partner", "image": null },
+    { "id": "canberra", "label": "Canberra", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "Australia",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

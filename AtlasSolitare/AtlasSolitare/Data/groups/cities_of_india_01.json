@@ -1,0 +1,24 @@
+{
+  "group_id": "cities_of_india_01",
+  "group_name": "Cities of India",
+  "base_card": {
+    "id": "cities_of_india_base",
+    "label": "Cities of India",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "mumbai", "label": "Mumbai", "type": "partner", "image": null },
+    { "id": "delhi", "label": "Delhi", "type": "partner", "image": null },
+    { "id": "bangalore", "label": "Bangalore", "type": "partner", "image": null },
+    { "id": "hyderabad", "label": "Hyderabad", "type": "partner", "image": null },
+    { "id": "chennai", "label": "Chennai", "type": "partner", "image": null },
+    { "id": "kolkata", "label": "Kolkata", "type": "partner", "image": null },
+    { "id": "jaipur", "label": "Jaipur", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "India",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

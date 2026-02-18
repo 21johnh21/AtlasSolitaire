@@ -1,0 +1,23 @@
+{
+  "group_id": "cities_of_south_africa_01",
+  "group_name": "Cities of South Africa",
+  "base_card": {
+    "id": "cities_of_south_africa_base",
+    "label": "Cities of South Africa",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "johannesburg", "label": "Johannesburg", "type": "partner", "image": null },
+    { "id": "cape_town", "label": "Cape Town", "type": "partner", "image": null },
+    { "id": "durban", "label": "Durban", "type": "partner", "image": null },
+    { "id": "pretoria", "label": "Pretoria", "type": "partner", "image": null },
+    { "id": "port_elizabeth", "label": "Port Elizabeth", "type": "partner", "image": null },
+    { "id": "bloemfontein", "label": "Bloemfontein", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "South Africa",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

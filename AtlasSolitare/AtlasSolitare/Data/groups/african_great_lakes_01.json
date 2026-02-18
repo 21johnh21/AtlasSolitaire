@@ -1,0 +1,24 @@
+{
+  "group_id": "african_great_lakes_01",
+  "group_name": "African Great Lakes",
+  "base_card": {
+    "id": "african_great_lakes_base",
+    "label": "African Great Lakes",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "lake_victoria", "label": "Victoria", "type": "partner", "image": null },
+    { "id": "lake_tanganyika", "label": "Tanganyika", "type": "partner", "image": null },
+    { "id": "lake_malawi", "label": "Malawi", "type": "partner", "image": null },
+    { "id": "lake_turkana", "label": "Turkana", "type": "partner", "image": null },
+    { "id": "lake_albert", "label": "Albert", "type": "partner", "image": null },
+    { "id": "lake_edward", "label": "Edward", "type": "partner", "image": null },
+    { "id": "lake_kivu", "label": "Kivu", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "region": "Africa",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}
