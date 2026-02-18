@@ -1,0 +1,27 @@
+{
+  "group_id": "canadian_provinces_01",
+  "group_name": "Provinces of Canada",
+  "base_card": {
+    "id": "canadian_provinces_base",
+    "label": "Provinces of Canada",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "ontario", "label": "Ontario", "type": "partner", "image": null },
+    { "id": "quebec", "label": "Quebec", "type": "partner", "image": null },
+    { "id": "british_columbia", "label": "British Columbia", "type": "partner", "image": null },
+    { "id": "alberta", "label": "Alberta", "type": "partner", "image": null },
+    { "id": "nova_scotia", "label": "Nova Scotia", "type": "partner", "image": null },
+    { "id": "new_brunswick", "label": "New Brunswick", "type": "partner", "image": null },
+    { "id": "manitoba", "label": "Manitoba", "type": "partner", "image": null },
+    { "id": "prince_edward_island", "label": "Prince Edward Island", "type": "partner", "image": null },
+    { "id": "saskatchewan", "label": "Saskatchewan", "type": "partner", "image": null },
+    { "id": "newfoundland", "label": "Newfoundland", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "Canada",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

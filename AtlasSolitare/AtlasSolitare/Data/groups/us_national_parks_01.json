@@ -1,0 +1,22 @@
+{
+  "group_id": "us_national_parks_01",
+  "group_name": "US National Parks",
+  "base_card": {
+    "id": "us_national_parks_base",
+    "label": "US National Parks",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "yellowstone", "label": "Yellowstone", "type": "partner", "image": null },
+    { "id": "grand_canyon", "label": "Grand Canyon", "type": "partner", "image": null },
+    { "id": "yosemite", "label": "Yosemite", "type": "partner", "image": null },
+    { "id": "zion", "label": "Zion", "type": "partner", "image": null },
+    { "id": "acadia", "label": "Acadia", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "United States",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

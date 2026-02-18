@@ -1,0 +1,22 @@
+{
+  "group_id": "caribbean_islands_01",
+  "group_name": "Caribbean Islands",
+  "base_card": {
+    "id": "caribbean_islands_base",
+    "label": "Caribbean Islands",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "cuba", "label": "Cuba", "type": "partner", "image": null },
+    { "id": "jamaica", "label": "Jamaica", "type": "partner", "image": null },
+    { "id": "hispanola", "label": "Hispanola", "type": "partner", "image": null },
+    { "id": "puerto_rico", "label": "Puerto Rico", "type": "partner", "image": null },
+    { "id": "trinidad", "label": "Trinidad", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "region": "Caribbean",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}
