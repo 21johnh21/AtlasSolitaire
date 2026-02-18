@@ -1,0 +1,32 @@
+{
+  "group_id": "former_ussr_01",
+  "group_name": "Former USSR",
+  "base_card": {
+    "id": "former_ussr_base",
+    "label": "Former USSR",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "ussr_russia", "label": "Russia", "type": "partner", "image": null },
+    { "id": "ussr_ukraine", "label": "Ukraine", "type": "partner", "image": null },
+    { "id": "ussr_kazakhstan", "label": "Kazakhstan", "type": "partner", "image": null },
+    { "id": "ussr_uzbekistan", "label": "Uzbekistan", "type": "partner", "image": null },
+    { "id": "ussr_belarus", "label": "Belarus", "type": "partner", "image": null },
+    { "id": "ussr_georgia", "label": "Georgia", "type": "partner", "image": null },
+    { "id": "ussr_azerbaijan", "label": "Azerbaijan", "type": "partner", "image": null },
+    { "id": "ussr_lithuania", "label": "Lithuania", "type": "partner", "image": null },
+    { "id": "ussr_latvia", "label": "Latvia", "type": "partner", "image": null },
+    { "id": "ussr_estonia", "label": "Estonia", "type": "partner", "image": null },
+    { "id": "ussr_moldova", "label": "Moldova", "type": "partner", "image": null },
+    { "id": "ussr_armenia", "label": "Armenia", "type": "partner", "image": null },
+    { "id": "ussr_tajikistan", "label": "Tajikistan", "type": "partner", "image": null },
+    { "id": "ussr_turkmenistan", "label": "Turkmenistan", "type": "partner", "image": null },
+    { "id": "ussr_kyrgyzstan", "label": "Kyrgyzstan", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Historical",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

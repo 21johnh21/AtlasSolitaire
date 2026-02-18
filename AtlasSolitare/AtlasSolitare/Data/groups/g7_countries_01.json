@@ -1,0 +1,24 @@
+{
+  "group_id": "g7_countries_01",
+  "group_name": "G7 Countries",
+  "base_card": {
+    "id": "g7_countries_base",
+    "label": "G7 Countries",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "g7_usa", "label": "United States", "type": "partner", "image": null },
+    { "id": "g7_canada", "label": "Canada", "type": "partner", "image": null },
+    { "id": "g7_uk", "label": "United Kingdom", "type": "partner", "image": null },
+    { "id": "g7_france", "label": "France", "type": "partner", "image": null },
+    { "id": "g7_germany", "label": "Germany", "type": "partner", "image": null },
+    { "id": "g7_italy", "label": "Italy", "type": "partner", "image": null },
+    { "id": "g7_japan", "label": "Japan", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Political",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

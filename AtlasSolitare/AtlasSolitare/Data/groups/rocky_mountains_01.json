@@ -1,0 +1,23 @@
+{
+  "group_id": "rocky_mountains_01",
+  "group_name": "Rocky Mountains",
+  "base_card": {
+    "id": "rocky_mountains_base",
+    "label": "Rocky Mountains",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "mt_elbert", "label": "Mt. Elbert", "type": "partner", "image": null },
+    { "id": "mt_rainier", "label": "Mt. Rainier", "type": "partner", "image": null },
+    { "id": "pikes_peak", "label": "Pikes Peak", "type": "partner", "image": null },
+    { "id": "mt_hood", "label": "Mt. Hood", "type": "partner", "image": null },
+    { "id": "grand_teton", "label": "Grand Teton", "type": "partner", "image": null },
+    { "id": "longs_peak", "label": "Longs Peak", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "region": "North America",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

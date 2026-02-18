@@ -1,0 +1,24 @@
+{
+  "group_id": "russian_oblasts_01",
+  "group_name": "Russian Oblasts",
+  "base_card": {
+    "id": "russian_oblasts_base",
+    "label": "Russian Oblasts",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "moscow_oblast", "label": "Moscow", "type": "partner", "image": null },
+    { "id": "leningrad_oblast", "label": "Leningrad", "type": "partner", "image": null },
+    { "id": "sverdlovsk_oblast", "label": "Sverdlovsk", "type": "partner", "image": null },
+    { "id": "novosibirsk_oblast", "label": "Novosibirsk", "type": "partner", "image": null },
+    { "id": "chelyabinsk_oblast", "label": "Chelyabinsk", "type": "partner", "image": null },
+    { "id": "samara_oblast", "label": "Samara", "type": "partner", "image": null },
+    { "id": "rostov_oblast", "label": "Rostov", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "Russia",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

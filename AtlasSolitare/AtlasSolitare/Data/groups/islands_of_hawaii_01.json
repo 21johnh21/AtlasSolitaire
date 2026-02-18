@@ -1,0 +1,25 @@
+{
+  "group_id": "islands_of_hawaii_01",
+  "group_name": "Islands of Hawaii",
+  "base_card": {
+    "id": "islands_of_hawaii_base",
+    "label": "Islands of Hawaii",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "hawaii_big_island", "label": "Hawaii", "type": "partner", "image": null },
+    { "id": "maui", "label": "Maui", "type": "partner", "image": null },
+    { "id": "oahu", "label": "Oahu", "type": "partner", "image": null },
+    { "id": "kauai", "label": "Kauai", "type": "partner", "image": null },
+    { "id": "molokai", "label": "Molokai", "type": "partner", "image": null },
+    { "id": "lanai", "label": "Lanai", "type": "partner", "image": null },
+    { "id": "niihau", "label": "Niihau", "type": "partner", "image": null },
+    { "id": "kahoolawe", "label": "Kahoolawe", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "United States",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

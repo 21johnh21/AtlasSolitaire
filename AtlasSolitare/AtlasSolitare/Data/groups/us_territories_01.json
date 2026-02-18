@@ -1,0 +1,22 @@
+{
+  "group_id": "us_territories_01",
+  "group_name": "Territories of the US",
+  "base_card": {
+    "id": "us_territories_base",
+    "label": "Territories of the US",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "territory_puerto_rico", "label": "Puerto Rico", "type": "partner", "image": null },
+    { "id": "territory_guam", "label": "Guam", "type": "partner", "image": null },
+    { "id": "territory_us_virgin_islands", "label": "US Virgin Islands", "type": "partner", "image": null },
+    { "id": "territory_american_samoa", "label": "American Samoa", "type": "partner", "image": null },
+    { "id": "territory_northern_mariana", "label": "Northern Mariana Islands", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "United States",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

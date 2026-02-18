@@ -1,0 +1,22 @@
+{
+  "group_id": "islands_of_japan_01",
+  "group_name": "Islands of Japan",
+  "base_card": {
+    "id": "islands_of_japan_base",
+    "label": "Islands of Japan",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "honshu", "label": "Honshu", "type": "partner", "image": null },
+    { "id": "hokkaido", "label": "Hokkaido", "type": "partner", "image": null },
+    { "id": "kyushu", "label": "Kyushu", "type": "partner", "image": null },
+    { "id": "shikoku", "label": "Shikoku", "type": "partner", "image": null },
+    { "id": "okinawa", "label": "Okinawa", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "Japan",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}
