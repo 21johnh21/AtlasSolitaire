@@ -49,43 +49,49 @@ private struct SingleTableauPile: View {
         let visibleCards = pile.filter { !draggingCardIds.contains($0.card.id) }
         let showEmptySlot = pile.isEmpty || visibleCards.isEmpty
 
-        ZStack(alignment: .top) {
-            if showEmptySlot {
-                emptySlot
-            } else {
-                ForEach(pile.indices, id: \.self) { i in
-                    let tc = pile[i]
-                    let yOffset = computeOffset(upTo: i)
-                    let isDraggable = tc.isFaceUp && canDragFromIndex(i)
-                    let isBeingDragged = draggingCardIds.contains(tc.card.id)
+        GeometryReader { geo in
+            let availableHeight = geo.size.height
+            let scale = compressionScale(availableHeight: availableHeight)
 
-                    if !isBeingDragged {
-                        CardView(
-                            card: tc.card,
-                            isFaceUp: tc.isFaceUp,
-                            isHighlighted: false
-                        )
-                        .equatable()
-                        .offset(y: yOffset)
-                        // Face-down cards have lower z so face-up cards render on top.
-                        .zIndex(Double(i))
-                        .if(isDraggable) { view in
-                            view.draggable(onDragPayload?(tc.card, pileIndex, i) ?? DragPayload(card: tc.card, source: .tableau(pileIndex: pileIndex))) {
-                                // Create a visual preview showing the stack of cards being dragged
-                                dragPreviewForStack(startingAt: i)
+            ZStack(alignment: .top) {
+                if showEmptySlot {
+                    emptySlot
+                } else {
+                    ForEach(pile.indices, id: \.self) { i in
+                        let tc = pile[i]
+                        let yOffset = computeOffset(upTo: i, scale: scale)
+                        let isDraggable = tc.isFaceUp && canDragFromIndex(i)
+                        let isBeingDragged = draggingCardIds.contains(tc.card.id)
+
+                        if !isBeingDragged {
+                            CardView(
+                                card: tc.card,
+                                isFaceUp: tc.isFaceUp,
+                                isHighlighted: false
+                            )
+                            .equatable()
+                            .offset(y: yOffset)
+                            // Face-down cards have lower z so face-up cards render on top.
+                            .zIndex(Double(i))
+                            .if(isDraggable) { view in
+                                view.draggable(onDragPayload?(tc.card, pileIndex, i) ?? DragPayload(card: tc.card, source: .tableau(pileIndex: pileIndex))) {
+                                    // Create a visual preview showing the stack of cards being dragged
+                                    dragPreviewForStack(startingAt: i)
+                                }
                             }
                         }
                     }
                 }
             }
+            .frame(width: cardWidth, alignment: .top)
+            .contentShape(Rectangle()) // Make the entire pile area accept drops
+            .dropDestination(for: DragPayload.self) { items, location in
+                guard let payload = items.first else { return false }
+                return onDropPayload?(payload, pileIndex) ?? false
+            }
+            .accessibilityLabel("Tableau pile \(pileIndex + 1), \(pile.count) card\(pile.count == 1 ? "" : "s")")
         }
-        .frame(width: cardWidth, height: max(pileHeight, CardLayout.height(for: cardWidth)), alignment: .top)
-        .contentShape(Rectangle()) // Make the entire pile area accept drops
-        .dropDestination(for: DragPayload.self) { items, location in
-            guard let payload = items.first else { return false }
-            return onDropPayload?(payload, pileIndex) ?? false
-        }
-        .accessibilityLabel("Tableau pile \(pileIndex + 1), \(pile.count) card\(pile.count == 1 ? "" : "s")")
+        .frame(width: cardWidth)
     }
 
     // ─── Drag helpers ───────────────────────────────────────────────────────
@@ -127,20 +133,45 @@ private struct SingleTableauPile: View {
 
     // ─── Offset calculation ─────────────────────────────────────────────────
 
-    /// Cumulative y-offset for card at position `index`.
-    private func computeOffset(upTo index: Int) -> CGFloat {
+    /// Cumulative y-offset for card at position `index`, scaled for compression.
+    private func computeOffset(upTo index: Int, scale: CGFloat = 1.0) -> CGFloat {
         var offset: CGFloat = 0
         for i in 0..<index {
-            offset += pile[i].isFaceUp ? CardLayout.faceUpOffset : CardLayout.faceDownOffset
+            offset += (pile[i].isFaceUp ? CardLayout.faceUpOffset : CardLayout.faceDownOffset) * scale
         }
         return offset
     }
 
-    /// Total height needed to display this pile without clipping.
-    private var pileHeight: CGFloat {
+    /// Total height needed to display this pile at natural (uncompressed) size.
+    private var naturalPileHeight: CGFloat {
         let cardHeight = CardLayout.height(for: cardWidth)
         guard !pile.isEmpty else { return cardHeight }
         return computeOffset(upTo: pile.count - 1) + cardHeight
+    }
+
+    /// Returns a scale factor (0...1) to compress card offsets so the pile fits
+    /// within `availableHeight`. Cards are never scaled below a minimum offset
+    /// to keep them distinguishable.
+    private func compressionScale(availableHeight: CGFloat) -> CGFloat {
+        let cardHeight = CardLayout.height(for: cardWidth)
+        guard availableHeight > cardHeight, naturalPileHeight > availableHeight else {
+            return 1.0  // No compression needed
+        }
+
+        // The offsets between cards (excluding the final card's height) must fit
+        let totalOffsetSpace = availableHeight - cardHeight
+        let naturalOffsetSpace = naturalPileHeight - cardHeight
+
+        let scale = totalOffsetSpace / naturalOffsetSpace
+
+        // Don't compress below a minimum so cards remain visually distinct
+        let minFaceDownOffset: CGFloat = 6
+        let minFaceUpOffset: CGFloat = 10
+        let minScaleFaceDown = minFaceDownOffset / CardLayout.faceDownOffset
+        let minScaleFaceUp   = minFaceUpOffset   / CardLayout.faceUpOffset
+        let minScale = min(minScaleFaceDown, minScaleFaceUp)
+
+        return max(scale, minScale)
     }
 
     // ─── Empty pile placeholder ─────────────────────────────────────────────
