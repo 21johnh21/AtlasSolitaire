@@ -1,0 +1,27 @@
+{
+  "group_id": "countries_with_monarchies_01",
+  "group_name": "Countries with Monarchies",
+  "base_card": {
+    "id": "countries_with_monarchies_base",
+    "label": "Country with a Monarchy",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "monarchy_japan", "label": "Japan", "type": "partner", "image": null },
+    { "id": "monarchy_united_kingdom", "label": "United Kingdom", "type": "partner", "image": null },
+    { "id": "monarchy_saudi_arabia", "label": "Saudi Arabia", "type": "partner", "image": null },
+    { "id": "monarchy_sweden", "label": "Sweden", "type": "partner", "image": null },
+    { "id": "monarchy_morocco", "label": "Morocco", "type": "partner", "image": null },
+    { "id": "monarchy_thailand", "label": "Thailand", "type": "partner", "image": null },
+    { "id": "monarchy_jordan", "label": "Jordan", "type": "partner", "image": null },
+    { "id": "monarchy_norway", "label": "Norway", "type": "partner", "image": null },
+    { "id": "monarchy_eswatini", "label": "Eswatini", "type": "partner", "image": null },
+    { "id": "monarchy_spain", "label": "Spain", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Government",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

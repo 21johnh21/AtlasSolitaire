@@ -1,0 +1,24 @@
+{
+  "group_id": "seven_summits_01",
+  "group_name": "The 7 Summits",
+  "base_card": {
+    "id": "seven_summits_base",
+    "label": "One of the 7 Summits",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "summit_everest", "label": "Mount Everest", "type": "partner", "image": null },
+    { "id": "summit_aconcagua", "label": "Aconcagua", "type": "partner", "image": null },
+    { "id": "summit_denali", "label": "Denali", "type": "partner", "image": null },
+    { "id": "summit_kilimanjaro", "label": "Kilimanjaro", "type": "partner", "image": null },
+    { "id": "summit_elbrus", "label": "Mount Elbrus", "type": "partner", "image": null },
+    { "id": "summit_vinson", "label": "Vinson Massif", "type": "partner", "image": null },
+    { "id": "summit_carstensz", "label": "Carstensz Pyramid", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

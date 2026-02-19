@@ -1,0 +1,25 @@
+{
+  "group_id": "arctic_nations_01",
+  "group_name": "Arctic Nations",
+  "base_card": {
+    "id": "arctic_nations_base",
+    "label": "Arctic Nation",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "arctic_canada", "label": "Canada", "type": "partner", "image": null },
+    { "id": "arctic_denmark", "label": "Denmark", "type": "partner", "image": null },
+    { "id": "arctic_finland", "label": "Finland", "type": "partner", "image": null },
+    { "id": "arctic_iceland", "label": "Iceland", "type": "partner", "image": null },
+    { "id": "arctic_norway", "label": "Norway", "type": "partner", "image": null },
+    { "id": "arctic_russia", "label": "Russia", "type": "partner", "image": null },
+    { "id": "arctic_sweden", "label": "Sweden", "type": "partner", "image": null },
+    { "id": "arctic_united_states", "label": "United States", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

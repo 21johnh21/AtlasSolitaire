@@ -1,0 +1,23 @@
+{
+  "group_id": "himalayan_countries_01",
+  "group_name": "Countries of the Himalayas",
+  "base_card": {
+    "id": "himalayan_countries_base",
+    "label": "Himalayan Region Country",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "himalaya_nepal", "label": "Nepal", "type": "partner", "image": null },
+    { "id": "himalaya_india", "label": "India", "type": "partner", "image": null },
+    { "id": "himalaya_china", "label": "China", "type": "partner", "image": null },
+    { "id": "himalaya_pakistan", "label": "Pakistan", "type": "partner", "image": null },
+    { "id": "himalaya_bhutan", "label": "Bhutan", "type": "partner", "image": null },
+    { "id": "himalaya_afghanistan", "label": "Afghanistan", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

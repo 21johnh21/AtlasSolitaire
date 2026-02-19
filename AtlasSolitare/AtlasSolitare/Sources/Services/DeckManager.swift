@@ -62,7 +62,13 @@ class LocalJSONDataSource: GroupDataSource {
             "stan_countries_01",
             "deserts_of_the_world_01",
             "longest_rivers_01",
-            "archipelagos_01"
+            "archipelagos_01",
+            "danube_capitals_01",
+            "countries_with_monarchies_01",
+            "arctic_nations_01",
+            "high_altitude_cities_01",
+            "himalayan_countries_01",
+            "seven_summits_01"
         ]
 
         var definitions: [GroupDefinition] = []

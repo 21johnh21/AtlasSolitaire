@@ -1,0 +1,25 @@
+{
+  "group_id": "high_altitude_cities_01",
+  "group_name": "High Altitude Cities",
+  "base_card": {
+    "id": "high_altitude_cities_base",
+    "label": "High Altitude City",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "altitude_la_paz", "label": "La Paz", "type": "partner", "image": null },
+    { "id": "altitude_lhasa", "label": "Lhasa", "type": "partner", "image": null },
+    { "id": "altitude_cusco", "label": "Cusco", "type": "partner", "image": null },
+    { "id": "altitude_quito", "label": "Quito", "type": "partner", "image": null },
+    { "id": "altitude_bogota", "label": "Bogotá", "type": "partner", "image": null },
+    { "id": "altitude_addis_ababa", "label": "Addis Ababa", "type": "partner", "image": null },
+    { "id": "altitude_thimphu", "label": "Thimphu", "type": "partner", "image": null },
+    { "id": "altitude_mexico_city", "label": "Mexico City", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

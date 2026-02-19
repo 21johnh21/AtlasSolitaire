@@ -1,0 +1,21 @@
+{
+  "group_id": "danube_capitals_01",
+  "group_name": "Capitals on the Danube",
+  "base_card": {
+    "id": "danube_capitals_base",
+    "label": "Capitals on the Danube",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "danube_vienna", "label": "Vienna", "type": "partner", "image": null },
+    { "id": "danube_bratislava", "label": "Bratislava", "type": "partner", "image": null },
+    { "id": "danube_budapest", "label": "Budapest", "type": "partner", "image": null },
+    { "id": "danube_belgrade", "label": "Belgrade", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}
