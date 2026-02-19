@@ -1,0 +1,27 @@
+{
+  "group_id": "landlocked_countries_01",
+  "group_name": "Landlocked Countries",
+  "base_card": {
+    "id": "landlocked_countries_base",
+    "label": "Landlocked Country",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "landlocked_switzerland", "label": "Switzerland", "type": "partner", "image": null },
+    { "id": "landlocked_bolivia", "label": "Bolivia", "type": "partner", "image": null },
+    { "id": "landlocked_ethiopia", "label": "Ethiopia", "type": "partner", "image": null },
+    { "id": "landlocked_mongolia", "label": "Mongolia", "type": "partner", "image": null },
+    { "id": "landlocked_kazakhstan", "label": "Kazakhstan", "type": "partner", "image": null },
+    { "id": "landlocked_austria", "label": "Austria", "type": "partner", "image": null },
+    { "id": "landlocked_lesotho", "label": "Lesotho", "type": "partner", "image": null },
+    { "id": "landlocked_paraguay", "label": "Paraguay", "type": "partner", "image": null },
+    { "id": "landlocked_uzbekistan", "label": "Uzbekistan", "type": "partner", "image": null },
+    { "id": "landlocked_liechtenstein", "label": "Liechtenstein", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

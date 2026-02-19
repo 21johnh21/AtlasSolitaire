@@ -1,0 +1,26 @@
+{
+  "group_id": "archipelagos_01",
+  "group_name": "Archipelagos of the World",
+  "base_card": {
+    "id": "archipelagos_base",
+    "label": "Archipelago",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "archipelago_malay", "label": "Malay Archipelago", "type": "partner", "image": null },
+    { "id": "archipelago_philippines", "label": "Philippine Archipelago", "type": "partner", "image": null },
+    { "id": "archipelago_hawaii", "label": "Hawaiian Islands", "type": "partner", "image": null },
+    { "id": "archipelago_galapagos", "label": "Galápagos Islands", "type": "partner", "image": null },
+    { "id": "archipelago_azores", "label": "Azores", "type": "partner", "image": null },
+    { "id": "archipelago_maldives", "label": "Maldives", "type": "partner", "image": null },
+    { "id": "archipelago_canary", "label": "Canary Islands", "type": "partner", "image": null },
+    { "id": "archipelago_british_isles", "label": "British Isles", "type": "partner", "image": null },
+    { "id": "archipelago_canadian_arctic", "label": "Canadian Arctic Archipelago", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

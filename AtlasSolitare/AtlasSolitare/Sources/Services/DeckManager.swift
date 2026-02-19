@@ -56,7 +56,13 @@ class LocalJSONDataSource: GroupDataSource {
             "us_territories_01",
             "florida_keys_01",
             "cities_of_colorado_01",
-            "boroughs_of_new_york_01"
+            "boroughs_of_new_york_01",
+            "landlocked_countries_01",
+            "utc_zero_countries_01",
+            "stan_countries_01",
+            "deserts_of_the_world_01",
+            "longest_rivers_01",
+            "archipelagos_01"
         ]
 
         var definitions: [GroupDefinition] = []

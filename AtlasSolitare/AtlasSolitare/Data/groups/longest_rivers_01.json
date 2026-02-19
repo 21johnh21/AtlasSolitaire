@@ -1,0 +1,23 @@
+{
+  "group_id": "longest_rivers_01",
+  "group_name": "Longest River on Each Continent",
+  "base_card": {
+    "id": "longest_rivers_base",
+    "label": "Longest River by Continent",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "river_nile", "label": "Nile", "type": "partner", "image": null },
+    { "id": "river_amazon", "label": "Amazon", "type": "partner", "image": null },
+    { "id": "river_yangtze", "label": "Yangtze", "type": "partner", "image": null },
+    { "id": "river_missouri", "label": "Missouri", "type": "partner", "image": null },
+    { "id": "river_volga", "label": "Volga", "type": "partner", "image": null },
+    { "id": "river_murray", "label": "Murray", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

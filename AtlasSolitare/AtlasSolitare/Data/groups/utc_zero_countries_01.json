@@ -1,0 +1,30 @@
+{
+  "group_id": "utc_zero_countries_01",
+  "group_name": "Countries in UTC+0",
+  "base_card": {
+    "id": "utc_zero_countries_base",
+    "label": "UTC+0 Time Zone",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "utc0_iceland", "label": "Iceland", "type": "partner", "image": null },
+    { "id": "utc0_ghana", "label": "Ghana", "type": "partner", "image": null },
+    { "id": "utc0_senegal", "label": "Senegal", "type": "partner", "image": null },
+    { "id": "utc0_ivory_coast", "label": "Ivory Coast", "type": "partner", "image": null },
+    { "id": "utc0_burkina_faso", "label": "Burkina Faso", "type": "partner", "image": null },
+    { "id": "utc0_mali", "label": "Mali", "type": "partner", "image": null },
+    { "id": "utc0_guinea", "label": "Guinea", "type": "partner", "image": null },
+    { "id": "utc0_liberia", "label": "Liberia", "type": "partner", "image": null },
+    { "id": "utc0_togo", "label": "Togo", "type": "partner", "image": null },
+    { "id": "utc0_mauritania", "label": "Mauritania", "type": "partner", "image": null },
+    { "id": "utc0_united_kingdom", "label": "United Kingdom", "type": "partner", "image": null },
+    { "id": "utc0_ireland", "label": "Ireland", "type": "partner", "image": null },
+    { "id": "utc0_portugal", "label": "Portugal", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

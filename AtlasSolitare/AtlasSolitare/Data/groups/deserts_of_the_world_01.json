@@ -1,0 +1,26 @@
+{
+  "group_id": "deserts_of_the_world_01",
+  "group_name": "Deserts of the World",
+  "base_card": {
+    "id": "deserts_of_the_world_base",
+    "label": "Desert",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "desert_sahara", "label": "Sahara", "type": "partner", "image": null },
+    { "id": "desert_gobi", "label": "Gobi", "type": "partner", "image": null },
+    { "id": "desert_atacama", "label": "Atacama", "type": "partner", "image": null },
+    { "id": "desert_arabian", "label": "Arabian Desert", "type": "partner", "image": null },
+    { "id": "desert_patagonian", "label": "Patagonian Desert", "type": "partner", "image": null },
+    { "id": "desert_kalahari", "label": "Kalahari", "type": "partner", "image": null },
+    { "id": "desert_great_victoria", "label": "Great Victoria Desert", "type": "partner", "image": null },
+    { "id": "desert_namib", "label": "Namib", "type": "partner", "image": null },
+    { "id": "desert_chihuahuan", "label": "Chihuahuan Desert", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

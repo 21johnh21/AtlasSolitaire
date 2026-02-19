@@ -1,0 +1,24 @@
+{
+  "group_id": "stan_countries_01",
+  "group_name": "\"-stan\" Countries",
+  "base_card": {
+    "id": "stan_countries_base",
+    "label": "\"-stan\" Country",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "stan_afghanistan", "label": "Afghanistan", "type": "partner", "image": null },
+    { "id": "stan_kazakhstan", "label": "Kazakhstan", "type": "partner", "image": null },
+    { "id": "stan_kyrgyzstan", "label": "Kyrgyzstan", "type": "partner", "image": null },
+    { "id": "stan_pakistan", "label": "Pakistan", "type": "partner", "image": null },
+    { "id": "stan_tajikistan", "label": "Tajikistan", "type": "partner", "image": null },
+    { "id": "stan_turkmenistan", "label": "Turkmenistan", "type": "partner", "image": null },
+    { "id": "stan_uzbekistan", "label": "Uzbekistan", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}
