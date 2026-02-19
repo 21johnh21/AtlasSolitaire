@@ -97,16 +97,34 @@ private struct SingleTableauPile: View {
     // ─── Drag helpers ───────────────────────────────────────────────────────
 
     /// Determines if a card at the given index can be dragged.
-    /// A card is draggable if it's face-up and forms a valid stack with subsequent cards.
+    /// A card is only draggable if it is the bottommost card of a valid movable stack.
+    /// This prevents grabbing the middle of a stack and splitting it apart.
     private func canDragFromIndex(_ index: Int) -> Bool {
         guard index >= 0, index < pile.count else { return false }
         guard pile[index].isFaceUp else { return false }
 
-        // Get the valid stack starting from this index
+        // Find the bottommost card of the valid stack that reaches the top of the pile.
+        // Walk upward from this card's position to find where the contiguous group starts.
         let stackIndices = Rules.getMovableStack(from: pile, startIndex: index)
 
-        // Can drag if this is part of a valid stack that extends to the top of the pile
-        return !stackIndices.isEmpty && stackIndices.contains(pile.count - 1)
+        // This card must extend a stack all the way to the top of the pile.
+        guard !stackIndices.isEmpty && stackIndices.contains(pile.count - 1) else {
+            return false
+        }
+
+        // Only the bottommost card of the stack may be the drag handle.
+        // If there's a card above this one that is also part of the same stack,
+        // this card is in the middle and should not be individually draggable.
+        if index > 0 {
+            let cardAboveIndices = Rules.getMovableStack(from: pile, startIndex: index - 1)
+            if cardAboveIndices.contains(pile.count - 1) {
+                // The card above is also the start of a stack reaching the top,
+                // meaning this card is not the bottommost — disallow drag.
+                return false
+            }
+        }
+
+        return true
     }
 
     /// Creates a visual preview of the card stack being dragged
