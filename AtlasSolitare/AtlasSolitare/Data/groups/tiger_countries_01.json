@@ -1,0 +1,27 @@
+{
+  "group_id": "tiger_countries_01",
+  "group_name": "Countries Home to Wild Tigers",
+  "base_card": {
+    "id": "tiger_countries_base",
+    "label": "Country with Wild Tigers",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "tiger_india", "label": "India", "type": "partner", "image": null },
+    { "id": "tiger_russia", "label": "Russia", "type": "partner", "image": null },
+    { "id": "tiger_indonesia", "label": "Indonesia", "type": "partner", "image": null },
+    { "id": "tiger_malaysia", "label": "Malaysia", "type": "partner", "image": null },
+    { "id": "tiger_thailand", "label": "Thailand", "type": "partner", "image": null },
+    { "id": "tiger_bangladesh", "label": "Bangladesh", "type": "partner", "image": null },
+    { "id": "tiger_nepal", "label": "Nepal", "type": "partner", "image": null },
+    { "id": "tiger_bhutan", "label": "Bhutan", "type": "partner", "image": null },
+    { "id": "tiger_china", "label": "China", "type": "partner", "image": null },
+    { "id": "tiger_myanmar", "label": "Myanmar", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Wildlife",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

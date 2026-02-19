@@ -1,0 +1,26 @@
+{
+  "group_id": "drc_neighbors_01",
+  "group_name": "Countries Bordering DR Congo",
+  "base_card": {
+    "id": "drc_neighbors_base",
+    "label": "Countries Bordering DR Congo",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "drc_angola", "label": "Angola", "type": "partner", "image": null },
+    { "id": "drc_burundi", "label": "Burundi", "type": "partner", "image": null },
+    { "id": "drc_car", "label": "Central African Republic", "type": "partner", "image": null },
+    { "id": "drc_congo", "label": "Republic of the Congo", "type": "partner", "image": null },
+    { "id": "drc_rwanda", "label": "Rwanda", "type": "partner", "image": null },
+    { "id": "drc_south_sudan", "label": "South Sudan", "type": "partner", "image": null },
+    { "id": "drc_tanzania", "label": "Tanzania", "type": "partner", "image": null },
+    { "id": "drc_uganda", "label": "Uganda", "type": "partner", "image": null },
+    { "id": "drc_zambia", "label": "Zambia", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

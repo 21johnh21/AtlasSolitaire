@@ -1,0 +1,27 @@
+{
+  "group_id": "regions_of_spain_01",
+  "group_name": "Regions of Spain",
+  "base_card": {
+    "id": "regions_of_spain_base",
+    "label": "Autonomous Community of Spain",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "spain_andalusia", "label": "Andalusia", "type": "partner", "image": null },
+    { "id": "spain_catalonia", "label": "Catalonia", "type": "partner", "image": null },
+    { "id": "spain_madrid", "label": "Madrid", "type": "partner", "image": null },
+    { "id": "spain_basque", "label": "Basque Country", "type": "partner", "image": null },
+    { "id": "spain_galicia", "label": "Galicia", "type": "partner", "image": null },
+    { "id": "spain_valencia", "label": "Valencia", "type": "partner", "image": null },
+    { "id": "spain_aragon", "label": "Aragon", "type": "partner", "image": null },
+    { "id": "spain_canary", "label": "Canary Islands", "type": "partner", "image": null },
+    { "id": "spain_castile_leon", "label": "Castile and León", "type": "partner", "image": null },
+    { "id": "spain_balearic", "label": "Balearic Islands", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "Spain",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

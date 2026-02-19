@@ -1,0 +1,26 @@
+{
+  "group_id": "african_national_parks_01",
+  "group_name": "National Parks of Africa",
+  "base_card": {
+    "id": "african_national_parks_base",
+    "label": "National Park of Africa",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "africa_serengeti", "label": "Serengeti", "type": "partner", "image": null },
+    { "id": "africa_kruger", "label": "Kruger", "type": "partner", "image": null },
+    { "id": "africa_chobe", "label": "Chobe", "type": "partner", "image": null },
+    { "id": "africa_maasai_mara", "label": "Maasai Mara", "type": "partner", "image": null },
+    { "id": "africa_okavango", "label": "Okavango Delta", "type": "partner", "image": null },
+    { "id": "africa_etosha", "label": "Etosha", "type": "partner", "image": null },
+    { "id": "africa_luangwa", "label": "South Luangwa", "type": "partner", "image": null },
+    { "id": "africa_amboseli", "label": "Amboseli", "type": "partner", "image": null },
+    { "id": "africa_volcanoes", "label": "Volcanoes National Park", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "group_id": "andes_countries_01",
+  "group_name": "Andes Countries",
+  "base_card": {
+    "id": "andes_countries_base",
+    "label": "Andes Country",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "andes_venezuela", "label": "Venezuela", "type": "partner", "image": null },
+    { "id": "andes_colombia", "label": "Colombia", "type": "partner", "image": null },
+    { "id": "andes_ecuador", "label": "Ecuador", "type": "partner", "image": null },
+    { "id": "andes_peru", "label": "Peru", "type": "partner", "image": null },
+    { "id": "andes_bolivia", "label": "Bolivia", "type": "partner", "image": null },
+    { "id": "andes_chile", "label": "Chile", "type": "partner", "image": null },
+    { "id": "andes_argentina", "label": "Argentina", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

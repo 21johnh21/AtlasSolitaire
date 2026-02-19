@@ -1,0 +1,26 @@
+{
+  "group_id": "germany_neighbors_01",
+  "group_name": "Countries Bordering Germany",
+  "base_card": {
+    "id": "germany_neighbors_base",
+    "label": "Countries Bordering Germany",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "germany_denmark", "label": "Denmark", "type": "partner", "image": null },
+    { "id": "germany_poland", "label": "Poland", "type": "partner", "image": null },
+    { "id": "germany_czech", "label": "Czech Republic", "type": "partner", "image": null },
+    { "id": "germany_austria", "label": "Austria", "type": "partner", "image": null },
+    { "id": "germany_switzerland", "label": "Switzerland", "type": "partner", "image": null },
+    { "id": "germany_france", "label": "France", "type": "partner", "image": null },
+    { "id": "germany_luxembourg", "label": "Luxembourg", "type": "partner", "image": null },
+    { "id": "germany_belgium", "label": "Belgium", "type": "partner", "image": null },
+    { "id": "germany_netherlands", "label": "Netherlands", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

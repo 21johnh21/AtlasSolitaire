@@ -1,0 +1,26 @@
+{
+  "group_id": "mountain_ranges_europe_01",
+  "group_name": "Mountain Ranges of Europe",
+  "base_card": {
+    "id": "mountain_ranges_europe_base",
+    "label": "Mountain Range of Europe",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "europe_alps", "label": "Alps", "type": "partner", "image": null },
+    { "id": "europe_pyrenees", "label": "Pyrenees", "type": "partner", "image": null },
+    { "id": "europe_carpathians", "label": "Carpathian Mountains", "type": "partner", "image": null },
+    { "id": "europe_ural", "label": "Ural Mountains", "type": "partner", "image": null },
+    { "id": "europe_scandinavian", "label": "Scandinavian Mountains", "type": "partner", "image": null },
+    { "id": "europe_apennines", "label": "Apennines", "type": "partner", "image": null },
+    { "id": "europe_dinaric", "label": "Dinaric Alps", "type": "partner", "image": null },
+    { "id": "europe_balkan", "label": "Balkan Mountains", "type": "partner", "image": null },
+    { "id": "europe_cantabrian", "label": "Cantabrian Mountains", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

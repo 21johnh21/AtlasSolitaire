@@ -1,0 +1,25 @@
+{
+  "group_id": "state_residences_01",
+  "group_name": "Residences of Heads of State",
+  "base_card": {
+    "id": "state_residences_base",
+    "label": "Official Residence",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "residence_white_house", "label": "White House", "type": "partner", "image": null },
+    { "id": "residence_downing_street", "label": "10 Downing Street", "type": "partner", "image": null },
+    { "id": "residence_elysee", "label": "Élysée Palace", "type": "partner", "image": null },
+    { "id": "residence_kremlin", "label": "The Kremlin", "type": "partner", "image": null },
+    { "id": "residence_bellevue", "label": "Bellevue Palace", "type": "partner", "image": null },
+    { "id": "residence_blue_house", "label": "Blue House", "type": "partner", "image": null },
+    { "id": "residence_rashtrapati", "label": "Rashtrapati Bhavan", "type": "partner", "image": null },
+    { "id": "residence_alvorada", "label": "Palácio da Alvorada", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Government",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}
