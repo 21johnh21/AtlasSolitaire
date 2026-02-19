@@ -132,6 +132,13 @@ private struct SingleTableauPile: View {
     private func dragPreviewForStack(startingAt index: Int) -> some View {
         let stackIndices = Rules.getMovableStack(from: pile, startIndex: index)
         let cardHeight = CardLayout.height(for: cardWidth)
+        let stackHeight = cardHeight + CGFloat(stackIndices.count - 1) * CardLayout.faceUpOffset
+
+        // SwiftUI centers the drag preview under the finger. Since the grabbed card
+        // sits at the top of the preview frame (y=0), we offset the entire preview
+        // upward so the grabbed card aligns with the touch point instead of the
+        // frame center. The correction is: move up by (stackHeight/2 - cardHeight/2).
+        let verticalCorrection = (stackHeight / 2) - (cardHeight / 2)
 
         ZStack(alignment: .top) {
             ForEach(Array(stackIndices.enumerated()), id: \.element) { offset, cardIndex in
@@ -146,7 +153,8 @@ private struct SingleTableauPile: View {
                 .zIndex(Double(offset))
             }
         }
-        .frame(width: cardWidth, height: cardHeight + CGFloat(stackIndices.count - 1) * CardLayout.faceUpOffset)
+        .frame(width: cardWidth, height: stackHeight)
+        .offset(y: -verticalCorrection)
     }
 
     // ─── Offset calculation ─────────────────────────────────────────────────
