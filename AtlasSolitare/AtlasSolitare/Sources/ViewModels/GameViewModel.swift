@@ -92,6 +92,7 @@ class GameViewModel: ObservableObject {
         engine.drawFromStock()
         audio.play(.cardPlace)
         haptic.dropSuccess()
+        autosave()
     }
 
     /// User tapped the reshuffle button explicitly.
@@ -99,6 +100,7 @@ class GameViewModel: ObservableObject {
         guard Rules.canReshuffle(stock: engine.state.stock, waste: engine.state.waste) else { return }
         engine.reshuffle()
         audio.play(.shuffle)
+        autosave()
     }
 
     /// User tapped a card (tap-to-select flow).
