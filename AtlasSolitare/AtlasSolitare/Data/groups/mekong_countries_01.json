@@ -1,0 +1,23 @@
+{
+  "group_id": "mekong_countries_01",
+  "group_name": "Countries on the Mekong River",
+  "base_card": {
+    "id": "mekong_countries_base",
+    "label": "Country on the Mekong",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "mekong_china", "label": "China", "type": "partner", "image": null },
+    { "id": "mekong_myanmar", "label": "Myanmar", "type": "partner", "image": null },
+    { "id": "mekong_laos", "label": "Laos", "type": "partner", "image": null },
+    { "id": "mekong_thailand", "label": "Thailand", "type": "partner", "image": null },
+    { "id": "mekong_cambodia", "label": "Cambodia", "type": "partner", "image": null },
+    { "id": "mekong_vietnam", "label": "Vietnam", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

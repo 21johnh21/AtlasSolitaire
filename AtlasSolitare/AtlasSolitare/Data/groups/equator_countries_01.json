@@ -1,0 +1,30 @@
+{
+  "group_id": "equator_countries_01",
+  "group_name": "Countries on the Equator",
+  "base_card": {
+    "id": "equator_countries_base",
+    "label": "Country on the Equator",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "equator_ecuador", "label": "Ecuador", "type": "partner", "image": null },
+    { "id": "equator_colombia", "label": "Colombia", "type": "partner", "image": null },
+    { "id": "equator_brazil", "label": "Brazil", "type": "partner", "image": null },
+    { "id": "equator_sao_tome", "label": "São Tomé and Príncipe", "type": "partner", "image": null },
+    { "id": "equator_gabon", "label": "Gabon", "type": "partner", "image": null },
+    { "id": "equator_congo", "label": "Republic of the Congo", "type": "partner", "image": null },
+    { "id": "equator_drc", "label": "DR Congo", "type": "partner", "image": null },
+    { "id": "equator_uganda", "label": "Uganda", "type": "partner", "image": null },
+    { "id": "equator_kenya", "label": "Kenya", "type": "partner", "image": null },
+    { "id": "equator_somalia", "label": "Somalia", "type": "partner", "image": null },
+    { "id": "equator_maldives", "label": "Maldives", "type": "partner", "image": null },
+    { "id": "equator_indonesia", "label": "Indonesia", "type": "partner", "image": null },
+    { "id": "equator_kiribati", "label": "Kiribati", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

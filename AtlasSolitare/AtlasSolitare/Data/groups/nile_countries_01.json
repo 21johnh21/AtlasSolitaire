@@ -1,0 +1,28 @@
+{
+  "group_id": "nile_countries_01",
+  "group_name": "Countries on the Nile River",
+  "base_card": {
+    "id": "nile_countries_base",
+    "label": "Country on the Nile",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "nile_burundi", "label": "Burundi", "type": "partner", "image": null },
+    { "id": "nile_drc", "label": "DR Congo", "type": "partner", "image": null },
+    { "id": "nile_egypt", "label": "Egypt", "type": "partner", "image": null },
+    { "id": "nile_eritrea", "label": "Eritrea", "type": "partner", "image": null },
+    { "id": "nile_ethiopia", "label": "Ethiopia", "type": "partner", "image": null },
+    { "id": "nile_kenya", "label": "Kenya", "type": "partner", "image": null },
+    { "id": "nile_rwanda", "label": "Rwanda", "type": "partner", "image": null },
+    { "id": "nile_south_sudan", "label": "South Sudan", "type": "partner", "image": null },
+    { "id": "nile_sudan", "label": "Sudan", "type": "partner", "image": null },
+    { "id": "nile_tanzania", "label": "Tanzania", "type": "partner", "image": null },
+    { "id": "nile_uganda", "label": "Uganda", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

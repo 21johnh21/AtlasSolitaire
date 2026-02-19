@@ -1,0 +1,29 @@
+{
+  "group_id": "eurovision_winners_01",
+  "group_name": "Eurovision Winner Countries",
+  "base_card": {
+    "id": "eurovision_winners_base",
+    "label": "Eurovision Winner",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "eurovision_ireland", "label": "Ireland", "type": "partner", "image": null },
+    { "id": "eurovision_sweden", "label": "Sweden", "type": "partner", "image": null },
+    { "id": "eurovision_france", "label": "France", "type": "partner", "image": null },
+    { "id": "eurovision_luxembourg", "label": "Luxembourg", "type": "partner", "image": null },
+    { "id": "eurovision_netherlands", "label": "Netherlands", "type": "partner", "image": null },
+    { "id": "eurovision_uk", "label": "United Kingdom", "type": "partner", "image": null },
+    { "id": "eurovision_israel", "label": "Israel", "type": "partner", "image": null },
+    { "id": "eurovision_norway", "label": "Norway", "type": "partner", "image": null },
+    { "id": "eurovision_switzerland", "label": "Switzerland", "type": "partner", "image": null },
+    { "id": "eurovision_denmark", "label": "Denmark", "type": "partner", "image": null },
+    { "id": "eurovision_italy", "label": "Italy", "type": "partner", "image": null },
+    { "id": "eurovision_ukraine", "label": "Ukraine", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Culture",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

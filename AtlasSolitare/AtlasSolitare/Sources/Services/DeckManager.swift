@@ -84,7 +84,12 @@ class LocalJSONDataSource: GroupDataSource {
             "germany_neighbors_01",
             "drc_neighbors_01",
             "african_national_parks_01",
-            "andes_countries_01"
+            "andes_countries_01",
+            "mississippi_states_01",
+            "mekong_countries_01",
+            "nile_countries_01",
+            "equator_countries_01",
+            "eurovision_winners_01"
         ]
 
         var definitions: [GroupDefinition] = []

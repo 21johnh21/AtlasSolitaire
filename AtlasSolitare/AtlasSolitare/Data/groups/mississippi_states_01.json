@@ -1,0 +1,27 @@
+{
+  "group_id": "mississippi_states_01",
+  "group_name": "States on the Mississippi River",
+  "base_card": {
+    "id": "mississippi_states_base",
+    "label": "State on the Mississippi",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "mississippi_minnesota", "label": "Minnesota", "type": "partner", "image": null },
+    { "id": "mississippi_wisconsin", "label": "Wisconsin", "type": "partner", "image": null },
+    { "id": "mississippi_iowa", "label": "Iowa", "type": "partner", "image": null },
+    { "id": "mississippi_illinois", "label": "Illinois", "type": "partner", "image": null },
+    { "id": "mississippi_missouri", "label": "Missouri", "type": "partner", "image": null },
+    { "id": "mississippi_kentucky", "label": "Kentucky", "type": "partner", "image": null },
+    { "id": "mississippi_tennessee", "label": "Tennessee", "type": "partner", "image": null },
+    { "id": "mississippi_arkansas", "label": "Arkansas", "type": "partner", "image": null },
+    { "id": "mississippi_mississippi", "label": "Mississippi", "type": "partner", "image": null },
+    { "id": "mississippi_louisiana", "label": "Louisiana", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "United States",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}
