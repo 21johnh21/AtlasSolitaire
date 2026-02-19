@@ -1,0 +1,22 @@
+{
+  "group_id": "boroughs_of_new_york_01",
+  "group_name": "Boroughs of New York City",
+  "base_card": {
+    "id": "boroughs_of_new_york_base",
+    "label": "New York City",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "nyc_manhattan", "label": "Manhattan", "type": "partner", "image": null },
+    { "id": "nyc_brooklyn", "label": "Brooklyn", "type": "partner", "image": null },
+    { "id": "nyc_queens", "label": "Queens", "type": "partner", "image": null },
+    { "id": "nyc_bronx", "label": "The Bronx", "type": "partner", "image": null },
+    { "id": "nyc_staten_island", "label": "Staten Island", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "United States",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

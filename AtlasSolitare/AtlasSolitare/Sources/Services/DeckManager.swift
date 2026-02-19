@@ -53,7 +53,10 @@ class LocalJSONDataSource: GroupDataSource {
             "islands_of_japan_01",
             "russian_oblasts_01",
             "former_ussr_01",
-            "us_territories_01"
+            "us_territories_01",
+            "florida_keys_01",
+            "cities_of_colorado_01",
+            "boroughs_of_new_york_01"
         ]
 
         var definitions: [GroupDefinition] = []

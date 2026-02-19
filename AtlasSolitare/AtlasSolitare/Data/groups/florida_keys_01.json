@@ -1,0 +1,25 @@
+{
+  "group_id": "florida_keys_01",
+  "group_name": "Islands of the Florida Keys",
+  "base_card": {
+    "id": "florida_keys_base",
+    "label": "Florida Keys",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "key_largo", "label": "Key Largo", "type": "partner", "image": null },
+    { "id": "islamorada", "label": "Islamorada", "type": "partner", "image": null },
+    { "id": "key_vaca", "label": "Key Vaca", "type": "partner", "image": null },
+    { "id": "big_pine_key", "label": "Big Pine Key", "type": "partner", "image": null },
+    { "id": "key_west", "label": "Key West", "type": "partner", "image": null },
+    { "id": "tavernier_key", "label": "Tavernier", "type": "partner", "image": null },
+    { "id": "duck_key", "label": "Duck Key", "type": "partner", "image": null },
+    { "id": "summerland_key", "label": "Summerland Key", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "United States",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

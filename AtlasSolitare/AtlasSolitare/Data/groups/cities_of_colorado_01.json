@@ -1,0 +1,25 @@
+{
+  "group_id": "cities_of_colorado_01",
+  "group_name": "Cities of Colorado",
+  "base_card": {
+    "id": "cities_of_colorado_base",
+    "label": "Cities of Colorado",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "denver_co", "label": "Denver", "type": "partner", "image": null },
+    { "id": "colorado_springs_co", "label": "Colorado Springs", "type": "partner", "image": null },
+    { "id": "aurora_co", "label": "Aurora", "type": "partner", "image": null },
+    { "id": "fort_collins_co", "label": "Fort Collins", "type": "partner", "image": null },
+    { "id": "boulder_co", "label": "Boulder", "type": "partner", "image": null },
+    { "id": "pueblo_co", "label": "Pueblo", "type": "partner", "image": null },
+    { "id": "aspen_co", "label": "Aspen", "type": "partner", "image": null },
+    { "id": "vail_co", "label": "Vail", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "United States",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}
