@@ -84,7 +84,12 @@ private struct SingleTableauPile: View {
                 }
             }
             .frame(width: cardWidth, alignment: .top)
-            .contentShape(Rectangle()) // Make the entire pile area accept drops
+            // Extend the drop target to cover the full rendered pile height so
+            // cards can be dropped anywhere on the pile, not just the top card.
+            .contentShape(Rectangle().size(CGSize(
+                width: cardWidth,
+                height: max(naturalPileHeight(scale: scale), CardLayout.height(for: cardWidth))
+            )))
             .dropDestination(for: DragPayload.self) { items, location in
                 guard let payload = items.first else { return false }
                 return onDropPayload?(payload, pileIndex) ?? false
@@ -173,6 +178,13 @@ private struct SingleTableauPile: View {
         let cardHeight = CardLayout.height(for: cardWidth)
         guard !pile.isEmpty else { return cardHeight }
         return computeOffset(upTo: pile.count - 1) + cardHeight
+    }
+
+    /// Total rendered height of the pile at the given compression scale.
+    private func naturalPileHeight(scale: CGFloat) -> CGFloat {
+        let cardHeight = CardLayout.height(for: cardWidth)
+        guard !pile.isEmpty else { return cardHeight }
+        return computeOffset(upTo: pile.count - 1, scale: scale) + cardHeight
     }
 
     /// Returns a scale factor (0...1) to compress card offsets so the pile fits
