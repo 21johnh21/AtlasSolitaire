@@ -3,7 +3,7 @@
   "group_name": "The 7 Summits",
   "base_card": {
     "id": "seven_summits_base",
-    "label": "One of the 7 Summits",
+    "label": "7 Summits",
     "type": "base",
     "image": null
   },

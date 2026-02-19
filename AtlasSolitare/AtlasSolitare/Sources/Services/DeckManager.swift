@@ -72,7 +72,10 @@ class LocalJSONDataSource: GroupDataSource {
             "route_66_cities_01",
             "castles_of_england_01",
             "winter_olympic_hosts_01",
-            "summer_olympic_hosts_01"
+            "summer_olympic_hosts_01",
+            "gulf_countries_01",
+            "mediterranean_islands_01",
+            "emirates_of_uae_01"
         ]
 
         var definitions: [GroupDefinition] = []

@@ -1,0 +1,24 @@
+{
+  "group_id": "emirates_of_uae_01",
+  "group_name": "Emirates of the UAE",
+  "base_card": {
+    "id": "emirates_of_uae_base",
+    "label": "Emirate of the UAE",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "uae_abu_dhabi", "label": "Abu Dhabi", "type": "partner", "image": null },
+    { "id": "uae_dubai", "label": "Dubai", "type": "partner", "image": null },
+    { "id": "uae_sharjah", "label": "Sharjah", "type": "partner", "image": null },
+    { "id": "uae_ajman", "label": "Ajman", "type": "partner", "image": null },
+    { "id": "uae_umm_al_quwain", "label": "Umm Al Quwain", "type": "partner", "image": null },
+    { "id": "uae_ras_al_khaimah", "label": "Ras Al Khaimah", "type": "partner", "image": null },
+    { "id": "uae_fujairah", "label": "Fujairah", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "United Arab Emirates",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

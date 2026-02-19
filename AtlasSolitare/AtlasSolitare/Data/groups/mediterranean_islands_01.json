@@ -1,0 +1,27 @@
+{
+  "group_id": "mediterranean_islands_01",
+  "group_name": "Islands of the Mediterranean",
+  "base_card": {
+    "id": "mediterranean_islands_base",
+    "label": "Mediterranean Island",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "med_sicily", "label": "Sicily", "type": "partner", "image": null },
+    { "id": "med_sardinia", "label": "Sardinia", "type": "partner", "image": null },
+    { "id": "med_cyprus", "label": "Cyprus", "type": "partner", "image": null },
+    { "id": "med_corsica", "label": "Corsica", "type": "partner", "image": null },
+    { "id": "med_crete", "label": "Crete", "type": "partner", "image": null },
+    { "id": "med_malta", "label": "Malta", "type": "partner", "image": null },
+    { "id": "med_mallorca", "label": "Mallorca", "type": "partner", "image": null },
+    { "id": "med_rhodes", "label": "Rhodes", "type": "partner", "image": null },
+    { "id": "med_santorini", "label": "Santorini", "type": "partner", "image": null },
+    { "id": "med_corfu", "label": "Corfu", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

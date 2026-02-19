@@ -1,0 +1,25 @@
+{
+  "group_id": "gulf_countries_01",
+  "group_name": "Gulf Countries",
+  "base_card": {
+    "id": "gulf_countries_base",
+    "label": "Gulf Country",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "gulf_bahrain", "label": "Bahrain", "type": "partner", "image": null },
+    { "id": "gulf_iran", "label": "Iran", "type": "partner", "image": null },
+    { "id": "gulf_iraq", "label": "Iraq", "type": "partner", "image": null },
+    { "id": "gulf_kuwait", "label": "Kuwait", "type": "partner", "image": null },
+    { "id": "gulf_oman", "label": "Oman", "type": "partner", "image": null },
+    { "id": "gulf_qatar", "label": "Qatar", "type": "partner", "image": null },
+    { "id": "gulf_saudi_arabia", "label": "Saudi Arabia", "type": "partner", "image": null },
+    { "id": "gulf_uae", "label": "United Arab Emirates", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}
