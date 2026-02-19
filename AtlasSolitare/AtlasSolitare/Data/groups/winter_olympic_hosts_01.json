@@ -1,0 +1,29 @@
+{
+  "group_id": "winter_olympic_hosts_01",
+  "group_name": "Winter Olympic Host Cities",
+  "base_card": {
+    "id": "winter_olympic_hosts_base",
+    "label": "Winter Olympics Host City",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "winter_chamonix", "label": "Chamonix", "type": "partner", "image": null },
+    { "id": "winter_oslo", "label": "Oslo", "type": "partner", "image": null },
+    { "id": "winter_innsbruck", "label": "Innsbruck", "type": "partner", "image": null },
+    { "id": "winter_sapporo", "label": "Sapporo", "type": "partner", "image": null },
+    { "id": "winter_lake_placid", "label": "Lake Placid", "type": "partner", "image": null },
+    { "id": "winter_sarajevo", "label": "Sarajevo", "type": "partner", "image": null },
+    { "id": "winter_calgary", "label": "Calgary", "type": "partner", "image": null },
+    { "id": "winter_lillehammer", "label": "Lillehammer", "type": "partner", "image": null },
+    { "id": "winter_salt_lake_city", "label": "Salt Lake City", "type": "partner", "image": null },
+    { "id": "winter_vancouver", "label": "Vancouver", "type": "partner", "image": null },
+    { "id": "winter_sochi", "label": "Sochi", "type": "partner", "image": null },
+    { "id": "winter_beijing", "label": "Beijing", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Sports",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "group_id": "castles_of_england_01",
+  "group_name": "Castles of England",
+  "base_card": {
+    "id": "castles_of_england_base",
+    "label": "Castle in England",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "castle_windsor", "label": "Windsor Castle", "type": "partner", "image": null },
+    { "id": "castle_tower_of_london", "label": "Tower of London", "type": "partner", "image": null },
+    { "id": "castle_dover", "label": "Dover Castle", "type": "partner", "image": null },
+    { "id": "castle_warwick", "label": "Warwick Castle", "type": "partner", "image": null },
+    { "id": "castle_leeds", "label": "Leeds Castle", "type": "partner", "image": null },
+    { "id": "castle_bodiam", "label": "Bodiam Castle", "type": "partner", "image": null },
+    { "id": "castle_hever", "label": "Hever Castle", "type": "partner", "image": null },
+    { "id": "castle_bamburgh", "label": "Bamburgh Castle", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "United Kingdom",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

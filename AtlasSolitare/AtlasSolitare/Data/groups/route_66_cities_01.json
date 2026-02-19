@@ -1,0 +1,25 @@
+{
+  "group_id": "route_66_cities_01",
+  "group_name": "Cities on Route 66",
+  "base_card": {
+    "id": "route_66_cities_base",
+    "label": "Route 66",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "r66_chicago", "label": "Chicago", "type": "partner", "image": null },
+    { "id": "r66_st_louis", "label": "St. Louis", "type": "partner", "image": null },
+    { "id": "r66_tulsa", "label": "Tulsa", "type": "partner", "image": null },
+    { "id": "r66_oklahoma_city", "label": "Oklahoma City", "type": "partner", "image": null },
+    { "id": "r66_amarillo", "label": "Amarillo", "type": "partner", "image": null },
+    { "id": "r66_albuquerque", "label": "Albuquerque", "type": "partner", "image": null },
+    { "id": "r66_flagstaff", "label": "Flagstaff", "type": "partner", "image": null },
+    { "id": "r66_santa_monica", "label": "Santa Monica", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "United States",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

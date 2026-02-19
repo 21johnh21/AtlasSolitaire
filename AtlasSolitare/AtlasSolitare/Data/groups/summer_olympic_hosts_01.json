@@ -1,0 +1,28 @@
+{
+  "group_id": "summer_olympic_hosts_01",
+  "group_name": "Summer Olympic Host Cities",
+  "base_card": {
+    "id": "summer_olympic_hosts_base",
+    "label": "Summer Olympics Host City",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "summer_athens", "label": "Athens", "type": "partner", "image": null },
+    { "id": "summer_london", "label": "London", "type": "partner", "image": null },
+    { "id": "summer_berlin", "label": "Berlin", "type": "partner", "image": null },
+    { "id": "summer_tokyo", "label": "Tokyo", "type": "partner", "image": null },
+    { "id": "summer_mexico_city", "label": "Mexico City", "type": "partner", "image": null },
+    { "id": "summer_munich", "label": "Munich", "type": "partner", "image": null },
+    { "id": "summer_moscow", "label": "Moscow", "type": "partner", "image": null },
+    { "id": "summer_barcelona", "label": "Barcelona", "type": "partner", "image": null },
+    { "id": "summer_sydney", "label": "Sydney", "type": "partner", "image": null },
+    { "id": "summer_beijing", "label": "Beijing", "type": "partner", "image": null },
+    { "id": "summer_rio", "label": "Rio de Janeiro", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Sports",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}
