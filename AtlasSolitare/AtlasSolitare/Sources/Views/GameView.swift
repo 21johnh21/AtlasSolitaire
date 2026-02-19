@@ -65,7 +65,7 @@ struct GameView: View {
             }
             .environment(\.cardWidth, cardWidth)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.feltGreen)
+            .background(FeltBackground())
             .ignoresSafeArea(edges: .bottom)
             // Catch-all drop handler to clear dragging state if dropped on invalid area
             .dropDestination(for: DragPayload.self) { items, location in

@@ -114,6 +114,66 @@ enum CardLayout {
     static let height: CGFloat = 120
 }
 
+// MARK: - FeltBackground
+
+/// A layered felt surface: a woven crosshatch texture beneath a radial vignette.
+/// Matches the game's `feltGreen` palette and renders entirely in SwiftUI (no assets needed).
+struct FeltBackground: View {
+    var body: some View {
+        ZStack {
+            // Base fill
+            Color.feltGreen
+
+            // Woven crosshatch layer
+            Canvas { context, size in
+                let base   = Color(red: 0.12, green: 0.35, blue: 0.18)
+                let light  = Color(red: 0.15, green: 0.40, blue: 0.22)
+                let dark   = Color(red: 0.09, green: 0.28, blue: 0.14)
+
+                let spacing: CGFloat = 6
+                let lineWidth: CGFloat = 0.8
+
+                // Diagonal lines going ↘ (top-left to bottom-right)
+                var x: CGFloat = -size.height
+                while x < size.width + size.height {
+                    var path = Path()
+                    path.move(to: CGPoint(x: x, y: 0))
+                    path.addLine(to: CGPoint(x: x + size.height, y: size.height))
+                    context.stroke(path, with: .color(light.opacity(0.18)), lineWidth: lineWidth)
+                    x += spacing
+                }
+
+                // Diagonal lines going ↙ (top-right to bottom-left)
+                var x2: CGFloat = -size.height
+                while x2 < size.width + size.height {
+                    var path = Path()
+                    path.move(to: CGPoint(x: x2 + size.height, y: 0))
+                    path.addLine(to: CGPoint(x: x2, y: size.height))
+                    context.stroke(path, with: .color(dark.opacity(0.15)), lineWidth: lineWidth)
+                    x2 += spacing
+                }
+
+                // Suppress unused warning
+                _ = base
+            }
+            .blendMode(.overlay)
+
+            // Radial vignette: dark edges, lighter center
+            RadialGradient(
+                colors: [
+                    Color.clear,
+                    Color.black.opacity(0.28)
+                ],
+                center: .center,
+                startRadius: 0,
+                endRadius: 520
+            )
+            .blendMode(.multiply)
+        }
+        .ignoresSafeArea()
+    }
+}
+
 // MARK: - Array safe subscript
 
 extension Array {
