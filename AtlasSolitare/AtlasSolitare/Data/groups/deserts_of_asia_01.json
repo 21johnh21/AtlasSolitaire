@@ -1,0 +1,27 @@
+{
+  "group_id": "deserts_of_asia_01",
+  "group_name": "Deserts of Asia",
+  "base_card": {
+    "id": "asian_deserts_base",
+    "label": "Asian Desert",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "asia_gobi", "label": "Gobi Desert", "type": "partner", "image": null },
+    { "id": "asia_karakum", "label": "Karakum Desert", "type": "partner", "image": null },
+    { "id": "asia_taklamakan", "label": "Taklamakan Desert", "type": "partner", "image": null },
+    { "id": "asia_thar", "label": "Thar Desert", "type": "partner", "image": null },
+    { "id": "asia_kyzylkum", "label": "Kyzylkum Desert", "type": "partner", "image": null },
+    { "id": "asia_arabian", "label": "Arabian Desert", "type": "partner", "image": null },
+    { "id": "asia_rub_al_khali", "label": "Rub' al Khali", "type": "partner", "image": null },
+    { "id": "asia_lut", "label": "Lut Desert", "type": "partner", "image": null },
+    { "id": "asia_negev", "label": "Negev Desert", "type": "partner", "image": null },
+    { "id": "asia_syrian", "label": "Syrian Desert", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

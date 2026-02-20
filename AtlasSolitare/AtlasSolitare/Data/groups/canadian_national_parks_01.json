@@ -1,0 +1,27 @@
+{
+  "group_id": "canadian_national_parks_01",
+  "group_name": "Canadian National Parks",
+  "base_card": {
+    "id": "canadian_parks_base",
+    "label": "Canadian National Park",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "canada_banff", "label": "Banff", "type": "partner", "image": null },
+    { "id": "canada_jasper", "label": "Jasper", "type": "partner", "image": null },
+    { "id": "canada_wood_buffalo", "label": "Wood Buffalo", "type": "partner", "image": null },
+    { "id": "canada_glacier", "label": "Glacier", "type": "partner", "image": null },
+    { "id": "canada_gros_morne", "label": "Gros Morne", "type": "partner", "image": null },
+    { "id": "canada_waterton", "label": "Waterton Lakes", "type": "partner", "image": null },
+    { "id": "canada_pacific_rim", "label": "Pacific Rim", "type": "partner", "image": null },
+    { "id": "canada_nahanni", "label": "Nahanni", "type": "partner", "image": null },
+    { "id": "canada_yoho", "label": "Yoho", "type": "partner", "image": null },
+    { "id": "canada_cape_breton", "label": "Cape Breton Highlands", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

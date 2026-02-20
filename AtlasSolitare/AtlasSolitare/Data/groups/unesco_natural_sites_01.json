@@ -1,0 +1,27 @@
+{
+  "group_id": "unesco_natural_sites_01",
+  "group_name": "UNESCO Natural Sites",
+  "base_card": {
+    "id": "unesco_natural_base",
+    "label": "UNESCO Natural Site",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "unesco_grand_canyon", "label": "Grand Canyon", "type": "partner", "image": null },
+    { "id": "unesco_great_barrier_reef", "label": "Great Barrier Reef", "type": "partner", "image": null },
+    { "id": "unesco_galapagos", "label": "Galápagos Islands", "type": "partner", "image": null },
+    { "id": "unesco_serengeti", "label": "Serengeti National Park", "type": "partner", "image": null },
+    { "id": "unesco_yellowstone", "label": "Yellowstone National Park", "type": "partner", "image": null },
+    { "id": "unesco_iguazu", "label": "Iguazu Falls", "type": "partner", "image": null },
+    { "id": "unesco_victoria_falls", "label": "Victoria Falls", "type": "partner", "image": null },
+    { "id": "unesco_ha_long_bay", "label": "Ha Long Bay", "type": "partner", "image": null },
+    { "id": "unesco_jeju", "label": "Jeju Volcanic Island", "type": "partner", "image": null },
+    { "id": "unesco_kilimanjaro", "label": "Mount Kilimanjaro", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

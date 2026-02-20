@@ -1,0 +1,27 @@
+{
+  "group_id": "active_volcanoes_01",
+  "group_name": "Active Volcanoes",
+  "base_card": {
+    "id": "active_volcanoes_base",
+    "label": "Active Volcano",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "volcano_etna", "label": "Mount Etna", "type": "partner", "image": null },
+    { "id": "volcano_vesuvius", "label": "Mount Vesuvius", "type": "partner", "image": null },
+    { "id": "volcano_fuji", "label": "Mount Fuji", "type": "partner", "image": null },
+    { "id": "volcano_kilauea", "label": "Kīlauea", "type": "partner", "image": null },
+    { "id": "volcano_stromboli", "label": "Stromboli", "type": "partner", "image": null },
+    { "id": "volcano_merapi", "label": "Mount Merapi", "type": "partner", "image": null },
+    { "id": "volcano_krakatoa", "label": "Krakatoa", "type": "partner", "image": null },
+    { "id": "volcano_popocatepetl", "label": "Popocatépetl", "type": "partner", "image": null },
+    { "id": "volcano_mauna_loa", "label": "Mauna Loa", "type": "partner", "image": null },
+    { "id": "volcano_cotopaxi", "label": "Cotopaxi", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

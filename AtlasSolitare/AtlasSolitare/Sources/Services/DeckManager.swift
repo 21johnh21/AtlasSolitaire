@@ -95,7 +95,21 @@ class LocalJSONDataSource: GroupDataSource {
             "cities_of_vietnam_01",
             "channel_islands_01",
             "baltic_countries_01",
-            "aleutian_islands_01"
+            "aleutian_islands_01",
+            "canadian_islands_01",
+            "canadian_national_parks_01",
+            "deserts_of_asia_01",
+            "peninsulas_world_01",
+            "seas_of_world_01",
+            "unesco_natural_sites_01",
+            "walled_cities_01",
+            "horn_of_africa_01",
+            "carpathian_countries_01",
+            "active_volcanoes_01",
+            "glaciers_world_01",
+            "two_seas_countries_01",
+            "shared_islands_01",
+            "single_neighbor_nations_01"
         ]
 
         var definitions: [GroupDefinition] = []

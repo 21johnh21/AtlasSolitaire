@@ -1,0 +1,27 @@
+{
+  "group_id": "seas_of_world_01",
+  "group_name": "Seas of the World",
+  "base_card": {
+    "id": "seas_base",
+    "label": "Sea",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "sea_mediterranean", "label": "Mediterranean", "type": "partner", "image": null },
+    { "id": "sea_caribbean", "label": "Caribbean", "type": "partner", "image": null },
+    { "id": "sea_south_china", "label": "South China", "type": "partner", "image": null },
+    { "id": "sea_bering", "label": "Bering", "type": "partner", "image": null },
+    { "id": "sea_red", "label": "Red", "type": "partner", "image": null },
+    { "id": "sea_arabian", "label": "Arabian", "type": "partner", "image": null },
+    { "id": "sea_coral", "label": "Coral", "type": "partner", "image": null },
+    { "id": "sea_north", "label": "North", "type": "partner", "image": null },
+    { "id": "sea_black", "label": "Black", "type": "partner", "image": null },
+    { "id": "sea_japan", "label": "Sea of Japan", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "group_id": "walled_cities_01",
+  "group_name": "Walled Cities",
+  "base_card": {
+    "id": "walled_cities_base",
+    "label": "Walled City",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "walled_jerusalem", "label": "Jerusalem", "type": "partner", "image": null },
+    { "id": "walled_dubrovnik", "label": "Dubrovnik", "type": "partner", "image": null },
+    { "id": "walled_carcassonne", "label": "Carcassonne", "type": "partner", "image": null },
+    { "id": "walled_quebec", "label": "Quebec City", "type": "partner", "image": null },
+    { "id": "walled_avila", "label": "Ávila", "type": "partner", "image": null },
+    { "id": "walled_york", "label": "York", "type": "partner", "image": null },
+    { "id": "walled_tallinn", "label": "Tallinn", "type": "partner", "image": null },
+    { "id": "walled_cartagena", "label": "Cartagena", "type": "partner", "image": null },
+    { "id": "walled_xian", "label": "Xi'an", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

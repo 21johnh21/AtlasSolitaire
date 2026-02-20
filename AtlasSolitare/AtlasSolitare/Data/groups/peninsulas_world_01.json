@@ -1,0 +1,27 @@
+{
+  "group_id": "peninsulas_world_01",
+  "group_name": "Peninsulas of the World",
+  "base_card": {
+    "id": "peninsulas_base",
+    "label": "Peninsula",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "peninsula_arabian", "label": "Arabian", "type": "partner", "image": null },
+    { "id": "peninsula_iberian", "label": "Iberian", "type": "partner", "image": null },
+    { "id": "peninsula_italian", "label": "Italian", "type": "partner", "image": null },
+    { "id": "peninsula_balkan", "label": "Balkan", "type": "partner", "image": null },
+    { "id": "peninsula_scandinavian", "label": "Scandinavian", "type": "partner", "image": null },
+    { "id": "peninsula_kamchatka", "label": "Kamchatka", "type": "partner", "image": null },
+    { "id": "peninsula_korean", "label": "Korean", "type": "partner", "image": null },
+    { "id": "peninsula_indochina", "label": "Indochina", "type": "partner", "image": null },
+    { "id": "peninsula_yucatan", "label": "Yucatan", "type": "partner", "image": null },
+    { "id": "peninsula_florida", "label": "Florida", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "group_id": "carpathian_countries_01",
+  "group_name": "Carpathian Countries",
+  "base_card": {
+    "id": "carpathian_base",
+    "label": "Carpathian Country",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "carpathian_romania", "label": "Romania", "type": "partner", "image": null },
+    { "id": "carpathian_ukraine", "label": "Ukraine", "type": "partner", "image": null },
+    { "id": "carpathian_poland", "label": "Poland", "type": "partner", "image": null },
+    { "id": "carpathian_slovakia", "label": "Slovakia", "type": "partner", "image": null },
+    { "id": "carpathian_czechia", "label": "Czechia", "type": "partner", "image": null },
+    { "id": "carpathian_hungary", "label": "Hungary", "type": "partner", "image": null },
+    { "id": "carpathian_serbia", "label": "Serbia", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

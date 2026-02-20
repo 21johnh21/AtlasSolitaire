@@ -1,0 +1,27 @@
+{
+  "group_id": "canadian_islands_01",
+  "group_name": "Canadian Islands",
+  "base_card": {
+    "id": "canadian_islands_base",
+    "label": "Canadian Island",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "canada_baffin", "label": "Baffin Island", "type": "partner", "image": null },
+    { "id": "canada_victoria", "label": "Victoria Island", "type": "partner", "image": null },
+    { "id": "canada_ellesmere", "label": "Ellesmere Island", "type": "partner", "image": null },
+    { "id": "canada_banks", "label": "Banks Island", "type": "partner", "image": null },
+    { "id": "canada_devon", "label": "Devon Island", "type": "partner", "image": null },
+    { "id": "canada_axel_heiberg", "label": "Axel Heiberg Island", "type": "partner", "image": null },
+    { "id": "canada_melville", "label": "Melville Island", "type": "partner", "image": null },
+    { "id": "canada_southampton", "label": "Southampton Island", "type": "partner", "image": null },
+    { "id": "canada_prince_wales", "label": "Prince of Wales Island", "type": "partner", "image": null },
+    { "id": "canada_vancouver", "label": "Vancouver Island", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

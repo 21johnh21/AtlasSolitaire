@@ -1,0 +1,21 @@
+{
+  "group_id": "horn_of_africa_01",
+  "group_name": "Horn of Africa Countries",
+  "base_card": {
+    "id": "horn_africa_base",
+    "label": "Horn of Africa Country",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "horn_somalia", "label": "Somalia", "type": "partner", "image": null },
+    { "id": "horn_ethiopia", "label": "Ethiopia", "type": "partner", "image": null },
+    { "id": "horn_eritrea", "label": "Eritrea", "type": "partner", "image": null },
+    { "id": "horn_djibouti", "label": "Djibouti", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "group_id": "two_seas_countries_01",
+  "group_name": "Countries on Two Seas",
+  "base_card": {
+    "id": "two_seas_base",
+    "label": "Two Seas Country",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "two_seas_egypt", "label": "Egypt", "type": "partner", "image": null },
+    { "id": "two_seas_turkey", "label": "Turkey", "type": "partner", "image": null },
+    { "id": "two_seas_israel", "label": "Israel", "type": "partner", "image": null },
+    { "id": "two_seas_saudi_arabia", "label": "Saudi Arabia", "type": "partner", "image": null },
+    { "id": "two_seas_yemen", "label": "Yemen", "type": "partner", "image": null },
+    { "id": "two_seas_morocco", "label": "Morocco", "type": "partner", "image": null },
+    { "id": "two_seas_panama", "label": "Panama", "type": "partner", "image": null },
+    { "id": "two_seas_nicaragua", "label": "Nicaragua", "type": "partner", "image": null },
+    { "id": "two_seas_colombia", "label": "Colombia", "type": "partner", "image": null },
+    { "id": "two_seas_costa_rica", "label": "Costa Rica", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

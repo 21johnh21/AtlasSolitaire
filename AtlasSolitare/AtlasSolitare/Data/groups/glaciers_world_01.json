@@ -1,0 +1,26 @@
+{
+  "group_id": "glaciers_world_01",
+  "group_name": "Glaciers of the World",
+  "base_card": {
+    "id": "glaciers_base",
+    "label": "Glacier",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "glacier_perito_moreno", "label": "Perito Moreno", "type": "partner", "image": null },
+    { "id": "glacier_vatnajokull", "label": "Vatnajökull", "type": "partner", "image": null },
+    { "id": "glacier_aletsch", "label": "Aletsch", "type": "partner", "image": null },
+    { "id": "glacier_franz_josef", "label": "Franz Josef", "type": "partner", "image": null },
+    { "id": "glacier_mendenhall", "label": "Mendenhall", "type": "partner", "image": null },
+    { "id": "glacier_athabasca", "label": "Athabasca", "type": "partner", "image": null },
+    { "id": "glacier_jostedalsbreen", "label": "Jostedalsbreen", "type": "partner", "image": null },
+    { "id": "glacier_furtwangler", "label": "Furtwängler", "type": "partner", "image": null },
+    { "id": "glacier_margerie", "label": "Margerie", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

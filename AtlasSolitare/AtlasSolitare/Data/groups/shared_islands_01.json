@@ -1,0 +1,25 @@
+{
+  "group_id": "shared_islands_01",
+  "group_name": "Islands Shared by Two Nations",
+  "base_card": {
+    "id": "shared_islands_base",
+    "label": "Shared Island",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "shared_hispaniola", "label": "Hispaniola", "type": "partner", "image": null },
+    { "id": "shared_ireland", "label": "Ireland", "type": "partner", "image": null },
+    { "id": "shared_borneo", "label": "Borneo", "type": "partner", "image": null },
+    { "id": "shared_timor", "label": "Timor", "type": "partner", "image": null },
+    { "id": "shared_new_guinea", "label": "New Guinea", "type": "partner", "image": null },
+    { "id": "shared_tierra_del_fuego", "label": "Tierra del Fuego", "type": "partner", "image": null },
+    { "id": "shared_saint_martin", "label": "Saint Martin", "type": "partner", "image": null },
+    { "id": "shared_sebatik", "label": "Sebatik Island", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

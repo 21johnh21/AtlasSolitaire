@@ -1,0 +1,27 @@
+{
+  "group_id": "single_neighbor_nations_01",
+  "group_name": "Single-Neighbor Nations",
+  "base_card": {
+    "id": "single_neighbor_base",
+    "label": "Single-Neighbor Nation",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "neighbor_portugal", "label": "Portugal", "type": "partner", "image": null },
+    { "id": "neighbor_canada", "label": "Canada", "type": "partner", "image": null },
+    { "id": "neighbor_south_korea", "label": "South Korea", "type": "partner", "image": null },
+    { "id": "neighbor_denmark", "label": "Denmark", "type": "partner", "image": null },
+    { "id": "neighbor_ireland", "label": "Ireland", "type": "partner", "image": null },
+    { "id": "neighbor_haiti", "label": "Haiti", "type": "partner", "image": null },
+    { "id": "neighbor_monaco", "label": "Monaco", "type": "partner", "image": null },
+    { "id": "neighbor_san_marino", "label": "San Marino", "type": "partner", "image": null },
+    { "id": "neighbor_vatican", "label": "Vatican City", "type": "partner", "image": null },
+    { "id": "neighbor_lesotho", "label": "Lesotho", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}
