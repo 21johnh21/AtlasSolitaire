@@ -1,0 +1,25 @@
+{
+  "group_id": "cities_of_vietnam_01",
+  "group_name": "Cities of Vietnam",
+  "base_card": {
+    "id": "cities_of_vietnam_base",
+    "label": "Cities of Vietnam",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "vietnam_hanoi", "label": "Hanoi", "type": "partner", "image": null },
+    { "id": "vietnam_ho_chi_minh", "label": "Ho Chi Minh City", "type": "partner", "image": null },
+    { "id": "vietnam_da_nang", "label": "Da Nang", "type": "partner", "image": null },
+    { "id": "vietnam_hai_phong", "label": "Hai Phong", "type": "partner", "image": null },
+    { "id": "vietnam_can_tho", "label": "Can Tho", "type": "partner", "image": null },
+    { "id": "vietnam_bien_hoa", "label": "Bien Hoa", "type": "partner", "image": null },
+    { "id": "vietnam_hue", "label": "Hue", "type": "partner", "image": null },
+    { "id": "vietnam_nha_trang", "label": "Nha Trang", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "Vietnam",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

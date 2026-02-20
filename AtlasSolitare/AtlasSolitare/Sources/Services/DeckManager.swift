@@ -89,7 +89,13 @@ class LocalJSONDataSource: GroupDataSource {
             "mekong_countries_01",
             "nile_countries_01",
             "equator_countries_01",
-            "eurovision_winners_01"
+            "eurovision_winners_01",
+            "polar_bear_countries_01",
+            "caspian_countries_01",
+            "cities_of_vietnam_01",
+            "channel_islands_01",
+            "baltic_countries_01",
+            "aleutian_islands_01"
         ]
 
         var definitions: [GroupDefinition] = []

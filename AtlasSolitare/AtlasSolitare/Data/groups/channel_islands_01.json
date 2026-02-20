@@ -1,0 +1,22 @@
+{
+  "group_id": "channel_islands_01",
+  "group_name": "Channel Islands",
+  "base_card": {
+    "id": "channel_islands_base",
+    "label": "Channel Island",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "channel_jersey", "label": "Jersey", "type": "partner", "image": null },
+    { "id": "channel_guernsey", "label": "Guernsey", "type": "partner", "image": null },
+    { "id": "channel_alderney", "label": "Alderney", "type": "partner", "image": null },
+    { "id": "channel_sark", "label": "Sark", "type": "partner", "image": null },
+    { "id": "channel_herm", "label": "Herm", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "group_id": "baltic_countries_01",
+  "group_name": "Countries on the Baltic Sea",
+  "base_card": {
+    "id": "baltic_countries_base",
+    "label": "Country on the Baltic Sea",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "baltic_denmark", "label": "Denmark", "type": "partner", "image": null },
+    { "id": "baltic_estonia", "label": "Estonia", "type": "partner", "image": null },
+    { "id": "baltic_finland", "label": "Finland", "type": "partner", "image": null },
+    { "id": "baltic_germany", "label": "Germany", "type": "partner", "image": null },
+    { "id": "baltic_latvia", "label": "Latvia", "type": "partner", "image": null },
+    { "id": "baltic_lithuania", "label": "Lithuania", "type": "partner", "image": null },
+    { "id": "baltic_poland", "label": "Poland", "type": "partner", "image": null },
+    { "id": "baltic_russia", "label": "Russia", "type": "partner", "image": null },
+    { "id": "baltic_sweden", "label": "Sweden", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

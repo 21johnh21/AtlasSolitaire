@@ -1,0 +1,22 @@
+{
+  "group_id": "caspian_countries_01",
+  "group_name": "Countries on the Caspian Sea",
+  "base_card": {
+    "id": "caspian_countries_base",
+    "label": "Country on the Caspian Sea",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "caspian_russia", "label": "Russia", "type": "partner", "image": null },
+    { "id": "caspian_kazakhstan", "label": "Kazakhstan", "type": "partner", "image": null },
+    { "id": "caspian_turkmenistan", "label": "Turkmenistan", "type": "partner", "image": null },
+    { "id": "caspian_iran", "label": "Iran", "type": "partner", "image": null },
+    { "id": "caspian_azerbaijan", "label": "Azerbaijan", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

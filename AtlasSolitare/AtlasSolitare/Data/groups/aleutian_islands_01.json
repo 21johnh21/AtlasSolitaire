@@ -1,0 +1,25 @@
+{
+  "group_id": "aleutian_islands_01",
+  "group_name": "Aleutian Islands",
+  "base_card": {
+    "id": "aleutian_islands_base",
+    "label": "Aleutian Island",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "aleutian_unimak", "label": "Unimak", "type": "partner", "image": null },
+    { "id": "aleutian_unalaska", "label": "Unalaska", "type": "partner", "image": null },
+    { "id": "aleutian_umnak", "label": "Umnak", "type": "partner", "image": null },
+    { "id": "aleutian_attu", "label": "Attu", "type": "partner", "image": null },
+    { "id": "aleutian_adak", "label": "Adak", "type": "partner", "image": null },
+    { "id": "aleutian_atka", "label": "Atka", "type": "partner", "image": null },
+    { "id": "aleutian_kiska", "label": "Kiska", "type": "partner", "image": null },
+    { "id": "aleutian_tanaga", "label": "Tanaga", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "country": "United States",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

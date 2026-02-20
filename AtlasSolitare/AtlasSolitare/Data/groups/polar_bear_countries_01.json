@@ -1,0 +1,22 @@
+{
+  "group_id": "polar_bear_countries_01",
+  "group_name": "Countries with Polar Bears",
+  "base_card": {
+    "id": "polar_bear_countries_base",
+    "label": "Country with Polar Bears",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "polar_canada", "label": "Canada", "type": "partner", "image": null },
+    { "id": "polar_denmark", "label": "Denmark", "type": "partner", "image": null },
+    { "id": "polar_norway", "label": "Norway", "type": "partner", "image": null },
+    { "id": "polar_russia", "label": "Russia", "type": "partner", "image": null },
+    { "id": "polar_usa", "label": "United States", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Wildlife",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}
