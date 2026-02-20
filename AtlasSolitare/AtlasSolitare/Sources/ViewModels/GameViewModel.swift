@@ -131,8 +131,8 @@ class GameViewModel: ObservableObject {
     /// Start a new game (called from menu or win screen "Play Again").
     func startNewGame() {
         do {
-            // Pick 3 random groups per round (configurable).
-            let deck = try deckManager.buildRandomDeck(groupCount: 3)
+            // Pick 5 random groups per round (configurable).
+            let deck = try deckManager.buildRandomDeck(groupCount: 5)
             engine.newGame(deck: deck, seed: deck.seed)
 
             // Reset stats for new game
