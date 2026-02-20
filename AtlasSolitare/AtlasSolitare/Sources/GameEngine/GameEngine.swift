@@ -75,6 +75,11 @@ class GameEngine {
     /// the appropriate haptic / sound.
     @discardableResult
     func move(card: Card, source: MoveSource, target: MoveTarget) -> MoveValidation {
+        // Check if source and target are the same - this is a no-op
+        if isSameLocation(source: source, target: target) {
+            return .invalid(reason: "Cannot place card back on the same pile")
+        }
+
         let validation = Rules.validate(
             card: card,
             source: source,
@@ -125,6 +130,11 @@ class GameEngine {
     func moveStack(cards: [Card], source: MoveSource, target: MoveTarget) -> MoveValidation {
         guard let firstCard = cards.first else {
             return .invalid(reason: "No cards to move")
+        }
+
+        // Check if source and target are the same - this is a no-op
+        if isSameLocation(source: source, target: target) {
+            return .invalid(reason: "Cannot place cards back on the same pile")
         }
 
         // Only allow moving stacks to tableau (not foundation)
@@ -269,6 +279,18 @@ class GameEngine {
     }
 
     // ─── MARK: Private Helpers ──────────────────────────────────────────────
+
+    /// Check if source and target refer to the same pile location.
+    private func isSameLocation(source: MoveSource, target: MoveTarget) -> Bool {
+        switch (source, target) {
+        case (.tableau(let srcIdx), .tableau(let tgtIdx)):
+            return srcIdx == tgtIdx
+        case (.foundation(let srcIdx), .foundation(let tgtIdx)):
+            return srcIdx == tgtIdx
+        default:
+            return false
+        }
+    }
 
     private func removeCard(from source: MoveSource) {
         switch source {
