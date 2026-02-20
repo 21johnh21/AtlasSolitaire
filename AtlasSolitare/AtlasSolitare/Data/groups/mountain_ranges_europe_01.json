@@ -12,11 +12,12 @@
     { "id": "europe_pyrenees", "label": "Pyrenees", "type": "partner", "image": null },
     { "id": "europe_carpathians", "label": "Carpathian Mountains", "type": "partner", "image": null },
     { "id": "europe_ural", "label": "Ural Mountains", "type": "partner", "image": null },
-    { "id": "europe_scandinavian", "label": "Scandinavian Mountains", "type": "partner", "image": null },
+    { "id": "europe_scandes", "label": "Scandes", "type": "partner", "image": null },
     { "id": "europe_apennines", "label": "Apennines", "type": "partner", "image": null },
     { "id": "europe_dinaric", "label": "Dinaric Alps", "type": "partner", "image": null },
-    { "id": "europe_balkan", "label": "Balkan Mountains", "type": "partner", "image": null },
-    { "id": "europe_cantabrian", "label": "Cantabrian Mountains", "type": "partner", "image": null }
+    { "id": "europe_stara_planina", "label": "Stara Planina", "type": "partner", "image": null },
+    { "id": "europe_cantabrian", "label": "Cantabrian Mountains", "type": "partner", "image": null },
+    { "id": "europe_caucasus", "label": "Caucasus Mountains", "type": "partner", "image": null }
   ],
   "metadata": {
     "category": "Geography",
