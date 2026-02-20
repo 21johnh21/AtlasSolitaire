@@ -79,17 +79,18 @@ enum Rules {
         targetPile: [TableauCard],
         usedCardLabels: Set<String> = []
     ) -> MoveValidation {
+        if targetPile.isEmpty {
+            // Empty tableau slot accepts any card (base or partner).
+            return .valid
+        }
+
         // Check if this card's label has already been used on a foundation (for partner cards)
+        // Note: This only matters for occupied piles where we're stacking cards
         if card.isPartner {
             let normalizedLabel = card.label.lowercased().trimmingCharacters(in: .whitespaces)
             if usedCardLabels.contains(normalizedLabel) {
                 return .invalid(reason: "This card has already been placed on a foundation.")
             }
-        }
-
-        if targetPile.isEmpty {
-            // Empty tableau slot accepts any card (base or partner).
-            return .valid
         }
 
         guard let topTableauCard = targetPile.last, topTableauCard.isFaceUp else {
