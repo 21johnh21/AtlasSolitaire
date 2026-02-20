@@ -10,12 +10,11 @@
   "partner_cards": [
     { "id": "station_grand_central", "label": "Grand Central Terminal", "type": "partner", "image": null },
     { "id": "station_st_pancras", "label": "St Pancras International", "type": "partner", "image": null },
-    { "id": "station_tokyo", "label": "Tokyo Station", "type": "partner", "image": null },
-    { "id": "station_antwerp", "label": "Antwerp Central Station", "type": "partner", "image": null },
+    { "id": "station_antwerp", "label": "Antwerp Central", "type": "partner", "image": null },
     { "id": "station_mumbai", "label": "Chhatrapati Shivaji Terminus", "type": "partner", "image": null },
     { "id": "station_gare_du_nord", "label": "Gare du Nord", "type": "partner", "image": null },
-    { "id": "station_helsinki", "label": "Helsinki Central Station", "type": "partner", "image": null },
-    { "id": "station_washington", "label": "Washington Union Station", "type": "partner", "image": null }
+    { "id": "station_helsinki", "label": "Helsinki Central", "type": "partner", "image": null },
+    { "id": "station_washington", "label": "Washington Union", "type": "partner", "image": null }
   ],
   "metadata": {
     "category": "Architecture",
