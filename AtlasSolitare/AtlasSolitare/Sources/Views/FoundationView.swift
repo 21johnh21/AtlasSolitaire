@@ -32,7 +32,7 @@ struct FoundationView: View {
             } else {
                 // Spacer to keep alignment consistent
                 Color.clear
-                    .frame(width: cardWidth, height: 20)
+                    .frame(height: 24)
             }
 
             // Card or empty slot
@@ -127,19 +127,17 @@ struct FoundationView: View {
     /// Category banner showing the group name
     private func categoryBanner(_ name: String) -> some View {
         Text(name)
-            .font(.system(size: 9, weight: .semibold))
+            .font(.system(size: 8, weight: .bold))
             .foregroundColor(Color.accentGold)
             .lineLimit(1)
-            .minimumScaleFactor(0.6)
-            .frame(width: cardWidth)
-            .padding(.vertical, 2)
-            .padding(.horizontal, 4)
+            .frame(width: cardWidth * 0.95, height: 24)
+            .padding(.horizontal, 6)
             .background(
-                RoundedRectangle(cornerRadius: 4)
+                RoundedRectangle(cornerRadius: 5)
                     .fill(Color.accentGold.verySubtle())
                     .overlay(
-                        RoundedRectangle(cornerRadius: 4)
-                            .stroke(Color.accentGold.subtle(), lineWidth: 1)
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.accentGold.subtle(), lineWidth: 1.5)
                     )
             )
     }
