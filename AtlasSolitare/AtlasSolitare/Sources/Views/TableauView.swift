@@ -11,6 +11,10 @@ struct TableauView: View {
     let piles: [[TableauCard]]
     /// Set of card IDs currently being dragged.
     var draggingCardIds: Set<String> = []
+    /// Binding to control preview modal visibility.
+    @Binding var showPilePreview: Bool
+    /// Binding to track which pile is selected for preview.
+    @Binding var selectedPileIndex: Int?
 
     /// Called when drag starts from a tableau card. Returns a DragPayload for the card and any cards stacked on top.
     var onDragPayload: ((Card, Int, Int) -> DragPayload)?
@@ -25,7 +29,11 @@ struct TableauView: View {
                     pileIndex: pileIndex,
                     draggingCardIds: draggingCardIds,
                     onDragPayload: onDragPayload,
-                    onDropPayload: onDropPayload
+                    onDropPayload: onDropPayload,
+                    onLongPress: {
+                        selectedPileIndex = pileIndex
+                        showPilePreview = true
+                    }
                 )
             }
         }
@@ -42,8 +50,10 @@ private struct SingleTableauPile: View {
 
     var onDragPayload: ((Card, Int, Int) -> DragPayload)?
     var onDropPayload: ((DragPayload, Int) -> Bool)?
+    var onLongPress: (() -> Void)?
 
     @Environment(\.cardWidth) private var cardWidth
+    private let haptic = HapticManager.shared
 
     var body: some View {
         let visibleCards = pile.filter { !draggingCardIds.contains($0.card.id) }
@@ -93,6 +103,12 @@ private struct SingleTableauPile: View {
             .dropDestination(for: DragPayload.self) { items, location in
                 guard let payload = items.first else { return false }
                 return onDropPayload?(payload, pileIndex) ?? false
+            }
+            .onLongPressGesture(minimumDuration: 0.5) {
+                if !pile.isEmpty {
+                    haptic.light()
+                    onLongPress?()
+                }
             }
             .accessibilityLabel("Tableau pile \(pileIndex + 1), \(pile.count) card\(pile.count == 1 ? "" : "s")")
         }
@@ -236,6 +252,9 @@ extension View {
 // MARK: - Preview
 
 #Preview {
+    @Previewable @State var showPreview = false
+    @Previewable @State var selectedIndex: Int? = nil
+
     let samplePiles: [[TableauCard]] = [
         [TableauCard(card: Card(id: "c1", label: "France",  type: .partner, groupId: "eu", possibleGroupIds: ["eu"], imageName: nil), isFaceUp: false),
          TableauCard(card: Card(id: "c2", label: "Italy",   type: .partner, groupId: "eu", possibleGroupIds: ["eu"], imageName: nil), isFaceUp: true)],
@@ -246,7 +265,7 @@ extension View {
          TableauCard(card: Card(id: "c6", label: "Florida", type: .partner, groupId: "us", possibleGroupIds: ["us"], imageName: nil), isFaceUp: true)]
     ]
 
-    TableauView(piles: samplePiles)
+    return TableauView(piles: samplePiles, showPilePreview: $showPreview, selectedPileIndex: $selectedIndex)
         .padding()
         .background(Color.feltGreen)
         .frame(maxHeight: .infinity, alignment: .top)

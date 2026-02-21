@@ -12,6 +12,8 @@ struct GameView: View {
     @ObservedObject var vm: GameViewModel
     @State private var draggingCardIds: Set<String> = []
     @State private var cardWidth: CGFloat = CardLayout.width
+    @State private var showTableauPreview = false
+    @State private var selectedTableauPileIndex: Int?
     private let haptic = HapticManager.shared
 
     var body: some View {
@@ -88,6 +90,28 @@ struct GameView: View {
                let groupName = vm.groupName(for: completedGroupId) {
                 GroupCompletionView(groupName: groupName)
                     .transition(.opacity)
+            }
+        }
+        // Tableau pile preview overlay
+        .overlay {
+            if showTableauPreview, let pileIndex = selectedTableauPileIndex {
+                ZStack {
+                    // Shadow overlay over entire game board
+                    Color.black.opacity(0.5)
+                        .ignoresSafeArea()
+                        .onTapGesture {
+                            haptic.light()
+                            showTableauPreview = false
+                        }
+
+                    // The preview modal
+                    TableauPilePreviewView(
+                        pile: vm.tableau[pileIndex],
+                        pileIndex: pileIndex,
+                        isPresented: $showTableauPreview
+                    )
+                }
+                .transition(.opacity)
             }
         }
     }
@@ -212,6 +236,8 @@ struct GameView: View {
         return TableauView(
             piles: tableau,
             draggingCardIds: draggingCardIds,
+            showPilePreview: $showTableauPreview,
+            selectedPileIndex: $selectedTableauPileIndex,
             onDragPayload: { card, pileIdx, cardIdx in
                 // Clear any previous dragging state before starting new drag
                 draggingCardIds = []
