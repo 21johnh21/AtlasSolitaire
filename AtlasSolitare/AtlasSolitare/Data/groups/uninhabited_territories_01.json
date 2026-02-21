@@ -1,0 +1,24 @@
+{
+  "group_id": "uninhabited_territories_01",
+  "group_name": "Uninhabited Territories",
+  "base_card": {
+    "id": "uninhabited_territories_base",
+    "label": "Uninhabited Territory",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "uninhabited_bouvet", "label": "Bouvet Island", "type": "partner", "image": null },
+    { "id": "uninhabited_heard", "label": "Heard Island", "type": "partner", "image": null },
+    { "id": "uninhabited_baker", "label": "Baker Island", "type": "partner", "image": null },
+    { "id": "uninhabited_palmyra", "label": "Palmyra Atoll", "type": "partner", "image": null },
+    { "id": "uninhabited_south_georgia", "label": "South Georgia", "type": "partner", "image": null },
+    { "id": "uninhabited_jan_mayen", "label": "Jan Mayen", "type": "partner", "image": null },
+    { "id": "uninhabited_clipperton", "label": "Clipperton Island", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

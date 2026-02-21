@@ -1,0 +1,24 @@
+{
+  "group_id": "red_sea_nations_01",
+  "group_name": "Red Sea Nations",
+  "base_card": {
+    "id": "red_sea_nations_base",
+    "label": "Red Sea Nation",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "red_sea_egypt", "label": "Egypt", "type": "partner", "image": null },
+    { "id": "red_sea_sudan", "label": "Sudan", "type": "partner", "image": null },
+    { "id": "red_sea_eritrea", "label": "Eritrea", "type": "partner", "image": null },
+    { "id": "red_sea_djibouti", "label": "Djibouti", "type": "partner", "image": null },
+    { "id": "red_sea_saudi_arabia", "label": "Saudi Arabia", "type": "partner", "image": null },
+    { "id": "red_sea_yemen", "label": "Yemen", "type": "partner", "image": null },
+    { "id": "red_sea_jordan", "label": "Jordan", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

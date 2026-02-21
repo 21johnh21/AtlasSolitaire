@@ -1,0 +1,24 @@
+{
+  "group_id": "lost_cities_01",
+  "group_name": "Lost Cities",
+  "base_card": {
+    "id": "lost_cities_base",
+    "label": "Lost City",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "lost_pompeii", "label": "Pompeii", "type": "partner", "image": null },
+    { "id": "lost_troy", "label": "Troy", "type": "partner", "image": null },
+    { "id": "lost_tikal", "label": "Tikal", "type": "partner", "image": null },
+    { "id": "lost_persepolis", "label": "Persepolis", "type": "partner", "image": null },
+    { "id": "lost_babylon", "label": "Babylon", "type": "partner", "image": null },
+    { "id": "lost_carthage", "label": "Carthage", "type": "partner", "image": null },
+    { "id": "lost_angkor", "label": "Angkor", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "History",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

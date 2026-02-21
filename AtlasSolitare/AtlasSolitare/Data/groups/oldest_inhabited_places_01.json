@@ -1,0 +1,24 @@
+{
+  "group_id": "oldest_inhabited_places_01",
+  "group_name": "Oldest Continuously Inhabited Places",
+  "base_card": {
+    "id": "oldest_inhabited_places_base",
+    "label": "Oldest Inhabited Place",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "oldest_damascus", "label": "Damascus", "type": "partner", "image": null },
+    { "id": "oldest_jericho", "label": "Jericho", "type": "partner", "image": null },
+    { "id": "oldest_aleppo", "label": "Aleppo", "type": "partner", "image": null },
+    { "id": "oldest_byblos", "label": "Byblos", "type": "partner", "image": null },
+    { "id": "oldest_athens", "label": "Athens", "type": "partner", "image": null },
+    { "id": "oldest_plovdiv", "label": "Plovdiv", "type": "partner", "image": null },
+    { "id": "oldest_varanasi", "label": "Varanasi", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "History",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

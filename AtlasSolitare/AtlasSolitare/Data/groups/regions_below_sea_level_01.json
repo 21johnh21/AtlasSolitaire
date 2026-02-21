@@ -1,0 +1,24 @@
+{
+  "group_id": "regions_below_sea_level_01",
+  "group_name": "Regions Below Sea Level",
+  "base_card": {
+    "id": "regions_below_sea_level_base",
+    "label": "Region Below Sea Level",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "below_dead_sea", "label": "Dead Sea", "type": "partner", "image": null },
+    { "id": "below_death_valley", "label": "Death Valley", "type": "partner", "image": null },
+    { "id": "below_netherlands", "label": "Netherlands Polders", "type": "partner", "image": null },
+    { "id": "below_turpan", "label": "Turpan Depression", "type": "partner", "image": null },
+    { "id": "below_qattara", "label": "Qattara Depression", "type": "partner", "image": null },
+    { "id": "below_danakil", "label": "Danakil Depression", "type": "partner", "image": null },
+    { "id": "below_lake_assal", "label": "Lake Assal", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

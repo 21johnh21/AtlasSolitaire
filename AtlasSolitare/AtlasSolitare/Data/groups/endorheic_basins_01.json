@@ -1,0 +1,24 @@
+{
+  "group_id": "endorheic_basins_01",
+  "group_name": "Endorheic Basins",
+  "base_card": {
+    "id": "endorheic_basins_base",
+    "label": "Endorheic Basin",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "basin_caspian", "label": "Caspian Sea Basin", "type": "partner", "image": null },
+    { "id": "basin_aral", "label": "Aral Sea Basin", "type": "partner", "image": null },
+    { "id": "basin_dead_sea", "label": "Dead Sea Basin", "type": "partner", "image": null },
+    { "id": "basin_great_basin", "label": "Great Basin", "type": "partner", "image": null },
+    { "id": "basin_lake_chad", "label": "Lake Chad Basin", "type": "partner", "image": null },
+    { "id": "basin_tarim", "label": "Tarim Basin", "type": "partner", "image": null },
+    { "id": "basin_lake_eyre", "label": "Lake Eyre Basin", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "group_id": "lesser_antilles_islands_01",
+  "group_name": "Islands of the Lesser Antilles",
+  "base_card": {
+    "id": "lesser_antilles_base",
+    "label": "Lesser Antilles Island",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "lesser_barbados", "label": "Barbados", "type": "partner", "image": null },
+    { "id": "lesser_martinique", "label": "Martinique", "type": "partner", "image": null },
+    { "id": "lesser_guadeloupe", "label": "Guadeloupe", "type": "partner", "image": null },
+    { "id": "lesser_dominica", "label": "Dominica", "type": "partner", "image": null },
+    { "id": "lesser_saint_lucia", "label": "Saint Lucia", "type": "partner", "image": null },
+    { "id": "lesser_grenada", "label": "Grenada", "type": "partner", "image": null },
+    { "id": "lesser_trinidad", "label": "Trinidad", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "group_id": "greater_antilles_islands_01",
+  "group_name": "Islands of the Greater Antilles",
+  "base_card": {
+    "id": "greater_antilles_base",
+    "label": "Greater Antilles Island",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "greater_cuba", "label": "Cuba", "type": "partner", "image": null },
+    { "id": "greater_hispaniola", "label": "Hispaniola", "type": "partner", "image": null },
+    { "id": "greater_jamaica", "label": "Jamaica", "type": "partner", "image": null },
+    { "id": "greater_puerto_rico", "label": "Puerto Rico", "type": "partner", "image": null },
+    { "id": "greater_cayman", "label": "Cayman Islands", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

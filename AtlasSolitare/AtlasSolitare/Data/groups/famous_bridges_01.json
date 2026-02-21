@@ -1,0 +1,24 @@
+{
+  "group_id": "famous_bridges_01",
+  "group_name": "Famous Bridges",
+  "base_card": {
+    "id": "famous_bridges_base",
+    "label": "Famous Bridge",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "bridge_golden_gate", "label": "Golden Gate", "type": "partner", "image": null },
+    { "id": "bridge_brooklyn", "label": "Brooklyn", "type": "partner", "image": null },
+    { "id": "bridge_tower", "label": "Tower", "type": "partner", "image": null },
+    { "id": "bridge_sydney_harbour", "label": "Sydney Harbour", "type": "partner", "image": null },
+    { "id": "bridge_rialto", "label": "Rialto", "type": "partner", "image": null },
+    { "id": "bridge_pont_du_gard", "label": "Pont du Gard", "type": "partner", "image": null },
+    { "id": "bridge_akashi_kaikyo", "label": "Akashi Kaikyo", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Architecture",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "group_id": "caribbean_capitals_01",
+  "group_name": "Caribbean Capitals",
+  "base_card": {
+    "id": "caribbean_capitals_base",
+    "label": "Caribbean Capital",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "caribbean_cap_havana", "label": "Havana", "type": "partner", "image": null },
+    { "id": "caribbean_cap_kingston", "label": "Kingston", "type": "partner", "image": null },
+    { "id": "caribbean_cap_port_au_prince", "label": "Port-au-Prince", "type": "partner", "image": null },
+    { "id": "caribbean_cap_santo_domingo", "label": "Santo Domingo", "type": "partner", "image": null },
+    { "id": "caribbean_cap_bridgetown", "label": "Bridgetown", "type": "partner", "image": null },
+    { "id": "caribbean_cap_port_of_spain", "label": "Port of Spain", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

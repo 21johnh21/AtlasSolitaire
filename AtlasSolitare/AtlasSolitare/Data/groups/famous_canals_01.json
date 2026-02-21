@@ -1,0 +1,23 @@
+{
+  "group_id": "famous_canals_01",
+  "group_name": "Famous Canals",
+  "base_card": {
+    "id": "famous_canals_base",
+    "label": "Famous Canal",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "canal_suez", "label": "Suez", "type": "partner", "image": null },
+    { "id": "canal_panama", "label": "Panama", "type": "partner", "image": null },
+    { "id": "canal_erie", "label": "Erie", "type": "partner", "image": null },
+    { "id": "canal_grand", "label": "Grand (China)", "type": "partner", "image": null },
+    { "id": "canal_kiel", "label": "Kiel", "type": "partner", "image": null },
+    { "id": "canal_corinth", "label": "Corinth", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

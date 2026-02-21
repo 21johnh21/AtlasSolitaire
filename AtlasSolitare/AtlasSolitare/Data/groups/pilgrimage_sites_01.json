@@ -1,0 +1,24 @@
+{
+  "group_id": "pilgrimage_sites_01",
+  "group_name": "Pilgrimage Sites",
+  "base_card": {
+    "id": "pilgrimage_sites_base",
+    "label": "Pilgrimage Site",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "pilgrimage_mecca", "label": "Mecca", "type": "partner", "image": null },
+    { "id": "pilgrimage_jerusalem", "label": "Jerusalem", "type": "partner", "image": null },
+    { "id": "pilgrimage_varanasi", "label": "Varanasi", "type": "partner", "image": null },
+    { "id": "pilgrimage_santiago", "label": "Santiago de Compostela", "type": "partner", "image": null },
+    { "id": "pilgrimage_lumbini", "label": "Lumbini", "type": "partner", "image": null },
+    { "id": "pilgrimage_lourdes", "label": "Lourdes", "type": "partner", "image": null },
+    { "id": "pilgrimage_bodh_gaya", "label": "Bodh Gaya", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Religion",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

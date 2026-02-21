@@ -1,0 +1,24 @@
+{
+  "group_id": "national_animals_01",
+  "group_name": "National Animals",
+  "base_card": {
+    "id": "national_animals_base",
+    "label": "National Animal",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "animal_bald_eagle", "label": "Bald Eagle", "type": "partner", "image": null },
+    { "id": "animal_lion", "label": "Lion", "type": "partner", "image": null },
+    { "id": "animal_kangaroo", "label": "Kangaroo", "type": "partner", "image": null },
+    { "id": "animal_panda", "label": "Giant Panda", "type": "partner", "image": null },
+    { "id": "animal_tiger", "label": "Bengal Tiger", "type": "partner", "image": null },
+    { "id": "animal_beaver", "label": "Beaver", "type": "partner", "image": null },
+    { "id": "animal_kiwi", "label": "Kiwi", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Culture",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

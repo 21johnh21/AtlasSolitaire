@@ -1,0 +1,24 @@
+{
+  "group_id": "indian_ocean_nations_01",
+  "group_name": "Indian Ocean Nations",
+  "base_card": {
+    "id": "indian_ocean_nations_base",
+    "label": "Indian Ocean Nation",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "indian_ocean_madagascar", "label": "Madagascar", "type": "partner", "image": null },
+    { "id": "indian_ocean_mauritius", "label": "Mauritius", "type": "partner", "image": null },
+    { "id": "indian_ocean_seychelles", "label": "Seychelles", "type": "partner", "image": null },
+    { "id": "indian_ocean_comoros", "label": "Comoros", "type": "partner", "image": null },
+    { "id": "indian_ocean_maldives", "label": "Maldives", "type": "partner", "image": null },
+    { "id": "indian_ocean_sri_lanka", "label": "Sri Lanka", "type": "partner", "image": null },
+    { "id": "indian_ocean_indonesia", "label": "Indonesia", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

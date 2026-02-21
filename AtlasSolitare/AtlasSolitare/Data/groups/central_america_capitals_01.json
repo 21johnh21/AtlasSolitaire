@@ -1,0 +1,24 @@
+{
+  "group_id": "central_america_capitals_01",
+  "group_name": "Capitals of Central America",
+  "base_card": {
+    "id": "central_america_capitals_base",
+    "label": "Central American Capital",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "ca_cap_guatemala_city", "label": "Guatemala City", "type": "partner", "image": null },
+    { "id": "ca_cap_belmopan", "label": "Belmopan", "type": "partner", "image": null },
+    { "id": "ca_cap_tegucigalpa", "label": "Tegucigalpa", "type": "partner", "image": null },
+    { "id": "ca_cap_san_salvador", "label": "San Salvador", "type": "partner", "image": null },
+    { "id": "ca_cap_managua", "label": "Managua", "type": "partner", "image": null },
+    { "id": "ca_cap_san_jose", "label": "San José", "type": "partner", "image": null },
+    { "id": "ca_cap_panama_city", "label": "Panama City", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

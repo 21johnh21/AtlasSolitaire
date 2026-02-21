@@ -1,0 +1,22 @@
+{
+  "group_id": "major_parallels_01",
+  "group_name": "Major Parallels",
+  "base_card": {
+    "id": "major_parallels_base",
+    "label": "Major Parallel",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "parallel_equator", "label": "Equator (0°)", "type": "partner", "image": null },
+    { "id": "parallel_tropic_cancer", "label": "Tropic of Cancer", "type": "partner", "image": null },
+    { "id": "parallel_tropic_capricorn", "label": "Tropic of Capricorn", "type": "partner", "image": null },
+    { "id": "parallel_arctic_circle", "label": "Arctic Circle", "type": "partner", "image": null },
+    { "id": "parallel_antarctic_circle", "label": "Antarctic Circle", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}
