@@ -1,0 +1,24 @@
+{
+  "group_id": "melanesian_islands_01",
+  "group_name": "Melanesian Islands",
+  "base_card": {
+    "id": "melanesian_base",
+    "label": "Melanesian Islands",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "melanesian_fiji", "label": "Fiji", "type": "partner", "image": null },
+    { "id": "melanesian_papua_new_guinea", "label": "Papua New Guinea", "type": "partner", "image": null },
+    { "id": "melanesian_solomon_islands", "label": "Solomon Islands", "type": "partner", "image": null },
+    { "id": "melanesian_vanuatu", "label": "Vanuatu", "type": "partner", "image": null },
+    { "id": "melanesian_new_caledonia", "label": "New Caledonia", "type": "partner", "image": null },
+    { "id": "melanesian_new_britain", "label": "New Britain", "type": "partner", "image": null },
+    { "id": "melanesian_new_ireland", "label": "New Ireland", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

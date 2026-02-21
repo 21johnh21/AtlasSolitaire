@@ -1,0 +1,24 @@
+{
+  "group_id": "countries_named_after_people_01",
+  "group_name": "Countries Named After People",
+  "base_card": {
+    "id": "named_people_base",
+    "label": "Named After People",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "named_colombia", "label": "Colombia", "type": "partner", "image": null },
+    { "id": "named_bolivia", "label": "Bolivia", "type": "partner", "image": null },
+    { "id": "named_saudi_arabia", "label": "Saudi Arabia", "type": "partner", "image": null },
+    { "id": "named_philippines", "label": "Philippines", "type": "partner", "image": null },
+    { "id": "named_mauritius", "label": "Mauritius", "type": "partner", "image": null },
+    { "id": "named_seychelles", "label": "Seychelles", "type": "partner", "image": null },
+    { "id": "named_liechtenstein", "label": "Liechtenstein", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

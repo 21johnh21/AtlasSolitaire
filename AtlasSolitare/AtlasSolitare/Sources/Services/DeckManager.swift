@@ -139,6 +139,13 @@ class LocalJSONDataSource: GroupDataSource {
             "california_national_parks_01",
             "ancient_greek_cities_01",
             "former_yugoslav_states_01",
+            "regions_of_france_01",
+            "countries_named_after_people_01",
+            "tropic_of_cancer_nations_01",
+            "tropic_of_capricorn_nations_01",
+            "polynesian_islands_01",
+            "melanesian_islands_01",
+            "micronesian_islands_01",
             "demo_colors_01",
             "demo_numbers_01",
             "demo_india_cities_01"

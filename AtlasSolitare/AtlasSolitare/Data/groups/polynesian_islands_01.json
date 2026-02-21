@@ -1,0 +1,24 @@
+{
+  "group_id": "polynesian_islands_01",
+  "group_name": "Polynesian Islands",
+  "base_card": {
+    "id": "polynesian_base",
+    "label": "Polynesian Islands",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "polynesian_samoa", "label": "Samoa", "type": "partner", "image": null },
+    { "id": "polynesian_tonga", "label": "Tonga", "type": "partner", "image": null },
+    { "id": "polynesian_tahiti", "label": "Tahiti", "type": "partner", "image": null },
+    { "id": "polynesian_hawaii", "label": "Hawaii", "type": "partner", "image": null },
+    { "id": "polynesian_easter_island", "label": "Easter Island", "type": "partner", "image": null },
+    { "id": "polynesian_cook_islands", "label": "Cook Islands", "type": "partner", "image": null },
+    { "id": "polynesian_new_zealand", "label": "New Zealand", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

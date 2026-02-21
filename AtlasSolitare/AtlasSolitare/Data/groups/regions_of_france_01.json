@@ -1,0 +1,24 @@
+{
+  "group_id": "regions_of_france_01",
+  "group_name": "Regions of France",
+  "base_card": {
+    "id": "france_regions_base",
+    "label": "French Regions",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "france_ile_de_france", "label": "Île-de-France", "type": "partner", "image": null },
+    { "id": "france_provence", "label": "Provence-Alpes-Côte d'Azur", "type": "partner", "image": null },
+    { "id": "france_brittany", "label": "Brittany", "type": "partner", "image": null },
+    { "id": "france_normandy", "label": "Normandy", "type": "partner", "image": null },
+    { "id": "france_occitanie", "label": "Occitanie", "type": "partner", "image": null },
+    { "id": "france_nouvelle_aquitaine", "label": "Nouvelle-Aquitaine", "type": "partner", "image": null },
+    { "id": "france_auvergne_rhone_alpes", "label": "Auvergne-Rhône-Alpes", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

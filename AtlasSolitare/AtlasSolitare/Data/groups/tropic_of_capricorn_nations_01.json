@@ -1,0 +1,24 @@
+{
+  "group_id": "tropic_of_capricorn_nations_01",
+  "group_name": "Tropic of Capricorn Nations",
+  "base_card": {
+    "id": "capricorn_base",
+    "label": "Tropic of Capricorn",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "capricorn_chile", "label": "Chile", "type": "partner", "image": null },
+    { "id": "capricorn_argentina", "label": "Argentina", "type": "partner", "image": null },
+    { "id": "capricorn_brazil", "label": "Brazil", "type": "partner", "image": null },
+    { "id": "capricorn_namibia", "label": "Namibia", "type": "partner", "image": null },
+    { "id": "capricorn_botswana", "label": "Botswana", "type": "partner", "image": null },
+    { "id": "capricorn_south_africa", "label": "South Africa", "type": "partner", "image": null },
+    { "id": "capricorn_australia", "label": "Australia", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}
