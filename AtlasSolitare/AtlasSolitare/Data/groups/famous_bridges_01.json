@@ -3,7 +3,7 @@
   "group_name": "Famous Bridges",
   "base_card": {
     "id": "famous_bridges_base",
-    "label": "Famous Bridge",
+    "label": "Famous Bridges",
     "type": "base",
     "image": null
   },

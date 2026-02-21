@@ -3,7 +3,7 @@
   "group_name": "Oldest Continuously Inhabited Places",
   "base_card": {
     "id": "oldest_inhabited_places_base",
-    "label": "Oldest Inhabited Place",
+    "label": "Oldest Inhabited Places",
     "type": "base",
     "image": null
   },

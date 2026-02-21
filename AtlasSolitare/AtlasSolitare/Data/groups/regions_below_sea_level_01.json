@@ -3,7 +3,7 @@
   "group_name": "Regions Below Sea Level",
   "base_card": {
     "id": "regions_below_sea_level_base",
-    "label": "Region Below Sea Level",
+    "label": "Regions Below Sea Level",
     "type": "base",
     "image": null
   },

@@ -3,7 +3,7 @@
   "group_name": "National Animals",
   "base_card": {
     "id": "national_animals_base",
-    "label": "National Animal",
+    "label": "National Animals",
     "type": "base",
     "image": null
   },

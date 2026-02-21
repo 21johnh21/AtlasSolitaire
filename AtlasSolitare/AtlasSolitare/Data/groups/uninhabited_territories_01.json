@@ -3,7 +3,7 @@
   "group_name": "Uninhabited Territories",
   "base_card": {
     "id": "uninhabited_territories_base",
-    "label": "Uninhabited Territory",
+    "label": "Uninhabited Territories",
     "type": "base",
     "image": null
   },

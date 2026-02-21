@@ -3,7 +3,7 @@
   "group_name": "Pilgrimage Sites",
   "base_card": {
     "id": "pilgrimage_sites_base",
-    "label": "Pilgrimage Site",
+    "label": "Pilgrimage Sites",
     "type": "base",
     "image": null
   },

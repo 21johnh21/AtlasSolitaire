@@ -3,7 +3,7 @@
   "group_name": "Lost Cities",
   "base_card": {
     "id": "lost_cities_base",
-    "label": "Lost City",
+    "label": "Lost Cities",
     "type": "base",
     "image": null
   },

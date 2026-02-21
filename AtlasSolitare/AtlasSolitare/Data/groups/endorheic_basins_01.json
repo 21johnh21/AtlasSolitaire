@@ -3,7 +3,7 @@
   "group_name": "Endorheic Basins",
   "base_card": {
     "id": "endorheic_basins_base",
-    "label": "Endorheic Basin",
+    "label": "Endorheic Basins",
     "type": "base",
     "image": null
   },

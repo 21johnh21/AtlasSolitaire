@@ -3,7 +3,7 @@
   "group_name": "Famous Canals",
   "base_card": {
     "id": "famous_canals_base",
-    "label": "Famous Canal",
+    "label": "Famous Canals",
     "type": "base",
     "image": null
   },
