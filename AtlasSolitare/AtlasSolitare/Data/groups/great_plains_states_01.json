@@ -1,0 +1,24 @@
+{
+  "group_id": "great_plains_states_01",
+  "group_name": "Great Plains States/Provinces",
+  "base_card": {
+    "id": "great_plains_base",
+    "label": "Great Plains",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "plains_montana", "label": "Montana", "type": "partner", "image": null },
+    { "id": "plains_north_dakota", "label": "North Dakota", "type": "partner", "image": null },
+    { "id": "plains_south_dakota", "label": "South Dakota", "type": "partner", "image": null },
+    { "id": "plains_nebraska", "label": "Nebraska", "type": "partner", "image": null },
+    { "id": "plains_kansas", "label": "Kansas", "type": "partner", "image": null },
+    { "id": "plains_oklahoma", "label": "Oklahoma", "type": "partner", "image": null },
+    { "id": "plains_saskatchewan", "label": "Saskatchewan", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

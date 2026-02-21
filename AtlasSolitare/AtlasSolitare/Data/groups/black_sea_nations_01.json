@@ -1,0 +1,23 @@
+{
+  "group_id": "black_sea_nations_01",
+  "group_name": "Black Sea Nations",
+  "base_card": {
+    "id": "black_sea_base",
+    "label": "Black Sea Nations",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "black_sea_turkey", "label": "Turkey", "type": "partner", "image": null },
+    { "id": "black_sea_russia", "label": "Russia", "type": "partner", "image": null },
+    { "id": "black_sea_ukraine", "label": "Ukraine", "type": "partner", "image": null },
+    { "id": "black_sea_romania", "label": "Romania", "type": "partner", "image": null },
+    { "id": "black_sea_bulgaria", "label": "Bulgaria", "type": "partner", "image": null },
+    { "id": "black_sea_georgia", "label": "Georgia", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

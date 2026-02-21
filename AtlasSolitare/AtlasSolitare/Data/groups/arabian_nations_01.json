@@ -1,0 +1,24 @@
+{
+  "group_id": "arabian_nations_01",
+  "group_name": "Arabian Nations",
+  "base_card": {
+    "id": "arabian_base",
+    "label": "Arabian Nations",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "arabian_saudi_arabia", "label": "Saudi Arabia", "type": "partner", "image": null },
+    { "id": "arabian_yemen", "label": "Yemen", "type": "partner", "image": null },
+    { "id": "arabian_oman", "label": "Oman", "type": "partner", "image": null },
+    { "id": "arabian_uae", "label": "United Arab Emirates", "type": "partner", "image": null },
+    { "id": "arabian_qatar", "label": "Qatar", "type": "partner", "image": null },
+    { "id": "arabian_bahrain", "label": "Bahrain", "type": "partner", "image": null },
+    { "id": "arabian_kuwait", "label": "Kuwait", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

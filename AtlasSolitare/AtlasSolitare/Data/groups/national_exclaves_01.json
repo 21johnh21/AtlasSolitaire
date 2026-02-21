@@ -1,0 +1,24 @@
+{
+  "group_id": "national_exclaves_01",
+  "group_name": "National Exclaves",
+  "base_card": {
+    "id": "exclaves_base",
+    "label": "National Exclaves",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "exclave_kaliningrad", "label": "Kaliningrad", "type": "partner", "image": null },
+    { "id": "exclave_alaska", "label": "Alaska", "type": "partner", "image": null },
+    { "id": "exclave_ceuta", "label": "Ceuta", "type": "partner", "image": null },
+    { "id": "exclave_melilla", "label": "Melilla", "type": "partner", "image": null },
+    { "id": "exclave_cabinda", "label": "Cabinda", "type": "partner", "image": null },
+    { "id": "exclave_nakhchivan", "label": "Nakhchivan", "type": "partner", "image": null },
+    { "id": "exclave_musandam", "label": "Musandam", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

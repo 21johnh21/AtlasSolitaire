@@ -1,0 +1,24 @@
+{
+  "group_id": "regions_of_italy_01",
+  "group_name": "Regions of Italy",
+  "base_card": {
+    "id": "italy_regions_base",
+    "label": "Italian Regions",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "italy_tuscany", "label": "Tuscany", "type": "partner", "image": null },
+    { "id": "italy_lombardy", "label": "Lombardy", "type": "partner", "image": null },
+    { "id": "italy_sicily", "label": "Sicily", "type": "partner", "image": null },
+    { "id": "italy_veneto", "label": "Veneto", "type": "partner", "image": null },
+    { "id": "italy_lazio", "label": "Lazio", "type": "partner", "image": null },
+    { "id": "italy_campania", "label": "Campania", "type": "partner", "image": null },
+    { "id": "italy_piedmont", "label": "Piedmont", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

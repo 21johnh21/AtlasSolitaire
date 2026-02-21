@@ -1,0 +1,24 @@
+{
+  "group_id": "central_asian_nations_01",
+  "group_name": "Central Asian Nations",
+  "base_card": {
+    "id": "central_asia_base",
+    "label": "Central Asian Nations",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "central_asia_kazakhstan", "label": "Kazakhstan", "type": "partner", "image": null },
+    { "id": "central_asia_uzbekistan", "label": "Uzbekistan", "type": "partner", "image": null },
+    { "id": "central_asia_turkmenistan", "label": "Turkmenistan", "type": "partner", "image": null },
+    { "id": "central_asia_kyrgyzstan", "label": "Kyrgyzstan", "type": "partner", "image": null },
+    { "id": "central_asia_tajikistan", "label": "Tajikistan", "type": "partner", "image": null },
+    { "id": "central_asia_afghanistan", "label": "Afghanistan", "type": "partner", "image": null },
+    { "id": "central_asia_mongolia", "label": "Mongolia", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

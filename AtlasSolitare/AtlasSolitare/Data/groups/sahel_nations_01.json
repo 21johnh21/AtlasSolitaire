@@ -1,0 +1,24 @@
+{
+  "group_id": "sahel_nations_01",
+  "group_name": "Sahel Nations",
+  "base_card": {
+    "id": "sahel_base",
+    "label": "Sahel Nations",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "sahel_mauritania", "label": "Mauritania", "type": "partner", "image": null },
+    { "id": "sahel_mali", "label": "Mali", "type": "partner", "image": null },
+    { "id": "sahel_niger", "label": "Niger", "type": "partner", "image": null },
+    { "id": "sahel_chad", "label": "Chad", "type": "partner", "image": null },
+    { "id": "sahel_sudan", "label": "Sudan", "type": "partner", "image": null },
+    { "id": "sahel_burkina_faso", "label": "Burkina Faso", "type": "partner", "image": null },
+    { "id": "sahel_senegal", "label": "Senegal", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "group_id": "australian_states_01",
+  "group_name": "Australian States and Territories",
+  "base_card": {
+    "id": "australia_states_base",
+    "label": "Australian States",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "aus_new_south_wales", "label": "New South Wales", "type": "partner", "image": null },
+    { "id": "aus_victoria", "label": "Victoria", "type": "partner", "image": null },
+    { "id": "aus_queensland", "label": "Queensland", "type": "partner", "image": null },
+    { "id": "aus_western_australia", "label": "Western Australia", "type": "partner", "image": null },
+    { "id": "aus_south_australia", "label": "South Australia", "type": "partner", "image": null },
+    { "id": "aus_tasmania", "label": "Tasmania", "type": "partner", "image": null },
+    { "id": "aus_northern_territory", "label": "Northern Territory", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "group_id": "historic_empires_01",
+  "group_name": "Historic Empires",
+  "base_card": {
+    "id": "empires_base",
+    "label": "Historic Empires",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "empire_roman", "label": "Roman", "type": "partner", "image": null },
+    { "id": "empire_ottoman", "label": "Ottoman", "type": "partner", "image": null },
+    { "id": "empire_mongol", "label": "Mongol", "type": "partner", "image": null },
+    { "id": "empire_british", "label": "British", "type": "partner", "image": null },
+    { "id": "empire_persian", "label": "Persian", "type": "partner", "image": null },
+    { "id": "empire_spanish", "label": "Spanish", "type": "partner", "image": null },
+    { "id": "empire_mughal", "label": "Mughal", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

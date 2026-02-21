@@ -1,0 +1,24 @@
+{
+  "group_id": "rhine_river_cities_01",
+  "group_name": "Rhine River Cities",
+  "base_card": {
+    "id": "rhine_cities_base",
+    "label": "Rhine River Cities",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "rhine_basel", "label": "Basel", "type": "partner", "image": null },
+    { "id": "rhine_strasbourg", "label": "Strasbourg", "type": "partner", "image": null },
+    { "id": "rhine_cologne", "label": "Cologne", "type": "partner", "image": null },
+    { "id": "rhine_dusseldorf", "label": "Düsseldorf", "type": "partner", "image": null },
+    { "id": "rhine_bonn", "label": "Bonn", "type": "partner", "image": null },
+    { "id": "rhine_rotterdam", "label": "Rotterdam", "type": "partner", "image": null },
+    { "id": "rhine_arnhem", "label": "Arnhem", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}
