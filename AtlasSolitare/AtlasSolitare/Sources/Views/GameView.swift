@@ -98,6 +98,7 @@ struct GameView: View {
             // Waste on the left.
             WasteView(
                 topCard: vm.wasteTopCard,
+                wasteCount: vm.wasteCount,
                 draggingCardIds: draggingCardIds,
                 onDragPayload: { card in
                     // Clear any previous dragging state before starting new drag
