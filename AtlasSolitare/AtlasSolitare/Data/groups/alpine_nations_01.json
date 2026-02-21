@@ -1,0 +1,24 @@
+{
+  "group_id": "alpine_nations_01",
+  "group_name": "Alpine Nations",
+  "base_card": {
+    "id": "alpine_base",
+    "label": "Alpine Nations",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "alpine_france", "label": "France", "type": "partner", "image": null },
+    { "id": "alpine_switzerland", "label": "Switzerland", "type": "partner", "image": null },
+    { "id": "alpine_italy", "label": "Italy", "type": "partner", "image": null },
+    { "id": "alpine_austria", "label": "Austria", "type": "partner", "image": null },
+    { "id": "alpine_germany", "label": "Germany", "type": "partner", "image": null },
+    { "id": "alpine_liechtenstein", "label": "Liechtenstein", "type": "partner", "image": null },
+    { "id": "alpine_slovenia", "label": "Slovenia", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "group_id": "island_capitals_01",
+  "group_name": "Island Capitals",
+  "base_card": {
+    "id": "island_capitals_base",
+    "label": "Island Capitals",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "island_cap_reykjavik", "label": "Reykjavik", "type": "partner", "image": null },
+    { "id": "island_cap_suva", "label": "Suva", "type": "partner", "image": null },
+    { "id": "island_cap_port_louis", "label": "Port Louis", "type": "partner", "image": null },
+    { "id": "island_cap_male", "label": "Malé", "type": "partner", "image": null },
+    { "id": "island_cap_nassau", "label": "Nassau", "type": "partner", "image": null },
+    { "id": "island_cap_port_of_spain", "label": "Port of Spain", "type": "partner", "image": null },
+    { "id": "island_cap_nicosia", "label": "Nicosia", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

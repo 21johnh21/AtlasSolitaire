@@ -1,0 +1,24 @@
+{
+  "group_id": "arctic_capitals_01",
+  "group_name": "Arctic Capitals",
+  "base_card": {
+    "id": "arctic_capitals_base",
+    "label": "Arctic Capitals",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "arctic_cap_reykjavik", "label": "Reykjavik", "type": "partner", "image": null },
+    { "id": "arctic_cap_helsinki", "label": "Helsinki", "type": "partner", "image": null },
+    { "id": "arctic_cap_oslo", "label": "Oslo", "type": "partner", "image": null },
+    { "id": "arctic_cap_stockholm", "label": "Stockholm", "type": "partner", "image": null },
+    { "id": "arctic_cap_nuuk", "label": "Nuuk", "type": "partner", "image": null },
+    { "id": "arctic_cap_tromso", "label": "Tromsø", "type": "partner", "image": null },
+    { "id": "arctic_cap_murmansk", "label": "Murmansk", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

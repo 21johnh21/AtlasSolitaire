@@ -1,0 +1,24 @@
+{
+  "group_id": "amazon_basin_nations_01",
+  "group_name": "Amazon Basin Nations",
+  "base_card": {
+    "id": "amazon_basin_base",
+    "label": "Amazon Basin Nations",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "amazon_brazil", "label": "Brazil", "type": "partner", "image": null },
+    { "id": "amazon_peru", "label": "Peru", "type": "partner", "image": null },
+    { "id": "amazon_colombia", "label": "Colombia", "type": "partner", "image": null },
+    { "id": "amazon_venezuela", "label": "Venezuela", "type": "partner", "image": null },
+    { "id": "amazon_ecuador", "label": "Ecuador", "type": "partner", "image": null },
+    { "id": "amazon_bolivia", "label": "Bolivia", "type": "partner", "image": null },
+    { "id": "amazon_guyana", "label": "Guyana", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

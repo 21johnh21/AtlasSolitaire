@@ -1,0 +1,24 @@
+{
+  "group_id": "capitals_founded_after_1900_01",
+  "group_name": "Capitals Founded After 1900",
+  "base_card": {
+    "id": "new_capitals_base",
+    "label": "Modern Capitals",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "new_cap_canberra", "label": "Canberra", "type": "partner", "image": null },
+    { "id": "new_cap_brasilia", "label": "Brasília", "type": "partner", "image": null },
+    { "id": "new_cap_ankara", "label": "Ankara", "type": "partner", "image": null },
+    { "id": "new_cap_islamabad", "label": "Islamabad", "type": "partner", "image": null },
+    { "id": "new_cap_abuja", "label": "Abuja", "type": "partner", "image": null },
+    { "id": "new_cap_astana", "label": "Astana", "type": "partner", "image": null },
+    { "id": "new_cap_naypyidaw", "label": "Naypyidaw", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}
