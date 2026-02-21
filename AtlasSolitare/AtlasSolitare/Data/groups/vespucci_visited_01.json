@@ -1,0 +1,24 @@
+{
+  "group_id": "vespucci_visited_01",
+  "group_name": "Places Visited by Vespucci",
+  "base_card": {
+    "id": "vespucci_base",
+    "label": "Vespucci's Voyages",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "vespucci_seville", "label": "Seville", "type": "partner", "image": null },
+    { "id": "vespucci_cape_verde", "label": "Cape Verde", "type": "partner", "image": null },
+    { "id": "vespucci_brazil", "label": "Brazil", "type": "partner", "image": null },
+    { "id": "vespucci_rio_de_janeiro", "label": "Rio de Janeiro", "type": "partner", "image": null },
+    { "id": "vespucci_rio_de_la_plata", "label": "Río de la Plata", "type": "partner", "image": null },
+    { "id": "vespucci_venezuela", "label": "Venezuela", "type": "partner", "image": null },
+    { "id": "vespucci_patagonia", "label": "Patagonia", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

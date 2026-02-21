@@ -1,0 +1,24 @@
+{
+  "group_id": "red_white_blue_flags_04",
+  "group_name": "Red, White & Blue Flags IV",
+  "base_card": {
+    "id": "rwb_flags_04_base",
+    "label": "Red, White & Blue Flags",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "rwb_04_north_korea", "label": "North Korea", "type": "partner", "image": null },
+    { "id": "rwb_04_laos", "label": "Laos", "type": "partner", "image": null },
+    { "id": "rwb_04_cambodia", "label": "Cambodia", "type": "partner", "image": null },
+    { "id": "rwb_04_liberia", "label": "Liberia", "type": "partner", "image": null },
+    { "id": "rwb_04_nepal", "label": "Nepal", "type": "partner", "image": null },
+    { "id": "rwb_04_samoa", "label": "Samoa", "type": "partner", "image": null },
+    { "id": "rwb_04_dominican_republic", "label": "Dominican Republic", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

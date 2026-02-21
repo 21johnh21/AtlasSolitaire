@@ -1,0 +1,24 @@
+{
+  "group_id": "mississippi_river_cities_01",
+  "group_name": "Mississippi River Cities",
+  "base_card": {
+    "id": "mississippi_cities_base",
+    "label": "Mississippi River Cities",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "miss_minneapolis", "label": "Minneapolis", "type": "partner", "image": null },
+    { "id": "miss_st_louis", "label": "St. Louis", "type": "partner", "image": null },
+    { "id": "miss_memphis", "label": "Memphis", "type": "partner", "image": null },
+    { "id": "miss_new_orleans", "label": "New Orleans", "type": "partner", "image": null },
+    { "id": "miss_baton_rouge", "label": "Baton Rouge", "type": "partner", "image": null },
+    { "id": "miss_davenport", "label": "Davenport", "type": "partner", "image": null },
+    { "id": "miss_st_paul", "label": "St. Paul", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

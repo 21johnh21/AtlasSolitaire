@@ -1,0 +1,24 @@
+{
+  "group_id": "blue_white_flags_01",
+  "group_name": "Blue & White Flags",
+  "base_card": {
+    "id": "blue_white_flags_base",
+    "label": "Blue & White Flags",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "bw_greece", "label": "Greece", "type": "partner", "image": null },
+    { "id": "bw_israel", "label": "Israel", "type": "partner", "image": null },
+    { "id": "bw_finland", "label": "Finland", "type": "partner", "image": null },
+    { "id": "bw_argentina", "label": "Argentina", "type": "partner", "image": null },
+    { "id": "bw_uruguay", "label": "Uruguay", "type": "partner", "image": null },
+    { "id": "bw_somalia", "label": "Somalia", "type": "partner", "image": null },
+    { "id": "bw_honduras", "label": "Honduras", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

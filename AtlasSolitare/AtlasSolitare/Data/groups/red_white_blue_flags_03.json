@@ -1,0 +1,24 @@
+{
+  "group_id": "red_white_blue_flags_03",
+  "group_name": "Red, White & Blue Flags III",
+  "base_card": {
+    "id": "rwb_flags_03_base",
+    "label": "Red, White & Blue Flags",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "rwb_03_croatia", "label": "Croatia", "type": "partner", "image": null },
+    { "id": "rwb_03_serbia", "label": "Serbia", "type": "partner", "image": null },
+    { "id": "rwb_03_slovenia", "label": "Slovenia", "type": "partner", "image": null },
+    { "id": "rwb_03_luxembourg", "label": "Luxembourg", "type": "partner", "image": null },
+    { "id": "rwb_03_cuba", "label": "Cuba", "type": "partner", "image": null },
+    { "id": "rwb_03_panama", "label": "Panama", "type": "partner", "image": null },
+    { "id": "rwb_03_paraguay", "label": "Paraguay", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

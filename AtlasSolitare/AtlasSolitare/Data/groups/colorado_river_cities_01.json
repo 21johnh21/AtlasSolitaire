@@ -1,0 +1,24 @@
+{
+  "group_id": "colorado_river_cities_01",
+  "group_name": "Colorado River Cities",
+  "base_card": {
+    "id": "colorado_cities_base",
+    "label": "Colorado River Cities",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "colorado_las_vegas", "label": "Las Vegas", "type": "partner", "image": null },
+    { "id": "colorado_grand_junction", "label": "Grand Junction", "type": "partner", "image": null },
+    { "id": "colorado_lake_havasu", "label": "Lake Havasu City", "type": "partner", "image": null },
+    { "id": "colorado_bullhead", "label": "Bullhead City", "type": "partner", "image": null },
+    { "id": "colorado_yuma", "label": "Yuma", "type": "partner", "image": null },
+    { "id": "colorado_moab", "label": "Moab", "type": "partner", "image": null },
+    { "id": "colorado_needles", "label": "Needles", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

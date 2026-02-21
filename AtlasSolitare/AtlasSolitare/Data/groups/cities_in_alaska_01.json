@@ -1,0 +1,24 @@
+{
+  "group_id": "cities_in_alaska_01",
+  "group_name": "Cities in Alaska",
+  "base_card": {
+    "id": "alaska_cities_base",
+    "label": "Alaskan Cities",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "alaska_anchorage", "label": "Anchorage", "type": "partner", "image": null },
+    { "id": "alaska_fairbanks", "label": "Fairbanks", "type": "partner", "image": null },
+    { "id": "alaska_juneau", "label": "Juneau", "type": "partner", "image": null },
+    { "id": "alaska_sitka", "label": "Sitka", "type": "partner", "image": null },
+    { "id": "alaska_ketchikan", "label": "Ketchikan", "type": "partner", "image": null },
+    { "id": "alaska_nome", "label": "Nome", "type": "partner", "image": null },
+    { "id": "alaska_barrow", "label": "Utqiaġvik", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

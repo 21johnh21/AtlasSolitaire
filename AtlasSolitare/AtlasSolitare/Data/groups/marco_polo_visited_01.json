@@ -1,0 +1,24 @@
+{
+  "group_id": "marco_polo_visited_01",
+  "group_name": "Places Visited by Marco Polo",
+  "base_card": {
+    "id": "marco_polo_base",
+    "label": "Marco Polo's Travels",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "polo_venice", "label": "Venice", "type": "partner", "image": null },
+    { "id": "polo_constantinople", "label": "Constantinople", "type": "partner", "image": null },
+    { "id": "polo_baghdad", "label": "Baghdad", "type": "partner", "image": null },
+    { "id": "polo_bukhara", "label": "Bukhara", "type": "partner", "image": null },
+    { "id": "polo_kashgar", "label": "Kashgar", "type": "partner", "image": null },
+    { "id": "polo_khanbaliq", "label": "Khanbaliq", "type": "partner", "image": null },
+    { "id": "polo_hangzhou", "label": "Hangzhou", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}
