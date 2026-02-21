@@ -1,0 +1,24 @@
+{
+  "group_id": "desert_cities_01",
+  "group_name": "Desert Cities",
+  "base_card": {
+    "id": "desert_cities_base",
+    "label": "Desert Cities",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "desert_dubai", "label": "Dubai", "type": "partner", "image": null },
+    { "id": "desert_phoenix", "label": "Phoenix", "type": "partner", "image": null },
+    { "id": "desert_las_vegas", "label": "Las Vegas", "type": "partner", "image": null },
+    { "id": "desert_riyadh", "label": "Riyadh", "type": "partner", "image": null },
+    { "id": "desert_cairo", "label": "Cairo", "type": "partner", "image": null },
+    { "id": "desert_alice_springs", "label": "Alice Springs", "type": "partner", "image": null },
+    { "id": "desert_tucson", "label": "Tucson", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

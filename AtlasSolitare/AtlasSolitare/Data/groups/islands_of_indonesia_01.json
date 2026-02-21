@@ -1,0 +1,24 @@
+{
+  "group_id": "islands_of_indonesia_01",
+  "group_name": "Islands of Indonesia",
+  "base_card": {
+    "id": "islands_of_indonesia_base",
+    "label": "Indonesian Islands",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "indonesia_java", "label": "Java", "type": "partner", "image": null },
+    { "id": "indonesia_sumatra", "label": "Sumatra", "type": "partner", "image": null },
+    { "id": "indonesia_borneo", "label": "Borneo", "type": "partner", "image": null },
+    { "id": "indonesia_sulawesi", "label": "Sulawesi", "type": "partner", "image": null },
+    { "id": "indonesia_new_guinea", "label": "New Guinea", "type": "partner", "image": null },
+    { "id": "indonesia_bali", "label": "Bali", "type": "partner", "image": null },
+    { "id": "indonesia_lombok", "label": "Lombok", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

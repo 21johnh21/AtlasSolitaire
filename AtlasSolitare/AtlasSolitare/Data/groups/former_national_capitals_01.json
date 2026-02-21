@@ -1,0 +1,24 @@
+{
+  "group_id": "former_national_capitals_01",
+  "group_name": "Former National Capitals",
+  "base_card": {
+    "id": "former_national_capitals_base",
+    "label": "Former National Capitals",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "former_cap_rio", "label": "Rio de Janeiro", "type": "partner", "image": null },
+    { "id": "former_cap_lagos", "label": "Lagos", "type": "partner", "image": null },
+    { "id": "former_cap_karachi", "label": "Karachi", "type": "partner", "image": null },
+    { "id": "former_cap_yangon", "label": "Yangon", "type": "partner", "image": null },
+    { "id": "former_cap_almaty", "label": "Almaty", "type": "partner", "image": null },
+    { "id": "former_cap_istanbul", "label": "Istanbul", "type": "partner", "image": null },
+    { "id": "former_cap_kyoto", "label": "Kyoto", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "group_id": "megacities_01",
+  "group_name": "Megacities",
+  "base_card": {
+    "id": "megacities_base",
+    "label": "Megacities",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "mega_tokyo", "label": "Tokyo", "type": "partner", "image": null },
+    { "id": "mega_delhi", "label": "Delhi", "type": "partner", "image": null },
+    { "id": "mega_shanghai", "label": "Shanghai", "type": "partner", "image": null },
+    { "id": "mega_sao_paulo", "label": "São Paulo", "type": "partner", "image": null },
+    { "id": "mega_mexico_city", "label": "Mexico City", "type": "partner", "image": null },
+    { "id": "mega_cairo", "label": "Cairo", "type": "partner", "image": null },
+    { "id": "mega_mumbai", "label": "Mumbai", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

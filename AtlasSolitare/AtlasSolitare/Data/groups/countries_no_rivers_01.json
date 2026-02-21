@@ -1,0 +1,24 @@
+{
+  "group_id": "countries_no_rivers_01",
+  "group_name": "Countries With No Rivers",
+  "base_card": {
+    "id": "countries_no_rivers_base",
+    "label": "Countries With No Rivers",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "no_rivers_saudi_arabia", "label": "Saudi Arabia", "type": "partner", "image": null },
+    { "id": "no_rivers_libya", "label": "Libya", "type": "partner", "image": null },
+    { "id": "no_rivers_bahrain", "label": "Bahrain", "type": "partner", "image": null },
+    { "id": "no_rivers_malta", "label": "Malta", "type": "partner", "image": null },
+    { "id": "no_rivers_maldives", "label": "Maldives", "type": "partner", "image": null },
+    { "id": "no_rivers_vatican", "label": "Vatican City", "type": "partner", "image": null },
+    { "id": "no_rivers_monaco", "label": "Monaco", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

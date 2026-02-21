@@ -109,7 +109,32 @@ class LocalJSONDataSource: GroupDataSource {
             "glaciers_world_01",
             "two_seas_countries_01",
             "shared_islands_01",
-            "single_neighbor_nations_01"
+            "single_neighbor_nations_01",
+            "endorheic_basins_01",
+            "famous_bridges_01",
+            "pilgrimage_sites_01",
+            "lost_cities_01",
+            "indian_ocean_nations_01",
+            "caribbean_capitals_01",
+            "lesser_antilles_islands_01",
+            "greater_antilles_islands_01",
+            "central_america_capitals_01",
+            "red_sea_nations_01",
+            "major_parallels_01",
+            "famous_canals_01",
+            "national_animals_01",
+            "uninhabited_territories_01",
+            "regions_below_sea_level_01",
+            "oldest_inhabited_places_01",
+            "countries_no_rivers_01",
+            "transcontinental_nations_01",
+            "maghreb_countries_01",
+            "balkan_nations_01",
+            "nordic_nations_01",
+            "islands_of_indonesia_01",
+            "former_national_capitals_01",
+            "desert_cities_01",
+            "megacities_01"
         ]
 
         var definitions: [GroupDefinition] = []

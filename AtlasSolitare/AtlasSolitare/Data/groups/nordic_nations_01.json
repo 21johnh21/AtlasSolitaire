@@ -1,0 +1,22 @@
+{
+  "group_id": "nordic_nations_01",
+  "group_name": "Nordic Nations",
+  "base_card": {
+    "id": "nordic_nations_base",
+    "label": "Nordic Nations",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "nordic_norway", "label": "Norway", "type": "partner", "image": null },
+    { "id": "nordic_sweden", "label": "Sweden", "type": "partner", "image": null },
+    { "id": "nordic_denmark", "label": "Denmark", "type": "partner", "image": null },
+    { "id": "nordic_finland", "label": "Finland", "type": "partner", "image": null },
+    { "id": "nordic_iceland", "label": "Iceland", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

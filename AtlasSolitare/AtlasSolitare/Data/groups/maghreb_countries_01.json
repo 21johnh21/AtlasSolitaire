@@ -1,0 +1,22 @@
+{
+  "group_id": "maghreb_countries_01",
+  "group_name": "Countries in the Maghreb Region",
+  "base_card": {
+    "id": "maghreb_countries_base",
+    "label": "Maghreb Countries",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "maghreb_morocco", "label": "Morocco", "type": "partner", "image": null },
+    { "id": "maghreb_algeria", "label": "Algeria", "type": "partner", "image": null },
+    { "id": "maghreb_tunisia", "label": "Tunisia", "type": "partner", "image": null },
+    { "id": "maghreb_libya", "label": "Libya", "type": "partner", "image": null },
+    { "id": "maghreb_mauritania", "label": "Mauritania", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

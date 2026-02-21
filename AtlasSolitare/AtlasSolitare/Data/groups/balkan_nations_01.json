@@ -1,0 +1,24 @@
+{
+  "group_id": "balkan_nations_01",
+  "group_name": "Balkan Nations",
+  "base_card": {
+    "id": "balkan_nations_base",
+    "label": "Balkan Nations",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "balkan_greece", "label": "Greece", "type": "partner", "image": null },
+    { "id": "balkan_albania", "label": "Albania", "type": "partner", "image": null },
+    { "id": "balkan_bulgaria", "label": "Bulgaria", "type": "partner", "image": null },
+    { "id": "balkan_serbia", "label": "Serbia", "type": "partner", "image": null },
+    { "id": "balkan_croatia", "label": "Croatia", "type": "partner", "image": null },
+    { "id": "balkan_bosnia", "label": "Bosnia and Herzegovina", "type": "partner", "image": null },
+    { "id": "balkan_north_macedonia", "label": "North Macedonia", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}
