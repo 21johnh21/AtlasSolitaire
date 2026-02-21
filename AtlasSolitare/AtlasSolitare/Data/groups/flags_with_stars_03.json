@@ -1,0 +1,24 @@
+{
+  "group_id": "flags_with_stars_03",
+  "group_name": "Flags with Stars III",
+  "base_card": {
+    "id": "star_flags_03_base",
+    "label": "Flags with Stars",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "star_03_chile", "label": "Chile", "type": "partner", "image": null },
+    { "id": "star_03_israel", "label": "Israel", "type": "partner", "image": null },
+    { "id": "star_03_singapore", "label": "Singapore", "type": "partner", "image": null },
+    { "id": "star_03_jordan", "label": "Jordan", "type": "partner", "image": null },
+    { "id": "star_03_panama", "label": "Panama", "type": "partner", "image": null },
+    { "id": "star_03_venezuela", "label": "Venezuela", "type": "partner", "image": null },
+    { "id": "star_03_myanmar", "label": "Myanmar", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

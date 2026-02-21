@@ -1,0 +1,24 @@
+{
+  "group_id": "flags_with_birds_01",
+  "group_name": "Flags with Birds",
+  "base_card": {
+    "id": "bird_flags_base",
+    "label": "Flags with Birds",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "bird_mexico", "label": "Mexico", "type": "partner", "image": null },
+    { "id": "bird_egypt", "label": "Egypt", "type": "partner", "image": null },
+    { "id": "bird_albania", "label": "Albania", "type": "partner", "image": null },
+    { "id": "bird_ecuador", "label": "Ecuador", "type": "partner", "image": null },
+    { "id": "bird_bolivia", "label": "Bolivia", "type": "partner", "image": null },
+    { "id": "bird_zambia", "label": "Zambia", "type": "partner", "image": null },
+    { "id": "bird_zimbabwe", "label": "Zimbabwe", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

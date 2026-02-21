@@ -1,0 +1,24 @@
+{
+  "group_id": "black_red_green_flags_01",
+  "group_name": "Black, Red & Green Flags",
+  "base_card": {
+    "id": "black_red_green_base",
+    "label": "Black, Red & Green Flags",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "brg_afghanistan", "label": "Afghanistan", "type": "partner", "image": null },
+    { "id": "brg_kenya", "label": "Kenya", "type": "partner", "image": null },
+    { "id": "brg_malawi", "label": "Malawi", "type": "partner", "image": null },
+    { "id": "brg_libya", "label": "Libya", "type": "partner", "image": null },
+    { "id": "brg_south_sudan", "label": "South Sudan", "type": "partner", "image": null },
+    { "id": "brg_sudan", "label": "Sudan", "type": "partner", "image": null },
+    { "id": "brg_palestine", "label": "Palestine", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

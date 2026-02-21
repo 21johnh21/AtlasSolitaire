@@ -1,0 +1,24 @@
+{
+  "group_id": "horizontal_tricolor_flags_01",
+  "group_name": "Horizontal Tricolor Flags I",
+  "base_card": {
+    "id": "horizontal_tricolor_01_base",
+    "label": "Horizontal Tricolor Flags",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "horiz_01_russia", "label": "Russia", "type": "partner", "image": null },
+    { "id": "horiz_01_netherlands", "label": "Netherlands", "type": "partner", "image": null },
+    { "id": "horiz_01_germany", "label": "Germany", "type": "partner", "image": null },
+    { "id": "horiz_01_austria", "label": "Austria", "type": "partner", "image": null },
+    { "id": "horiz_01_hungary", "label": "Hungary", "type": "partner", "image": null },
+    { "id": "horiz_01_bulgaria", "label": "Bulgaria", "type": "partner", "image": null },
+    { "id": "horiz_01_estonia", "label": "Estonia", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

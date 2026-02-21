@@ -1,0 +1,24 @@
+{
+  "group_id": "flags_with_stars_01",
+  "group_name": "Flags with Stars I",
+  "base_card": {
+    "id": "star_flags_01_base",
+    "label": "Flags with Stars",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "star_01_usa", "label": "United States", "type": "partner", "image": null },
+    { "id": "star_01_china", "label": "China", "type": "partner", "image": null },
+    { "id": "star_01_brazil", "label": "Brazil", "type": "partner", "image": null },
+    { "id": "star_01_australia", "label": "Australia", "type": "partner", "image": null },
+    { "id": "star_01_new_zealand", "label": "New Zealand", "type": "partner", "image": null },
+    { "id": "star_01_turkey", "label": "Turkey", "type": "partner", "image": null },
+    { "id": "star_01_pakistan", "label": "Pakistan", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

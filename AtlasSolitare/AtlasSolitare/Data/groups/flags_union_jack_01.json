@@ -1,0 +1,24 @@
+{
+  "group_id": "flags_union_jack_01",
+  "group_name": "Flags with Union Jack",
+  "base_card": {
+    "id": "union_jack_base",
+    "label": "Flags with Union Jack",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "uj_australia", "label": "Australia", "type": "partner", "image": null },
+    { "id": "uj_new_zealand", "label": "New Zealand", "type": "partner", "image": null },
+    { "id": "uj_fiji", "label": "Fiji", "type": "partner", "image": null },
+    { "id": "uj_tuvalu", "label": "Tuvalu", "type": "partner", "image": null },
+    { "id": "uj_hawaii", "label": "Hawaii", "type": "partner", "image": null },
+    { "id": "uj_bermuda", "label": "Bermuda", "type": "partner", "image": null },
+    { "id": "uj_cook_islands", "label": "Cook Islands", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

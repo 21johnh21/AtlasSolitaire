@@ -1,0 +1,24 @@
+{
+  "group_id": "vertical_tricolor_flags_02",
+  "group_name": "Vertical Tricolor Flags II",
+  "base_card": {
+    "id": "vertical_tricolor_02_base",
+    "label": "Vertical Tricolor Flags",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "vert_02_nigeria", "label": "Nigeria", "type": "partner", "image": null },
+    { "id": "vert_02_guinea", "label": "Guinea", "type": "partner", "image": null },
+    { "id": "vert_02_mali", "label": "Mali", "type": "partner", "image": null },
+    { "id": "vert_02_senegal", "label": "Senegal", "type": "partner", "image": null },
+    { "id": "vert_02_ivory_coast", "label": "Ivory Coast", "type": "partner", "image": null },
+    { "id": "vert_02_cameroon", "label": "Cameroon", "type": "partner", "image": null },
+    { "id": "vert_02_andorra", "label": "Andorra", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

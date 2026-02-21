@@ -1,0 +1,24 @@
+{
+  "group_id": "flags_with_stars_02",
+  "group_name": "Flags with Stars II",
+  "base_card": {
+    "id": "star_flags_02_base",
+    "label": "Flags with Stars",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "star_02_vietnam", "label": "Vietnam", "type": "partner", "image": null },
+    { "id": "star_02_somalia", "label": "Somalia", "type": "partner", "image": null },
+    { "id": "star_02_cuba", "label": "Cuba", "type": "partner", "image": null },
+    { "id": "star_02_morocco", "label": "Morocco", "type": "partner", "image": null },
+    { "id": "star_02_syria", "label": "Syria", "type": "partner", "image": null },
+    { "id": "star_02_ghana", "label": "Ghana", "type": "partner", "image": null },
+    { "id": "star_02_senegal", "label": "Senegal", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

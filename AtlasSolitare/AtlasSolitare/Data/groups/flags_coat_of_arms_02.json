@@ -1,0 +1,24 @@
+{
+  "group_id": "flags_coat_of_arms_02",
+  "group_name": "Flags with Coat of Arms II",
+  "base_card": {
+    "id": "coat_arms_02_base",
+    "label": "Flags with Coat of Arms",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "coat_02_serbia", "label": "Serbia", "type": "partner", "image": null },
+    { "id": "coat_02_croatia", "label": "Croatia", "type": "partner", "image": null },
+    { "id": "coat_02_slovakia", "label": "Slovakia", "type": "partner", "image": null },
+    { "id": "coat_02_slovenia", "label": "Slovenia", "type": "partner", "image": null },
+    { "id": "coat_02_montenegro", "label": "Montenegro", "type": "partner", "image": null },
+    { "id": "coat_02_moldova", "label": "Moldova", "type": "partner", "image": null },
+    { "id": "coat_02_san_marino", "label": "San Marino", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}
