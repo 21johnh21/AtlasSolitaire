@@ -48,13 +48,28 @@ struct SettingsView: View {
                             }
                         }
 
+                        // Game Information
+                        settingsCard {
+                            NavigationLink(destination: GameInfoView()) {
+                                settingNavigationRow(
+                                    title: "How to Play",
+                                    subtitle: "Rules and game instructions",
+                                    icon: "info.circle.fill"
+                                )
+                            }
+                            .withClickSound()
+                            .simultaneousGesture(TapGesture().onEnded {
+                                haptic.light()
+                            })
+                        }
+
                         // Support & Help
                         settingsCard {
                             VStack(spacing: 20) {
                                 NavigationLink(destination: SupportView()) {
                                     settingNavigationRow(
                                         title: "Support & Help",
-                                        subtitle: "FAQs and game instructions",
+                                        subtitle: "FAQs and contact information",
                                         icon: "questionmark.circle.fill"
                                     )
                                 }
