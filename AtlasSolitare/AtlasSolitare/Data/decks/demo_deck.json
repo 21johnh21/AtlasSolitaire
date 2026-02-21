@@ -1,0 +1,9 @@
+{
+  "deck_id": "demo_deck_01",
+  "deck_name": "Tutorial Demo",
+  "groups": [
+    "demo_colors_01",
+    "demo_numbers_01"
+  ],
+  "shuffle_seed": 12345
+}

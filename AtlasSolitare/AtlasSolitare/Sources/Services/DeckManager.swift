@@ -138,7 +138,10 @@ class LocalJSONDataSource: GroupDataSource {
             "utah_national_parks_01",
             "california_national_parks_01",
             "ancient_greek_cities_01",
-            "former_yugoslav_states_01"
+            "former_yugoslav_states_01",
+            "demo_colors_01",
+            "demo_numbers_01",
+            "demo_india_cities_01"
         ]
 
         var definitions: [GroupDefinition] = []
@@ -271,6 +274,37 @@ class DeckManager {
         )
 
         // Populate possibleGroupIds by finding cards with matching labels across groups
+        deck.populatePossibleGroupIds()
+
+        return deck
+    }
+
+    // ─── Build demo deck with specific groups ──────────────────────────────
+
+    /// Build a demo/tutorial deck with only the specified demo groups.
+    func buildDemoDeck() throws -> Deck {
+        let allDefinitions = try dataSource.loadAllGroups()
+        let defMap = Dictionary(uniqueKeyed: allDefinitions.map { ($0.groupId, $0) })
+
+        // Build demo deck with just the demo groups
+        let demoGroupIds = ["demo_colors_01", "demo_numbers_01", "demo_india_cities_01"]
+        let groups = demoGroupIds.compactMap { groupId -> Group? in
+            guard let def = defMap[groupId] else { return nil }
+            return Group(from: def)
+        }
+
+        guard groups.count == 3 else {
+            throw DeckManagerError.noGroupsFound
+        }
+
+        var deck = Deck(
+            id: "demo_deck",
+            name: "Tutorial Demo",
+            groups: groups,
+            seed: 12345
+        )
+
+        // Populate possibleGroupIds
         deck.populatePossibleGroupIds()
 
         return deck

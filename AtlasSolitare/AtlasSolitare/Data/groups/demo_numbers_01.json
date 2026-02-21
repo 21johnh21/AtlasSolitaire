@@ -1,0 +1,24 @@
+{
+  "group_id": "demo_numbers_01",
+  "group_name": "East Coast States",
+  "base_card": {
+    "id": "demo_east_coast_base",
+    "label": "East Coast States",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "demo_east_maine", "label": "Maine", "type": "partner", "image": null },
+    { "id": "demo_east_new_hampshire", "label": "New Hampshire", "type": "partner", "image": null },
+    { "id": "demo_east_massachusetts", "label": "Massachusetts", "type": "partner", "image": null },
+    { "id": "demo_east_new_york", "label": "New York", "type": "partner", "image": null },
+    { "id": "demo_east_pennsylvania", "label": "Pennsylvania", "type": "partner", "image": null },
+    { "id": "demo_east_virginia", "label": "Virginia", "type": "partner", "image": null },
+    { "id": "demo_east_florida", "label": "Florida", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

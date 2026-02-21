@@ -179,6 +179,29 @@ class GameViewModel: ObservableObject {
         startTimer()
     }
 
+    /// Start a demo/tutorial game with simple demo groups.
+    func startDemoGame() {
+        do {
+            // Build the demo deck
+            let deck = try deckManager.buildDemoDeck()
+            engine.newGame(deck: deck, seed: deck.seed)
+
+            // Reset stats for demo game
+            currentElapsedTime = 0
+            engine.state.elapsedTime = 0
+            engine.state.startTime = Date()
+
+            phase = .playing
+            startTimer()
+            // Don't autosave demo games
+        } catch {
+            // Fallback: stay on menu.
+            #if DEBUG
+            print("[GameViewModel] Failed to build demo deck: \(error.localizedDescription)")
+            #endif
+        }
+    }
+
     /// Return to the main menu (without clearing saved game).
     func returnToMenu() {
         stopTimer()

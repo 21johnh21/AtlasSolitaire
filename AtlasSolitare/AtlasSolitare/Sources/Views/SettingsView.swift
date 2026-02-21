@@ -48,19 +48,36 @@ struct SettingsView: View {
                             }
                         }
 
-                        // Game Information
+                        // Tutorial & Info
                         settingsCard {
-                            NavigationLink(destination: GameInfoView()) {
-                                settingNavigationRow(
-                                    title: "How to Play",
-                                    subtitle: "Rules and game instructions",
-                                    icon: "info.circle.fill"
-                                )
+                            VStack(spacing: 20) {
+                                NavigationLink(destination: DemoView()) {
+                                    settingNavigationRow(
+                                        title: "Play Tutorial",
+                                        subtitle: "Interactive demo with guided hints",
+                                        icon: "graduationcap.fill"
+                                    )
+                                }
+                                .withClickSound()
+                                .simultaneousGesture(TapGesture().onEnded {
+                                    haptic.light()
+                                })
+
+                                Divider()
+                                    .background(Color.white.opacity(0.1))
+
+                                NavigationLink(destination: GameInfoView()) {
+                                    settingNavigationRow(
+                                        title: "How to Play",
+                                        subtitle: "Rules and game instructions",
+                                        icon: "info.circle.fill"
+                                    )
+                                }
+                                .withClickSound()
+                                .simultaneousGesture(TapGesture().onEnded {
+                                    haptic.light()
+                                })
                             }
-                            .withClickSound()
-                            .simultaneousGesture(TapGesture().onEnded {
-                                haptic.light()
-                            })
                         }
 
                         // Support & Help
