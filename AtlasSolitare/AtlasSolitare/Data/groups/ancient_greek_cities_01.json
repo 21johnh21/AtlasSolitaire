@@ -1,0 +1,24 @@
+{
+  "group_id": "ancient_greek_cities_01",
+  "group_name": "Ancient Greek City-States",
+  "base_card": {
+    "id": "ancient_greek_cities_base",
+    "label": "Ancient Greek City-States",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "greek_athens", "label": "Athens", "type": "partner", "image": null },
+    { "id": "greek_sparta", "label": "Sparta", "type": "partner", "image": null },
+    { "id": "greek_corinth", "label": "Corinth", "type": "partner", "image": null },
+    { "id": "greek_thebes", "label": "Thebes", "type": "partner", "image": null },
+    { "id": "greek_argos", "label": "Argos", "type": "partner", "image": null },
+    { "id": "greek_megara", "label": "Megara", "type": "partner", "image": null },
+    { "id": "greek_delphi", "label": "Delphi", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "History",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

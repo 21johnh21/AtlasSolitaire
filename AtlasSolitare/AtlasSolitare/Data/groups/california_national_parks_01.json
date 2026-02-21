@@ -1,0 +1,24 @@
+{
+  "group_id": "california_national_parks_01",
+  "group_name": "National Parks in California",
+  "base_card": {
+    "id": "california_national_parks_base",
+    "label": "California National Parks",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "california_yosemite", "label": "Yosemite", "type": "partner", "image": null },
+    { "id": "california_sequoia", "label": "Sequoia", "type": "partner", "image": null },
+    { "id": "california_kings_canyon", "label": "Kings Canyon", "type": "partner", "image": null },
+    { "id": "california_death_valley", "label": "Death Valley", "type": "partner", "image": null },
+    { "id": "california_joshua_tree", "label": "Joshua Tree", "type": "partner", "image": null },
+    { "id": "california_redwood", "label": "Redwood", "type": "partner", "image": null },
+    { "id": "california_lassen", "label": "Lassen Volcanic", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

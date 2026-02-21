@@ -1,0 +1,22 @@
+{
+  "group_id": "utah_national_parks_01",
+  "group_name": "National Parks in Utah",
+  "base_card": {
+    "id": "utah_national_parks_base",
+    "label": "Utah National Parks",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "utah_zion", "label": "Zion", "type": "partner", "image": null },
+    { "id": "utah_bryce_canyon", "label": "Bryce Canyon", "type": "partner", "image": null },
+    { "id": "utah_arches", "label": "Arches", "type": "partner", "image": null },
+    { "id": "utah_canyonlands", "label": "Canyonlands", "type": "partner", "image": null },
+    { "id": "utah_capitol_reef", "label": "Capitol Reef", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}
