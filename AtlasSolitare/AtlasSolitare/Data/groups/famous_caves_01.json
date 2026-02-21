@@ -1,0 +1,24 @@
+{
+  "group_id": "famous_caves_01",
+  "group_name": "Famous Caves",
+  "base_card": {
+    "id": "famous_caves_base",
+    "label": "Famous Caves",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "cave_mammoth", "label": "Mammoth Cave", "type": "partner", "image": null },
+    { "id": "cave_carlsbad", "label": "Carlsbad Caverns", "type": "partner", "image": null },
+    { "id": "cave_waitomo", "label": "Waitomo Caves", "type": "partner", "image": null },
+    { "id": "cave_lascaux", "label": "Lascaux Cave", "type": "partner", "image": null },
+    { "id": "cave_son_doong", "label": "Sơn Đoòng Cave", "type": "partner", "image": null },
+    { "id": "cave_fingals", "label": "Fingal's Cave", "type": "partner", "image": null },
+    { "id": "cave_blue_grotto", "label": "Blue Grotto", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

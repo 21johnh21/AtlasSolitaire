@@ -1,0 +1,24 @@
+{
+  "group_id": "regions_of_china_01",
+  "group_name": "Regions of China",
+  "base_card": {
+    "id": "china_regions_base",
+    "label": "Chinese Regions",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "china_guangdong", "label": "Guangdong", "type": "partner", "image": null },
+    { "id": "china_sichuan", "label": "Sichuan", "type": "partner", "image": null },
+    { "id": "china_xinjiang", "label": "Xinjiang", "type": "partner", "image": null },
+    { "id": "china_tibet", "label": "Tibet", "type": "partner", "image": null },
+    { "id": "china_inner_mongolia", "label": "Inner Mongolia", "type": "partner", "image": null },
+    { "id": "china_yunnan", "label": "Yunnan", "type": "partner", "image": null },
+    { "id": "china_heilongjiang", "label": "Heilongjiang", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "group_id": "states_of_mexico_01",
+  "group_name": "States of Mexico I",
+  "base_card": {
+    "id": "mexico_states_01_base",
+    "label": "Mexican States",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "mex_01_jalisco", "label": "Jalisco", "type": "partner", "image": null },
+    { "id": "mex_01_nuevo_leon", "label": "Nuevo León", "type": "partner", "image": null },
+    { "id": "mex_01_veracruz", "label": "Veracruz", "type": "partner", "image": null },
+    { "id": "mex_01_chihuahua", "label": "Chihuahua", "type": "partner", "image": null },
+    { "id": "mex_01_guanajuato", "label": "Guanajuato", "type": "partner", "image": null },
+    { "id": "mex_01_oaxaca", "label": "Oaxaca", "type": "partner", "image": null },
+    { "id": "mex_01_yucatan", "label": "Yucatán", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

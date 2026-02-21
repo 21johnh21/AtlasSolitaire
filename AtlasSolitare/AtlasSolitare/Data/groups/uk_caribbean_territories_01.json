@@ -1,0 +1,23 @@
+{
+  "group_id": "uk_caribbean_territories_01",
+  "group_name": "UK Caribbean Territories",
+  "base_card": {
+    "id": "uk_caribbean_base",
+    "label": "UK Caribbean Territories",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "uk_carib_cayman", "label": "Cayman Islands", "type": "partner", "image": null },
+    { "id": "uk_carib_turks_caicos", "label": "Turks and Caicos", "type": "partner", "image": null },
+    { "id": "uk_carib_british_virgin", "label": "British Virgin Islands", "type": "partner", "image": null },
+    { "id": "uk_carib_anguilla", "label": "Anguilla", "type": "partner", "image": null },
+    { "id": "uk_carib_montserrat", "label": "Montserrat", "type": "partner", "image": null },
+    { "id": "uk_carib_bermuda", "label": "Bermuda", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

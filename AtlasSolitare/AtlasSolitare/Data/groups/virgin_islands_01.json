@@ -1,0 +1,24 @@
+{
+  "group_id": "virgin_islands_01",
+  "group_name": "Islands in the Virgin Islands",
+  "base_card": {
+    "id": "virgin_islands_base",
+    "label": "Virgin Islands",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "virgin_st_thomas", "label": "St. Thomas", "type": "partner", "image": null },
+    { "id": "virgin_st_croix", "label": "St. Croix", "type": "partner", "image": null },
+    { "id": "virgin_st_john", "label": "St. John", "type": "partner", "image": null },
+    { "id": "virgin_tortola", "label": "Tortola", "type": "partner", "image": null },
+    { "id": "virgin_virgin_gorda", "label": "Virgin Gorda", "type": "partner", "image": null },
+    { "id": "virgin_jost_van_dyke", "label": "Jost Van Dyke", "type": "partner", "image": null },
+    { "id": "virgin_anegada", "label": "Anegada", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

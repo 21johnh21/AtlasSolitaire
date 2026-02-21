@@ -1,0 +1,24 @@
+{
+  "group_id": "cities_in_netherlands_01",
+  "group_name": "Cities in the Netherlands",
+  "base_card": {
+    "id": "netherlands_cities_base",
+    "label": "Dutch Cities",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "nl_amsterdam", "label": "Amsterdam", "type": "partner", "image": null },
+    { "id": "nl_rotterdam", "label": "Rotterdam", "type": "partner", "image": null },
+    { "id": "nl_the_hague", "label": "The Hague", "type": "partner", "image": null },
+    { "id": "nl_utrecht", "label": "Utrecht", "type": "partner", "image": null },
+    { "id": "nl_eindhoven", "label": "Eindhoven", "type": "partner", "image": null },
+    { "id": "nl_groningen", "label": "Groningen", "type": "partner", "image": null },
+    { "id": "nl_maastricht", "label": "Maastricht", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

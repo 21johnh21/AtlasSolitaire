@@ -1,0 +1,24 @@
+{
+  "group_id": "provinces_of_argentina_01",
+  "group_name": "Provinces of Argentina",
+  "base_card": {
+    "id": "argentina_provinces_base",
+    "label": "Argentine Provinces",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "arg_buenos_aires", "label": "Buenos Aires", "type": "partner", "image": null },
+    { "id": "arg_cordoba", "label": "Córdoba", "type": "partner", "image": null },
+    { "id": "arg_santa_fe", "label": "Santa Fe", "type": "partner", "image": null },
+    { "id": "arg_mendoza", "label": "Mendoza", "type": "partner", "image": null },
+    { "id": "arg_tucuman", "label": "Tucumán", "type": "partner", "image": null },
+    { "id": "arg_salta", "label": "Salta", "type": "partner", "image": null },
+    { "id": "arg_chubut", "label": "Chubut", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}
