@@ -39,6 +39,12 @@ class GameViewModel: ObservableObject {
     private var sessionStartTime: Date?
     private var baseElapsedTime: TimeInterval = 0
 
+    // ─── Deck History (to avoid repeating recent decks) ────────────────────
+    /// Tracks the group IDs from recent games to avoid repetition.
+    /// Stores up to the last 3 games worth of group IDs.
+    private var recentDeckHistory: [[String]] = []
+    private let maxDeckHistorySize = 3
+
     // ─── Init ───────────────────────────────────────────────────────────────
     init(
         engine: GameEngine? = nil,
@@ -131,9 +137,20 @@ class GameViewModel: ObservableObject {
     /// Start a new game (called from menu or win screen "Play Again").
     func startNewGame() {
         do {
-            // Pick 5 random groups per round (configurable).
-            let deck = try deckManager.buildRandomDeck(groupCount: 5)
+            // Gather group IDs from recent games to avoid repetition
+            let excludedGroupIds = Set(recentDeckHistory.flatMap { $0 })
+
+            // Pick 5 random groups per round (configurable), excluding recent ones
+            let deck = try deckManager.buildRandomDeck(groupCount: 5, excludeGroupIds: excludedGroupIds)
             engine.newGame(deck: deck, seed: deck.seed)
+
+            // Track this deck's groups in history
+            let currentGroupIds = deck.groups.map { $0.id }
+            recentDeckHistory.append(currentGroupIds)
+            // Keep only the last N games
+            if recentDeckHistory.count > maxDeckHistorySize {
+                recentDeckHistory.removeFirst()
+            }
 
             // Reset stats for new game
             currentElapsedTime = 0

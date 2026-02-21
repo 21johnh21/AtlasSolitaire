@@ -174,7 +174,8 @@ class DeckManager {
     /// Load all available groups and randomly select `count` of them.
     /// If `count` is nil, all available groups are used.
     /// `seed` controls the selection RNG for reproducibility.
-    func buildRandomDeck(groupCount count: Int? = nil, seed: UInt64? = nil) throws -> Deck {
+    /// `excludeGroupIds` is a set of group IDs to avoid selecting (for preventing recent repeats).
+    func buildRandomDeck(groupCount count: Int? = nil, seed: UInt64? = nil, excludeGroupIds: Set<String> = []) throws -> Deck {
         let definitions = try dataSource.loadAllGroups()
         guard !definitions.isEmpty else { throw DeckManagerError.noGroupsFound }
 
@@ -182,13 +183,19 @@ class DeckManager {
         var seen = Set<String>()
         let unique = definitions.filter { seen.insert($0.groupId).inserted }
 
-        let requested = count ?? unique.count
-        guard requested <= unique.count else {
-            throw DeckManagerError.insufficientGroups(available: unique.count, requested: requested)
+        // Filter out excluded groups (recently used decks)
+        let available = unique.filter { !excludeGroupIds.contains($0.groupId) }
+
+        // If we filtered out too many, fall back to using all groups
+        let poolToUse = available.isEmpty ? unique : available
+
+        let requested = count ?? poolToUse.count
+        guard requested <= poolToUse.count else {
+            throw DeckManagerError.insufficientGroups(available: poolToUse.count, requested: requested)
         }
 
         // Shuffle definitions with optional seed.
-        var shuffled = unique
+        var shuffled = poolToUse
         if var rng = seed.map({ SeededRNG(seed: $0) }) {
             shuffled.shuffle(using: &rng)
         } else {
