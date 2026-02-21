@@ -10,6 +10,8 @@ struct WasteView: View {
     let topCard: Card?
     /// Number of cards in the waste pile.
     var wasteCount: Int = 0
+    /// The waste pile array (to show card underneath when dragging).
+    var waste: [Card] = []
     /// Set of card IDs currently being dragged.
     var draggingCardIds: Set<String> = []
 
@@ -58,8 +60,18 @@ struct WasteView: View {
                         .environment(\.cardWidth, cardWidth)
                     }
                 } else {
-                    emptySlot
-                        .offset(x: CGFloat(stackCount) * stackOffset, y: 0)
+                    // When dragging, show the card underneath if it exists
+                    if waste.count >= 2, let cardUnderneath = waste.dropLast().last {
+                        CardView(
+                            card: cardUnderneath,
+                            isFaceUp: true,
+                            isHighlighted: false
+                        )
+                        .offset(x: CGFloat(max(stackCount - 1, 0)) * stackOffset, y: 0)
+                    } else {
+                        emptySlot
+                            .offset(x: CGFloat(stackCount) * stackOffset, y: 0)
+                    }
                 }
             } else {
                 emptySlot

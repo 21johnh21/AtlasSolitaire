@@ -253,6 +253,9 @@ class GameViewModel: ObservableObject {
     /// The number of cards in the waste pile.
     var wasteCount: Int { engine.state.waste.count }
 
+    /// The waste pile array.
+    var waste: [Card] { engine.state.waste }
+
     /// Current foundation piles.
     var foundations: [FoundationPile] { engine.state.foundations }
 
