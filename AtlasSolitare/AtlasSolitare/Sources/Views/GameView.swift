@@ -35,19 +35,14 @@ struct GameView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .contentShape(Rectangle())
                     .dropDestination(for: DragPayload.self) { items, location in
-                        print("[GameView] [BACKGROUND] Drop detected at location: \(location)")
                         if let payload = items.first {
-                            print("[GameView] [BACKGROUND] Card dropped outside valid area: \(payload.card.label)")
-                            print("[GameView] [BACKGROUND] Payload source: \(payload.source)")
                             cancelDragTimeout()
 
                             // Clear dragging state after a brief delay
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                print("[GameView] [BACKGROUND] Clearing dragging state now")
                                 draggingCardIds.removeAll()
                             }
                         } else {
-                            print("[GameView] [BACKGROUND] Drop detected but no payload")
                             cancelDragTimeout()
                         }
                         return false // Reject the drop
@@ -106,18 +101,14 @@ struct GameView: View {
             .ignoresSafeArea(edges: .bottom)
             // Catch-all drop handler to clear dragging state if dropped on invalid area
             .dropDestination(for: DragPayload.self) { items, location in
-                print("[GameView] [VSTACK] Drop detected at location: \(location)")
                 if let payload = items.first {
-                    print("[GameView] [VSTACK] Card dropped in invalid area: \(payload.card.label) from \(payload.source)")
                     cancelDragTimeout()
 
                     // Clear dragging state after a brief delay to allow the return animation to complete
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                        print("[GameView] [VSTACK] Clearing dragging state now")
                         draggingCardIds.removeAll()
                     }
                 } else {
-                    print("[GameView] [VSTACK] Drop detected but no payload")
                     cancelDragTimeout()
                     draggingCardIds.removeAll()
                 }
@@ -179,7 +170,6 @@ struct GameView: View {
                     // Clear any previous dragging state before starting new drag
                     draggingCardIds.removeAll()
                     draggingCardIds = [card.id]
-                    print("[GameView] Started dragging from waste: \(card.label)")
                     startDragTimeout()
                     return DragPayload(card: card, source: .waste)
                 }
@@ -210,11 +200,9 @@ struct GameView: View {
                         // Clear any previous dragging state before starting new drag
                         draggingCardIds.removeAll()
                         draggingCardIds = [card.id]
-                        print("[GameView] Started dragging from foundation \(idx): \(card.label)")
                         startDragTimeout()
                     },
                     onDropPayload: { payload in
-                        print("[GameView] Dropped on foundation \(idx): \(payload.cards.map { $0.label }.joined(separator: ", "))")
                         cancelDragTimeout()
 
                         // If multiple cards, move them all to the foundation
@@ -310,13 +298,11 @@ struct GameView: View {
                 // Mark these cards as being dragged
                 draggingCardIds = Set(stackCards.map { $0.id })
 
-                print("[GameView] Started dragging from tableau \(pileIdx): \(stackCards.map { $0.label }.joined(separator: ", "))")
                 startDragTimeout()
 
                 return DragPayload(cards: stackCards, source: .tableau(pileIndex: pileIdx))
             },
             onDropPayload: { payload, pileIdx in
-                print("[GameView] Dropped on tableau \(pileIdx): \(payload.cards.map { $0.label }.joined(separator: ", "))")
                 cancelDragTimeout()
 
                 vm.dropOnTableau(cards: payload.cards, source: payload.source, pileIndex: pileIdx)
@@ -403,12 +389,9 @@ struct GameView: View {
     private func startDragTimeout() {
         // Cancel any existing timeout
         if dragTimeoutTask != nil {
-            print("[GameView] Cancelling previous timeout before starting new one")
             dragTimeoutTask?.cancel()
             dragTimeoutTask = nil
         }
-
-        print("[GameView] Starting drag timeout (5 seconds)")
 
         // Create a new timeout task
         let task = DispatchWorkItem { [draggingCardIds] in
@@ -418,11 +401,8 @@ struct GameView: View {
             DispatchQueue.main.async {
                 // Only clear if the cards we captured are still being dragged
                 if !self.draggingCardIds.isEmpty && self.draggingCardIds == capturedIds {
-                    print("[GameView] Drag timeout triggered - clearing orphaned dragging state for cards: \(self.draggingCardIds)")
                     self.draggingCardIds.removeAll()
                     self.dragTimeoutTask = nil
-                } else {
-                    print("[GameView] Drag timeout triggered but cards have changed - ignoring")
                 }
             }
         }
@@ -436,7 +416,6 @@ struct GameView: View {
     /// Cancels the drag timeout (called when a drop successfully completes)
     private func cancelDragTimeout() {
         if dragTimeoutTask != nil {
-            print("[GameView] Cancelling drag timeout")
             dragTimeoutTask?.cancel()
             dragTimeoutTask = nil
         }
