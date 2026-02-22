@@ -1,0 +1,24 @@
+{
+  "group_id": "major_straits_01",
+  "group_name": "Major Straits",
+  "base_card": {
+    "id": "major_straits_base",
+    "label": "Major Straits",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "strait_gibraltar", "label": "Strait of Gibraltar", "type": "partner", "image": null },
+    { "id": "strait_hormuz", "label": "Strait of Hormuz", "type": "partner", "image": null },
+    { "id": "strait_malacca", "label": "Strait of Malacca", "type": "partner", "image": null },
+    { "id": "strait_bosporus", "label": "Bosporus Strait", "type": "partner", "image": null },
+    { "id": "strait_bering", "label": "Bering Strait", "type": "partner", "image": null },
+    { "id": "strait_magellan", "label": "Strait of Magellan", "type": "partner", "image": null },
+    { "id": "strait_dover", "label": "Strait of Dover", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

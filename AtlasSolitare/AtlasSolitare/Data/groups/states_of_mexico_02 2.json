@@ -1,0 +1,24 @@
+{
+  "group_id": "states_of_mexico_02",
+  "group_name": "States of Mexico II",
+  "base_card": {
+    "id": "mexico_states_02_base",
+    "label": "Mexican States",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "mex_02_puebla", "label": "Puebla", "type": "partner", "image": null },
+    { "id": "mex_02_baja_california", "label": "Baja California", "type": "partner", "image": null },
+    { "id": "mex_02_sonora", "label": "Sonora", "type": "partner", "image": null },
+    { "id": "mex_02_sinaloa", "label": "Sinaloa", "type": "partner", "image": null },
+    { "id": "mex_02_coahuila", "label": "Coahuila", "type": "partner", "image": null },
+    { "id": "mex_02_michoacan", "label": "Michoacán", "type": "partner", "image": null },
+    { "id": "mex_02_tamaulipas", "label": "Tamaulipas", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

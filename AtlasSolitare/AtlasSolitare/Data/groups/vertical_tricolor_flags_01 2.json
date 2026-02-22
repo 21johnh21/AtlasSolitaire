@@ -1,0 +1,24 @@
+{
+  "group_id": "vertical_tricolor_flags_01",
+  "group_name": "Vertical Tricolor Flags I",
+  "base_card": {
+    "id": "vertical_tricolor_01_base",
+    "label": "Vertical Tricolor Flags",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "vert_01_france", "label": "France", "type": "partner", "image": null },
+    { "id": "vert_01_italy", "label": "Italy", "type": "partner", "image": null },
+    { "id": "vert_01_ireland", "label": "Ireland", "type": "partner", "image": null },
+    { "id": "vert_01_belgium", "label": "Belgium", "type": "partner", "image": null },
+    { "id": "vert_01_romania", "label": "Romania", "type": "partner", "image": null },
+    { "id": "vert_01_chad", "label": "Chad", "type": "partner", "image": null },
+    { "id": "vert_01_mexico", "label": "Mexico", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

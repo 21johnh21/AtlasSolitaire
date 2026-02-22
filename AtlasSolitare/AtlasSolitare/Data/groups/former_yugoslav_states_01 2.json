@@ -1,0 +1,24 @@
+{
+  "group_id": "former_yugoslav_states_01",
+  "group_name": "Former Yugoslav States",
+  "base_card": {
+    "id": "former_yugoslav_states_base",
+    "label": "Former Yugoslav States",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "yugoslav_serbia", "label": "Serbia", "type": "partner", "image": null },
+    { "id": "yugoslav_croatia", "label": "Croatia", "type": "partner", "image": null },
+    { "id": "yugoslav_slovenia", "label": "Slovenia", "type": "partner", "image": null },
+    { "id": "yugoslav_bosnia", "label": "Bosnia and Herzegovina", "type": "partner", "image": null },
+    { "id": "yugoslav_north_macedonia", "label": "North Macedonia", "type": "partner", "image": null },
+    { "id": "yugoslav_montenegro", "label": "Montenegro", "type": "partner", "image": null },
+    { "id": "yugoslav_kosovo", "label": "Kosovo", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

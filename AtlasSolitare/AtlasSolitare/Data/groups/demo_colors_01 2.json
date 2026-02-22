@@ -1,0 +1,21 @@
+{
+  "group_id": "demo_colors_01",
+  "group_name": "Countries of the UK",
+  "base_card": {
+    "id": "demo_uk_base",
+    "label": "UK Countries",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "demo_uk_england", "label": "England", "type": "partner", "image": null },
+    { "id": "demo_uk_scotland", "label": "Scotland", "type": "partner", "image": null },
+    { "id": "demo_uk_wales", "label": "Wales", "type": "partner", "image": null },
+    { "id": "demo_uk_northern_ireland", "label": "Northern Ireland", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

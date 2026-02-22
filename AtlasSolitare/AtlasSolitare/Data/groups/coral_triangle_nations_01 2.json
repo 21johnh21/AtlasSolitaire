@@ -1,0 +1,23 @@
+{
+  "group_id": "coral_triangle_nations_01",
+  "group_name": "Coral Triangle Nations",
+  "base_card": {
+    "id": "coral_triangle_base",
+    "label": "Coral Triangle Nations",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "coral_indonesia", "label": "Indonesia", "type": "partner", "image": null },
+    { "id": "coral_philippines", "label": "Philippines", "type": "partner", "image": null },
+    { "id": "coral_malaysia", "label": "Malaysia", "type": "partner", "image": null },
+    { "id": "coral_papua_new_guinea", "label": "Papua New Guinea", "type": "partner", "image": null },
+    { "id": "coral_timor_leste", "label": "Timor-Leste", "type": "partner", "image": null },
+    { "id": "coral_solomon_islands", "label": "Solomon Islands", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

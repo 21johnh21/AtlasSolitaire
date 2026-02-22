@@ -1,0 +1,24 @@
+{
+  "group_id": "renamed_capitals_01",
+  "group_name": "Renamed Capitals",
+  "base_card": {
+    "id": "renamed_capitals_base",
+    "label": "Renamed Capitals",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "renamed_beijing", "label": "Beijing", "type": "partner", "image": null },
+    { "id": "renamed_ho_chi_minh_city", "label": "Ho Chi Minh City", "type": "partner", "image": null },
+    { "id": "renamed_istanbul", "label": "Istanbul", "type": "partner", "image": null },
+    { "id": "renamed_mumbai", "label": "Mumbai", "type": "partner", "image": null },
+    { "id": "renamed_oslo", "label": "Oslo", "type": "partner", "image": null },
+    { "id": "renamed_astana", "label": "Astana", "type": "partner", "image": null },
+    { "id": "renamed_kinshasa", "label": "Kinshasa", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

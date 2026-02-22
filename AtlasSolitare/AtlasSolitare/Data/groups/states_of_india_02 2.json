@@ -1,0 +1,24 @@
+{
+  "group_id": "states_of_india_02",
+  "group_name": "States of India II",
+  "base_card": {
+    "id": "india_states_02_base",
+    "label": "Indian States",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "india_02_gujarat", "label": "Gujarat", "type": "partner", "image": null },
+    { "id": "india_02_punjab", "label": "Punjab", "type": "partner", "image": null },
+    { "id": "india_02_andhra_pradesh", "label": "Andhra Pradesh", "type": "partner", "image": null },
+    { "id": "india_02_telangana", "label": "Telangana", "type": "partner", "image": null },
+    { "id": "india_02_bihar", "label": "Bihar", "type": "partner", "image": null },
+    { "id": "india_02_odisha", "label": "Odisha", "type": "partner", "image": null },
+    { "id": "india_02_madhya_pradesh", "label": "Madhya Pradesh", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

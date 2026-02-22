@@ -1,0 +1,24 @@
+{
+  "group_id": "nile_river_cities_01",
+  "group_name": "Nile River Cities",
+  "base_card": {
+    "id": "nile_cities_base",
+    "label": "Nile River Cities",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "nile_cairo", "label": "Cairo", "type": "partner", "image": null },
+    { "id": "nile_khartoum", "label": "Khartoum", "type": "partner", "image": null },
+    { "id": "nile_luxor", "label": "Luxor", "type": "partner", "image": null },
+    { "id": "nile_aswan", "label": "Aswan", "type": "partner", "image": null },
+    { "id": "nile_alexandria", "label": "Alexandria", "type": "partner", "image": null },
+    { "id": "nile_juba", "label": "Juba", "type": "partner", "image": null },
+    { "id": "nile_kampala", "label": "Kampala", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

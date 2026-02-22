@@ -1,0 +1,23 @@
+{
+  "group_id": "levant_nations_01",
+  "group_name": "Levant Nations",
+  "base_card": {
+    "id": "levant_base",
+    "label": "Levant Nations",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "levant_lebanon", "label": "Lebanon", "type": "partner", "image": null },
+    { "id": "levant_syria", "label": "Syria", "type": "partner", "image": null },
+    { "id": "levant_jordan", "label": "Jordan", "type": "partner", "image": null },
+    { "id": "levant_israel", "label": "Israel", "type": "partner", "image": null },
+    { "id": "levant_palestine", "label": "Palestine", "type": "partner", "image": null },
+    { "id": "levant_cyprus", "label": "Cyprus", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

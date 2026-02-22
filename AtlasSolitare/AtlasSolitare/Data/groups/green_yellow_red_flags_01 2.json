@@ -1,0 +1,24 @@
+{
+  "group_id": "green_yellow_red_flags_01",
+  "group_name": "Green, Yellow & Red Flags",
+  "base_card": {
+    "id": "green_yellow_red_base",
+    "label": "Green, Yellow & Red Flags",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "gyr_ethiopia", "label": "Ethiopia", "type": "partner", "image": null },
+    { "id": "gyr_ghana", "label": "Ghana", "type": "partner", "image": null },
+    { "id": "gyr_senegal", "label": "Senegal", "type": "partner", "image": null },
+    { "id": "gyr_mali", "label": "Mali", "type": "partner", "image": null },
+    { "id": "gyr_guinea", "label": "Guinea", "type": "partner", "image": null },
+    { "id": "gyr_cameroon", "label": "Cameroon", "type": "partner", "image": null },
+    { "id": "gyr_benin", "label": "Benin", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

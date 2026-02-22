@@ -1,0 +1,24 @@
+{
+  "group_id": "red_white_blue_flags_02",
+  "group_name": "Red, White & Blue Flags II",
+  "base_card": {
+    "id": "rwb_flags_02_base",
+    "label": "Red, White & Blue Flags",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "rwb_02_norway", "label": "Norway", "type": "partner", "image": null },
+    { "id": "rwb_02_iceland", "label": "Iceland", "type": "partner", "image": null },
+    { "id": "rwb_02_thailand", "label": "Thailand", "type": "partner", "image": null },
+    { "id": "rwb_02_czech_republic", "label": "Czech Republic", "type": "partner", "image": null },
+    { "id": "rwb_02_slovakia", "label": "Slovakia", "type": "partner", "image": null },
+    { "id": "rwb_02_chile", "label": "Chile", "type": "partner", "image": null },
+    { "id": "rwb_02_costa_rica", "label": "Costa Rica", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "group_id": "worlds_largest_islands_01",
+  "group_name": "World's Largest Islands",
+  "base_card": {
+    "id": "largest_islands_base",
+    "label": "World's Largest Islands",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "large_greenland", "label": "Greenland", "type": "partner", "image": null },
+    { "id": "large_new_guinea", "label": "New Guinea", "type": "partner", "image": null },
+    { "id": "large_borneo", "label": "Borneo", "type": "partner", "image": null },
+    { "id": "large_madagascar", "label": "Madagascar", "type": "partner", "image": null },
+    { "id": "large_baffin", "label": "Baffin Island", "type": "partner", "image": null },
+    { "id": "large_sumatra", "label": "Sumatra", "type": "partner", "image": null },
+    { "id": "large_honshu", "label": "Honshu", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

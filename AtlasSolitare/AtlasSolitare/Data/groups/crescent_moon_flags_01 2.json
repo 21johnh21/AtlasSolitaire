@@ -1,0 +1,24 @@
+{
+  "group_id": "crescent_moon_flags_01",
+  "group_name": "Crescent Moon Flags",
+  "base_card": {
+    "id": "crescent_flags_base",
+    "label": "Crescent Moon Flags",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "crescent_turkey", "label": "Turkey", "type": "partner", "image": null },
+    { "id": "crescent_pakistan", "label": "Pakistan", "type": "partner", "image": null },
+    { "id": "crescent_tunisia", "label": "Tunisia", "type": "partner", "image": null },
+    { "id": "crescent_algeria", "label": "Algeria", "type": "partner", "image": null },
+    { "id": "crescent_mauritania", "label": "Mauritania", "type": "partner", "image": null },
+    { "id": "crescent_malaysia", "label": "Malaysia", "type": "partner", "image": null },
+    { "id": "crescent_singapore", "label": "Singapore", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

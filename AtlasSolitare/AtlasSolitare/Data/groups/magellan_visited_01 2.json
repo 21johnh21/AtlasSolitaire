@@ -1,0 +1,24 @@
+{
+  "group_id": "magellan_visited_01",
+  "group_name": "Places Visited by Magellan",
+  "base_card": {
+    "id": "magellan_base",
+    "label": "Magellan's Voyage",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "magellan_seville", "label": "Seville", "type": "partner", "image": null },
+    { "id": "magellan_canary_islands", "label": "Canary Islands", "type": "partner", "image": null },
+    { "id": "magellan_rio_de_janeiro", "label": "Rio de Janeiro", "type": "partner", "image": null },
+    { "id": "magellan_strait", "label": "Strait of Magellan", "type": "partner", "image": null },
+    { "id": "magellan_guam", "label": "Guam", "type": "partner", "image": null },
+    { "id": "magellan_philippines", "label": "Philippines", "type": "partner", "image": null },
+    { "id": "magellan_moluccas", "label": "Moluccas", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

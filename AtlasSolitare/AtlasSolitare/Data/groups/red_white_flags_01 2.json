@@ -1,0 +1,24 @@
+{
+  "group_id": "red_white_flags_01",
+  "group_name": "Red & White Flags",
+  "base_card": {
+    "id": "red_white_flags_base",
+    "label": "Red & White Flags",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "rw_canada", "label": "Canada", "type": "partner", "image": null },
+    { "id": "rw_poland", "label": "Poland", "type": "partner", "image": null },
+    { "id": "rw_switzerland", "label": "Switzerland", "type": "partner", "image": null },
+    { "id": "rw_indonesia", "label": "Indonesia", "type": "partner", "image": null },
+    { "id": "rw_singapore", "label": "Singapore", "type": "partner", "image": null },
+    { "id": "rw_peru", "label": "Peru", "type": "partner", "image": null },
+    { "id": "rw_denmark", "label": "Denmark", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

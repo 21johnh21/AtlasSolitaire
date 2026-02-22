@@ -1,0 +1,24 @@
+{
+  "group_id": "provinces_of_south_africa_01",
+  "group_name": "Provinces of South Africa",
+  "base_card": {
+    "id": "south_africa_provinces_base",
+    "label": "South African Provinces",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "sa_gauteng", "label": "Gauteng", "type": "partner", "image": null },
+    { "id": "sa_western_cape", "label": "Western Cape", "type": "partner", "image": null },
+    { "id": "sa_kwazulu_natal", "label": "KwaZulu-Natal", "type": "partner", "image": null },
+    { "id": "sa_eastern_cape", "label": "Eastern Cape", "type": "partner", "image": null },
+    { "id": "sa_limpopo", "label": "Limpopo", "type": "partner", "image": null },
+    { "id": "sa_mpumalanga", "label": "Mpumalanga", "type": "partner", "image": null },
+    { "id": "sa_north_west", "label": "North West", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

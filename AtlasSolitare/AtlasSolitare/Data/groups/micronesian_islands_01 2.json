@@ -1,0 +1,24 @@
+{
+  "group_id": "micronesian_islands_01",
+  "group_name": "Micronesian Islands",
+  "base_card": {
+    "id": "micronesian_base",
+    "label": "Micronesian Islands",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "micronesian_guam", "label": "Guam", "type": "partner", "image": null },
+    { "id": "micronesian_palau", "label": "Palau", "type": "partner", "image": null },
+    { "id": "micronesian_nauru", "label": "Nauru", "type": "partner", "image": null },
+    { "id": "micronesian_marshall_islands", "label": "Marshall Islands", "type": "partner", "image": null },
+    { "id": "micronesian_kiribati", "label": "Kiribati", "type": "partner", "image": null },
+    { "id": "micronesian_federated_states", "label": "Federated States of Micronesia", "type": "partner", "image": null },
+    { "id": "micronesian_northern_marianas", "label": "Northern Mariana Islands", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

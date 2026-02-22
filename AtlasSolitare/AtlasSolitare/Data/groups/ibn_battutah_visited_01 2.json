@@ -1,0 +1,24 @@
+{
+  "group_id": "ibn_battutah_visited_01",
+  "group_name": "Places Visited by Ibn Battutah",
+  "base_card": {
+    "id": "ibn_battutah_base",
+    "label": "Ibn Battutah's Travels",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "battutah_tangier", "label": "Tangier", "type": "partner", "image": null },
+    { "id": "battutah_mecca", "label": "Mecca", "type": "partner", "image": null },
+    { "id": "battutah_baghdad", "label": "Baghdad", "type": "partner", "image": null },
+    { "id": "battutah_delhi", "label": "Delhi", "type": "partner", "image": null },
+    { "id": "battutah_maldives", "label": "Maldives", "type": "partner", "image": null },
+    { "id": "battutah_beijing", "label": "Beijing", "type": "partner", "image": null },
+    { "id": "battutah_timbuktu", "label": "Timbuktu", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

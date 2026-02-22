@@ -1,0 +1,24 @@
+{
+  "group_id": "roman_founded_cities_01",
+  "group_name": "Roman-founded Cities",
+  "base_card": {
+    "id": "roman_cities_base",
+    "label": "Roman-founded Cities",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "roman_london", "label": "London", "type": "partner", "image": null },
+    { "id": "roman_paris", "label": "Paris", "type": "partner", "image": null },
+    { "id": "roman_cologne", "label": "Cologne", "type": "partner", "image": null },
+    { "id": "roman_vienna", "label": "Vienna", "type": "partner", "image": null },
+    { "id": "roman_barcelona", "label": "Barcelona", "type": "partner", "image": null },
+    { "id": "roman_lyon", "label": "Lyon", "type": "partner", "image": null },
+    { "id": "roman_york", "label": "York", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

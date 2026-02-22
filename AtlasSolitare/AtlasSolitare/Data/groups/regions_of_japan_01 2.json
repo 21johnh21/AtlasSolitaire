@@ -1,0 +1,24 @@
+{
+  "group_id": "regions_of_japan_01",
+  "group_name": "Regions of Japan",
+  "base_card": {
+    "id": "japan_regions_base",
+    "label": "Japanese Regions",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "japan_hokkaido", "label": "Hokkaido", "type": "partner", "image": null },
+    { "id": "japan_tohoku", "label": "Tōhoku", "type": "partner", "image": null },
+    { "id": "japan_kanto", "label": "Kantō", "type": "partner", "image": null },
+    { "id": "japan_chubu", "label": "Chūbu", "type": "partner", "image": null },
+    { "id": "japan_kansai", "label": "Kansai", "type": "partner", "image": null },
+    { "id": "japan_chugoku", "label": "Chūgoku", "type": "partner", "image": null },
+    { "id": "japan_kyushu", "label": "Kyushu", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

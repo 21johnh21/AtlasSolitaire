@@ -1,0 +1,24 @@
+{
+  "group_id": "southern_hemisphere_nations_01",
+  "group_name": "Southern Hemisphere Nations",
+  "base_card": {
+    "id": "southern_hemisphere_base",
+    "label": "Southern Hemisphere",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "south_hem_australia", "label": "Australia", "type": "partner", "image": null },
+    { "id": "south_hem_new_zealand", "label": "New Zealand", "type": "partner", "image": null },
+    { "id": "south_hem_south_africa", "label": "South Africa", "type": "partner", "image": null },
+    { "id": "south_hem_argentina", "label": "Argentina", "type": "partner", "image": null },
+    { "id": "south_hem_chile", "label": "Chile", "type": "partner", "image": null },
+    { "id": "south_hem_madagascar", "label": "Madagascar", "type": "partner", "image": null },
+    { "id": "south_hem_indonesia", "label": "Indonesia", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

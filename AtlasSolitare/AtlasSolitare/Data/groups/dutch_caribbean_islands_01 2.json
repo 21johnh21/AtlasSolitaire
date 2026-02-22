@@ -1,0 +1,23 @@
+{
+  "group_id": "dutch_caribbean_islands_01",
+  "group_name": "Dutch Caribbean Islands",
+  "base_card": {
+    "id": "dutch_caribbean_base",
+    "label": "Dutch Caribbean Islands",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "dutch_aruba", "label": "Aruba", "type": "partner", "image": null },
+    { "id": "dutch_curacao", "label": "Curaçao", "type": "partner", "image": null },
+    { "id": "dutch_sint_maarten", "label": "Sint Maarten", "type": "partner", "image": null },
+    { "id": "dutch_bonaire", "label": "Bonaire", "type": "partner", "image": null },
+    { "id": "dutch_saba", "label": "Saba", "type": "partner", "image": null },
+    { "id": "dutch_sint_eustatius", "label": "Sint Eustatius", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

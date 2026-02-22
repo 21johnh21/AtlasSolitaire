@@ -1,0 +1,24 @@
+{
+  "group_id": "horizontal_tricolor_flags_02",
+  "group_name": "Horizontal Tricolor Flags II",
+  "base_card": {
+    "id": "horizontal_tricolor_02_base",
+    "label": "Horizontal Tricolor Flags",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "horiz_02_lithuania", "label": "Lithuania", "type": "partner", "image": null },
+    { "id": "horiz_02_armenia", "label": "Armenia", "type": "partner", "image": null },
+    { "id": "horiz_02_yemen", "label": "Yemen", "type": "partner", "image": null },
+    { "id": "horiz_02_egypt", "label": "Egypt", "type": "partner", "image": null },
+    { "id": "horiz_02_iraq", "label": "Iraq", "type": "partner", "image": null },
+    { "id": "horiz_02_syria", "label": "Syria", "type": "partner", "image": null },
+    { "id": "horiz_02_gabon", "label": "Gabon", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

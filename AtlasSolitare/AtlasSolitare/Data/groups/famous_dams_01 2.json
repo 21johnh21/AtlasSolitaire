@@ -1,0 +1,24 @@
+{
+  "group_id": "famous_dams_01",
+  "group_name": "Famous Dams",
+  "base_card": {
+    "id": "famous_dams_base",
+    "label": "Famous Dams",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "dam_hoover", "label": "Hoover", "type": "partner", "image": null },
+    { "id": "dam_aswan", "label": "Aswan High", "type": "partner", "image": null },
+    { "id": "dam_three_gorges", "label": "Three Gorges", "type": "partner", "image": null },
+    { "id": "dam_itaipu", "label": "Itaipu", "type": "partner", "image": null },
+    { "id": "dam_grand_coulee", "label": "Grand Coulee", "type": "partner", "image": null },
+    { "id": "dam_kariba", "label": "Kariba", "type": "partner", "image": null },
+    { "id": "dam_akosombo", "label": "Akosombo", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

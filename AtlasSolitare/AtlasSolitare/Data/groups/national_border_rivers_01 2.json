@@ -1,0 +1,24 @@
+{
+  "group_id": "national_border_rivers_01",
+  "group_name": "National Border Rivers",
+  "base_card": {
+    "id": "border_rivers_base",
+    "label": "Border Rivers",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "border_rio_grande", "label": "Rio Grande", "type": "partner", "image": null },
+    { "id": "border_danube", "label": "Danube", "type": "partner", "image": null },
+    { "id": "border_zambezi", "label": "Zambezi", "type": "partner", "image": null },
+    { "id": "border_mekong", "label": "Mekong", "type": "partner", "image": null },
+    { "id": "border_rhine", "label": "Rhine", "type": "partner", "image": null },
+    { "id": "border_parana", "label": "Paraná", "type": "partner", "image": null },
+    { "id": "border_ussuri", "label": "Ussuri", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

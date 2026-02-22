@@ -1,0 +1,24 @@
+{
+  "group_id": "columbus_visited_01",
+  "group_name": "Places Visited by Columbus",
+  "base_card": {
+    "id": "columbus_base",
+    "label": "Columbus's Voyages",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "columbus_san_salvador", "label": "San Salvador", "type": "partner", "image": null },
+    { "id": "columbus_cuba", "label": "Cuba", "type": "partner", "image": null },
+    { "id": "columbus_hispaniola", "label": "Hispaniola", "type": "partner", "image": null },
+    { "id": "columbus_puerto_rico", "label": "Puerto Rico", "type": "partner", "image": null },
+    { "id": "columbus_jamaica", "label": "Jamaica", "type": "partner", "image": null },
+    { "id": "columbus_trinidad", "label": "Trinidad", "type": "partner", "image": null },
+    { "id": "columbus_panama", "label": "Panama", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "group_id": "multi_zone_nations_01",
+  "group_name": "Multi-Zone Nations",
+  "base_card": {
+    "id": "multi_zone_base",
+    "label": "Multi-Time Zone Nations",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "multi_zone_russia", "label": "Russia", "type": "partner", "image": null },
+    { "id": "multi_zone_usa", "label": "United States", "type": "partner", "image": null },
+    { "id": "multi_zone_canada", "label": "Canada", "type": "partner", "image": null },
+    { "id": "multi_zone_australia", "label": "Australia", "type": "partner", "image": null },
+    { "id": "multi_zone_brazil", "label": "Brazil", "type": "partner", "image": null },
+    { "id": "multi_zone_indonesia", "label": "Indonesia", "type": "partner", "image": null },
+    { "id": "multi_zone_mexico", "label": "Mexico", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "easy",
+    "source": "local-json"
+  }
+}

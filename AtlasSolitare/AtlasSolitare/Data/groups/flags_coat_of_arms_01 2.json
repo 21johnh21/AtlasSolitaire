@@ -1,0 +1,24 @@
+{
+  "group_id": "flags_coat_of_arms_01",
+  "group_name": "Flags with Coat of Arms I",
+  "base_card": {
+    "id": "coat_arms_01_base",
+    "label": "Flags with Coat of Arms",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "coat_01_spain", "label": "Spain", "type": "partner", "image": null },
+    { "id": "coat_01_mexico", "label": "Mexico", "type": "partner", "image": null },
+    { "id": "coat_01_ecuador", "label": "Ecuador", "type": "partner", "image": null },
+    { "id": "coat_01_bolivia", "label": "Bolivia", "type": "partner", "image": null },
+    { "id": "coat_01_el_salvador", "label": "El Salvador", "type": "partner", "image": null },
+    { "id": "coat_01_guatemala", "label": "Guatemala", "type": "partner", "image": null },
+    { "id": "coat_01_dominican_republic", "label": "Dominican Republic", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}

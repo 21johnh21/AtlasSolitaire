@@ -1,0 +1,24 @@
+{
+  "group_id": "silk_road_cities_01",
+  "group_name": "Silk Road Cities",
+  "base_card": {
+    "id": "silk_road_base",
+    "label": "Silk Road Cities",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "silk_samarkand", "label": "Samarkand", "type": "partner", "image": null },
+    { "id": "silk_bukhara", "label": "Bukhara", "type": "partner", "image": null },
+    { "id": "silk_kashgar", "label": "Kashgar", "type": "partner", "image": null },
+    { "id": "silk_xian", "label": "Xi'an", "type": "partner", "image": null },
+    { "id": "silk_baghdad", "label": "Baghdad", "type": "partner", "image": null },
+    { "id": "silk_merv", "label": "Merv", "type": "partner", "image": null },
+    { "id": "silk_damascus", "label": "Damascus", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "hard",
+    "source": "local-json"
+  }
+}

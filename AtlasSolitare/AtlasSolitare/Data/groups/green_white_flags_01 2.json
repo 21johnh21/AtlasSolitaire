@@ -1,0 +1,24 @@
+{
+  "group_id": "green_white_flags_01",
+  "group_name": "Green & White Flags",
+  "base_card": {
+    "id": "green_white_flags_base",
+    "label": "Green & White Flags",
+    "type": "base",
+    "image": null
+  },
+  "partner_cards": [
+    { "id": "gw_pakistan", "label": "Pakistan", "type": "partner", "image": null },
+    { "id": "gw_nigeria", "label": "Nigeria", "type": "partner", "image": null },
+    { "id": "gw_saudi_arabia", "label": "Saudi Arabia", "type": "partner", "image": null },
+    { "id": "gw_norfolk_island", "label": "Norfolk Island", "type": "partner", "image": null },
+    { "id": "gw_plymouth", "label": "Plymouth", "type": "partner", "image": null },
+    { "id": "gw_andalusia", "label": "Andalusia", "type": "partner", "image": null },
+    { "id": "gw_plymouth_montserrat", "label": "Plymouth", "type": "partner", "image": null }
+  ],
+  "metadata": {
+    "category": "Geography",
+    "difficulty": "medium",
+    "source": "local-json"
+  }
+}
