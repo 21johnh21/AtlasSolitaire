@@ -10,6 +10,10 @@ struct BannerAdView: UIViewRepresentable {
     // Standard banner size (320x50)
     private let bannerHeight: CGFloat = 50
 
+    func makeCoordinator() -> Coordinator {
+        Coordinator()
+    }
+
     func makeUIView(context: Context) -> UIView {
         let containerView = UIView()
         containerView.backgroundColor = .clear
@@ -33,6 +37,9 @@ struct BannerAdView: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: UIView, context: Context) {
+        // Only load the ad once
+        guard !context.coordinator.hasLoadedAd else { return }
+
         // Find the banner view
         guard let bannerView = uiView.subviews.first as? BannerView else {
             return
@@ -41,7 +48,12 @@ struct BannerAdView: UIViewRepresentable {
         // Load ad with root view controller
         if let rootViewController = uiView.window?.rootViewController {
             adManager.loadBannerAd(bannerView, rootViewController: rootViewController)
+            context.coordinator.hasLoadedAd = true
         }
+    }
+
+    class Coordinator {
+        var hasLoadedAd = false
     }
 
     /// Helper to create a fixed-height view for the banner
