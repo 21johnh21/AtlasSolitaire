@@ -95,7 +95,7 @@ struct TableauPilePreviewView: View {
         TableauCard(card: Card(id: "c5", label: "Germany", type: .partner, groupId: "eu", possibleGroupIds: ["eu"], imageName: nil), isFaceUp: true),
     ]
 
-    return ZStack {
+    ZStack {
         Color.feltGreen.ignoresSafeArea()
 
         // Simulate the shadow overlay from GameView

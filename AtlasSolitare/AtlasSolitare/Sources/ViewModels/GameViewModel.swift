@@ -206,6 +206,8 @@ class GameViewModel: ObservableObject {
     func returnToMenu() {
         stopTimer()
         phase = .menu
+        // Trigger potential interstitial ad
+        AdManager.shared.onGameEnd()
         // Don't clear the game state - it's already auto-saved
     }
 
@@ -220,6 +222,12 @@ class GameViewModel: ObservableObject {
     func toggleHaptics() {
         settings.hapticsEnabled.toggle()
         haptic.isEnabled = settings.hapticsEnabled
+        saveSettings()
+    }
+
+    func toggleAds() {
+        settings.adsEnabled.toggle()
+        AdManager.shared.globalAdsEnabled = settings.adsEnabled
         saveSettings()
     }
 
@@ -375,6 +383,9 @@ class GameViewModel: ObservableObject {
             totalWins: settings.totalWins
         )
 
+        // Trigger potential interstitial ad
+        AdManager.shared.onGameEnd()
+
         try? persistence.clearGameState()
     }
 
@@ -391,6 +402,7 @@ class GameViewModel: ObservableObject {
             settings = s
             audio.isEnabled  = s.soundEnabled
             haptic.isEnabled = s.hapticsEnabled
+            AdManager.shared.globalAdsEnabled = s.adsEnabled
         }
     }
 

@@ -45,6 +45,17 @@ struct SettingsView: View {
                                     isOn: vm.settings.hapticsEnabled,
                                     action: vm.toggleHaptics
                                 )
+
+                                Divider()
+                                    .background(Color.white.opacity(0.1))
+
+                                settingRow(
+                                    title: "Ads",
+                                    subtitle: "Show advertisements",
+                                    icon: "rectangle.stack.fill",
+                                    isOn: vm.settings.adsEnabled,
+                                    action: vm.toggleAds
+                                )
                             }
                         }
 

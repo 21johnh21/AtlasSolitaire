@@ -9,6 +9,11 @@ struct AtlasSolitaireApp: App {
     /// Single source-of-truth view model, alive for the lifetime of the app.
     @StateObject private var gameViewModel = GameViewModel()
 
+    init() {
+        // Initialize Google AdMob SDK
+        AdManager.shared.initialize()
+    }
+
     var body: some Scene {
         WindowGroup {
             RootView()

@@ -101,6 +101,9 @@ struct AppSettings: Codable {
     var soundEnabled: Bool = true
     var hapticsEnabled: Bool = true
 
+    // Ad settings
+    var adsEnabled: Bool = true
+
     // Game Center statistics
     var totalWins: Int = 0
     var currentWinStreak: Int = 0

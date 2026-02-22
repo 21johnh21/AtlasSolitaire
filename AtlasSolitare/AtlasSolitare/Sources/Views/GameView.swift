@@ -89,6 +89,13 @@ struct GameView: View {
                     .frame(maxHeight: .infinity, alignment: .top)
 
                 Spacer(minLength: 0)
+
+                // ── Banner Ad ───────────────────────────────────────────────
+                if AdManager.shared.areAdsEnabled {
+                    BannerAdView()
+                        .frame(height: BannerAdView.fixedHeight())
+                        .background(Color.black.opacity(0.1))
+                }
             }
             .environment(\.cardWidth, cardWidth)
             .frame(maxWidth: .infinity, maxHeight: .infinity)

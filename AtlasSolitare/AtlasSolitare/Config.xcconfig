@@ -1,0 +1,6 @@
+// Configuration file for Atlas Solitaire
+//
+// This file contains build settings that are shared across all configurations
+
+// Google AdMob App ID
+INFOPLIST_KEY_GADApplicationIdentifier = ca-app-pub-1453954241423045~4496056156
