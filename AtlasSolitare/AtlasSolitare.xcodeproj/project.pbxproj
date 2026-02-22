@@ -103,7 +103,6 @@
 				F85569212F3561F7002AF57B /* Sources */,
 				F85569222F3561F7002AF57B /* Frameworks */,
 				F85569232F3561F7002AF57B /* Resources */,
-				F8463C752F4AA31D00F873A2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -208,27 +207,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		F8463C752F4AA31D00F873A2 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 8;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Add GADApplicationIdentifier to final Info.plist after build\nFINAL_PLIST=\"$CODESIGNING_FOLDER_PATH/Info.plist\"\nAPP_ID=\"ca-app-pub-1453954241423045~4496056156\"\n\nif [ -f \"$FINAL_PLIST\" ]; then\n    echo \"[AdMob] Adding GADApplicationIdentifier to $FINAL_PLIST\"\n    /usr/libexec/PlistBuddy -c \"Add :GADApplicationIdentifier string $APP_ID\" \"$FINAL_PLIST\" 2>/dev/null || \\\n    /usr/libexec/PlistBuddy -c \"Set :GADApplicationIdentifier $APP_ID\" \"$FINAL_PLIST\"\n    echo \"[AdMob] ✅ GADApplicationIdentifier added successfully\"\nelse\n    echo \"[AdMob] ⚠️ Info.plist not found at $FINAL_PLIST\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F85569212F3561F7002AF57B /* Sources */ = {
