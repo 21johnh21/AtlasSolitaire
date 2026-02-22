@@ -117,10 +117,18 @@ class GameCenterManager: NSObject, ObservableObject {
 
     /// Show the Game Center leaderboard UI.
     func showLeaderboard(_ leaderboard: LeaderboardID? = nil) {
+        #if DEBUG
+        // In development, allow showing leaderboard even if not authenticated
+        // This lets us test the UI before the app is registered on App Store Connect
+        if !isAuthenticated {
+            print("[GameCenter] ⚠️ Not authenticated, but showing leaderboard UI for development testing")
+        }
+        #else
         guard isAuthenticated else {
             print("[GameCenter] Cannot show leaderboard - not authenticated")
             return
         }
+        #endif
 
         // Post notification with the leaderboard ID (optional)
         NotificationCenter.default.post(
@@ -214,10 +222,18 @@ class GameCenterManager: NSObject, ObservableObject {
 
     /// Show the Game Center achievements UI.
     func showAchievements() {
+        #if DEBUG
+        // In development, allow showing achievements even if not authenticated
+        // This lets us test the UI before the app is registered on App Store Connect
+        if !isAuthenticated {
+            print("[GameCenter] ⚠️ Not authenticated, but showing achievements UI for development testing")
+        }
+        #else
         guard isAuthenticated else {
             print("[GameCenter] Cannot show achievements - not authenticated")
             return
         }
+        #endif
 
         // Post notification to show achievements
         NotificationCenter.default.post(
