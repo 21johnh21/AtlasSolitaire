@@ -348,6 +348,7 @@ struct GameView: View {
     #if DEBUG
     private var devWinButton: some View {
         Button(action: {
+            print("[GameView] 🎮 DEV: Win button tapped")
             haptic.light()
             vm.devAutoWin()
         }) {

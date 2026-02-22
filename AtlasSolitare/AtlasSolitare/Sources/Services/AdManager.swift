@@ -26,7 +26,7 @@ class AdManager: NSObject, ObservableObject {
     }
 
     /// Number of games played before showing an interstitial ad
-    private let interstitialFrequency = 20
+    private let interstitialFrequency = 10
 
     /// Counter for games played since last interstitial
     private var gamesPlayedSinceLastAd = 0
