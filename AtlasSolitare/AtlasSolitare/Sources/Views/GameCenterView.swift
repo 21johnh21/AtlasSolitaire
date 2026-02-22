@@ -1,12 +1,40 @@
 import SwiftUI
 import GameKit
 
+// MARK: - GameCenterViewModifier
+
+/// View modifier that adds Game Center presentation capabilities to any view.
+struct GameCenterViewModifier: ViewModifier {
+    @State private var gameCenterState: GameCenterState?
+
+    enum GameCenterState {
+        case leaderboard(String?)
+        case achievements
+    }
+
+    func body(content: Content) -> some View {
+        content
+            .background(
+                GameCenterView(state: $gameCenterState)
+                    .frame(width: 0, height: 0)
+            )
+            .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ShowGameCenterLeaderboard"))) { notification in
+                let leaderboardID = notification.object as? String
+                gameCenterState = .leaderboard(leaderboardID)
+            }
+            .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ShowGameCenterAchievements"))) { _ in
+                gameCenterState = .achievements
+            }
+    }
+}
+
 // MARK: - GameCenterView
 
-/// SwiftUI wrapper for presenting Game Center view controllers.
-/// Listens for notifications from GameCenterManager to present leaderboards, achievements, etc.
+/// UIViewControllerRepresentable for presenting Game Center UI
+/// Note: GKGameCenterViewController is deprecated in iOS 26.0, but there's no official SwiftUI replacement yet.
+/// This implementation will need to be updated when Apple releases the new API.
 struct GameCenterView: UIViewControllerRepresentable {
-    @Binding var viewController: GKGameCenterViewController?
+    @Binding var state: GameCenterViewModifier.GameCenterState?
 
     func makeUIViewController(context: Context) -> UIViewController {
         let controller = UIViewController()
@@ -15,15 +43,26 @@ struct GameCenterView: UIViewControllerRepresentable {
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        // Present the Game Center view controller when it's set
-        if let vc = viewController, uiViewController.presentedViewController == nil {
-            // Set the delegate to handle dismissal
-            vc.gameCenterDelegate = context.coordinator
+        guard let state = state, uiViewController.presentedViewController == nil else {
+            return
+        }
 
-            // Present on next run loop to avoid modifying state during view update
-            DispatchQueue.main.async {
-                uiViewController.present(vc, animated: true)
+        // Present Game Center VC on main thread
+        DispatchQueue.main.async {
+            let viewController: GKGameCenterViewController
+
+            switch state {
+            case .leaderboard:
+                // Use the iOS 14+ initializer
+                // Note: Specific leaderboard selection is deprecated, shows all leaderboards
+                viewController = GKGameCenterViewController(state: .leaderboards)
+
+            case .achievements:
+                viewController = GKGameCenterViewController(state: .achievements)
             }
+
+            viewController.gameCenterDelegate = context.coordinator
+            uiViewController.present(viewController, animated: true)
         }
     }
 
@@ -40,46 +79,15 @@ struct GameCenterView: UIViewControllerRepresentable {
 
         func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
             gameCenterViewController.dismiss(animated: true) {
-                // Clear the binding after dismissal is complete
                 DispatchQueue.main.async {
-                    self.parent.viewController = nil
+                    self.parent.state = nil
                 }
             }
         }
     }
 }
 
-// MARK: - GameCenterViewModifier
-
-/// View modifier that adds Game Center presentation capabilities to any view.
-struct GameCenterViewModifier: ViewModifier {
-    @State private var gameCenterViewController: GKGameCenterViewController?
-
-    func body(content: Content) -> some View {
-        content
-            .background(
-                GameCenterView(viewController: $gameCenterViewController)
-                    .frame(width: 0, height: 0)
-            )
-            .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ShowGameCenterLeaderboard"))) { notification in
-                if let vc = notification.object as? GKGameCenterViewController {
-                    gameCenterViewController = vc
-                }
-            }
-            .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ShowGameCenterAchievements"))) { notification in
-                if let vc = notification.object as? GKGameCenterViewController {
-                    gameCenterViewController = vc
-                }
-            }
-            .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ShowGameCenterAuthentication"))) { notification in
-                if let vc = notification.object as? UIViewController {
-                    // Authentication uses a regular UIViewController, not GKGameCenterViewController
-                    // We'll handle this case separately if needed
-                    print("[GameCenter] Authentication VC received, but not currently handled in SwiftUI")
-                }
-            }
-    }
-}
+// MARK: - View Extension
 
 extension View {
     /// Adds Game Center presentation capabilities to this view.

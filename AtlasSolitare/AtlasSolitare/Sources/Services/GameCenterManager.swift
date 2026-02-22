@@ -122,15 +122,10 @@ class GameCenterManager: NSObject, ObservableObject {
             return
         }
 
-        let viewController = GKGameCenterViewController(state: .leaderboards)
-        if let leaderboard = leaderboard {
-            viewController.leaderboardIdentifier = leaderboard.rawValue
-        }
-
-        // Post notification to present the view controller
+        // Post notification with the leaderboard ID (optional)
         NotificationCenter.default.post(
             name: NSNotification.Name("ShowGameCenterLeaderboard"),
-            object: viewController
+            object: leaderboard?.rawValue
         )
     }
 
@@ -224,12 +219,10 @@ class GameCenterManager: NSObject, ObservableObject {
             return
         }
 
-        let viewController = GKGameCenterViewController(state: .achievements)
-
-        // Post notification to present the view controller
+        // Post notification to show achievements
         NotificationCenter.default.post(
             name: NSNotification.Name("ShowGameCenterAchievements"),
-            object: viewController
+            object: nil
         )
     }
 }
