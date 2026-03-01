@@ -22,8 +22,6 @@
 	<string>1</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-1453954241423045~4496056156</string>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>This app uses contextual ads based on game content, not personal tracking.</string>
 	<key>GCSupportsGameMode</key>
 	<true/>
 	<key>LSApplicationCategoryType</key>

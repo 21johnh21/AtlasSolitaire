@@ -20,55 +20,65 @@ struct PrivacyPolicyView: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 24) {
                         policySection(
-                            title: "Information We Collect",
+                            title: "Privacy-First Design",
                             content: """
-                            Atlas Solitaire is a privacy-first application. We do not collect, store, or transmit any personal information or user data to external servers.
-
-                            All game data, including your progress and settings, is stored locally on your device only.
+                            Atlas Solitaire is designed with your privacy in mind. We don't collect, store, or sell your personal information. All game data stays on your device.
                             """
                         )
 
                         policySection(
-                            title: "Data Storage",
+                            title: "Data Stored Locally",
                             content: """
-                            Your game preferences and saved games are stored locally on your device using iOS secure storage mechanisms. This data never leaves your device and is not accessible to us or any third parties.
+                            The following data is stored on your device only and never transmitted to our servers:
+
+                            • Game progress and statistics
+                            • Your settings and preferences
+                            • Win counts and streaks
+
+                            This data is deleted if you uninstall the app.
                             """
                         )
 
                         policySection(
-                            title: "No Analytics or Tracking",
+                            title: "Advertising",
                             content: """
-                            We do not use any analytics, tracking, or advertising services. Your gameplay is completely private.
+                            Atlas Solitaire displays ads through Google AdMob. We use contextual ads based on geography and game category, NOT personal tracking.
+
+                            You can disable ads completely in Settings at any time.
+
+                            AdMob may collect: general location (country/city), device type, and app performance metrics.
                             """
                         )
 
                         policySection(
-                            title: "Third-Party Services",
+                            title: "Game Center (Optional)",
                             content: """
-                            Atlas Solitaire does not integrate with any third-party services, social networks, or advertising platforms.
+                            If you use Game Center for leaderboards and achievements, Apple manages that data. You can enable/disable Game Center in iOS Settings.
                             """
                         )
 
                         policySection(
                             title: "Children's Privacy",
                             content: """
-                            Our app does not knowingly collect any information from children. The app is safe for users of all ages.
+                            Atlas Solitaire is safe for all ages. We don't knowingly collect personal information from anyone, including children. Ads can be disabled in Settings.
                             """
                         )
 
                         policySection(
-                            title: "Changes to This Policy",
+                            title: "Your Control",
                             content: """
-                            If we make any changes to our privacy practices, we will update this policy and the effective date below.
-
-                            Last updated: February 8, 2026
+                            • Disable ads: Settings → Toggle "Ads" off
+                            • Delete all data: Uninstall the app
+                            • Game Center: iOS Settings → Game Center
                             """
                         )
 
                         policySection(
                             title: "Contact",
                             content: """
-                            If you have any questions about this Privacy Policy, please contact us through the Support & Help section.
+                            Questions? Contact us at geo.gnosis.dev@gmail.com or through the Support section.
+
+                            Last updated: February 28, 2026
                             """
                         )
                     }
