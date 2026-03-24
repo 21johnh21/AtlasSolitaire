@@ -54,9 +54,9 @@ struct GameView: View {
                     // Quit button aligned to leading
                     HStack {
                         quitButton
-                        #if DEBUG
-                        devWinButton
-                        #endif
+//                        #if DEBUG
+//                        devWinButton
+//                        #endif
                         Spacer()
                     }
 
@@ -345,37 +345,37 @@ struct GameView: View {
         .accessibilityLabel("Exit game and return to menu")
     }
 
-    #if DEBUG
-    private var devWinButton: some View {
-        Button(action: {
-            print("[GameView] 🎮 DEV: Win button tapped")
-            haptic.light()
-            vm.devAutoWin()
-        }) {
-            HStack(spacing: 6) {
-                Image(systemName: "crown.fill")
-                    .font(.system(size: 14, weight: .medium))
-                Text("Win")
-                    .font(.system(size: 13, weight: .semibold))
-            }
-            .foregroundColor(Color.yellow)
-            .padding(.horizontal, 12)
-            .padding(.vertical, 8)
-            .background(
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.orange.opacity(0.2))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.yellow.opacity(0.5), lineWidth: 1)
-                    )
-            )
-            .shadow(color: Color.orange.opacity(0.3), radius: 3, x: 0, y: 2)
-        }
-        .buttonStyle(ScaleButtonStyle())
-        .withClickSound()
-        .accessibilityLabel("DEV: Auto-complete game")
-    }
-    #endif
+//    #if DEBUG
+//    private var devWinButton: some View {
+//        Button(action: {
+//            print("[GameView] 🎮 DEV: Win button tapped")
+//            haptic.light()
+//            vm.devAutoWin()
+//        }) {
+//            HStack(spacing: 6) {
+//                Image(systemName: "crown.fill")
+//                    .font(.system(size: 14, weight: .medium))
+//                Text("Win")
+//                    .font(.system(size: 13, weight: .semibold))
+//            }
+//            .foregroundColor(Color.yellow)
+//            .padding(.horizontal, 12)
+//            .padding(.vertical, 8)
+//            .background(
+//                RoundedRectangle(cornerRadius: 10)
+//                    .fill(Color.orange.opacity(0.2))
+//                    .overlay(
+//                        RoundedRectangle(cornerRadius: 10)
+//                            .stroke(Color.yellow.opacity(0.5), lineWidth: 1)
+//                    )
+//            )
+//            .shadow(color: Color.orange.opacity(0.3), radius: 3, x: 0, y: 2)
+//        }
+//        .buttonStyle(ScaleButtonStyle())
+//        .withClickSound()
+//        .accessibilityLabel("DEV: Auto-complete game")
+//    }
+//    #endif
 
     // ─── Helper methods ─────────────────────────────────────────────────────
     private func updateCardWidth(for screenWidth: CGFloat) {

@@ -1,6 +1,5 @@
 import Foundation
 import GoogleMobileAds
-import AppTrackingTransparency
 import Combine
 
 // MARK: - AdManager
@@ -41,8 +40,8 @@ class AdManager: NSObject, ObservableObject {
         static let testInterstitial = "ca-app-pub-3940256099942544/4411468910"
 
         // Production IDs - replace these with your real AdMob IDs
-        static let productionBanner = "ca-app-pub-1453954241423045~4496056156"
-        static let productionInterstitial = "ca-app-pub-1453954241423045~4496056156"
+        static let productionBanner = "ca-app-pub-1453954241423045/9030556325"
+        static let productionInterstitial = "ca-app-pub-1453954241423045/9999664279"
     }
 
     /// Returns the appropriate ad unit ID based on build configuration

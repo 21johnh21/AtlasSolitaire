@@ -116,3 +116,11 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# App screenshots
+Simulator Screenshots*
+Screenshots/
+
+# Test Script
+create_placeholders.sh
+**/create_placeholders.sh

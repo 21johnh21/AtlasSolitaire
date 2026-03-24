@@ -239,32 +239,32 @@ class GameViewModel: ObservableObject {
         gameCenter.showAchievements()
     }
 
-    #if DEBUG
-    /// DEV ONLY: Auto-complete the current game to test win screen and interstitial ads
-    func devAutoWin() {
-        print("[GameViewModel] 🎮 DEV: Auto-completing game...")
+    // #if DEBUG
+    // /// DEV ONLY: Auto-complete the current game to test win screen and interstitial ads
+    // func devAutoWin() {
+    //     print("[GameViewModel] 🎮 DEV: Auto-completing game...")
 
-        // Mark all groups as completed
-        engine.state.completedGroups = Set(engine.state.deck.groups.map { $0.id })
+    //     // Mark all groups as completed
+    //     engine.state.completedGroups = Set(engine.state.deck.groups.map { $0.id })
 
-        // Clear all piles
-        engine.state.stock = []
-        engine.state.waste = []
-        engine.state.foundations = Array(repeating: FoundationPile(), count: 4)
-        engine.state.tableau = Array(repeating: [], count: 7)
+    //     // Clear all piles
+    //     engine.state.stock = []
+    //     engine.state.waste = []
+    //     engine.state.foundations = Array(repeating: FoundationPile(), count: 4)
+    //     engine.state.tableau = Array(repeating: [], count: 7)
 
-        // Set cleared card count to total cards
-        let totalCards = engine.state.deck.groups.reduce(0) { $0 + $1.cards.count }
-        engine.state.clearedCardCount = totalCards
+    //     // Set cleared card count to total cards
+    //     let totalCards = engine.state.deck.groups.reduce(0) { $0 + $1.cards.count }
+    //     engine.state.clearedCardCount = totalCards
 
-        // Trigger win
-        engine.state.phase = .won
-        publishState()
-        handleWin()
+    //     // Trigger win
+    //     engine.state.phase = .won
+    //     publishState()
+    //     handleWin()
 
-        print("[GameViewModel] 🎮 DEV: Game auto-completed! Interstitial should trigger.")
-    }
-    #endif
+    //     print("[GameViewModel] 🎮 DEV: Game auto-completed! Interstitial should trigger.")
+    // }
+    // #endif
 
     // ─── MARK: Derived / Query Helpers (for Views) ─────────────────────────
 
